@@ -1,6 +1,7 @@
 # AllyGator - Meet, Connect, Discuss
 <br /><B>Project Idea</B>:<br />
 
+
 <br /><B>Team Member</B>:<br />
 Sai Sachin Kovuru          - kovuru.saisachin@ufl.edu <br />
 Noopur Thanvi              - thanvi.noopur@ufl.edu <br />
