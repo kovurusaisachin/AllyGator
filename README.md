@@ -1,5 +1,18 @@
 # AllyGator - Meet, Connect, Discuss
-Sai Sachin Kovuru          - kovuru.saisachin@ufl.edu \n
-Noopur Thanvi              - thanvi.noopur@ufl.edu \n 
-Maitreyi Srinivasan        - maitreyi.srinivasan@ufl.edu \n
-Prashant Kapri             - kapri.prashant@ufl.edu
+<br /><B>Project Idea</B><br />:
+
+<br /><B>Team Member</B><br />:
+Sai Sachin Kovuru          - kovuru.saisachin@ufl.edu <br />
+Noopur Thanvi              - thanvi.noopur@ufl.edu <br />
+Maitreyi Srinivasan        - maitreyi.srinivasan@ufl.edu <br />
+Prashant Kapri             - kapri.prashant@ufl.edu <br />
+
+<br /><B>Technology Stack</B><br />:
+Front-end:<br />
+React, Next.js
+
+Back-end:<br />
+Go language
+MongoDB
+
+
