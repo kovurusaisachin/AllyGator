@@ -1,5 +1,7 @@
 # AllyGator - Meet, Connect, Discuss
 <br /><B>Project Idea</B>:<br />
+A comprehensive implementation of a simple yet useful idea of connecting the future gators with experienced gators hence the name "ALLY GATORS" </br>
+This application encompasses multi-functional features just to achieve the sole purpose of this idea i.e. "Get Help & Provide Help"</br>
 
 
 <br /><B>Team Member</B>:<br />
