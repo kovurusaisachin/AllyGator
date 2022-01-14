@@ -20,6 +20,6 @@ Prashant Kapri             - kapri.prashant@ufl.edu <br />
 <br /><B>Technology Stack:</B><br />
 Front-end: React, Next.js
 
-Back-end: Go language, MongoDB
+Back-end: GOlang, MongoDB
 
 
