@@ -1,4 +1,3 @@
-Sprint 1 for software engineering project.
 Some basic rules for pushing the changes for the group.<br/>
 1) Creating a branch <br />
  git checkout -b "any-branch-name" <br />
