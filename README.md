@@ -18,8 +18,10 @@ Maitreyi Srinivasan        - maitreyi.srinivasan@ufl.edu <br />
 Prashant Kapri             - kapri.prashant@ufl.edu <br />
 
 <br /><B>Technology Stack:</B><br />
+UI Design: Figma
 Front-end: React, Next.js
+Database: SQLite
+Back-end: GOlang
 
-Back-end: GOlang, MongoDB
 
 
