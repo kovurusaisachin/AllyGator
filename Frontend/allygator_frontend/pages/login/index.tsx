@@ -15,7 +15,7 @@ export default function Login() {
               <span>By <a className="text-blue-500" href="https://twitter.com/framansi">@framansi</a></span>
             </div>
             <div className="text-center font-semibold text-black">
-              Lorem ipsum dolor, sit amet?
+              Welcome to Allygator
             </div>
             <div className="mt-8">
               <div className="mx-auto max-w-lg">
