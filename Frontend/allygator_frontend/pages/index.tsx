@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       
-      <div className="text-lg font-bold underline">
+      <div className="text-lg font-bold ">
         <title>AllyGators</title>
         <Head>
           Go Gators!
@@ -36,7 +36,7 @@ export default function Home() {
                 className="block text-2xl font-bold text-center text-gray-800 dark:text-white lg:text-lg hover:text-gray-700 dark:hover:text-gray-300"
                 href="#"
               >
-                Brand
+                AllyGator
               </a>
               <div className="flex items-center justify-center mt-6 text-gray-600 capitalize dark:text-gray-300">
                 <a
@@ -55,15 +55,15 @@ export default function Home() {
                   href="#"
                   className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 >
-                  pricing
+                  user guide
                 </a>
                 <a
                   href="#"
                   className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 >
-                  blog
+                  the team
                 </a>
-                <a
+                {/* <a
                   href="#"
                   className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 >
@@ -80,8 +80,8 @@ export default function Home() {
                       fill="currentColor"
                     />
                   </svg>
-                </a>
-                <a
+                </a> */}
+                {/* <a
                   href="#"
                   className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 >
@@ -94,7 +94,7 @@ export default function Home() {
                     <path d="m18.374 7.857c-3.259 0-5.755 2.888-5.635 5.159-.247 3.28 2.397 5.984 5.635 5.984 2.012 0 3.888-1.065 4.895-2.781.503-.857-.791-1.613-1.293-.76-.739 1.259-2.12 2.041-3.602 2.041-2.187 0-3.965-1.668-4.125-3.771 1.443.017 4.136-.188 8.987-.033.016 0 .027-.008.042-.008 2-.09-.189-5.831-4.904-5.831zm-3.928 4.298c1.286-3.789 6.718-3.676 7.89.064-4.064.097-6.496-.066-7.89-.064z" />
                     <path d="m21.308 6.464c.993 0 .992-1.5 0-1.5h-5.87c-.993 0-.992 1.5 0 1.5z" />
                   </svg>
-                </a>
+                </a> */}
               </div>
             </div>
           </nav>
@@ -108,12 +108,10 @@ export default function Home() {
               </div>
               <div className="max-w-lg lg:mx-12 lg:order-2">
                 <h1 className="text-lg font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">
-                  The best Apple Watch apps
+                  Connect and network
                 </h1>
                 <p className="mt-4 text-gray-600 dark:text-gray-300">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut
-                  quia asperiores alias vero magnam recusandae adipisci ad vitae
-                  laudantium quod rem voluptatem eos accusantium cumque.
+                A one-stop destination to connect with fellow students. Get help from experienced gators regarding, courses, projects, professors and interests.
                 </p>
                 <div className="mt-6">
                   <Link
@@ -141,15 +139,15 @@ export default function Home() {
             <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
               <img
                 className="object-cover w-full h-full max-w-2xl rounded-md"
-                src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
-                alt="apple watch photo"
+                src="https://images.unsplash.com/photo-1589824194213-36d8d089d5ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+                alt="uf clock tower"
               />
             </div>
           </div>
         </header>
 <section className="bg-white dark:bg-gray-900">
   <div className="container px-6 py-10 mx-auto">
-    <h1 className="text-lg font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">explore our <br /> awesome <span className="text-blue-500">Components</span></h1>
+    <h1 className="text-lg font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">explore our <br /> awesome <span className="text-blue-500">Features</span></h1>
     <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
       <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
         <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
@@ -157,14 +155,14 @@ export default function Home() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
           </svg>
         </span>
-        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Copy &amp; paste components</h1>
+        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Connect with gators</h1>
         <p className="text-gray-500 dark:text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
+          Connect and network with present and experienced gators, build your community and discuss.
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        {/* <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-        </a>
+        </a> */}
       </div>
       <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
         <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
@@ -172,14 +170,14 @@ export default function Home() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
           </svg>
         </span>
-        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Zero Configrations</h1>
+        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Course Information</h1>
         <p className="text-gray-500 dark:text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
+          Find course pattern and information from people who have already taken the course.
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        {/* <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-        </a>
+        </a> */}
       </div>
       <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
         <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
@@ -187,17 +185,17 @@ export default function Home() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
           </svg>
         </span>
-        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Simple &amp; clean designs</h1>
+        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Ask questions</h1>
         <p className="text-gray-500 dark:text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
+          Ask questions in the forum, add comments and know more about professor's teaching style, course specializations and more.
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        {/* <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-        </a>
+        </a> */}
       </div>
     </div>
-    <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
+    {/* <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
       <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
         <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
           <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -208,7 +206,7 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
@@ -223,7 +221,7 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
@@ -238,12 +236,12 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
       </div>
-    </div>  
+    </div>   */}
   </div>
 </section>
 
@@ -272,11 +270,12 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    Shooting Stars
+                    Create your profile by Signing up
                   </h2>
                   <p className="leading-relaxed">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    User is expected to fill all details correctly.
+                    Fields with an astrict are mandatory.
+            
                   </p>
                 </div>
               </div>
@@ -304,11 +303,11 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    The Catalyzer
+                    Search, Ask and Get Help
                   </h2>
                   <p className="leading-relaxed">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    For queiries regarding subject ask your seniors and get insights about subject, course-work & professor.
+                    
                   </p>
                 </div>
               </div>
@@ -337,11 +336,10 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    The 400 Blows
+                    Insightful Suggestions 
                   </h2>
                   <p className="leading-relaxed">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    Get meaningful details about the courses and grading system of a course based on your area of interest.
                   </p>
                 </div>
               </div>
@@ -370,11 +368,11 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    Neptune
+                  Connect and Network
                   </h2>
                   <p className="leading-relaxed">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                  Network with your peers and seniors who are achieving great heights of success all around the globe.
+                  Get real-time industrial experience and develop your skills as per your dream job.
                   </p>
                 </div>
               </div>
@@ -385,12 +383,10 @@ export default function Home() {
         <section className="bg-white dark:bg-gray-900">
           <div className="container px-6 py-10 mx-auto">
             <h1 className="text-lg font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
-              Our Executive Team
+              Meet the Team
             </h1>
             <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-              incidunt ex placeat modi magni quia error alias, adipisci rem
-              similique, at omnis eligendi optio eos harum.
+              A Classic Team of four experienced persons each having diverse knowledge of technology and a high spirit of learning and implementing new things.
             </p>
             <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
               <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
@@ -399,10 +395,10 @@ export default function Home() {
                   src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                 />
                 <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                  arthur melo
+                  Prashant Kapri
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  design director
+                  Full Stack Developer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
@@ -456,10 +452,10 @@ export default function Home() {
                   
                 />
                 <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                  Amelia. Anderson
+                  Noopur Thanvi
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  Lead Developer
+                  Backend & UI Developer 
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
@@ -513,10 +509,10 @@ export default function Home() {
                   
                 />
                 <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                  Olivia Wathan
+                  Maitreyi Srinivasan
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  Lead designer
+                  UX Designer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
@@ -570,10 +566,10 @@ export default function Home() {
                   
                 />
                 <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                  John Doe
+                  Sai Sachin Kovuru
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  Full stack developer
+                  Backend Developer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
@@ -628,7 +624,7 @@ export default function Home() {
   <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800">
     <div className="px-6 py-6 md:px-8 md:py-0">
       <h2 className="text-lg font-bold text-gray-700 dark:text-white md:text-gray-100">Sign Up For <span className="text-blue-600 dark:text-blue-400 md:text-blue-300">Project</span> Updates</h2>
-      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 md:text-gray-400">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur obcaecati odio</p>
+      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 md:text-gray-400">Connect with we Allygators and Sign up for daily updates on our services</p>
     </div>
   </div>
   <div className="flex items-center justify-center pb-6 md:py-0 md:w-1/2">
@@ -651,12 +647,11 @@ export default function Home() {
                       href="#"
                       className="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
                     >
-                      Brand
+                      AllyGator
                     </a>
                   </div>
-                  <p className="max-w-md mt-2 text-gray-500 dark:text-gray-400">
-                    Join 31,000+ other and never miss out on new tips,
-                    tutorials, and more.
+                  <p className="max-w-md mt-2 text-gray-400 dark:text-gray-300">
+                    Connecting future gators to our experienced gators.
                   </p>
                   <div className="flex mt-4 -mx-2">
                     <a
@@ -702,25 +697,25 @@ export default function Home() {
                 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
                   <div>
                     <h3 className="text-gray-700 uppercase dark:text-white">
-                      About
+                      About 
                     </h3>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Company
+                      Project Purpose
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      community
+                      Idea Origin
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Careers
+                      Solution Proposed
                     </a>
                   </div>
                   <div>
@@ -729,54 +724,54 @@ export default function Home() {
                     </h3>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Tec
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Music
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Videos
                     </a>
                   </div>
                   <div>
                     <h3 className="text-gray-700 uppercase dark:text-white">
-                      Products
+                      Media
                     </h3>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Mega cloud
+                      Facebook
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Aperion UI
+                      Twitter
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Meraki UI
+                      Linkedin
                     </a>
                   </div>
                   <div>
                     <h3 className="text-gray-700 uppercase dark:text-white">
                       Contact
                     </h3>
-                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-                      +1 526 654 8965
+                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:">
+                      +1 909 999 989
                     </span>
-                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
+                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:">
                       example@email.com
                     </span>
                   </div>
@@ -786,12 +781,13 @@ export default function Home() {
             <hr className="h-px my-6 bg-gray-300 border-none dark:bg-gray-700" />
             <div>
               <p className="text-center text-gray-800 dark:text-white">
-                © Brand 2020 - All rights reserved
+                © AllyGator 2020 - All rights reserved
               </p>
             </div>
           </div>
         </footer>
       </div>
+
     </>
   );
   }
