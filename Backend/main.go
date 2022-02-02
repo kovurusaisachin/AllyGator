@@ -20,7 +20,7 @@ func main() {
 	{
 		v1.GET("user", getUsers)
 		v1.GET("user/:id", getUserById)
-		v1.POST("user/:id", addUser)
+		v1.POST("register", addUser)
 		v1.PUT("user/:id", updateUser)
 		v1.DELETE("user/:id", deleteUser)
 	}
