@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       
-      <div className="text-lg font-bold underline">
+      <div className="text-lg font-bold ">
         <title>AllyGators</title>
         <Head>
           Go Gators!
@@ -161,7 +161,7 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
@@ -176,7 +176,7 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
@@ -191,7 +191,7 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
@@ -208,7 +208,7 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
@@ -223,7 +223,7 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
@@ -238,7 +238,7 @@ export default function Home() {
         <p className="text-gray-500 dark:text-gray-300">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ab nulla quod dignissimos vel non corrupti doloribus voluptatum eveniet
         </p>
-        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+        <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a>
@@ -706,19 +706,19 @@ export default function Home() {
                     </h3>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Company
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       community
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Careers
                     </a>
@@ -729,19 +729,19 @@ export default function Home() {
                     </h3>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Tec
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Music
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Videos
                     </a>
@@ -752,19 +752,19 @@ export default function Home() {
                     </h3>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Mega cloud
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Aperion UI
                     </a>
                     <a
                       href="#"
-                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+                      className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
                       Meraki UI
                     </a>
@@ -773,10 +773,10 @@ export default function Home() {
                     <h3 className="text-gray-700 uppercase dark:text-white">
                       Contact
                     </h3>
-                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
+                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:">
                       +1 526 654 8965
                     </span>
-                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
+                    <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:">
                       example@email.com
                     </span>
                   </div>
@@ -972,7 +972,7 @@ export default function Home() {
                 src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
                 alt="avatar"
               />
-              <h4 className="mx-2 font-medium text-gray-800 dark:text-gray-200 hover:underline">
+              <h4 className="mx-2 font-medium text-gray-800 dark:text-gray-200 hover:">
                 John Doe
               </h4>
             </div>
