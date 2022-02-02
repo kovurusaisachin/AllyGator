@@ -108,7 +108,7 @@ export default function Home() {
               </div>
               <div className="max-w-lg lg:mx-12 lg:order-2">
                 <h1 className="text-lg font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">
-                  The best Apple Watch apps
+                  Connect and network
                 </h1>
                 <p className="mt-4 text-gray-600 dark:text-gray-300">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut
