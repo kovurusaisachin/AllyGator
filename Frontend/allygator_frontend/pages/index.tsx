@@ -270,11 +270,12 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    Shooting Stars
+                    Create your profile by Signing up
                   </h2>
                   <p className="leading-relaxed">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    User is expected to fill all details correctly.
+                    Fields with an astrict are mandatory.
+            
                   </p>
                 </div>
               </div>
@@ -302,11 +303,11 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    The Catalyzer
+                    Search, Ask and Get Help
                   </h2>
                   <p className="leading-relaxed">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    For queiries regarding subject ask your seniors and get insights about subject, course-work & professor.
+                    
                   </p>
                 </div>
               </div>
@@ -335,11 +336,10 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    The 400 Blows
+                    Insightful Suggestions 
                   </h2>
                   <p className="leading-relaxed">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                    Get meaningful details about the courses and grading system of a course based on your area of interest.
                   </p>
                 </div>
               </div>
@@ -368,11 +368,11 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    Neptune
+                  Connect and Network
                   </h2>
                   <p className="leading-relaxed">
-                    VHS cornhole pop-up, try-hard 8-bit iceland helvetica.
-                    Kinfolk bespoke try-hard cliche palo santo offal.
+                  Network with your peers and seniors who are achieving great heights of success all around the globe.
+                  Get real-time industrial experience and develop your skills as per your dream job.
                   </p>
                 </div>
               </div>
@@ -383,12 +383,10 @@ export default function Home() {
         <section className="bg-white dark:bg-gray-900">
           <div className="container px-6 py-10 mx-auto">
             <h1 className="text-lg font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
-              Our Executive Team
+              Meet the Team
             </h1>
             <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-              incidunt ex placeat modi magni quia error alias, adipisci rem
-              similique, at omnis eligendi optio eos harum.
+              A Classic Team of four experienced persons each having diverse knowledge of technology and a high spirit of learning and implementing new things.
             </p>
             <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
               <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
@@ -397,10 +395,10 @@ export default function Home() {
                   src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                 />
                 <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                  arthur melo
+                  Prashant Kapri
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  design director
+                  Full Stack Developer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
@@ -454,10 +452,10 @@ export default function Home() {
                   
                 />
                 <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                  Amelia. Anderson
+                  Noopur Thanvi
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  Lead Developer
+                  Backend & UI Developer 
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
@@ -511,10 +509,10 @@ export default function Home() {
                   
                 />
                 <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                  Olivia Wathan
+                  Maitreyi Srinivasan
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  Lead designer
+                  UX Designer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
@@ -568,10 +566,10 @@ export default function Home() {
                   
                 />
                 <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-                  John Doe
+                  Sai Sachin Kovuru
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  Full stack developer
+                  Backend Developer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
@@ -626,7 +624,7 @@ export default function Home() {
   <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800">
     <div className="px-6 py-6 md:px-8 md:py-0">
       <h2 className="text-lg font-bold text-gray-700 dark:text-white md:text-gray-100">Sign Up For <span className="text-blue-600 dark:text-blue-400 md:text-blue-300">Project</span> Updates</h2>
-      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 md:text-gray-400">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur obcaecati odio</p>
+      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 md:text-gray-400">Connect with we Allygators and Sign up for daily updates on our services</p>
     </div>
   </div>
   <div className="flex items-center justify-center pb-6 md:py-0 md:w-1/2">
@@ -652,9 +650,8 @@ export default function Home() {
                       AllyGator
                     </a>
                   </div>
-                  <p className="max-w-md mt-2 text-gray-500 dark:text-gray-400">
-                    Join 31,000+ other and never miss out on new tips,
-                    tutorials, and more.
+                  <p className="max-w-md mt-2 text-gray-400 dark:text-gray-300">
+                    Connecting future gators to our experienced gators.
                   </p>
                   <div className="flex mt-4 -mx-2">
                     <a
@@ -700,25 +697,25 @@ export default function Home() {
                 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
                   <div>
                     <h3 className="text-gray-700 uppercase dark:text-white">
-                      About
+                      About 
                     </h3>
                     <a
                       href="#"
                       className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Company
+                      Project Purpose
                     </a>
                     <a
                       href="#"
                       className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      community
+                      Idea Origin
                     </a>
                     <a
                       href="#"
                       className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Careers
+                      Solution Proposed
                     </a>
                   </div>
                   <div>
@@ -746,25 +743,25 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="text-gray-700 uppercase dark:text-white">
-                      Products
+                      Media
                     </h3>
                     <a
                       href="#"
                       className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Mega cloud
+                      Facebook
                     </a>
                     <a
                       href="#"
                       className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Aperion UI
+                      Twitter
                     </a>
                     <a
                       href="#"
                       className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:"
                     >
-                      Meraki UI
+                      Linkedin
                     </a>
                   </div>
                   <div>
@@ -772,7 +769,7 @@ export default function Home() {
                       Contact
                     </h3>
                     <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:">
-                      +1 526 654 8965
+                      +1 909 999 989
                     </span>
                     <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:">
                       example@email.com
