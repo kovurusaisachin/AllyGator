@@ -88,7 +88,7 @@ export default function Signup() {
                 <textarea
                   className="block w-full px-4 py-3 mt-1 mb-3 text-gray-700 bg-gray-200 border border-gray-200 rounded form-textarea focus:outline-none"
                   rows={4}
-                  placeholder
+                  placeholder=" x sw, y street"
                   defaultValue={""}
                 />
               </label>
@@ -145,7 +145,7 @@ export default function Signup() {
                     className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-zip"
                     type="text"
-                    placeholder={90210}
+                    placeholder={"90210"}
                   />
                 </div>
               </div>
