@@ -36,7 +36,7 @@ export default function Home() {
                 className="block text-2xl font-bold text-center text-gray-800 dark:text-white lg:text-lg hover:text-gray-700 dark:hover:text-gray-300"
                 href="#"
               >
-                Brand
+                AllyGator
               </a>
               <div className="flex items-center justify-center mt-6 text-gray-600 capitalize dark:text-gray-300">
                 <a
@@ -651,7 +651,7 @@ export default function Home() {
                       href="#"
                       className="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
                     >
-                      Brand
+                      AllyGator
                     </a>
                   </div>
                   <p className="max-w-md mt-2 text-gray-500 dark:text-gray-400">
@@ -786,7 +786,7 @@ export default function Home() {
             <hr className="h-px my-6 bg-gray-300 border-none dark:bg-gray-700" />
             <div>
               <p className="text-center text-gray-800 dark:text-white">
-                © Brand 2020 - All rights reserved
+                © AllyGator 2020 - All rights reserved
               </p>
             </div>
           </div>
@@ -797,7 +797,7 @@ export default function Home() {
       <section>
         <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600">
           <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
-            Brand
+            AllyGator
           </h2>
           <div className="relative mt-6">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
