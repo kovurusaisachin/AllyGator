@@ -55,15 +55,15 @@ export default function Home() {
                   href="#"
                   className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 >
-                  pricing
+                  user guide
                 </a>
                 <a
                   href="#"
                   className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 >
-                  blog
+                  the team
                 </a>
-                <a
+                {/* <a
                   href="#"
                   className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 >
@@ -80,8 +80,8 @@ export default function Home() {
                       fill="currentColor"
                     />
                   </svg>
-                </a>
-                <a
+                </a> */}
+                {/* <a
                   href="#"
                   className="border-b-2 border-transparent hover:text-gray-800 dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6"
                 >
@@ -94,7 +94,7 @@ export default function Home() {
                     <path d="m18.374 7.857c-3.259 0-5.755 2.888-5.635 5.159-.247 3.28 2.397 5.984 5.635 5.984 2.012 0 3.888-1.065 4.895-2.781.503-.857-.791-1.613-1.293-.76-.739 1.259-2.12 2.041-3.602 2.041-2.187 0-3.965-1.668-4.125-3.771 1.443.017 4.136-.188 8.987-.033.016 0 .027-.008.042-.008 2-.09-.189-5.831-4.904-5.831zm-3.928 4.298c1.286-3.789 6.718-3.676 7.89.064-4.064.097-6.496-.066-7.89-.064z" />
                     <path d="m21.308 6.464c.993 0 .992-1.5 0-1.5h-5.87c-.993 0-.992 1.5 0 1.5z" />
                   </svg>
-                </a>
+                </a> */}
               </div>
             </div>
           </nav>
@@ -111,9 +111,7 @@ export default function Home() {
                   Connect and network
                 </h1>
                 <p className="mt-4 text-gray-600 dark:text-gray-300">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut
-                  quia asperiores alias vero magnam recusandae adipisci ad vitae
-                  laudantium quod rem voluptatem eos accusantium cumque.
+                A one-stop destination to connect with fellow students. Get help from experienced gators regarding, courses, projects, professors and interests.
                 </p>
                 <div className="mt-6">
                   <Link
@@ -141,8 +139,8 @@ export default function Home() {
             <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
               <img
                 className="object-cover w-full h-full max-w-2xl rounded-md"
-                src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
-                alt="apple watch photo"
+                src="https://images.unsplash.com/photo-1589824194213-36d8d089d5ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+                alt="uf clock tower"
               />
             </div>
           </div>
