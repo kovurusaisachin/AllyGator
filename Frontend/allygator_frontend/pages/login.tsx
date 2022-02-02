@@ -10,14 +10,14 @@ export default function Login() {
             <div className="relative flex flex-wrap">
               <div className="w-full relative">
                 <div className="mt-4">
-                  <div className="mb-4">
+                  <div className="">
                     <img
                       src="https://i.pinimg.com/originals/79/ae/30/79ae3050000579337f79c78e8ad2e6eb.jpg"
-                      className="object-scale-down rounded-full"
+                      className="scale-50 h-auto max-w-full rounded-full"
                       alt=""
                     />
                   </div>
-                  <div className="text-center text-xl font-semibold text-black">
+                  <div className="text-center text-2xl font-bold text-black">
                     Welcome to Allygator
                   </div>
                   <div className="mt-8">
