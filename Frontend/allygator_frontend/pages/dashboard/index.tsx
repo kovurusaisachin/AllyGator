@@ -2,7 +2,6 @@ import React from "react"
 export default function dashboard () {
   return (
     <>
-            <h3>Dashboard design</h3>
       {/* sidebar */}
       <section>
         <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r dark:bg-gray-800 dark:border-gray-600">
