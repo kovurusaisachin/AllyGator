@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../../../components/sidebar/sidebar'
-import Table from "../../components/Table";
+import Sidebar from '../../../components/sidebar'
+import Table from '../../../components/Table'
 // import ResetPass from './ResetPassword'
 function Connection() {
     return(
