@@ -152,6 +152,7 @@ export default function Signup() {
                     Phone No.
                   </label>
                   <input
+                    required
                     className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-zip"
                     type="number"
@@ -172,12 +173,15 @@ export default function Signup() {
                   Login Here
                 </a>
               </div>
+              <Link href="/login">
               <button
                 type="button"
                 className="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
               >
+                
                 Sign Up 
               </button>
+              </Link>
             </div>
           </form>
         </div>

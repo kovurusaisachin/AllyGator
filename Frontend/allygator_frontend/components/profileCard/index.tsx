@@ -7,7 +7,7 @@ const Profile = () => {
 
   return (
     <>
-
+      <h3>Profile section here</h3>
     </>
   );
 
