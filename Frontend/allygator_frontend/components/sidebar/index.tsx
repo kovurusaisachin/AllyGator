@@ -3,8 +3,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 export default function Sidebar() {
   const router = useRouter();
-  const handleLogo = (e) => {
+  const handleLo = (e) => {
     router.push("/dashboard");
+  };
+  const handleLogo = (e) => {
+    router.push("/");
   };
   return (
     <>
@@ -19,7 +22,7 @@ export default function Sidebar() {
             />
             <button
               className="mx-2 text-lg font-semibold text-gray-800 dark:text-white"
-              onClick={handleLogo}
+              onClick={handleLo}
             >
               AllyGators
             </button>

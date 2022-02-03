@@ -7,9 +7,9 @@ export default function dashboard() {
   return (
     <>
       {/* sidebar */}
-      <div className="flex flex-col-2">
+      <div className="flex flex-col-1">
         <Sidebar />
-        <div>
+        <div className="flex flex-col bg-gray-400 w-full">
           <AnalyticCard />
           <div className="mx-10">
             <Table />

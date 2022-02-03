@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link"
+import Link from "next/link";
 export default function Login() {
-  
   return (
     <>
       <div className="container max-w-full mx-auto py-2 px-6">
@@ -28,7 +27,7 @@ export default function Login() {
                           Username
                         </span>
                         <input
-                    required
+                          required
                           placeholder="abc@ufl.edu"
                           type="text"
                           className="text-md block px-3 py-2  rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
@@ -40,7 +39,7 @@ export default function Login() {
                         </span>
                         <div className="relative">
                           <input
-                    required
+                            required
                             placeholder="******"
                             type="show ? 'password' : 'text'"
                             className="text-md block px-3 py-2 rounded-lg w-full 
@@ -82,15 +81,15 @@ export default function Login() {
                           </a>
                         </label>
                       </div>{" "}
-                      <button 
+                      <Link href="/dashboard">
+                      <button
                         className="mt-3 text-lg font-semibold 
           bg-gray-800 w-full text-white rounded-lg
           px-6 py-3 block shadow-xl hover:text-white hover:bg-black"
                       >
-                        <Link href="/dashboard">
                         Login
-                        </Link>
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
