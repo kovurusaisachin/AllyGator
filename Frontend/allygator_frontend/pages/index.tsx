@@ -1,242 +1,304 @@
 import Head from "next/head";
 import Image from "next/image";
-import React from "react"
-import Link from "next/Link"
-import { useSession, signIn, signOut } from "next-auth/react"
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import React from "react";
+import Link from "next/Link";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
-
+  { name: "Product", href: "#" },
+  { name: "Features", href: "#" },
+  { name: "Marketplace", href: "#" },
+  { name: "Company", href: "#" },
+];
 
 export default function Home() {
-//   const { data: session } = useSession()
-//   if(session) {
-//     return <>
-//       Signed in as {session.user.email} <br/>
-//       <button onClick={() => signOut()}>Sign out</button>
-//     </>
-//   }
-//   return <>
-//     Not signed in <br/>
-//     <button onClick={() => signIn()}>Sign in</button>
-//   </>
-// }
+  //   const { data: session } = useSession()
+  //   if(session) {
+  //     return <>
+  //       Signed in as {session.user.email} <br/>
+  //       <button onClick={() => signOut()}>Sign out</button>
+  //     </>
+  //   }
+  //   return <>
+  //     Not signed in <br/>
+  //     <button onClick={() => signIn()}>Sign in</button>
+  //   </>
+  // }
   return (
     <>
-      
       <div className="text-lg font-bold ">
         <title>AllyGators</title>
-        <Head>
-          Go Gators!
-        </Head>
+        <Head>Go Gators!</Head>
         <meta name="description" content="allygators for gogators!" />
         <link rel="icon" href="/favicon.ico" />
 
-        <header className="bg-white dark:bg-gray-800">
+        <header className="bg-white ">
+          <div className="relative bg-white overflow-hidden">
+            <div className="max-w-7xl mx-auto">
+              <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                <svg
+                  className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+                  fill="currentColor"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <polygon points="50,0 100,0 50,100 0,100" />
+                </svg>
 
+                <Popover>
+                  <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
+                    <nav
+                      className="relative flex items-center justify-between sm:h-10 lg:justify-start"
+                      aria-label="Global"
+                    >
+                      <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                        <div className="flex items-center justify-between w-full md:w-auto">
+                          <a href="#">
+                            <span className="sr-only">Workflow</span>
+                            <img
+                              className="h-8 w-auto sm:h-10 rounded-full"
+                              src="https://i.pinimg.com/originals/79/ae/30/79ae3050000579337f79c78e8ad2e6eb.jpg"
+                            />
+                          </a>
+                          <div className="-mr-2 flex items-center md:hidden">
+                            <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                              <span className="sr-only">Open main menu</span>
+                              <MenuIcon
+                                className="h-6 w-6"
+                                aria-hidden="true"
+                              />
+                            </Popover.Button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
+                        {navigation.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className="font-medium text-gray-500 hover:text-gray-900"
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                        <a
+                          href="/login"
+                          className="font-medium text-indigo-600 hover:text-indigo-500"
+                        >
+                          Log in
+                        </a>
+                      </div>
+                    </nav>
+                  </div>
 
-    <div className="relative bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-          <svg
-            className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
-            fill="currentColor"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <polygon points="50,0 100,0 50,100 0,100" />
-          </svg>
+                  <Transition
+                    as={Fragment}
+                    enter="duration-150 ease-out"
+                    enterFrom="opacity-0 scale-95"
+                    enterTo="opacity-100 scale-100"
+                    leave="duration-100 ease-in"
+                    leaveFrom="opacity-100 scale-100"
+                    leaveTo="opacity-0 scale-95"
+                  >
+                    <Popover.Panel
+                      focus
+                      className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+                    >
+                      <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                        <div className="px-5 pt-4 flex items-center justify-between">
+                          <div>
+                            <img
+                              className="h-8 w-auto"
+                              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                              alt=""
+                            />
+                          </div>
+                          <div className="-mr-2">
+                            <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                              <span className="sr-only">Close main menu</span>
+                              <XIcon className="h-6 w-6" aria-hidden="true" />
+                            </Popover.Button>
+                          </div>
+                        </div>
+                        <div className="px-2 pt-2 pb-3 space-y-1">
+                          {navigation.map((item) => (
+                            <a
+                              key={item.name}
+                              href={item.href}
+                              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                            >
+                              {item.name}
+                            </a>
+                          ))}
+                        </div>
+                        <a
+                          href="/login"
+                          className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
+                        >
+                          Log in
+                        </a>
+                      </div>
+                    </Popover.Panel>
+                  </Transition>
+                </Popover>
 
-          <Popover>
-            <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
-              <nav className="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
-                <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-                  <div className="flex items-center justify-between w-full md:w-auto">
-                    <a href="#">
-                      <span className="sr-only">Workflow</span>
-                      <img
-                        className="h-8 w-auto sm:h-10"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                      />
-                    </a>
-                    <div className="-mr-2 flex items-center md:hidden">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span className="sr-only">Open main menu</span>
-                        <MenuIcon className="h-6 w-6" aria-hidden="true" />
-                      </Popover.Button>
+                <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                  <div className="sm:text-center lg:text-left">
+                    <h1 className="text-5xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5xl">
+                      <span className="block xl:inline">
+                        Connect with Gators
+                      </span>{" "}<br />
+                      <span className="block text-indigo-600 xl:inline">
+                        Network & Grow
+                      </span>
+                    </h1>
+                    <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                      Anim aute id magna aliqua ad ad non deserunt sunt. Qui
+                      irure qui lorem cupidatat commodo. Elit sunt amet fugiat
+                      veniam occaecat fugiat aliqua.
+                    </p>
+                    <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                      <div className="rounded-md shadow">
+                        <a
+                          href="/signup"
+                          className="w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                        >
+                          Sign Up
+                        </a>
+                      </div>
+                      <div className="mt-3 sm:mt-0 sm:ml-3">
+                        <a
+                          href="/login"
+                          className="w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+                        >
+                          Log In
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                  {navigation.map((item) => (
-                    <a key={item.name} href={item.href} className="font-medium text-gray-500 hover:text-gray-900">
-                      {item.name}
-                    </a>
-                  ))}
-                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                    Log in
-                  </a>
-                </div>
-              </nav>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="duration-150 ease-out"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
-              leave="duration-100 ease-in"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
-            >
-              <Popover.Panel
-                focus
-                className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
-              >
-                <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-                  <div className="px-5 pt-4 flex items-center justify-between">
-                    <div>
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt=""
-                      />
-                    </div>
-                    <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                        <span className="sr-only">Close main menu</span>
-                        <XIcon className="h-6 w-6" aria-hidden="true" />
-                      </Popover.Button>
-                    </div>
-                  </div>
-                  <div className="px-2 pt-2 pb-3 space-y-1">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                  <a
-                    href="/login"
-                    className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
-                  >
-                    Log in
-                  </a>
-                </div>
-              </Popover.Panel>
-            </Transition>
-          </Popover>
-
-          <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div className="sm:text-center lg:text-left">
-              <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span className="block xl:inline">Connect with Gators</span>{' '}
-                <span className="block text-indigo-600 xl:inline">Network & Grow</span>
-              </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                fugiat veniam occaecat fugiat aliqua.
-              </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                <div className="rounded-md shadow">
-                  <a
-                    href="/signup"
-                    className="w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                  >
-                    Sign Up
-                  </a>
-                </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3">
-                  <a
-                    href="/login"
-                    className="w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
-                  >
-                    Log In
-                  </a>
-                </div>
+                </main>
               </div>
             </div>
-          </main>
-        </div>
-      </div>
-      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img
-          className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-          src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-          alt=""
-        />
-      </div>
-    </div>
-  
+            <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+              <img
+                className="h-56 w-full object-cover scale-80 sm:h-72 md:h-96 lg:w-full lg:h-full"
+                src="https://lv7ms1pq6dm2sea8j1mrajzw-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/florida-1200x675.jpg"
+                alt=""
+              />
+            </div>
+          </div>
         </header>
-<section className="bg-white dark:bg-gray-900">
-  <div className="container px-6 py-10 mx-auto">
-    <h1 className="text-lg font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">explore our <br /> awesome <span className="text-blue-500">Features</span></h1>
-    <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
-      <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-        <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-          </svg>
-        </span>
-        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Connect with gators</h1>
-        <p className="text-gray-500 dark:text-gray-300">
-          Connect and network with present and experienced gators, build your community and discuss.
-        </p>
-        {/* <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
+        <section className="bg-white ">
+          <div className="container px-6 py-10 mx-auto">
+            <h1 className="text-xl font-semibold text-center text-gray-800 capitalize lg:text-4xl ">
+              explore our <br /> awesome{" "}
+              <span className="text-indigo-600">Features</span>
+            </h1>
+            <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
+              <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl ">
+                <span className="inline-block p-3 text-indigo-600 bg-indigo-100 rounded-full  ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                    />
+                  </svg>
+                </span>
+                <h1 className="text-2xl font-semibold text-gray-700 capitalize ">
+                  Connect with gators
+                </h1>
+                <p className="text-gray-500 ">
+                  Connect and network with present and experienced gators, build
+                  your community and discuss.
+                </p>
+                {/* <a href="#" className="flex items-center -mx-1 text-sm text-indigo-600 capitalize transition-colors duration-200 transform dark:text-indigo-400 hover: hover:text-indigo-600 dark:hover:text-indigo-600">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a> */}
-      </div>
-      <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-        <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-          </svg>
-        </span>
-        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Course Information</h1>
-        <p className="text-gray-500 dark:text-gray-300">
-          Find course pattern and information from people who have already taken the course.
-        </p>
-        {/* <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
+              </div>
+              <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl ">
+                <span className="inline-block p-3 text-indigo-600 bg-indigo-100 rounded-full  ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                    />
+                  </svg>
+                </span>
+                <h1 className="text-2xl font-semibold text-gray-700 capitalize ">
+                  Course Information
+                </h1>
+                <p className="text-gray-500 ">
+                  Find course pattern and information from people who have
+                  already taken the course.
+                </p>
+                {/* <a href="#" className="flex items-center -mx-1 text-sm text-indigo-600 capitalize transition-colors duration-200 transform dark:text-indigo-400 hover: hover:text-indigo-600 dark:hover:text-indigo-600">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a> */}
-      </div>
-      <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl dark:bg-gray-800">
-        <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-          </svg>
-        </span>
-        <h1 className="text-2xl font-semibold text-gray-700 capitalize dark:text-white">Ask questions</h1>
-        <p className="text-gray-500 dark:text-gray-300">
-          Ask questions in the forum, add comments and know more about professor's teaching style, course specializations and more.
-        </p>
-        {/* <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-200 transform dark:text-blue-400 hover: hover:text-blue-600 dark:hover:text-blue-500">
+              </div>
+              <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl ">
+                <span className="inline-block p-3 text-indigo-600 bg-indigo-100 rounded-full  ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                    />
+                  </svg>
+                </span>
+                <h1 className="text-2xl font-semibold text-gray-700 capitalize ">
+                  Ask questions
+                </h1>
+                <p className="text-gray-500 ">
+                  Ask questions in the forum, add comments and know more about
+                  professor's teaching style, course specializations and more.
+                </p>
+                {/* <a href="#" className="flex items-center -mx-1 text-sm text-indigo-600 capitalize transition-colors duration-200 transform dark:text-indigo-400 hover: hover:text-indigo-600 dark:hover:text-indigo-600">
           <span className="mx-1">read more</span>
           <svg className="w-4 h-4 mx-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
         </a> */}
-      </div>
-    </div>
-  </div>
-</section>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <section className="text-gray-600 body-font dark:bg-gray-800">
+        <section className="text-gray-600 body-font ">
+        <h1 className="text-xl font-semibold text-center text-gray-800 capitalize lg:text-4xl ">
+              Join us in  <br /> 4{" "}
+              <span className="text-indigo-600">Easy Steps</span>
+            </h1>
           <div className="container px-5 py-24 mx-auto flex flex-wrap">
+            
             <div className="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
+              
               <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
                 <div className="h-full w-1 bg-gray-200 pointer-events-none" />
               </div>
@@ -262,9 +324,8 @@ export default function Home() {
                     Create your profile by Signing up
                   </h2>
                   <p className="leading-relaxed">
-                    User is expected to fill all details correctly.
-                    Fields with an astrict are mandatory.
-            
+                    User is expected to fill all details correctly. Fields with
+                    an astrict are mandatory.
                   </p>
                 </div>
               </div>
@@ -295,8 +356,8 @@ export default function Home() {
                     Search, Ask and Get Help
                   </h2>
                   <p className="leading-relaxed">
-                    For queiries regarding subject ask your seniors and get insights about subject, course-work & professor.
-                    
+                    For queiries regarding subject ask your seniors and get
+                    insights about subject, course-work & professor.
                   </p>
                 </div>
               </div>
@@ -325,10 +386,11 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                    Insightful Suggestions 
+                    Insightful Suggestions
                   </h2>
                   <p className="leading-relaxed">
-                    Get meaningful details about the courses and grading system of a course based on your area of interest.
+                    Get meaningful details about the courses and grading system
+                    of a course based on your area of interest.
                   </p>
                 </div>
               </div>
@@ -357,11 +419,13 @@ export default function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                  Connect and Network
+                    Connect and Network
                   </h2>
                   <p className="leading-relaxed">
-                  Network with your peers and seniors who are achieving great heights of success all around the globe.
-                  Get real-time industrial experience and develop your skills as per your dream job.
+                    Network with your peers and seniors who are achieving great
+                    heights of success all around the globe. Get real-time
+                    industrial experience and develop your skills as per your
+                    dream job.
                   </p>
                 </div>
               </div>
@@ -369,30 +433,32 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white ">
           <div className="container px-6 py-10 mx-auto">
-            <h1 className="text-lg font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
+            <h1 className="text-lg font-semibold text-center text-gray-800 capitalize lg:text-4xl ">
               Meet the Team
             </h1>
-            <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
-              A Classic Team of four experienced persons each having diverse knowledge of technology and a high spirit of learning and implementing new things.
+            <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 ">
+              A Classic Team of four experienced persons each having diverse
+              knowledge of technology and a high spirit of learning and
+              implementing new things.
             </p>
             <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
-              <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+              <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-indigo-600 dark:border-gray-700 dark:hover:border-transparent">
                 <img
                   className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                  src="https://avatars.githubusercontent.com/u/44776908?s=400&u=53617f9bba926cddd0476e84a921aee5866f3ccf&v=4"
                 />
-                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize  group-hover:text-white">
                   Prashant Kapri
                 </h1>
-                <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
+                <p className="mt-2 text-gray-500 capitalize  group-hover:text-gray-300">
                   Full Stack Developer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Reddit"
                   >
                     <svg
@@ -406,7 +472,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Facebook"
                   >
                     <svg
@@ -420,7 +486,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Github"
                   >
                     <svg
@@ -434,22 +500,21 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+              <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-indigo-600 dark:border-gray-700 dark:hover:border-transparent">
                 <img
                   className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-                  src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                  
+                  src="https://avatars.githubusercontent.com/u/37869790?v=4"
                 />
-                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize  group-hover:text-white">
                   Noopur Thanvi
                 </h1>
-                <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  Backend & UI Developer 
+                <p className="mt-2 text-gray-500 capitalize  group-hover:text-gray-300">
+                  Backend & UI Developer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Reddit"
                   >
                     <svg
@@ -463,7 +528,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Facebook"
                   >
                     <svg
@@ -477,7 +542,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Github"
                   >
                     <svg
@@ -491,22 +556,21 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+              <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-indigo-600 dark:border-gray-700 dark:hover:border-transparent">
                 <img
                   className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-                  src="https://images.unsplash.com/photo-1488508872907-592763824245?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                  
+                  src="https://avatars.githubusercontent.com/u/71317026?v=4"
                 />
-                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize  group-hover:text-white">
                   Maitreyi Srinivasan
                 </h1>
-                <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
+                <p className="mt-2 text-gray-500 capitalize  group-hover:text-gray-300">
                   UX Designer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Reddit"
                   >
                     <svg
@@ -520,7 +584,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Facebook"
                   >
                     <svg
@@ -534,7 +598,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Github"
                   >
                     <svg
@@ -548,22 +612,21 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+              <div className="flex flex-col items-center p-8 transition-colors duration-200 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-indigo-600 dark:border-gray-700 dark:hover:border-transparent">
                 <img
                   className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                  
+                  src="https://avatars.githubusercontent.com/u/33193435?v=4"
                 />
-                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize  group-hover:text-white">
                   Sai Sachin Kovuru
                 </h1>
-                <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
+                <p className="mt-2 text-gray-500 capitalize  group-hover:text-gray-300">
                   Backend Developer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Reddit"
                   >
                     <svg
@@ -577,7 +640,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Facebook"
                   >
                     <svg
@@ -591,7 +654,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#"
-                    className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                    className="mx-2 text-gray-600  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                     aria-label="Github"
                   >
                     <svg
@@ -609,24 +672,41 @@ export default function Home() {
           </div>
         </section>
 
-<section className="flex flex-col max-w-4xl mx-auto my-6 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 md:flex-row md:h-48">
-  <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:dark:bg-gray-800">
-    <div className="px-6 py-6 md:px-8 md:py-0">
-      <h2 className="text-lg font-bold text-gray-700 dark:text-white md:text-gray-100">Sign Up For <span className="text-blue-600 dark:text-blue-400 md:text-blue-300">Project</span> Updates</h2>
-      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 md:text-gray-400">Connect with we Allygators and Sign up for daily updates on our services</p>
-    </div>
-  </div>
-  <div className="flex items-center justify-center pb-6 md:py-0 md:w-1/2">
-    <form>
-      <div className="flex flex-col p-1 overflow-hidden border rounded-lg dark:border-gray-600 lg:flex-row dark:focus-within:border-blue-300 focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
-        <input className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none dark:bg-gray-800 dark:placeholder-gray-400 focus:placeholder-transparent dark:focus:placeholder-transparent" type="text" name="email" placeholder="Enter your email" aria-label="Enter your email" />
-        <button className="px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-200 transform bg-gray-700 rounded-lg hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">subscribe</button>
-      </div>
-    </form>
-  </div>
-</section>
+        <section className="flex flex-col max-w-4xl mx-auto my-6 overflow-hidden bg-white rounded-lg shadow-lg  md:flex-row md:h-48">
+          <div className="md:flex md:items-center md:justify-center md:w-1/2 md:bg-gray-700 md:">
+            <div className="px-6 py-6 md:px-8 md:py-0">
+              <h2 className="text-lg font-bold text-gray-700  md:text-gray-100">
+                Sign Up For{" "}
+                <span className="text-indigo-600  md:text-indigo-300">
+                  Project
+                </span>{" "}
+                Updates
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 md:text-gray-400">
+                Connect with we Allygators and Sign up for daily updates on our
+                services
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center justify-center pb-6 md:py-0 md:w-1/2">
+            <form>
+              <div className="flex flex-col p-1 overflow-hidden border rounded-lg dark:border-gray-600 lg:flex-row dark:focus-within:border-indigo-300 focus-within:ring focus-within:ring-opacity-40 focus-within:border-indigo-400 focus-within:ring-indigo-300">
+                <input
+                  className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none  dark:placeholder-gray-400 focus:placeholder-transparent dark:focus:placeholder-transparent"
+                  type="text"
+                  name="email"
+                  placeholder="Enter your email"
+                  aria-label="Enter your email"
+                />
+                <button className="px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-200 transform bg-gray-700 rounded-lg hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
+                  subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
 
-        <footer className="bg-white dark:bg-gray-800">
+        <footer className="bg-white mt-8">
           <div className="container px-6 py-4 mx-auto">
             <div className="lg:flex">
               <div className="w-full -mx-6 lg:w-2/5">
@@ -634,12 +714,12 @@ export default function Home() {
                   <div>
                     <a
                       href="#"
-                      className="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300"
+                      className="text-xl font-bold text-gray-800  hover:text-gray-700 dark:hover:text-gray-300"
                     >
                       AllyGator
                     </a>
                   </div>
-                  <p className="max-w-md mt-2 text-gray-400 dark:text-gray-300">
+                  <p className="max-w-md mt-2 text-gray-400 ">
                     Connecting future gators to our experienced gators.
                   </p>
                   <div className="flex mt-4 -mx-2">
@@ -685,8 +765,8 @@ export default function Home() {
               <div className="mt-6 lg:mt-0 lg:flex-1">
                 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
                   <div>
-                    <h3 className="text-gray-700 uppercase dark:text-white">
-                      About 
+                    <h3 className="text-gray-700 uppercase ">
+                      About
                     </h3>
                     <a
                       href="#"
@@ -708,7 +788,7 @@ export default function Home() {
                     </a>
                   </div>
                   <div>
-                    <h3 className="text-gray-700 uppercase dark:text-white">
+                    <h3 className="text-gray-700 uppercase ">
                       Blog
                     </h3>
                     <a
@@ -731,7 +811,7 @@ export default function Home() {
                     </a>
                   </div>
                   <div>
-                    <h3 className="text-gray-700 uppercase dark:text-white">
+                    <h3 className="text-gray-700 uppercase ">
                       Media
                     </h3>
                     <a
@@ -754,7 +834,7 @@ export default function Home() {
                     </a>
                   </div>
                   <div>
-                    <h3 className="text-gray-700 uppercase dark:text-white">
+                    <h3 className="text-gray-700 uppercase ">
                       Contact
                     </h3>
                     <span className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:">
@@ -767,16 +847,15 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <hr className="h-px my-6 bg-gray-300 border-none dark:bg-gray-700" />
+            <hr className="h-px my-6 bg-gray-300 border-none " />
             <div>
-              <p className="text-center text-gray-800 dark:text-white">
+              <p className="text-center text-gray-800 ">
                 © AllyGator 2020 - All rights reserved
               </p>
             </div>
           </div>
         </footer>
       </div>
-
     </>
   );
-  }
+}
