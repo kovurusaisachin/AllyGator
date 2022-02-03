@@ -3,7 +3,7 @@ export default function AnalyticCard () {
     return(
         <>
 <div className="flex flex-col ">
-        <div className="bg-blue-100 shadow">
+        <div className="bg-white shadow">
           <div className="px-4 sm:px-6 lg:max-w-7xl lg:mx-auto lg:px-8">
             <div className="py-6 md:flex md:items-center md:justify-between">
               <div className="flex-1 min-w-0">
@@ -12,36 +12,14 @@ export default function AnalyticCard () {
                   <div>
                     <div className="ml-3 flex flex-col items-start">
                       <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                        Twurs Admin Dashboard
+                        Dashboard
                       </h1>
                       <p className="text-gray-600">
-                        Get an overview of all tasks here
+                        Get an overview of all activity here
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
-                <button
-                  type="button"
-                  className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 gap-2"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                    />
-                  </svg>
-                  Refresh logs
-                </button>
               </div>
             </div>
           </div>

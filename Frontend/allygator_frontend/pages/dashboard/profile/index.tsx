@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfileCard from '../../../components/profileCard/Profile'
+import ProfileCard from '../../../components/profileCard'
 // import ResetPass from './ResetPassword'
 function Profile(){
     return(

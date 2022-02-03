@@ -11,7 +11,9 @@ export default function dashboard() {
       <Sidebar />
         <div>
       <AnalyticCard />
-      <Table />
+     <div className="mx-10">
+     <Table />
+     </div>
       </div>
       </div>
       
