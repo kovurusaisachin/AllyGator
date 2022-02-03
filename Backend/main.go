@@ -74,7 +74,6 @@ func deleteUser(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "deleteUser " + id + " Called"})
 }
 func checkErr(err error) {
-	fmt.Printf("Ikkada\n")
 	if err != nil {
 		log.Fatal(err)
 	}
