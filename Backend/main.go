@@ -49,7 +49,20 @@ func getUserById(c *gin.Context) {
 }
 
 func addUser(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"message": "addUser Called"})
+	var json controller.User
+
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	success, err := controller.AddUsers(json)
+
+	if success {
+		c.JSON(http.StatusOK, gin.H{"message": "Success"})
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+	}
 }
 
 func updateUser(c *gin.Context) {

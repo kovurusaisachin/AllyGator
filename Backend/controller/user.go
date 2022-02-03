@@ -5,8 +5,10 @@ import (
 )
 
 type User struct {
+	StudentId      int    `json:"idStudent"`
 	FirstName      string `json:"firstname"`
 	LastName       string `json:"lastname"`
+	Department     int    `json:"department"`
 	Password       string `json:"password"`
 	UFmail         string `json:"email"`
 	Gender         string `json:"gender"`
@@ -15,16 +17,12 @@ type User struct {
 	Nationality    string `json:"nationality"`
 	Profile        string `json:"profile"`
 	Specialization string `json:"specialization"`
-	Review         string `json:"review"`
-	Posts          string `json:"posts"`
-	Chats          string `json:"chats"`
-	Program        string `json:"program"`
 }
 
-//function GetUsers
+//This function retrieves the list of all the students from the database
 func GetUsers() ([]User, error) {
 
-	rows, err := models.DB.Query("SELECT firstname, lastname, email, gender, course, url, nationality, profile, specialization, review, posts, chats, program from users")
+	rows, err := models.DB.Query("SELECT idStudent, firstname, lastname, department, email, gender, course, url, nationality, profile, specialization from users")
 	// Select * from user TABLE
 	if err != nil {
 		return nil, err
@@ -36,12 +34,11 @@ func GetUsers() ([]User, error) {
 
 	for rows.Next() {
 		singleUser := User{}
-		err = rows.Scan(&singleUser.FirstName, &singleUser.LastName, &singleUser.UFmail, &singleUser.Gender, &singleUser.Course, &singleUser.URL, &singleUser.Nationality, &singleUser.Profile, &singleUser.Specialization, &singleUser.Review, &singleUser.Posts, &singleUser.Chats, &singleUser.Program)
+		err = rows.Scan(&singleUser.StudentId, &singleUser.FirstName, &singleUser.LastName, &singleUser.Department, &singleUser.UFmail, &singleUser.Gender, &singleUser.Course, &singleUser.URL, &singleUser.Nationality, &singleUser.Profile, &singleUser.Specialization)
 
 		if err != nil {
 			return nil, err
 		}
-
 		people = append(people, singleUser)
 	}
 
@@ -52,4 +49,31 @@ func GetUsers() ([]User, error) {
 	}
 
 	return people, err
+}
+
+//This function is used to append the student details into the database
+func AddUsers(newUser User) (bool, error) {
+
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := tx.Prepare("INSERT INTO users (firstname, lastname, department, password, email, gender, course, url, nationality, profile, specialization) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(newUser.FirstName, newUser.LastName, newUser.Department, newUser.Password, newUser.UFmail, newUser.Gender, newUser.Course, newUser.URL, newUser.Nationality, newUser.Profile, newUser.Specialization)
+
+	if err != nil {
+		return false, err
+	}
+
+	tx.Commit()
+
+	return true, nil
 }
