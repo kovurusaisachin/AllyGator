@@ -2,7 +2,7 @@ import React from "react"
 export default function AnalyticCard () {
     return(
         <>
-<div className="flex flex-col w-4/5">
+<div className="flex flex-col ">
         <div className="bg-blue-100 shadow">
           <div className="px-4 sm:px-6 lg:max-w-7xl lg:mx-auto lg:px-8">
             <div className="py-6 md:flex md:items-center md:justify-between">
