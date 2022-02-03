@@ -8,15 +8,14 @@ export default function dashboard() {
     <>
       {/* sidebar */}
       <div className="flex flex-col-2">
-      <Sidebar />
+        <Sidebar />
         <div>
-      <AnalyticCard />
-     <div className="mx-10">
-     <Table />
-     </div>
+          <AnalyticCard />
+          <div className="mx-10">
+            <Table />
+          </div>
+        </div>
       </div>
-      </div>
-      
     </>
   );
 }

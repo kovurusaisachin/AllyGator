@@ -1,19 +1,25 @@
 import React from "react"
+import {  useRouter } from 'next/router'
+import Link from "next/link"
 export default function Sidebar () {
+  const router = useRouter()
+  const handleLogo = (e) => {
+    router.push('/dashboard')
+  }
   return (
     <>
       {/* sidebar */}
       <section>
         <div className="flex flex-col w-64 h-screen px-4 py-8 bg-gray-100 border-r dark:bg-gray-800 dark:border-gray-600">
-        <div className="flex items-center px-4 -mx-2">
+        <div className="flex items-center px-4 -mx-2" onClick={handleLogo}>
               <img
                 className="object-cover mx-2 rounded-full h-9 w-9"
                 src="https://i.pinimg.com/originals/79/ae/30/79ae3050000579337f79c78e8ad2e6eb.jpg"
                 alt="avatar"
               />
-          <h2 className="mx-2 text-lg font-semibold text-gray-800 dark:text-white">
+          <button className="mx-2 text-lg font-semibold text-gray-800 dark:text-white" onClick={handleLogo}>
             AllyGators
-          </h2>
+          </button>
           </div>
           {/* <div className="relative mt-6">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -39,9 +45,9 @@ export default function Sidebar () {
           </div> */}
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav>
-              <a
+              <Link href="/dashboard">
+              <a 
                 className="flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200"
-                href="#"
               >
                 <svg
                   className="w-5 h-5"
@@ -59,9 +65,11 @@ export default function Sidebar () {
                 </svg>
                 <span className="mx-4 font-medium">Dashboard</span>
               </a>
+              </Link>
+              <Link href="/dashboard/connection">
               <a
                 className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
-                href="#"
+          
               >
                 <svg
                   className="w-5 h-5"
@@ -86,9 +94,11 @@ export default function Sidebar () {
                 </svg>
                 <span className="mx-4 font-medium">Connections</span>
               </a>
+              </Link>
+              <Link href="/dashboard/chat">
               <a
                 className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
-                href="#"
+              
               >
                 <svg
                   className="w-5 h-5"
@@ -106,9 +116,11 @@ export default function Sidebar () {
                 </svg>
                 <span className="mx-4 font-medium">Chat</span>
               </a>
+              </Link>
+              <Link href="/dashboard/profile">
               <a
                 className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
-                href="dashboard/profile"
+                
               >
                 <svg
                   className="w-5 h-5"
@@ -133,6 +145,7 @@ export default function Sidebar () {
                 </svg>
                 <span className="mx-4 font-medium">Profile</span>
               </a>
+              </Link>
               {/* <hr className="my-6 border-gray-200 dark:border-gray-600" />
               <a
                 className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
