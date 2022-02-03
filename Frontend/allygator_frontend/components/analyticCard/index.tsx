@@ -26,11 +26,10 @@ export default function AnalyticCard() {
         </div>
 
         <div className="w-full h-full p-6 lg:max-w-7xl lg:mx-auto lg:p-8">
-          <div className="py-5">
             <main className="h-full overflow-y-auto">
               <div className="container  mx-auto grid">
                 {/* Cards */}
-                <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+                <div className="grid gap-6 mb-2 md:grid-cols-2 xl:grid-cols-4">
                   <div className="min-w-0 rounded-lg shadow-xs overflow-hidden bg-white dark:bg-gray-800">
                     <div className="p-4 flex items-center">
                       <div className="p-3 rounded-full text-orange-500 dark:text-orange-100 bg-orange-100 dark:bg-orange-500 mr-4">
@@ -126,7 +125,6 @@ export default function AnalyticCard() {
                 </div>
               </div>
             </main>
-          </div>
         </div>
       </div>
     </>

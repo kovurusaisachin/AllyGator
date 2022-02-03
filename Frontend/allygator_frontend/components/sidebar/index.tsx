@@ -13,7 +13,7 @@ export default function Sidebar() {
     <>
       {/* sidebar */}
       <section>
-        <div className="flex flex-col w-64 h-screen px-4 py-8 bg-gray-100 border-r dark:bg-gray-800 dark:border-gray-600">
+        <div className="flex flex-col w-64 h-full px-4 py-8 bg-gray-300 border-r dark:bg-gray-800 dark:border-gray-600">
           <div className="flex items-center px-4 -mx-2" onClick={handleLogo}>
             <img
               className="object-cover mx-2 rounded-full h-9 w-9"
