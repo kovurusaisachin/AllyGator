@@ -44,7 +44,16 @@ func getUsers(c *gin.Context) {
 
 func getUserById(c *gin.Context) {
 	id := c.Param("id")
-	c.JSON(http.StatusOK, gin.H{"message": "getUserById " + id + " Called"})
+
+	person, err := controller.GetUserById(id)
+	checkErr(err)
+	// if the name is blank we can assume nothing is found
+	if person.FirstName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this student ID in our records"})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": person})
+	}
 }
 
 func addUser(c *gin.Context) {

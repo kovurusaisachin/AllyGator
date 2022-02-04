@@ -1,6 +1,8 @@
 package controller
 
 import (
+	"database/sql"
+
 	"allygator.com/gatorweb/models"
 )
 
@@ -76,4 +78,26 @@ func AddUsers(newUser User) (bool, error) {
 	tx.Commit()
 
 	return true, nil
+}
+
+//This function is used to retrieve the student details by ID
+func GetUserById(idStudent string) (User, error) {
+
+	stmt, err := models.DB.Prepare("SELECT idStudent, firstname, lastname, department, password, email, gender, course, url, nationality, profile, specialization from users WHERE idStudent = ?")
+
+	if err != nil {
+		return User{}, err
+	}
+
+	user := User{}
+
+	sqlErr := stmt.QueryRow(idStudent).Scan(&user.StudentId, &user.FirstName, &user.LastName, &user.Department, &user.Password, &user.UFmail, &user.Gender, &user.Course, &user.URL, &user.Nationality, &user.Profile, &user.Specialization)
+
+	if sqlErr != nil {
+		if sqlErr == sql.ErrNoRows {
+			return User{}, nil
+		}
+		return User{}, sqlErr
+	}
+	return user, nil
 }
