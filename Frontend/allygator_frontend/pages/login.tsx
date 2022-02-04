@@ -1,7 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 export default function Login() {
+  const router = useRouter()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    router.push('/dashboard')
+  }
   return (
     <>
       <div className="container max-w-full mx-auto py-2 px-6">
@@ -9,28 +16,30 @@ export default function Login() {
           <div className="max-w-sm mx-auto px-6">
             <div className="relative flex flex-wrap">
               <div className="w-full relative">
-                <div className="mt-4">
+                <Link href="/">
                   <div className="">
                     <img
                       src="https://i.pinimg.com/originals/79/ae/30/79ae3050000579337f79c78e8ad2e6eb.jpg"
-                      className="scale-50 h-auto max-w-full rounded-full"
+                      className="scale-50  max-w-full rounded-full items-center justify-center"
                       alt=""
                     />
                   </div>
-                  <div className="text-center text-2xl font-bold text-black">
-                    Welcome to Allygator
+                  </Link>
+                  <div className="text-center text-4xl font-bold text-black">
+                    Welcome Gator
                   </div>
-                  <div className="mt-8">
+                  <div className="mt-4">
+                    <form onSubmit={handleSubmit}>
                     <div className="mx-auto max-w-lg">
                       <div className="py-2">
                         <span className="px-1 text-sm text-gray-600">
-                          Username
+                          Email
                         </span>
                         <input
                           required
                           placeholder="abc@ufl.edu"
-                          type="text"
-                          className="text-md block px-3 py-2  rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
+                          type="email"
+                          className="text-md block px-3 py-2  rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-300 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
                         />
                       </div>
                       <div className="py-2" x-data="{ show: true }">
@@ -40,10 +49,10 @@ export default function Login() {
                         <div className="relative">
                           <input
                             required
-                            placeholder="******"
-                            type="show ? 'password' : 'text'"
+                            placeholder="*********"
+                            type="password"
                             className="text-md block px-3 py-2 rounded-lg w-full 
-          bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+          bg-white border-2 border-gray-300 placeholder-gray-300 shadow-md
           focus:placeholder-gray-500
           focus:bg-white 
           focus:border-gray-600  
@@ -81,18 +90,18 @@ export default function Login() {
                           </a>
                         </label>
                       </div>{" "}
-                      <Link href="/dashboard">
-                      <button
+                      <button 
                         className="mt-3 text-lg font-semibold 
           bg-gray-800 w-full text-white rounded-lg
           px-6 py-3 block shadow-xl hover:text-white hover:bg-black"
                       >
                         Login
                       </button>
-                      </Link>
                     </div>
+                    </form>
+
                   </div>
-                </div>
+                
               </div>
             </div>
             <div className="text-gray-800 mx-2 my-2 flex items-center justify-center">
