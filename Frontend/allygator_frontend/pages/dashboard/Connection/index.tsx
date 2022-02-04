@@ -6,7 +6,7 @@ function Connection() {
     return(
         <div className="flex flex-col-2">
             <Sidebar />
-            <div className="mx-8">
+            <div className="mx-8 my-10">
             <Table />
           </div>
             
