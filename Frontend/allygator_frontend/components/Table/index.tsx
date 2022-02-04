@@ -20,8 +20,28 @@ const people = [
       },
     // More people...
   ]
+  const tableHeader = [
+    { name: "Name", href: "#home" },
+    { name: "Title", href: "#features" },
+    { name: "Status", href: "#register" },
+    { name: "Role", href: "#team" },
+    { name: "Edit", href: "#team" },
+
+  ]
   
-  export default function Table() {
+  export default function Table(props) {
+    console.log(props,'pk')
+    const Header = ({ array }) => {
+      let counter = 0;
+      return array.map((x) => {
+        ++counter;
+        return (
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" key={counter}>
+            {x.name}
+          </th>
+        );
+      });
+    };
     return (
         <>
       <div className="flex flex-col">
@@ -31,33 +51,7 @@ const people = [
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Name
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Title
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Status
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Role
-                    </th>
-                    <th scope="col" className="relative px-6 py-3">
-                      <span className="sr-only">Edit</span>
-                    </th>
+                  <Header array={props.header} />
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
