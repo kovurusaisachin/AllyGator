@@ -8,10 +8,10 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: "Home", href: "#home" },
+  { name: "Features", href: "#features" },
+  { name: "Register", href: "#register" },
+  { name: "Team", href: "#team" },
 ];
 
 export default function Home() {
@@ -85,12 +85,6 @@ export default function Home() {
                             {item.name}
                           </a>
                         ))}
-                        <a
-                          href="/login"
-                          className="font-medium text-indigo-600 hover:text-indigo-500"
-                        >
-                          Log in
-                        </a>
                       </div>
                     </nav>
                   </div>
@@ -157,9 +151,8 @@ export default function Home() {
                       </span>
                     </h1>
                     <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                      Anim aute id magna aliqua ad ad non deserunt sunt. Qui
-                      irure qui lorem cupidatat commodo. Elit sunt amet fugiat
-                      veniam occaecat fugiat aliqua.
+                      We are a nation of proud gators. Helping each other to find solution to their problem and strive for the best.
+
                     </p>
                     <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                       <div className="rounded-md shadow">
@@ -192,7 +185,8 @@ export default function Home() {
             </div>
           </div>
         </header>
-        <section className="bg-white ">
+
+        <section id="features" className="bg-white">
           <div className="container px-6 py-10 mx-auto">
             <h1 className="text-xl font-semibold text-center text-gray-800 capitalize lg:text-4xl ">
               explore our <br /> awesome{" "}
@@ -290,7 +284,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="text-gray-600 body-font ">
+        <section id="register" className="text-gray-600 body-font ">
         <h1 className="text-xl font-semibold text-center text-gray-800 capitalize lg:text-4xl ">
               Join us in  <br /> 4{" "}
               <span className="text-indigo-600">Easy Steps</span>
@@ -433,7 +427,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-white ">
+        <section id="team" className="bg-white ">
           <div className="container px-6 py-10 mx-auto">
             <h1 className="text-lg font-semibold text-center text-gray-800 capitalize lg:text-4xl ">
               Meet the Team
