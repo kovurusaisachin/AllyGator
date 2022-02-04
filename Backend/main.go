@@ -29,6 +29,7 @@ func main() {
 	r.Run()
 }
 
+//Function to give support for CORS (Cross-origin resource sharing)
 func CORSMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
