@@ -151,8 +151,7 @@ export default function Home() {
                       </span>
                     </h1>
                     <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                      We are a nation of proud gators. Helping each other to find solution to their problem and strive for the best.
-
+                    We are a nation of proud gators. Help each other to find solution to their problem and strive for the best. Connect with experienced gators and make your university life more lively.
                     </p>
                     <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                       <div className="rounded-md shadow">
