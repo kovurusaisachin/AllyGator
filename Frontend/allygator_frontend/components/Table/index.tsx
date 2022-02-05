@@ -52,16 +52,20 @@ export default function Table(props) {
                         <div className="text-sm text-gray-500">{person?.specialization}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {person?.department}
+                        {person?.department === 111 ?
+                      <td className="text-sm text-gray-500">Computer Science</td> :
+                      <td className="text-sm text-gray-500">Arts & Science</td>
+
+                      }
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person?.nationality}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {person?.idStudent === 7 ?
+                        {person?.status === "alumni" ?
                         <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-green-100 text-blue-600">
                         Alumni
-                      </span>: (person?.idStudent === (5 || 6) ?
+                      </span>: (person?.status === "incoming" ?
                       <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-green-100 text-indigo-600">
-                      Upcoming
+                      Incoming
                     </span>:
                         <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-green-100 text-teal-600">
                           Active

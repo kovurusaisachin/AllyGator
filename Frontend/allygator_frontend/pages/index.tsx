@@ -502,7 +502,7 @@ export default function Home() {
                   Noopur Thanvi
                 </h1>
                 <p className="mt-2 text-gray-500 capitalize  group-hover:text-gray-300">
-                  Backend & UI Developer
+                  Backend Developer
                 </p>
                 <div className="flex mt-3 -mx-2">
                   <a

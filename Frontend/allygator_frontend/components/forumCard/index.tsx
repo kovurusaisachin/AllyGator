@@ -2,7 +2,7 @@ import React from "react";
 export default function ForumCard() {
   return (
     <>
-      <div className="flex flex-col ">
+      <div className="flex flex-col bg-gray-100 ">
 
         <div className="bg-white shadow">
           <div className="px-4 sm:px-6 lg:max-w-7xl lg:mx-auto lg:px-8">
@@ -25,7 +25,7 @@ export default function ForumCard() {
             </div>
           </div>
         </div>
-        <section className="text-gray-600 body-font overflow-hidden">
+        <section className="text-gray-600 mx-10 my-10 bg-white rounded-md body-font overflow-hidden">
           <div className="container px-5 py-24 mx-auto">
             <div className="-my-8 divide-y-2 divide-gray-100">
               <div className="py-8 flex flex-wrap md:flex-nowrap">
@@ -33,11 +33,11 @@ export default function ForumCard() {
                   <span className="font-semibold title-font text-gray-700">
                     CATEGORY
                   </span>
-                  <span className="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
+                  <span className="mt-1 text-gray-500 text-sm">12 Jan 2022</span>
                 </div>
                 <div className="md:flex-grow">
                   <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-                    Bitters hashtag waistcoat fashion axe chia unicorn
+                    UF offering 5 courses in AI & Machine learning domain for spring 22
                   </h2>
                   <p className="leading-relaxed">
                     Glossier echo park pug, church-key sartorial biodiesel
@@ -67,11 +67,11 @@ export default function ForumCard() {
                   <span className="font-semibold title-font text-gray-700">
                     CATEGORY
                   </span>
-                  <span className="mt-1 text-gray-500 text-sm">12 Jun 2019</span>
+                  <span className="mt-1 text-gray-500 text-sm">07 Nov 2020</span>
                 </div>
                 <div className="md:flex-grow">
                   <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-                    Meditation bushwick direct trade taxidermy shaman
+                    Four student from UF got 1 million dollar offer from google, facebook and microsoft
                   </h2>
                   <p className="leading-relaxed">
                     Glossier echo park pug, church-key sartorial biodiesel
@@ -101,11 +101,11 @@ export default function ForumCard() {
                   <span className="font-semibold title-font text-gray-700">
                     CATEGORY
                   </span>
-                  <span className="text-sm text-gray-500">12 Jun 2019</span>
+                  <span className="text-sm text-gray-500">18 Aug 2020</span>
                 </div>
                 <div className="md:flex-grow">
                   <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-                    Woke master cleanse drinking vinegar salvia
+                    UF ranked in top 5 public university over nation
                   </h2>
                   <p className="leading-relaxed">
                     Glossier echo park pug, church-key sartorial biodiesel
