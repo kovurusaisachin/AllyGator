@@ -3,6 +3,8 @@ package controller
 import (
 	"database/sql"
 
+	"fmt"
+
 	"allygator.com/gatorweb/models"
 )
 
@@ -19,12 +21,13 @@ type User struct {
 	Nationality    string `json:"nationality"`
 	Profile        string `json:"profile"`
 	Specialization string `json:"specialization"`
+	Status         string `json:"status"`
 }
 
 //This function retrieves the list of all the students from the database
 func GetUsers() ([]User, error) {
 
-	rows, err := models.DB.Query("SELECT idStudent, firstname, lastname, department, email, gender, course, url, nationality, profile, specialization from users")
+	rows, err := models.DB.Query("SELECT idStudent, firstname, lastname, department, email, gender, course, url, nationality, profile, specialization, status from users")
 	// Select * from user TABLE
 	if err != nil {
 		return nil, err
@@ -36,7 +39,7 @@ func GetUsers() ([]User, error) {
 
 	for rows.Next() {
 		singleUser := User{}
-		err = rows.Scan(&singleUser.StudentId, &singleUser.FirstName, &singleUser.LastName, &singleUser.Department, &singleUser.UFmail, &singleUser.Gender, &singleUser.Course, &singleUser.URL, &singleUser.Nationality, &singleUser.Profile, &singleUser.Specialization)
+		err = rows.Scan(&singleUser.StudentId, &singleUser.FirstName, &singleUser.LastName, &singleUser.Department, &singleUser.UFmail, &singleUser.Gender, &singleUser.Course, &singleUser.URL, &singleUser.Nationality, &singleUser.Profile, &singleUser.Specialization, &singleUser.Status)
 
 		if err != nil {
 			return nil, err
@@ -61,7 +64,7 @@ func AddUsers(newUser User) (bool, error) {
 		return false, err
 	}
 
-	stmt, err := tx.Prepare("INSERT INTO users (firstname, lastname, department, password, email, gender, course, url, nationality, profile, specialization) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+	stmt, err := tx.Prepare("INSERT INTO users (firstname, lastname, department, password, email, gender, course, url, nationality, profile, specialization, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
 
 	if err != nil {
 		return false, err
@@ -69,21 +72,27 @@ func AddUsers(newUser User) (bool, error) {
 
 	defer stmt.Close()
 
-	_, err = stmt.Exec(newUser.FirstName, newUser.LastName, newUser.Department, newUser.Password, newUser.UFmail, newUser.Gender, newUser.Course, newUser.URL, newUser.Nationality, newUser.Profile, newUser.Specialization)
+	tempmail := emailExists(newUser.UFmail)
+	if tempmail == true {
+		fmt.Println("Student already exists with the same email")
+		return false, nil
+	} else {
+		_, err = stmt.Exec(newUser.FirstName, newUser.LastName, newUser.Department, newUser.Password, newUser.UFmail, newUser.Gender, newUser.Course, newUser.URL, newUser.Nationality, newUser.Profile, newUser.Specialization, newUser.Status)
 
-	if err != nil {
-		return false, err
+		if err != nil {
+			return false, err
+		}
+
+		tx.Commit()
+
+		return true, nil
 	}
-
-	tx.Commit()
-
-	return true, nil
 }
 
 //This function is used to retrieve the student details by ID
 func GetUserById(idStudent string) (User, error) {
 
-	stmt, err := models.DB.Prepare("SELECT idStudent, firstname, lastname, department, password, email, gender, course, url, nationality, profile, specialization from users WHERE idStudent = ?")
+	stmt, err := models.DB.Prepare("SELECT idStudent, firstname, lastname, department, password, email, gender, course, url, nationality, profile, specialization, status from users WHERE idStudent = ?")
 
 	if err != nil {
 		return User{}, err
@@ -91,7 +100,7 @@ func GetUserById(idStudent string) (User, error) {
 
 	user := User{}
 
-	sqlErr := stmt.QueryRow(idStudent).Scan(&user.StudentId, &user.FirstName, &user.LastName, &user.Department, &user.Password, &user.UFmail, &user.Gender, &user.Course, &user.URL, &user.Nationality, &user.Profile, &user.Specialization)
+	sqlErr := stmt.QueryRow(idStudent).Scan(&user.StudentId, &user.FirstName, &user.LastName, &user.Department, &user.Password, &user.UFmail, &user.Gender, &user.Course, &user.URL, &user.Nationality, &user.Profile, &user.Specialization, &user.Status)
 
 	if sqlErr != nil {
 		if sqlErr == sql.ErrNoRows {
@@ -100,4 +109,14 @@ func GetUserById(idStudent string) (User, error) {
 		return User{}, sqlErr
 	}
 	return user, nil
+}
+
+func emailExists(email string) bool {
+	row := models.DB.QueryRow("select email from users where email= ?", email)
+	temp := ""
+	row.Scan(&temp)
+	if temp != "" {
+		return true
+	}
+	return false
 }
