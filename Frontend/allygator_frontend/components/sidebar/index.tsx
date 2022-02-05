@@ -4,18 +4,21 @@ import Link from "next/link";
 export default function Sidebar() {
   const router = useRouter();
   const handleLo = (e) => {
+    e.preventDefault();
     router.push("/dashboard");
   };
   const handleLogo = (e) => {
+    e.preventDefault();
     router.push("/");
   };
   return (
     <>
       {/* sidebar */}
       <section>
-        <div className="flex flex-col w-64 h-screen px-4 py-8 bg-gray-300 border-r dark:bg-gray-800 dark:border-gray-600">
-          <div className="flex items-center px-4 -mx-2" onClick={handleLogo}>
+        <div className="flex flex-col w-64 h-full px-4 py-8 bg-gray-300 border-r dark:bg-gray-800 dark:border-gray-600">
+          <div className="flex items-center px-4 -mx-2" >
             <img
+            onClick={handleLogo}
               className="object-cover mx-2 rounded-full h-9 w-9"
               src="https://i.pinimg.com/originals/79/ae/30/79ae3050000579337f79c78e8ad2e6eb.jpg"
               alt="avatar"
