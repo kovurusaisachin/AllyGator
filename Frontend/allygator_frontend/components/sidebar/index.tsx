@@ -15,7 +15,7 @@ export default function Sidebar() {
     <>
       {/* sidebar */}
       <section>
-        <div className="flex flex-col w-64 h-full px-4 py-8 bg-gray-300 border-r dark:bg-gray-800 dark:border-gray-600">
+        <div className="flex flex-col w-64 min-h-screen h-full px-4 py-8 bg-gray-300 border-r dark:bg-gray-800 dark:border-gray-600">
           <div className="flex items-center px-4 -mx-2" >
             <img
             onClick={handleLogo}
