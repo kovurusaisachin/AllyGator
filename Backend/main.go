@@ -17,11 +17,15 @@ func main() {
 	// API v1
 	v1 := r.Group("/api/v1")
 	{
+		//User APIs
 		v1.GET("user", getUsers)
 		v1.GET("user/:id", getUserById)
 		v1.POST("register", addUser)
 		v1.PUT("user/:id", updateUser)
 		v1.DELETE("user/:id", deleteUser)
+
+		//Department APIs
+		v1.GET("department", getDepartments)
 	}
 
 	// By default it serves on :8080 unless a
@@ -98,6 +102,19 @@ func deleteUser(c *gin.Context) {
 	id := c.Param("id")
 	c.JSON(http.StatusOK, gin.H{"message": "deleteUser " + id + " Called"})
 }
+
+func getDepartments(c *gin.Context) {
+	departments, err := controller.GetDepartments()
+	checkErr(err)
+
+	if departments == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "No Records Found"})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": departments})
+	}
+}
+
 func checkErr(err error) {
 	if err != nil {
 		log.Fatal(err)
