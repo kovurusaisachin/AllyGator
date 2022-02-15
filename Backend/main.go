@@ -27,6 +27,7 @@ func main() {
 		//Department APIs
 		v1.GET("department", getDepartments)
 		v1.GET("department/:id", getDepartmentById)
+                v1.POST("addDept", addDepartment)
 	}
 
 	// By default it serves on :8080 unless a
@@ -127,6 +128,23 @@ func getDepartmentById(c *gin.Context) {
 		return
 	} else {
 		c.JSON(http.StatusOK, gin.H{"data": department})
+	}
+}
+
+func addDepartment(c *gin.Context) {
+	var json controller.Department
+
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	success, err := controller.AddDepartments(json)
+
+	if success {
+		c.JSON(http.StatusOK, gin.H{"message": "Success"})
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err})
 	}
 }
 

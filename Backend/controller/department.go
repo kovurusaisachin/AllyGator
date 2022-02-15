@@ -2,6 +2,7 @@ package controller
 
 import (
         "database/sql"
+        "fmt"
 	"allygator.com/gatorweb/models"
 )
 
@@ -62,4 +63,48 @@ func GetDepartmentById(idDepartment string) (Department, error) {
 		return Department{}, sqlErr
 	}
 	return department, nil
+}
+
+//This function is used to append the Department details into the database
+func AddDepartments(newDepartment Department) (bool, error) {
+
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := tx.Prepare("INSERT INTO departments (idDepartment, deptName) VALUES (?, ?)")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	tempdepartment := departmentExists(newDepartment.DepartmentId)
+	if tempdepartment == true {
+		fmt.Println("Department already exists with the same department ID")
+		return false, nil
+	} else {
+		_, err = stmt.Exec(newDepartment.DepartmentId, newDepartment.DepartmentName)
+
+		if err != nil {
+			return false, err
+		}
+
+		tx.Commit()
+
+		return true, nil
+	}
+}
+
+//This function returns true if the Department with the same ID exists or not.
+func departmentExists(idDepartment int) bool {
+	row := models.DB.QueryRow("select idDepartment from departments where idDepartment= ?", idDepartment)
+	temp := ""
+	row.Scan(&temp)
+	if temp != "" {
+		return true
+	}
+	return false
 }
