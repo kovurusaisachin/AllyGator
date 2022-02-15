@@ -26,6 +26,7 @@ func main() {
 
 		//Department APIs
 		v1.GET("department", getDepartments)
+		v1.GET("department/:id", getDepartmentById)
 	}
 
 	// By default it serves on :8080 unless a
@@ -112,6 +113,20 @@ func getDepartments(c *gin.Context) {
 		return
 	} else {
 		c.JSON(http.StatusOK, gin.H{"data": departments})
+	}
+}
+
+func getDepartmentById(c *gin.Context) {
+	id := c.Param("id")
+
+	department, err := controller.GetDepartmentById(id)
+	checkErr(err)
+	// if the name is blank we can assume nothing is found
+	if department.DepartmentName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Department ID in our records"})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": department})
 	}
 }
 

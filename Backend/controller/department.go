@@ -1,7 +1,7 @@
 package controller
 
 import (
-
+        "database/sql"
 	"allygator.com/gatorweb/models"
 )
 
@@ -40,4 +40,26 @@ func GetDepartments() ([]Department, error) {
 	}
 
 	return dept, err
+}
+
+//This function is used to retrieve the Department details by ID
+func GetDepartmentById(idDepartment string) (Department, error) {
+
+	stmt, err := models.DB.Prepare("SELECT idDepartment, deptName from departments WHERE idDepartment = ?")
+
+	if err != nil {
+		return Department{}, err
+	}
+
+	department := Department{}
+
+	sqlErr := stmt.QueryRow(idDepartment).Scan(&department.DepartmentId, &department.DepartmentName)
+
+	if sqlErr != nil {
+		if sqlErr == sql.ErrNoRows {
+			return Department{}, nil
+		}
+		return Department{}, sqlErr
+	}
+	return department, nil
 }
