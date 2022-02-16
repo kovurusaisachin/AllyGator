@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"allygator.com/gatorweb/models"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type User struct {
@@ -75,8 +76,17 @@ func AddUsers(newUser User) (bool, error) {
 	tempmail := emailExists(newUser.UFmail)
 	if tempmail == true {
 		fmt.Println("Student already exists with the same email")
-		return false, nil
+		return false, fmt.Errorf("Student already exists with the same email")
 	} else {
+
+		hashedPass, err := bcrypt.GenerateFromPassword([]byte(newUser.Password), bcrypt.DefaultCost)
+
+		if err != nil {
+			fmt.Println("Error in Hashing the password")
+			return false, fmt.Errorf("Error in Hashing the password")
+		}
+
+		newUser.Password = string(hashedPass)
 		_, err = stmt.Exec(newUser.FirstName, newUser.LastName, newUser.Department, newUser.Password, newUser.UFmail, newUser.Gender, newUser.Course, newUser.URL, newUser.Nationality, newUser.Profile, newUser.Specialization, newUser.Status)
 
 		if err != nil {
