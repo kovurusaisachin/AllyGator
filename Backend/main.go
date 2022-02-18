@@ -98,25 +98,35 @@ func addUser(c *gin.Context) {
 }
 
 func updateUser(c *gin.Context) {
-	var json controller.User
+	id := c.Param("id")
 
-	if err := c.ShouldBindJSON(&json); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	person, err := controller.GetUserById(id)
+	checkErr(err)
+	// if the Firstname is blank we can assume nothing is found and no need to perform Update task
+	if person.FirstName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this student ID in our records to Update"})
 		return
-	}
-
-	personId, err := strconv.Atoi(c.Param("id"))
-
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
-	}
-
-	success, err := controller.UpdateUser(json, personId)
-
-	if success {
-		c.JSON(http.StatusOK, gin.H{"message": "Success"})
 	} else {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+		var json controller.User
+
+		if err := c.ShouldBindJSON(&json); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		personId, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		}
+
+		success, err := controller.UpdateUser(json, personId)
+
+		if success {
+			c.JSON(http.StatusOK, gin.H{"message": "Success"})
+		} else {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err})
+		}
 	}
 }
 

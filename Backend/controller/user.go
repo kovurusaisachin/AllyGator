@@ -122,7 +122,7 @@ func GetUserById(idStudent string) (User, error) {
 }
 
 //This function is used to Update the student details by ID
-func UpdateUser(ourUser User, id int) (bool, error) {
+func UpdateUser(ourUser User, idStudent int) (bool, error) {
 
 	tx, err := models.DB.Begin()
 	if err != nil {
@@ -136,7 +136,7 @@ func UpdateUser(ourUser User, id int) (bool, error) {
 
 	defer stmt.Close()
 
-	_, err = stmt.Exec(ourUser.FirstName, ourUser.LastName, ourUser.Department, ourUser.Password, ourUser.UFmail, ourUser.Gender, ourUser.Course, ourUser.URL, ourUser.Nationality, ourUser.Profile, ourUser.Specialization, ourUser.Status, ourUser.StudentId)
+	_, err = stmt.Exec(ourUser.FirstName, ourUser.LastName, ourUser.Department, ourUser.Password, ourUser.UFmail, ourUser.Gender, ourUser.Course, ourUser.URL, ourUser.Nationality, ourUser.Profile, ourUser.Specialization, ourUser.Status, idStudent)
 
 	if err != nil {
 		return false, err
