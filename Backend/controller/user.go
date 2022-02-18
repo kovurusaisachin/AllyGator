@@ -136,6 +136,15 @@ func UpdateUser(ourUser User, idStudent int) (bool, error) {
 
 	defer stmt.Close()
 
+	hashedPass, err := bcrypt.GenerateFromPassword([]byte(ourUser.Password), bcrypt.DefaultCost)
+
+	if err != nil {
+		fmt.Println("Error in Hashing the password")
+		return false, fmt.Errorf("Error in Hashing the password")
+	}
+
+	ourUser.Password = string(hashedPass)
+
 	_, err = stmt.Exec(ourUser.FirstName, ourUser.LastName, ourUser.Department, ourUser.Password, ourUser.UFmail, ourUser.Gender, ourUser.Course, ourUser.URL, ourUser.Nationality, ourUser.Profile, ourUser.Specialization, ourUser.Status, idStudent)
 
 	if err != nil {
