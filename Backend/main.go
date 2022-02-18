@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"strconv"
 
 	"allygator.com/gatorweb/controller"
 	"allygator.com/gatorweb/models"
@@ -27,7 +28,7 @@ func main() {
 		//Department APIs
 		v1.GET("department", getDepartments)
 		v1.GET("department/:id", getDepartmentById)
-                v1.POST("addDept", addDepartment)
+		v1.POST("addDept", addDepartment)
 	}
 
 	// By default it serves on :8080 unless a
@@ -97,7 +98,26 @@ func addUser(c *gin.Context) {
 }
 
 func updateUser(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"message": "updateUser Called"})
+	var json controller.User
+
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	personId, err := strconv.Atoi(c.Param("id"))
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+	}
+
+	success, err := controller.UpdateUser(json, personId)
+
+	if success {
+		c.JSON(http.StatusOK, gin.H{"message": "Success"})
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+	}
 }
 
 func deleteUser(c *gin.Context) {

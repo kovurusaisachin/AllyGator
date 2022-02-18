@@ -121,6 +121,32 @@ func GetUserById(idStudent string) (User, error) {
 	return user, nil
 }
 
+//This function is used to Update the student details by ID
+func UpdateUser(ourUser User, id int) (bool, error) {
+
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := tx.Prepare("UPDATE users SET firstname = ?, lastname = ?, department = ?, password = ?, email = ?, gender = ?, course =?, url = ?, nationality = ?, profile = ?, specialization = ?, status = ? WHERE idStudent = ?")
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(ourUser.FirstName, ourUser.LastName, ourUser.Department, ourUser.Password, ourUser.UFmail, ourUser.Gender, ourUser.Course, ourUser.URL, ourUser.Nationality, ourUser.Profile, ourUser.Specialization, ourUser.Status, ourUser.StudentId)
+
+	if err != nil {
+		return false, err
+	}
+
+	tx.Commit()
+
+	return true, nil
+}
+
 func emailExists(email string) bool {
 	row := models.DB.QueryRow("select email from users where email= ?", email)
 	temp := ""
