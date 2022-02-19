@@ -29,6 +29,7 @@ func main() {
 		v1.GET("department", getDepartments)
 		v1.GET("department/:id", getDepartmentById)
 		v1.POST("addDept", addDepartment)
+		v1.PUT("department/:id", updateDepartment)
 	}
 
 	// By default it serves on :8080 unless a
@@ -175,6 +176,39 @@ func addDepartment(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Success"})
 	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+	}
+}
+
+func updateDepartment(c *gin.Context) {
+	id := c.Param("id")
+
+	dept, err := controller.GetDepartmentById(id)
+	checkErr(err)
+	// if the Departmentname is blank we can assume nothing is found and no need to perform Update task
+	if dept.DepartmentName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Department ID in our records to Update"})
+		return
+	} else {
+		var json controller.Department
+
+		if err := c.ShouldBindJSON(&json); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		deptId, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid Department ID"})
+		}
+
+		success, err := controller.UpdateDepartment(json, deptId)
+
+		if success {
+			c.JSON(http.StatusOK, gin.H{"message": "Success"})
+		} else {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err})
+		}
 	}
 }
 

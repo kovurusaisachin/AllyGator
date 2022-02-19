@@ -1,8 +1,9 @@
 package controller
 
 import (
-        "database/sql"
-        "fmt"
+	"database/sql"
+	"fmt"
+
 	"allygator.com/gatorweb/models"
 )
 
@@ -96,6 +97,32 @@ func AddDepartments(newDepartment Department) (bool, error) {
 
 		return true, nil
 	}
+}
+
+//This function is used to Update the Department details by ID
+func UpdateDepartment(ourDepartment Department, idDepartment int) (bool, error) {
+
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := tx.Prepare("UPDATE departments SET deptName = ? WHERE idDepartment = ?")
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(ourDepartment.DepartmentName, idDepartment)
+
+	if err != nil {
+		return false, err
+	}
+
+	tx.Commit()
+
+	return true, nil
 }
 
 //This function returns true if the Department with the same ID exists or not.
