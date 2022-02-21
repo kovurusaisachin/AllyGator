@@ -154,7 +154,11 @@ func addDepartment(c *gin.Context) {
 }
 
 func getChat(c *gin.Context) {
-
+	chat, err := controller.GetChat()
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": "No data found"})
+	}
+	c.IndentedJSON(http.StatusOK, gin.H{"data": chat})
 }
 
 func getChatById(c *gin.Context) {
