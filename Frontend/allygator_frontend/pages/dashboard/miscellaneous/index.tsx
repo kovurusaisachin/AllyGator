@@ -54,13 +54,15 @@ function miscellaneous() {
             src="https://pbs.twimg.com/profile_images/736294818322735104/B9P2C9BU_400x400.jpg"
             alt="avatar"
           />
+          
+           
           <div className="py-5 text-center">
-            <a
-              href="#"
-              className="block text-2xl font-bold text-gray-800 dark:text-white"
+            <Link href="miscellaneous/electricity">
+            <a className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
               Electricity
             </a>
+            </Link>
             <span className="text-sm text-gray-700 dark:text-gray-200">
               GRU Details
             </span>
