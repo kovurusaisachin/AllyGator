@@ -80,7 +80,7 @@ export default function dashboard() {
           <AnalyticCard />
           <div className="mx-8">
             <h3 className="text-2xl my-2 font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              User's list
+              Connection's list
             </h3>
             <Table header = {tableHeader} data={state?.userData} type="user"/>
           </div>
