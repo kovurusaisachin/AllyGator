@@ -113,13 +113,14 @@ function miscellaneous() {
             src="https://myusf.usfca.edu/sites/default/files/users/slhedgecock/Screen%20Shot%202019-06-26%20at%204.18.58%20PM.png"
             alt="avatar"
           />
-          <div className="py-5 text-center">
-            <a
-              href="#"
-              className="block text-2xl font-bold text-gray-800 dark:text-white"
+           
+        <div className="py-5 text-center">
+          <Link href="miscellaneous/offcampussafety">
+            <a className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
               Off-Campus Safety
             </a>
+            </Link>
             <span className="text-sm text-gray-700 dark:text-gray-200">
               Safety and Property Insurance
             </span>
