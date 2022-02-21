@@ -74,13 +74,15 @@ function miscellaneous() {
             src="https://www.mountelizabeth.com.sg/images/default-source/default-album/is-it-an-emergency-main-d.jpg?sfvrsn=8fee851e_4"
             alt="avatar"
           />
+
+            
           <div className="py-5 text-center">
-            <a
-              href="#"
-              className="block text-2xl font-bold text-gray-800 dark:text-white"
+          <Link href="miscellaneous/emergencyrooms">
+            <a className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
               Emergency Rooms
             </a>
+            </Link>
             <span className="text-sm text-gray-700 dark:text-gray-200">
               Emergency Contact Details
             </span>
