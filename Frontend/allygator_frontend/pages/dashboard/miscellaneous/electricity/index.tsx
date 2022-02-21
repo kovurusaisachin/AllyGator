@@ -1,7 +1,11 @@
-export function cellphones () {
+import Sidebar from "../../../../components/sidebar"
+export default function electricity () {
     return (
-        <>
-            content coming soon...
-        </>
+        <div className="flex flex-col-2">
+        <Sidebar />
+        <h2>More Content Coming Soon!!!</h2>
+        
+        
+    </div>
     )
 }

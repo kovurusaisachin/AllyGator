@@ -1,5 +1,5 @@
 import Sidebar from "../../../../components/sidebar"
-export default function cellphones () {
+export default function emergencyrooms () {
     return (
         <div className="flex flex-col-2">
         <Sidebar />
