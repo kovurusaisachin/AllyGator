@@ -152,13 +152,14 @@ function miscellaneous() {
             src="https://uflib.ufl.edu/wordpress/files/photoshelter/I0000PxtsRkgq7SY-1934x1120.jpg"
             alt="avatar"
           />
+         
           <div className="py-5 text-center">
-            <a
-              href="#"
-              className="block text-2xl font-bold text-gray-800 dark:text-white"
+          <Link href="miscellaneous/ufmobileoutreachclinic">
+            <a className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
               UF Mobile Outreach Clinic
             </a>
+            </Link>
             <span className="text-sm text-gray-700 dark:text-gray-200">
               Libraries,Marketplace and more
             </span>
