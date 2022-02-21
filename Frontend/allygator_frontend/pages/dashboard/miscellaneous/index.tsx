@@ -6,10 +6,10 @@ function miscellaneous() {
     <div className="flex flex-col-1">
       <Sidebar />
       <div className="flex flex-col mx-16 mt-5 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        <div className="max-w-xs my-2 mx-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-blue-800">
+        <div className="max-w-xs my-2 mx-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
           <img
             className="object-cover w-full h-56"
-            src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            src="https://www.flashmobcomputing.org/media/2019/08/largest-cell-phone-carriers-in-the-United-States.jpg"
             alt="avatar"
           />
           <div className="py-5 text-center">
@@ -17,17 +17,17 @@ function miscellaneous() {
               href="#"
               className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
-              John Doe
+              Cell Phones
             </a>
             <span className="text-sm text-gray-700 dark:text-gray-200">
-              Software Engineer
+              Network Service Provider
             </span>
           </div>
         </div>
-        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-blue-800">
+        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
           <img
             className="object-cover w-full h-56"
-            src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            src="https://pbs.twimg.com/profile_images/736294818322735104/B9P2C9BU_400x400.jpg"
             alt="avatar"
           />
           <div className="py-5 text-center">
@@ -35,17 +35,17 @@ function miscellaneous() {
               href="#"
               className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
-              John Doe
+              Electricity
             </a>
             <span className="text-sm text-gray-700 dark:text-gray-200">
-              Software Engineer
+              GRU Details
             </span>
           </div>
         </div>
-        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-blue-800">
+        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
           <img
             className="object-cover w-full h-56"
-            src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            src="https://www.mountelizabeth.com.sg/images/default-source/default-album/is-it-an-emergency-main-d.jpg?sfvrsn=8fee851e_4"
             alt="avatar"
           />
           <div className="py-5 text-center">
@@ -53,17 +53,17 @@ function miscellaneous() {
               href="#"
               className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
-              John Doe
+              Emergency Rooms
             </a>
             <span className="text-sm text-gray-700 dark:text-gray-200">
-              Software Engineer
+              Emergency Contact Details
             </span>
           </div>
         </div>
-        <div className="max-w-xs my-2 mx-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-blue-800">
+        <div className="max-w-xs my-2 mx-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
           <img
             className="object-cover w-full h-56"
-            src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            src="https://www.gannett-cdn.com/-mm-/ba3b2b83ff819ef754fd4289afcfb8433fb99ca7/c=0-239-5016-3073/local/-/media/2018/06/11/USATODAY/USATODAY/636643223679114360-GettyImages-177759478.jpg?width=3200&height=1808&fit=crop&format=pjpg&auto=webp"
             alt="avatar"
           />
           <div className="py-5 text-center">
@@ -71,17 +71,17 @@ function miscellaneous() {
               href="#"
               className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
-              John Doe
+              Ethnic Food Stores
             </a>
             <span className="text-sm text-gray-700 dark:text-gray-200">
-              Software Engineer
+              Local Food Service Provider
             </span>
           </div>
         </div>
-        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-blue-800">
+        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
           <img
             className="object-cover w-full h-56"
-            src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            src="https://myusf.usfca.edu/sites/default/files/users/slhedgecock/Screen%20Shot%202019-06-26%20at%204.18.58%20PM.png"
             alt="avatar"
           />
           <div className="py-5 text-center">
@@ -89,17 +89,17 @@ function miscellaneous() {
               href="#"
               className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
-              John Doe
+              Off-Campus Safety
             </a>
             <span className="text-sm text-gray-700 dark:text-gray-200">
-              Software Engineer
+              Safety and Property Insurance
             </span>
           </div>
         </div>
-        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-blue-800">
+        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
           <img
             className="object-cover w-full h-56"
-            src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            src="https://www.shorttermhousing.com/wp-content/uploads/2020/09/Fort-Clarke-shorttermhousing.com-2-818x540.jpg"
             alt="avatar"
           />
           <div className="py-5 text-center">
@@ -107,17 +107,17 @@ function miscellaneous() {
               href="#"
               className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
-              John Doe
+              Temporary Housing
             </a>
             <span className="text-sm text-gray-700 dark:text-gray-200">
-              Software Engineer
+              Housing Options in Gainesville
             </span>
           </div>
         </div>
-        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-blue-800">
+        <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
           <img
             className="object-cover w-full h-56"
-            src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            src="https://uflib.ufl.edu/wordpress/files/photoshelter/I0000PxtsRkgq7SY-1934x1120.jpg"
             alt="avatar"
           />
           <div className="py-5 text-center">
@@ -125,10 +125,10 @@ function miscellaneous() {
               href="#"
               className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
-              John Doe
+              UF Mobile Outreach Clinic
             </a>
             <span className="text-sm text-gray-700 dark:text-gray-200">
-              Software Engineer
+              Libraries,Marketplace and more
             </span>
           </div>
         </div>
