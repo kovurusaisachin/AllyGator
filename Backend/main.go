@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -171,6 +172,17 @@ func getChatById(c *gin.Context) {
 }
 
 func addChat(c *gin.Context) {
+	var newChat controller.Chat
+	if err := c.BindJSON(&newChat); err != nil {
+		return
+	}
+	success, err := controller.AddChat(newChat)
+	if success {
+		c.IndentedJSON(http.StatusOK, gin.H{"Message": "Data added successfully"})
+	} else {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"data": err})
+		fmt.Println(err)
+	}
 
 }
 

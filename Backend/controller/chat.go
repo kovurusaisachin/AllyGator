@@ -1,6 +1,10 @@
 package controller
 
-import "allygator.com/gatorweb/models"
+import (
+	"fmt"
+
+	"allygator.com/gatorweb/models"
+)
 
 type Chat struct {
 	ConnectedId int    `json:"idConnected"`
@@ -59,3 +63,42 @@ func GetChatById(idUser string) ([]Chat, error) {
 	}
 	return chat, nil
 }
+
+func AddChat(newChat Chat) (bool, error) {
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+	stmt, err := tx.Prepare("INSERT INTO chats (idConnected, idUser) VALUES (?,?)")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	// tempfaculty := chatExists(newChat.ConnectedId)
+	tempfaculty := false
+	if tempfaculty {
+		fmt.Println("connection already exists with the same user ID")
+		return false, nil
+	} else {
+		_, err = stmt.Exec(newChat.ConnectedId, newChat.UserId)
+		if err != nil {
+			return false, err
+		}
+
+		tx.Commit()
+
+		return true, nil
+	}
+
+}
+
+//This function returns true if the Department with the same ID exists or not.
+// func chatExists(ConnectedId int) bool {
+//  row := models.DB.QueryRow("select idConnected  from chats where idConnected= ?", ConnectedId)
+//  temp := ""
+//  row.Scan(&temp)
+//  return temp != ""
+// }
