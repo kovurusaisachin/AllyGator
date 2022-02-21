@@ -162,7 +162,12 @@ func getChat(c *gin.Context) {
 }
 
 func getChatById(c *gin.Context) {
-
+	id := c.Param("id")
+	chat, err := controller.GetChatById(id)
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": "No data found"})
+	}
+	c.IndentedJSON(http.StatusOK, gin.H{"data": chat})
 }
 
 func addChat(c *gin.Context) {
