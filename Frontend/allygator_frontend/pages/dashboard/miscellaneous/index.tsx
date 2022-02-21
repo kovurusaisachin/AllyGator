@@ -132,13 +132,15 @@ function miscellaneous() {
             src="https://www.shorttermhousing.com/wp-content/uploads/2020/09/Fort-Clarke-shorttermhousing.com-2-818x540.jpg"
             alt="avatar"
           />
+          
+
           <div className="py-5 text-center">
-            <a
-              href="#"
-              className="block text-2xl font-bold text-gray-800 dark:text-white"
+          <Link href="miscellaneous/temporaryhousing">
+            <a className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
               Temporary Housing
             </a>
+            </Link>
             <span className="text-sm text-gray-700 dark:text-gray-200">
               Housing Options in Gainesville
             </span>
