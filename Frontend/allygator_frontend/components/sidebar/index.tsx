@@ -55,7 +55,7 @@ export default function Sidebar() {
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav>
               <Link href="/dashboard">
-                <a className="flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200">
+                <a className={router.pathname == "/dashboard" ? "flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200" : "flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -74,7 +74,7 @@ export default function Sidebar() {
                 </a>
               </Link>
               <Link href="/dashboard/forum">
-                <a className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700">
+              <a className={router.pathname == "/dashboard/forum" ? "flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200" : "flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -94,7 +94,7 @@ export default function Sidebar() {
                 </a>
               </Link>
               <Link href="/dashboard/connection">
-                <a className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700">
+              <a className={router.pathname == "/dashboard/connection" ? "flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200" : "flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"}>
                   <svg
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
@@ -120,7 +120,9 @@ export default function Sidebar() {
                 </a>
               </Link>
               <Link href="/dashboard/chat">
-                <a className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700">
+              <a className={router.pathname == "/dashboard/chat" ?
+               "flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200" : 
+               "flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -139,7 +141,7 @@ export default function Sidebar() {
                 </a>
               </Link>
               <Link href="/dashboard/miscellaneous">
-                <a className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700">
+              <a className={router.pathname == "/dashboard/miscellaneous" ? "flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200" : "flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
 </svg>
@@ -147,7 +149,9 @@ export default function Sidebar() {
                 </a>
               </Link>
               <Link href="/dashboard/profile">
-                <a className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700">
+              <a className={router.pathname == "/dashboard/profile" ? 
+              "flex items-center px-4 py-2 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200" : 
+              "flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"}>
                   <svg
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
@@ -174,7 +178,7 @@ export default function Sidebar() {
               </Link>
               {/* <hr className="my-6 border-gray-200 dark:border-gray-600" />
               <a
-                className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+                className="flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
                 href="#"
               >
                 <svg
@@ -194,7 +198,7 @@ export default function Sidebar() {
                 <span className="mx-4 font-medium">Tickets</span>
               </a>
               <a
-                className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-200 transform rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+                className="flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
                 href="#"
               >
                 <svg
