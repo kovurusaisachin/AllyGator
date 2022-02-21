@@ -2,11 +2,9 @@ package main
 
 import (
 	"log"
-	"net/http"
-	"strconv"
 
-	"allygator.com/gatorweb/controller"
 	"allygator.com/gatorweb/models"
+	"allygator.com/gatorweb/routers/api"
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,17 +17,17 @@ func main() {
 	v1 := r.Group("/api/v1")
 	{
 		//User APIs
-		v1.GET("user", getUsers)
-		v1.GET("user/:id", getUserById)
-		v1.POST("register", addUser)
-		v1.PUT("user/:id", updateUser)
-		v1.DELETE("user/:id", deleteUser)
+		v1.GET("user", api.GetUsers)
+		v1.GET("user/:id", api.GetUserById)
+		v1.POST("register", api.AddUser)
+		v1.PUT("user/:id", api.UpdateUser)
+		v1.DELETE("user/:id", api.DeleteUser)
 
 		//Department APIs
-		v1.GET("department", getDepartments)
-		v1.GET("department/:id", getDepartmentById)
-		v1.POST("addDept", addDepartment)
-		v1.PUT("department/:id", updateDepartment)
+		v1.GET("department", api.GetDepartments)
+		v1.GET("department/:id", api.GetDepartmentById)
+		v1.POST("addDept", api.AddDepartment)
+		v1.PUT("department/:id", api.UpdateDepartment)
 	}
 
 	// By default it serves on :8080 unless a
@@ -52,163 +50,6 @@ func CORSMiddleware() gin.HandlerFunc {
 		}
 
 		c.Next()
-	}
-}
-func getUsers(c *gin.Context) {
-	//c.JSON(http.StatusOK, gin.H{"message": "getUser Called"})
-	persons, err := controller.GetUsers()
-	checkErr(err)
-
-	if persons == nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "No Records Found"})
-		return
-	} else {
-		c.JSON(http.StatusOK, gin.H{"data": persons})
-	}
-}
-
-func getUserById(c *gin.Context) {
-	id := c.Param("id")
-
-	person, err := controller.GetUserById(id)
-	checkErr(err)
-	// if the name is blank we can assume nothing is found
-	if person.FirstName == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this student ID in our records"})
-		return
-	} else {
-		c.JSON(http.StatusOK, gin.H{"data": person})
-	}
-}
-
-func addUser(c *gin.Context) {
-	var json controller.User
-
-	if err := c.ShouldBindJSON(&json); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	success, err := controller.AddUsers(json)
-
-	if success {
-		c.JSON(http.StatusOK, gin.H{"message": "Success"})
-	} else {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err})
-	}
-}
-
-func updateUser(c *gin.Context) {
-	id := c.Param("id")
-
-	person, err := controller.GetUserById(id)
-	checkErr(err)
-	// if the Firstname is blank we can assume nothing is found and no need to perform Update task
-	if person.FirstName == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this student ID in our records to Update"})
-		return
-	} else {
-		var json controller.User
-
-		if err := c.ShouldBindJSON(&json); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
-		}
-
-		personId, err := strconv.Atoi(c.Param("id"))
-
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
-		}
-
-		success, err := controller.UpdateUser(json, personId)
-
-		if success {
-			c.JSON(http.StatusOK, gin.H{"message": "Success"})
-		} else {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err})
-		}
-	}
-}
-
-func deleteUser(c *gin.Context) {
-	id := c.Param("id")
-	c.JSON(http.StatusOK, gin.H{"message": "deleteUser " + id + " Called"})
-}
-
-func getDepartments(c *gin.Context) {
-	departments, err := controller.GetDepartments()
-	checkErr(err)
-
-	if departments == nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "No Records Found"})
-		return
-	} else {
-		c.JSON(http.StatusOK, gin.H{"data": departments})
-	}
-}
-
-func getDepartmentById(c *gin.Context) {
-	id := c.Param("id")
-
-	department, err := controller.GetDepartmentById(id)
-	checkErr(err)
-	// if the name is blank we can assume nothing is found
-	if department.DepartmentName == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Department ID in our records"})
-		return
-	} else {
-		c.JSON(http.StatusOK, gin.H{"data": department})
-	}
-}
-
-func addDepartment(c *gin.Context) {
-	var json controller.Department
-
-	if err := c.ShouldBindJSON(&json); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	success, err := controller.AddDepartments(json)
-
-	if success {
-		c.JSON(http.StatusOK, gin.H{"message": "Success"})
-	} else {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err})
-	}
-}
-
-func updateDepartment(c *gin.Context) {
-	id := c.Param("id")
-
-	dept, err := controller.GetDepartmentById(id)
-	checkErr(err)
-	// if the Departmentname is blank we can assume nothing is found and no need to perform Update task
-	if dept.DepartmentName == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Department ID in our records to Update"})
-		return
-	} else {
-		var json controller.Department
-
-		if err := c.ShouldBindJSON(&json); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
-		}
-
-		deptId, err := strconv.Atoi(c.Param("id"))
-
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid Department ID"})
-		}
-
-		success, err := controller.UpdateDepartment(json, deptId)
-
-		if success {
-			c.JSON(http.StatusOK, gin.H{"message": "Success"})
-		} else {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err})
-		}
 	}
 }
 
