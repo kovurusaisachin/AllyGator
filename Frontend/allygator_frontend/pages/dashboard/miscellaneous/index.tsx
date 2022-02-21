@@ -94,13 +94,14 @@ function miscellaneous() {
             src="https://www.gannett-cdn.com/-mm-/ba3b2b83ff819ef754fd4289afcfb8433fb99ca7/c=0-239-5016-3073/local/-/media/2018/06/11/USATODAY/USATODAY/636643223679114360-GettyImages-177759478.jpg?width=3200&height=1808&fit=crop&format=pjpg&auto=webp"
             alt="avatar"
           />
-          <div className="py-5 text-center">
-            <a
-              href="#"
-              className="block text-2xl font-bold text-gray-800 dark:text-white"
+          
+         <div className="py-5 text-center">
+          <Link href="miscellaneous/ethnicfoodstores">
+            <a className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
               Ethnic Food Stores
             </a>
+            </Link>
             <span className="text-sm text-gray-700 dark:text-gray-200">
               Local Food Service Provider
             </span>
