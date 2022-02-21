@@ -1,11 +1,34 @@
 import React from "react";
+import Link from "next/link"
 import Sidebar from "../../../components/sidebar";
 // import ResetPass from './ResetPassword'
 function miscellaneous() {
   return (
     <div className="flex flex-col-1">
       <Sidebar />
-      <div className="flex flex-col mx-16 mt-5 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div>
+      <div className="bg-white shadow">
+          <div className="px-4 sm:px-6 lg:max-w-7xl lg:mx-auto lg:px-8">
+            <div className="py-6 md:flex md:items-center md:justify-between">
+              <div className="flex-1 min-w-0">
+                {/* Profile */}
+                <div className="flex items-center">
+                  <div>
+                    <div className="ml-3 flex flex-col items-start">
+                      <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                        Information Center
+                      </h1>
+                      <p className="text-gray-600">
+                        Get an overview of all the information you required as an internation student here
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col mx-16 mt-5 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         <div className="max-w-xs my-2 mx-2 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
           <img
             className="object-cover w-full h-56"
@@ -13,12 +36,13 @@ function miscellaneous() {
             alt="avatar"
           />
           <div className="py-5 text-center">
-            <a
-              href="#"
-              className="block text-2xl font-bold text-gray-800 dark:text-white"
+            <Link href="miscellaneous/cellphones">
+            <a className="block text-2xl font-bold text-gray-800 dark:text-white"
             >
               Cell Phones
             </a>
+            </Link>
+            
             <span className="text-sm text-gray-700 dark:text-gray-200">
               Network Service Provider
             </span>
@@ -132,6 +156,8 @@ function miscellaneous() {
             </span>
           </div>
         </div>
+      </div>
+      
       </div>
       
     </div>
