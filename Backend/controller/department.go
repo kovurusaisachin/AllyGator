@@ -1,8 +1,9 @@
 package controller
 
 import (
-        "database/sql"
-        "fmt"
+	"database/sql"
+	"fmt"
+
 	"allygator.com/gatorweb/models"
 )
 
@@ -82,7 +83,7 @@ func AddDepartments(newDepartment Department) (bool, error) {
 	defer stmt.Close()
 
 	tempdepartment := departmentExists(newDepartment.DepartmentId)
-	if tempdepartment == true {
+	if tempdepartment {
 		fmt.Println("Department already exists with the same department ID")
 		return false, nil
 	} else {
@@ -103,8 +104,5 @@ func departmentExists(idDepartment int) bool {
 	row := models.DB.QueryRow("select idDepartment from departments where idDepartment= ?", idDepartment)
 	temp := ""
 	row.Scan(&temp)
-	if temp != "" {
-		return true
-	}
-	return false
+	return temp != ""
 }

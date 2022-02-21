@@ -73,7 +73,7 @@ func AddUsers(newUser User) (bool, error) {
 	defer stmt.Close()
 
 	tempmail := emailExists(newUser.UFmail)
-	if tempmail == true {
+	if tempmail {
 		fmt.Println("Student already exists with the same email")
 		return false, nil
 	} else {
@@ -115,8 +115,5 @@ func emailExists(email string) bool {
 	row := models.DB.QueryRow("select email from users where email= ?", email)
 	temp := ""
 	row.Scan(&temp)
-	if temp != "" {
-		return true
-	}
-	return false
+	return temp != ""
 }

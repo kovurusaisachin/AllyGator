@@ -27,7 +27,12 @@ func main() {
 		//Department APIs
 		v1.GET("department", getDepartments)
 		v1.GET("department/:id", getDepartmentById)
-                v1.POST("addDept", addDepartment)
+		v1.POST("addDept", addDepartment)
+
+		//Chat APIs
+		v1.GET("chat", getChat)
+		v1.GET("chat/:id", getChatById)
+		v1.POST("addChat", addChat)
 	}
 
 	// By default it serves on :8080 unless a
@@ -146,6 +151,18 @@ func addDepartment(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err})
 	}
+}
+
+func getChat(c *gin.Context) {
+
+}
+
+func getChatById(c *gin.Context) {
+
+}
+
+func addChat(c *gin.Context) {
+
 }
 
 func checkErr(err error) {
