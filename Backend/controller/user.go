@@ -135,25 +135,36 @@ func UpdateUser(ourUser User, idStudent int) (bool, error) {
 	}
 
 	defer stmt.Close()
+	tempmail := emailExists(ourUser.UFmail)
 
-	hashedPass, err := bcrypt.GenerateFromPassword([]byte(ourUser.Password), bcrypt.DefaultCost)
+	row1 := models.DB.QueryRow("select idStudent from users where email= ?", ourUser.UFmail)
+	var temp1 int
+	row1.Scan(&temp1)
+	fmt.Printf("\nThe ID is %d\n", temp1)
+	// Checking to see whether the Updated mailID is being used by another student with different StudentID
+	if tempmail == true && temp1 != idStudent {
+		fmt.Println("Email can not be Updated since student with another ID has the same mail ID")
+		return false, fmt.Errorf("Email can not be Updated since student with another ID has the same mail ID")
+	} else {
+		hashedPass, err := bcrypt.GenerateFromPassword([]byte(ourUser.Password), bcrypt.DefaultCost)
 
-	if err != nil {
-		fmt.Println("Error in Hashing the password")
-		return false, fmt.Errorf("Error in Hashing the password")
+		if err != nil {
+			fmt.Println("Error in Hashing the password")
+			return false, fmt.Errorf("Error in Hashing the password")
+		}
+
+		ourUser.Password = string(hashedPass)
+
+		_, err = stmt.Exec(ourUser.FirstName, ourUser.LastName, ourUser.Department, ourUser.Password, ourUser.UFmail, ourUser.Gender, ourUser.Course, ourUser.URL, ourUser.Nationality, ourUser.Profile, ourUser.Specialization, ourUser.Status, idStudent)
+
+		if err != nil {
+			return false, err
+		}
+
+		tx.Commit()
+
+		return true, nil
 	}
-
-	ourUser.Password = string(hashedPass)
-
-	_, err = stmt.Exec(ourUser.FirstName, ourUser.LastName, ourUser.Department, ourUser.Password, ourUser.UFmail, ourUser.Gender, ourUser.Course, ourUser.URL, ourUser.Nationality, ourUser.Profile, ourUser.Specialization, ourUser.Status, idStudent)
-
-	if err != nil {
-		return false, err
-	}
-
-	tx.Commit()
-
-	return true, nil
 }
 
 func emailExists(email string) bool {
