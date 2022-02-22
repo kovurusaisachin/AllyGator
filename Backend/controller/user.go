@@ -140,7 +140,6 @@ func UpdateUser(ourUser User, idStudent int) (bool, error) {
 	row1 := models.DB.QueryRow("select idStudent from users where email= ?", ourUser.UFmail)
 	var temp1 int
 	row1.Scan(&temp1)
-	fmt.Printf("\nThe ID is %d\n", temp1)
 	// Checking to see whether the Updated mailID is being used by another student with different StudentID
 	if tempmail == true && temp1 != idStudent {
 		fmt.Println("Email can not be Updated since student with another ID has the same mail ID")
