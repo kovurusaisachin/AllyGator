@@ -95,6 +95,32 @@ func AddChat(newChat Chat) (bool, error) {
 
 }
 
+//This function is used to Update the Department details by ID
+func UpdateChat(ourChat Chat, idUser int) (bool, error) {
+
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := tx.Prepare("UPDATE chats SET idConnected = ? WHERE idUser = ?")
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(ourChat.ConnectedId, idUser)
+
+	if err != nil {
+		return false, err
+	}
+
+	tx.Commit()
+
+	return true, nil
+}
+
 //This function returns true if the Department with the same ID exists or not.
 // func chatExists(ConnectedId int) bool {
 //  row := models.DB.QueryRow("select idConnected  from chats where idConnected= ?", ConnectedId)
