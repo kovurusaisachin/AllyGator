@@ -83,3 +83,28 @@ func UpdateDepartment(c *gin.Context) {
 		}
 	}
 }
+
+func DeleteDepartment(c *gin.Context) {
+	id := c.Param("id")
+
+	dept, err := controller.GetDepartmentById(id)
+	checkErr(err)
+	// if the Departmentname is blank we can assume nothing is found and no need to perform Delete task
+	if dept.DepartmentName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Department ID in our records to Delete"})
+		return
+	} else {
+		departmentId, err := strconv.Atoi(id)
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		}
+		success, err := controller.DeleteUser(departmentId)
+
+		if success {
+			c.JSON(http.StatusOK, gin.H{"message": "Success"})
+		} else {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		}
+	}
+}

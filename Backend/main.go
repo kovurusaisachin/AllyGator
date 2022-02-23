@@ -28,6 +28,7 @@ func main() {
 		v1.GET("department/:id", api.GetDepartmentById)
 		v1.POST("addDept", api.AddDepartment)
 		v1.PUT("department/:id", api.UpdateDepartment)
+		v1.DELETE("department/:id", api.DeleteDepartment)
 
 		//chat api
 		v1.GET("chat", api.GetChat)

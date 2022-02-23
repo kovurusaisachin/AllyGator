@@ -124,6 +124,34 @@ func UpdateDepartment(ourDepartment Department, idDepartment int) (bool, error) 
 	return true, nil
 }
 
+//This function is used to Delete the Department details by ID
+func DeleteDepartment(idDepartment int) (bool, error) {
+
+	tx, err := models.DB.Begin()
+
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := models.DB.Prepare("DELETE from departments where idDepartment = ?")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(idDepartment)
+
+	if err != nil {
+		return false, err
+	}
+
+	tx.Commit()
+
+	return true, nil
+}
+
 //This function returns true if the Department with the same ID exists or not.
 func departmentExists(idDepartment int) bool {
 	row := models.DB.QueryRow("select idDepartment from departments where idDepartment= ?", idDepartment)
