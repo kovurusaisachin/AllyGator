@@ -90,7 +90,7 @@ func DeleteUser(c *gin.Context) {
 
 	person, err := controller.GetUserById(id)
 	checkErr(err)
-	// if the Firstname is blank we can assume nothing is found and no need to perform Update task
+	// if the Firstname is blank we can assume nothing is found and no need to perform Delete task
 	if person.FirstName == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this student ID in our records to Delete"})
 		return

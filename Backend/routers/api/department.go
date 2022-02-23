@@ -99,7 +99,7 @@ func DeleteDepartment(c *gin.Context) {
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
 		}
-		success, err := controller.DeleteUser(departmentId)
+		success, err := controller.DeleteDepartment(departmentId)
 
 		if success {
 			c.JSON(http.StatusOK, gin.H{"message": "Success"})
