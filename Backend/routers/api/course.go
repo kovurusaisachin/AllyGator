@@ -2,13 +2,12 @@ package api
 
 import (
 	"net/http"
-	"strconv"
 
 	"allygator.com/gatorweb/controller"
 	"github.com/gin-gonic/gin"
 )
 
-func getCourses(c *gin.Context) {
+func GetCourses(c *gin.Context) {
 	courses, err := controller.GetCourses()
 	checkErr(err)
 
@@ -20,7 +19,7 @@ func getCourses(c *gin.Context) {
 	}
 }
 
-func getCourseById(c *gin.Context) {
+func GetCourseById(c *gin.Context) {
 	id := c.Param("id")
 	course, err := controller.GetCourseById(id)
 	if err != nil {
