@@ -84,8 +84,7 @@ func AddDepartments(newDepartment Department) (bool, error) {
 
 	tempdepartment := departmentExists(newDepartment.DepartmentId)
 	if tempdepartment {
-		fmt.Println("Department already exists with the same department ID")
-		return false, nil
+		return false, fmt.Errorf("Department already exists with the same department ID")
 	} else {
 		_, err = stmt.Exec(newDepartment.DepartmentId, newDepartment.DepartmentName)
 

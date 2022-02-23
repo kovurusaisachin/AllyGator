@@ -47,7 +47,7 @@ func AddDepartment(c *gin.Context) {
 	if success {
 		c.JSON(http.StatusOK, gin.H{"message": "Success"})
 	} else {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
 }
 
@@ -79,7 +79,7 @@ func UpdateDepartment(c *gin.Context) {
 		if success {
 			c.JSON(http.StatusOK, gin.H{"message": "Success"})
 		} else {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err})
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		}
 	}
 }

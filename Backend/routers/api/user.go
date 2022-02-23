@@ -10,7 +10,6 @@ import (
 )
 
 func GetUsers(c *gin.Context) {
-	//c.JSON(http.StatusOK, gin.H{"message": "getUser Called"})
 	persons, err := controller.GetUsers()
 	checkErr(err)
 
@@ -49,7 +48,7 @@ func AddUser(c *gin.Context) {
 	if success {
 		c.JSON(http.StatusOK, gin.H{"message": "Success"})
 	} else {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
 }
 
@@ -81,7 +80,7 @@ func UpdateUser(c *gin.Context) {
 		if success {
 			c.JSON(http.StatusOK, gin.H{"message": "Success"})
 		} else {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err})
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		}
 	}
 }

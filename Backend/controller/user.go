@@ -75,14 +75,12 @@ func AddUsers(newUser User) (bool, error) {
 
 	tempmail := emailExists(newUser.UFmail)
 	if tempmail {
-		fmt.Println("Student already exists with the same email")
 		return false, fmt.Errorf("Student already exists with the same email")
 	} else {
 
 		hashedPass, err := bcrypt.GenerateFromPassword([]byte(newUser.Password), bcrypt.DefaultCost)
 
 		if err != nil {
-			fmt.Println("Error in Hashing the password")
 			return false, fmt.Errorf("Error in Hashing the password")
 		}
 
@@ -142,13 +140,11 @@ func UpdateUser(ourUser User, idStudent int) (bool, error) {
 	row1.Scan(&temp1)
 	// Checking to see whether the Updated mailID is being used by another student with different StudentID
 	if tempmail == true && temp1 != idStudent {
-		fmt.Println("Email can not be Updated since student with another ID has the same mail ID")
 		return false, fmt.Errorf("Email can not be Updated since student with another ID has the same mail ID")
 	} else {
 		hashedPass, err := bcrypt.GenerateFromPassword([]byte(ourUser.Password), bcrypt.DefaultCost)
 
 		if err != nil {
-			fmt.Println("Error in Hashing the password")
 			return false, fmt.Errorf("Error in Hashing the password")
 		}
 

@@ -80,8 +80,7 @@ func AddChat(newChat Chat) (bool, error) {
 	// tempfaculty := chatExists(newChat.ConnectedId)
 	tempfaculty := false
 	if tempfaculty {
-		fmt.Println("connection already exists with the same user ID")
-		return false, nil
+		return false, fmt.Errorf("connection already exists with the same user ID")
 	} else {
 		_, err = stmt.Exec(newChat.ConnectedId, newChat.UserId)
 		if err != nil {

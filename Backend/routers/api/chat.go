@@ -1,7 +1,6 @@
 package api
 
 import (
-	"fmt"
 	"net/http"
 
 	"allygator.com/gatorweb/controller"
@@ -34,8 +33,7 @@ func AddChat(c *gin.Context) {
 	if success {
 		c.IndentedJSON(http.StatusOK, gin.H{"Message": "Data added successfully"})
 	} else {
-		c.IndentedJSON(http.StatusBadRequest, gin.H{"data": err})
-		fmt.Println(err)
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"data": err.Error()})
 	}
 
 }
