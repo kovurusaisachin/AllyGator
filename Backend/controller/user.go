@@ -162,6 +162,35 @@ func UpdateUser(ourUser User, idStudent int) (bool, error) {
 	}
 }
 
+//This function is used to Delete the student details by ID
+func DeleteUser(idStudent int) (bool, error) {
+
+	tx, err := models.DB.Begin()
+
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := models.DB.Prepare("DELETE from users where idStudent = ?")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(idStudent)
+
+	if err != nil {
+		return false, err
+	}
+
+	tx.Commit()
+
+	return true, nil
+}
+
+//The below function is used to check whether the email exists or not in the Database
 func emailExists(email string) bool {
 	row := models.DB.QueryRow("select email from users where email= ?", email)
 	temp := ""

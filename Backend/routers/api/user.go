@@ -69,7 +69,7 @@ func UpdateUser(c *gin.Context) {
 			return
 		}
 
-		personId, err := strconv.Atoi(c.Param("id"))
+		personId, err := strconv.Atoi(id)
 
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
@@ -87,7 +87,26 @@ func UpdateUser(c *gin.Context) {
 
 func DeleteUser(c *gin.Context) {
 	id := c.Param("id")
-	c.JSON(http.StatusOK, gin.H{"message": "deleteUser " + id + " Called"})
+	personId, err := strconv.Atoi(id)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+	}
+	person, err := controller.GetUserById(id)
+	checkErr(err)
+	// if the Firstname is blank we can assume nothing is found and no need to perform Update task
+	if person.FirstName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this student ID in our records to Delete"})
+		return
+	} else {
+		success, err := controller.DeleteUser(personId)
+
+		if success {
+			c.JSON(http.StatusOK, gin.H{"message": "Success"})
+		} else {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		}
+	}
 }
 
 func checkErr(err error) {
