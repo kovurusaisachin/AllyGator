@@ -35,6 +35,12 @@ func main() {
 		v1.GET("chat/:id", api.GetChatById)
 		v1.POST("addChat", api.AddChat)
 		// v1.PUT("chat/:id", api.UpdateChat)
+
+		//Course APIs
+		v1.GET("course", api.GetCourses)
+		v1.GET("course/:id", api.GetCourseById)
+		v1.POST("addCourse", api.AddCourse)
+		v1.PUT("course/:id", api.UpdateCourse)
 	}
 
 	// By default it serves on :8080 unless a
