@@ -39,7 +39,7 @@ func main() {
 		//faculty api
 		v1.GET("faculty", api.GetFaculty)
 		v1.GET("faculty/:id", api.GetFacultyById)
-		v1.POST("addFaculty", api.addFaculty)
+		v1.POST("addFaculty", api.AddFaculty)
 	}
 
 	// By default it serves on :8080 unless a
