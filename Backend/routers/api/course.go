@@ -23,11 +23,14 @@ func GetCourses(c *gin.Context) {
 func GetCourseById(c *gin.Context) {
 	id := c.Param("id")
 	course, err := controller.GetCourseById(id)
-	if err != nil {
-		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": "Could not find the data in our records"})
+	checkErr(err)
+	// if the name is blank we can assume nothing is found
+	if course.CourseName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Course ID in our records"})
 		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": course})
 	}
-	c.IndentedJSON(http.StatusOK, gin.H{"data": course})
 
 }
 
