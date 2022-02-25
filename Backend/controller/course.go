@@ -108,14 +108,14 @@ func UpdateCourse(ourCourse Course, idCourse int) (bool, error) {
 		return false, err
 	}
 
-	stmt, err := tx.Prepare("UPDATE course SET coursename = ? , idDepartment = ? , idFaculty = ? , facultyname = ? , deptName = ? WHERE idCourse = ?")
+	stmt, err := tx.Prepare("UPDATE course SET coursename = ? , idDepartment = ? , idFaculty = ? WHERE idCourse = ?")
 	if err != nil {
 		return false, err
 	}
 
 	defer stmt.Close()
 
-	_, err = stmt.Exec(ourCourse.CourseName, ourCourse.DepartmentId, ourCourse.FacultyId, ourCourse.FacultyName, ourCourse.DepartmentName, idCourse)
+	_, err = stmt.Exec(ourCourse.CourseName, ourCourse.DepartmentId, ourCourse.FacultyId, idCourse)
 
 	if err != nil {
 		return false, err
