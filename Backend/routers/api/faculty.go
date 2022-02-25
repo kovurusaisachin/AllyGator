@@ -19,7 +19,13 @@ func GetFaculty(c *gin.Context) {
 	}
 }
 func GetFacultyById(c *gin.Context) {
-
+	id := c.Param("id")
+	faculty, err := controller.GetFacultyById(id)
+	if err != nil {
+		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": "No data found"})
+		return
+	}
+	c.IndentedJSON(http.StatusOK, gin.H{"data": faculty})
 }
 func AddFaculty(c *gin.Context) {
 

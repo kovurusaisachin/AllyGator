@@ -1,6 +1,10 @@
 package controller
 
-import "allygator.com/gatorweb/models"
+import (
+	"database/sql"
+
+	"allygator.com/gatorweb/models"
+)
 
 type Faculty struct {
 	FacultyId      int    `json:"idFaculty"`
@@ -39,7 +43,23 @@ func Getfacultys() ([]Faculty, error) {
 
 //This function is used to retrieve the Department details by ID
 func GetFacultyById(idFaculty string) (Faculty, error) {
+	stmt, err := models.DB.Prepare("SELECT f.idFaculty, f.facultyname, f.info, d.deptName from faculty as f Join departments As d on d.idDepartment=f.idDepartment  where f.idFaculty = ?")
 
+	if err != nil {
+		return Faculty{}, err
+	}
+
+	faculty := Faculty{}
+
+	sqlErr := stmt.QueryRow(idFaculty).Scan(&faculty.FacultyId, &faculty.FacultyName, &faculty.Info, &faculty.DepartmentName)
+
+	if sqlErr != nil {
+		if sqlErr == sql.ErrNoRows {
+			return Faculty{}, nil
+		}
+		return Faculty{}, sqlErr
+	}
+	return faculty, nil
 }
 
 //This function is used to append the faculty details into the database
@@ -49,5 +69,8 @@ func Addfacultys(newfaculty Faculty) (bool, error) {
 
 //This function returns true if the Department with the same ID exists or not.
 func facultyExists(facultyId int) bool {
-
+	row := models.DB.QueryRow("select idfaculty from faculty where idfaculty= ?", facultyId)
+	temp := ""
+	row.Scan(&temp)
+	return temp != ""
 }
