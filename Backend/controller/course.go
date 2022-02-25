@@ -2,7 +2,7 @@ package controller
 
 import (
 	"database/sql"
-
+	"fmt"
 	"allygator.com/gatorweb/models"
 )
 
@@ -86,8 +86,7 @@ func AddCourses(newCourse Course) (bool, error) {
 
 	tempCourse := courseExists(newCourse.CourseId)
 	if tempCourse {
-		fmt.Println("Course already exists with the same course ID")
-		return false, nil
+		return false, fmt.Errorf("Course already exists with the same course ID")
 	} else {
 		_, err = stmt.Exec(newCourse.CourseName, newCourse.DepartmentId, newCourse.FacultyId)
 
@@ -99,6 +98,32 @@ func AddCourses(newCourse Course) (bool, error) {
 
 		return true, nil
 	}
+}
+
+//This function is used to Update the Courset details by ID
+func UpdateCourse(ourCourse Course, idCourse int) (bool, error) {
+
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := tx.Prepare("UPDATE course SET coursename = ? , idDepartment = ? , idFaculty = ? , facultyname = ? , deptName = ? WHERE idCourse = ?")
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(ourCourse.CourseName, ourCourse.DepartmentId, ourCourse.FacultyId, ourCourse.FacultyName, ourCourse.DepartmentName, idCourse)
+
+	if err != nil {
+		return false, err
+	}
+
+	tx.Commit()
+
+	return true, nil
 }
 
 //This function returns true if the Course with the same ID exists or not.
