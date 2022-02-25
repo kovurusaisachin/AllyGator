@@ -28,5 +28,18 @@ func GetFacultyById(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"data": faculty})
 }
 func AddFaculty(c *gin.Context) {
+	var json controller.Faculty
 
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	success, err := controller.Addfacultys(json)
+
+	if success {
+		c.JSON(http.StatusOK, gin.H{"message": "Success"})
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+	}
 }

@@ -2,6 +2,7 @@ package controller
 
 import (
 	"database/sql"
+	"fmt"
 
 	"allygator.com/gatorweb/models"
 )
@@ -64,7 +65,33 @@ func GetFacultyById(idFaculty string) (Faculty, error) {
 
 //This function is used to append the faculty details into the database
 func Addfacultys(newfaculty Faculty) (bool, error) {
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
 
+	stmt, err := tx.Prepare("INSERT INTO faculty (facultyname, idDepartment, info) VALUES (?, ?, ?)")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	tempfaculty := facultyExists(newfaculty.FacultyId)
+	if tempfaculty {
+		fmt.Println("faculty already exists with the same faculty ID")
+		return false, nil
+	} else {
+		_, err = stmt.Exec(newfaculty.FacultyName, newfaculty.DepartmentId, newfaculty.Info)
+		if err != nil {
+			return false, err
+		}
+
+		tx.Commit()
+
+		return true, nil
+	}
 }
 
 //This function returns true if the Department with the same ID exists or not.
