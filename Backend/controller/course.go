@@ -67,3 +67,44 @@ func GetCourseById(idCourse string) (Course, error) {
 	}
 	return course, nil
 }
+
+//This function is used to append the Course details into the database
+func AddCourses(newCourse Course) (bool, error) {
+
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := tx.Prepare("INSERT INTO course ( coursename, idDepartment, idFaculty) VALUES ( ?, ?, ?)")
+
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	tempCourse := courseExists(newCourse.CourseId)
+	if tempCourse {
+		fmt.Println("Course already exists with the same course ID")
+		return false, nil
+	} else {
+		_, err = stmt.Exec(newCourse.CourseName, newCourse.DepartmentId, newCourse.FacultyId)
+
+		if err != nil {
+			return false, err
+		}
+
+		tx.Commit()
+
+		return true, nil
+	}
+}
+
+//This function returns true if the Course with the same ID exists or not.
+func courseExists(courseId int) bool {
+	row := models.DB.QueryRow("select idCourse from Course where idCourse= ?", courseId)
+	temp := ""
+	row.Scan(&temp)
+	return temp != ""
+}

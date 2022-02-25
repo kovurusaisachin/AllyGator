@@ -29,3 +29,20 @@ func GetCourseById(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, gin.H{"data": course})
 
 }
+
+func addCourse(c *gin.Context) {
+	var json controller.Course
+
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	success, err := controller.AddCourses(json)
+
+	if success {
+		c.JSON(http.StatusOK, gin.H{"message": "Success"})
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	}
+}
