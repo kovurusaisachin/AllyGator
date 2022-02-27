@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../../../components/sidebar";
 import ForumCard from "../../../components/forumCard";
+import Link from "next/link"
 // import ResetPass from './ResetPassword'
 const data = [
   {
@@ -111,6 +112,7 @@ function Forum() {
                 </button>
               </div>
               <div className="flex flex-col-2  absolute right-0 mr-10">
+                <Link href={"/dashboard/forum/addPost"}>
                 <button className="flex items-center px-3 py-1 font-small tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-400 rounded-md hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -128,6 +130,7 @@ function Forum() {
                   </svg>
                   <span className="mx-1">Add</span>
                 </button>
+                </Link>
               </div>
             </div>
 
@@ -180,7 +183,7 @@ function Forum() {
           </div>
           <div className="col-span-3">
             <div className="mt-20 mb-5 rounded-lg mr-10 bg-white dark:bg-coolGray-800 dark:text-coolGray-50">
-              <h2 className="px-4 py-3 text-2xl font-semibold">Most reads</h2>
+              <h2 className="px-4 py-3 text-2xl font-semibold">Must reads</h2>
               <div className="flex flex-col px-4 col-span-12 divide-y  divide-coolGray-700">
                 <div className="pt-2 pb-1 space-y-2">
                   <h3 className="text-lg font-bold">Lorem ipsum dolor sit.</h3>
