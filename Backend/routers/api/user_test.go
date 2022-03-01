@@ -253,3 +253,110 @@ func TestGetUserById(t *testing.T) {
 	})
 
 }
+
+//UpdateUser API mock test
+func TestUpdateUser(t *testing.T) {
+	err := models.ConnectDatabase()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Switching to test mode so we don't get such noisy output
+	gin.SetMode(gin.TestMode)
+
+	// Settingup the router, and
+	// registering the routes
+	r := gin.Default()
+	v1 := r.Group("/api/v1")
+	v1.PUT("user/:id", UpdateUser)
+
+	t.Run("Sending Empty Data", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/user/1", bytes.NewBuffer(emptyData))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update User - Sending Empty Data\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+
+	t.Run("Email ID Already exists", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/user/6", bytes.NewBuffer(existingEmail))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update User - Sending the existing EmailID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+
+	t.Run("Unique Email ID", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/user/1", bytes.NewBuffer(existingEmail))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update User - Sending the unique EmailID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+	t.Run("Incorrect Student ID", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/user/77", bytes.NewBuffer(uniqueEmail))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update User - Sending incorrect StudentID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+}
