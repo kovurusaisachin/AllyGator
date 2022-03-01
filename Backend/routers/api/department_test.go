@@ -231,3 +231,87 @@ func TestGetDepartmentById(t *testing.T) {
 	})
 
 }
+
+//UpdateDepartment API mock test
+func TestUpdateDepartment(t *testing.T) {
+	err := models.ConnectDatabase()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Switching to test mode so we don't get such noisy output
+	gin.SetMode(gin.TestMode)
+
+	// Settingup the router, and
+	// registering the routes
+	r := gin.Default()
+	v1 := r.Group("/api/v1")
+	v1.PUT("department/:id", UpdateDepartment)
+
+	t.Run("Sending Empty Data", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/department/111", bytes.NewBuffer(emptyData))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Department - Sending Empty Data\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+
+	t.Run("Existing Department ID", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/department/111", bytes.NewBuffer(existingId))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Department - Sending the existing Department ID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+	t.Run("Incorrect Department ID", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/department/77", bytes.NewBuffer(uniqueId))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Department - Sending incorrect DepartmentID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+}
