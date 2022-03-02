@@ -17,7 +17,7 @@ type Faculty struct {
 
 //This function retrieves the list of all the facultys from the database
 func Getfacultys() ([]Faculty, error) {
-	rows, err := models.DB.Query("SELECT f.idFaculty, f.facultyname, f.info, d.deptName from faculty f Join departments As d on d.idDepartment=f.idDepartment ")
+	rows, err := models.DB.Query("SELECT f.idFaculty, f.facultyname, f.info, f.idDepartment, d.deptName from faculty f Join departments As d on d.idDepartment=f.idDepartment ")
 	if err != nil {
 		return nil, err
 	}
@@ -27,7 +27,7 @@ func Getfacultys() ([]Faculty, error) {
 	faculty := make([]Faculty, 0)
 	for rows.Next() {
 		singlefaculty := Faculty{}
-		err = rows.Scan(&singlefaculty.FacultyId, &singlefaculty.FacultyName, &singlefaculty.Info, &singlefaculty.DepartmentName)
+		err = rows.Scan(&singlefaculty.FacultyId, &singlefaculty.FacultyName, &singlefaculty.Info, &singlefaculty.DepartmentId, &singlefaculty.DepartmentName)
 		if err != nil {
 			return nil, err
 		}
@@ -44,7 +44,7 @@ func Getfacultys() ([]Faculty, error) {
 
 //This function is used to retrieve the Department details by ID
 func GetFacultyById(idFaculty string) (Faculty, error) {
-	stmt, err := models.DB.Prepare("SELECT f.idFaculty, f.facultyname, f.info, d.deptName from faculty as f Join departments As d on d.idDepartment=f.idDepartment  where f.idFaculty = ?")
+	stmt, err := models.DB.Prepare("SELECT f.idFaculty, f.facultyname, f.info, f.idDepartment, d.deptName from faculty as f Join departments As d on d.idDepartment=f.idDepartment where f.idFaculty = ?")
 
 	if err != nil {
 		return Faculty{}, err
@@ -52,7 +52,7 @@ func GetFacultyById(idFaculty string) (Faculty, error) {
 
 	faculty := Faculty{}
 
-	sqlErr := stmt.QueryRow(idFaculty).Scan(&faculty.FacultyId, &faculty.FacultyName, &faculty.Info, &faculty.DepartmentName)
+	sqlErr := stmt.QueryRow(idFaculty).Scan(&faculty.FacultyId, &faculty.FacultyName, &faculty.Info, &faculty.DepartmentId, &faculty.DepartmentName)
 
 	if sqlErr != nil {
 		if sqlErr == sql.ErrNoRows {
@@ -80,8 +80,7 @@ func Addfacultys(newfaculty Faculty) (bool, error) {
 
 	tempfaculty := facultyExists(newfaculty.FacultyId)
 	if tempfaculty {
-		fmt.Println("faculty already exists with the same faculty ID")
-		return false, nil
+		return false, fmt.Errorf("faculty already exists with the same faculty ID")
 	} else {
 		_, err = stmt.Exec(newfaculty.FacultyName, newfaculty.DepartmentId, newfaculty.Info)
 		if err != nil {
@@ -109,7 +108,7 @@ func UpdateFaculty(ourFaculty Faculty, idFaculty int) (bool, error) {
 
 	defer stmt.Close()
 
-	_, err = stmt.Exec(ourFaculty.FacultyName, ourFaculty.DepartmentId, ourFaculty.FacultyId, idFaculty)
+	_, err = stmt.Exec(ourFaculty.FacultyName, ourFaculty.DepartmentId, ourFaculty.Info, idFaculty)
 
 	if err != nil {
 		return false, err

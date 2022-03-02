@@ -22,11 +22,14 @@ func GetFaculty(c *gin.Context) {
 func GetFacultyById(c *gin.Context) {
 	id := c.Param("id")
 	faculty, err := controller.GetFacultyById(id)
-	if err != nil {
-		c.IndentedJSON(http.StatusBadRequest, gin.H{"error": "No data found"})
+	checkErr(err)
+	if faculty.FacultyName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Faculty ID in our records"})
 		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": faculty})
 	}
-	c.IndentedJSON(http.StatusOK, gin.H{"data": faculty})
+
 }
 func AddFaculty(c *gin.Context) {
 	var json controller.Faculty
@@ -41,10 +44,9 @@ func AddFaculty(c *gin.Context) {
 	if success {
 		c.JSON(http.StatusOK, gin.H{"message": "Success"})
 	} else {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
 }
-
 func UpdateFaculty(c *gin.Context) {
 	id := c.Param("id")
 
@@ -52,7 +54,7 @@ func UpdateFaculty(c *gin.Context) {
 	checkErr(err)
 	// if the Coursename is blank we can assume nothing is found and no need to perform Update task
 	if faculty.FacultyName == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this faculty  in our records to Update"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this faculty ID in our records to Update"})
 		return
 	} else {
 		var json controller.Faculty
