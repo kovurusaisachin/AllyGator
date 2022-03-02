@@ -41,6 +41,13 @@ func main() {
 		v1.GET("faculty/:id", api.GetFacultyById)
 		v1.POST("addFaculty", api.AddFaculty)
 		v1.PUT("faculty/:id", api.UpdateFaculty)
+
+		//Course APIs
+		v1.GET("course", api.GetCourses)
+		v1.GET("course/:id", api.GetCourseById)
+		v1.POST("addCourse", api.AddCourse)
+		v1.PUT("course/:id", api.UpdateCourse)
+
 	}
 
 	// By default it serves on :8080 unless a
