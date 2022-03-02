@@ -94,6 +94,32 @@ func Addfacultys(newfaculty Faculty) (bool, error) {
 	}
 }
 
+//This function is used to Update the faculty details by their user ID
+func UpdateFaculty(ourFaculty Faculty, idFaculty int) (bool, error) {
+
+	tx, err := models.DB.Begin()
+	if err != nil {
+		return false, err
+	}
+
+	stmt, err := tx.Prepare("UPDATE faculty SET facultyname = ? , idDepartment = ? , info = ? WHERE idFaculty = ?")
+	if err != nil {
+		return false, err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(ourFaculty.FacultyName, ourFaculty.DepartmentId, ourFaculty.FacultyId, idFaculty)
+
+	if err != nil {
+		return false, err
+	}
+
+	tx.Commit()
+
+	return true, nil
+}
+
 //This function returns true if the Department with the same ID exists or not.
 func facultyExists(facultyId int) bool {
 	row := models.DB.QueryRow("select idfaculty from faculty where idfaculty= ?", facultyId)
