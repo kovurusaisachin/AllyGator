@@ -237,3 +237,87 @@ func TestGetCourseById(t *testing.T) {
 	})
 
 }
+
+//UpdateCourse API mock test
+func TestUpdateCourse(t *testing.T) {
+	err := models.ConnectDatabase()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Switching to test mode so we don't get such noisy output
+	gin.SetMode(gin.TestMode)
+
+	// Settingup the router, and
+	// registering the routes
+	r := gin.Default()
+	v1 := r.Group("/api/v1")
+	v1.PUT("course/:id", UpdateCourse)
+
+	t.Run("Sending Empty Data", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/course/1000", bytes.NewBuffer(empData))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Course - Sending Empty Data\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+
+	t.Run("Existing Course ID", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/course/1000", bytes.NewBuffer(existingCourse))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Course - Sending the existing Course ID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+	t.Run("Incorrect Course ID", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/course/77", bytes.NewBuffer(uniqueCourse))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Course - Sending incorrect CourseID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+}
