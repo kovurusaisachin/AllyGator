@@ -2,6 +2,7 @@ package api
 
 import (
 	"net/http"
+	"strconv"
 
 	"allygator.com/gatorweb/controller"
 	"github.com/gin-gonic/gin"
@@ -41,5 +42,38 @@ func AddFaculty(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Success"})
 	} else {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+	}
+}
+
+func UpdateFaculty(c *gin.Context) {
+	id := c.Param("id")
+
+	faculty, err := controller.GetFacultyById(id)
+	checkErr(err)
+	// if the Coursename is blank we can assume nothing is found and no need to perform Update task
+	if faculty.FacultyName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this faculty  in our records to Update"})
+		return
+	} else {
+		var json controller.Faculty
+
+		if err := c.ShouldBindJSON(&json); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		courseId, err := strconv.Atoi(c.Param("id"))
+
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid faculty ID"})
+		}
+
+		success, err := controller.UpdateFaculty(json, courseId)
+
+		if success {
+			c.JSON(http.StatusOK, gin.H{"message": "Success"})
+		} else {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		}
 	}
 }
