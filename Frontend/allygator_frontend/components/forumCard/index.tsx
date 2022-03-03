@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link"
 export default function ForumCard(props) {
 	console.log(props,'pnnpnpn')
   return (
@@ -7,7 +8,7 @@ export default function ForumCard(props) {
         <div className="container max-w-4xl px-10 py-6 mx-auto rounded-lg shadow-sm dark:bg-coolGray-900">
           <div>
             <a rel="noopener noreferrer" href="#" className="flex items-center">
-              <span className="font-bold hover:underline dark:text-coolGray-400">
+              <span className="font-semibold hover:underline dark:text-coolGray-400">
                 {props.data?.name ?? ""}
               </span>
             </a>
@@ -23,13 +24,12 @@ export default function ForumCard(props) {
             </a> */}
           </div>
           <div className="mt-3">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="text-xl font-bold hover:underline"
+            <Link href={`/dashboard/forum/${props?.data?.id}`}
             >
-              {props?.data?.title ?? ""}
-            </a>
+              <a className="font-bold hover:text-blue-900 hover:underline cursor-pointer">
+                  {props?.data?.title ?? ""}
+              </a>
+            </Link>
             <p className="mt-2">
              {props?.data?.content ?? ""}
             </p>

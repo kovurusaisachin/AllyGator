@@ -5,6 +5,7 @@ import Link from "next/link"
 // import ResetPass from './ResetPassword'
 const data = [
   {
+    id:"1",
     name: "Noopur Thanvi",
     time: "Feb 24, 2022",
     title: "UF ranks 5th in public university list",
@@ -13,6 +14,7 @@ const data = [
     tags: ["University", "HCI", "SE"],
   },
   {
+    id:"2",
     name: "Prashant KApri",
     time: "Feb 27, 2022",
     title: "UF ranks 5th in public university list",
