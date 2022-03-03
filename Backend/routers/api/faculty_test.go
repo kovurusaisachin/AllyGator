@@ -30,7 +30,7 @@ var uniqueFaculty = []byte(`{
     "deptName": "CSE"		
 }`)
 
-var emptyData = []byte(``) // Remove this string afer merging into main branch
+var empData1 = []byte(``) // Remove this string afer merging into main branch
 
 //AddFaculty API mock test
 func TestAddFaculty(t *testing.T) {
@@ -49,7 +49,7 @@ func TestAddFaculty(t *testing.T) {
 
 	t.Run("Empty JSON Data", func(t *testing.T) {
 
-		req, err := http.NewRequest(http.MethodPost, "/api/v1/addFaculty", bytes.NewBuffer(emptyData))
+		req, err := http.NewRequest(http.MethodPost, "/api/v1/addFaculty", bytes.NewBuffer(empData1))
 		if err != nil {
 			t.Fatalf("Couldn't create request: %v\n", err)
 		}
@@ -238,4 +238,88 @@ func TestGetFacultyById(t *testing.T) {
 		}
 	})
 
+}
+
+//UpdateFaculty API mock test
+func TestUpdateFaculty(t *testing.T) {
+	err := models.ConnectDatabase()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Switching to test mode so we don't get such noisy output
+	gin.SetMode(gin.TestMode)
+
+	// Settingup the router, and
+	// registering the routes
+	r := gin.Default()
+	v1 := r.Group("/api/v1")
+	v1.PUT("faculty/:id", UpdateFaculty)
+
+	t.Run("Sending Empty Data", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/faculty/20", bytes.NewBuffer(empData1))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Faculty - Sending Empty Data\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+
+	t.Run("Existing Faculty ID", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/faculty/20", bytes.NewBuffer(existingFaculty))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Faculty  - Sending the existing Faculty ID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+	t.Run("Incorrect Faculty ID", func(t *testing.T) {
+
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/faculty/77", bytes.NewBuffer(uniqueFaculty))
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for Update Faculty - Sending incorrect FacultyID\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
 }
