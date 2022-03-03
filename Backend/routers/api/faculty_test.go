@@ -116,3 +116,64 @@ func TestAddFaculty(t *testing.T) {
 		}
 	})
 }
+
+//getFaculty API mock test
+func TestGetFaculty(t *testing.T) {
+	err := models.ConnectDatabase()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Switching to test mode so we don't get such noisy output
+	gin.SetMode(gin.TestMode)
+
+	// Settingup the router, and
+	// registering the routes
+	r := gin.Default()
+	v1 := r.Group("/api/v1")
+	v1.GET("faculty", GetFaculty)
+
+	t.Run("Wrong URL", func(t *testing.T) {
+		req, err := http.NewRequest(http.MethodGet, "/api/v1/facultys", nil)
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for getFaculty - Sending wrong URL\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+
+	t.Run("Valid URL", func(t *testing.T) {
+		req, err := http.NewRequest(http.MethodGet, "/api/v1/faculty", nil)
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for getFaculty - Sending correct URL\n")
+		r.ServeHTTP(w, req)
+		fmt.Print("\n\n")
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Fatalf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+}
