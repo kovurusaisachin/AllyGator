@@ -46,7 +46,7 @@ var uniqueEmail = []byte(`{
 
 var emptyData = []byte(``)
 
-//AddUser API mock test
+//AddUser API Unit-test
 func TestAddUser(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -131,7 +131,7 @@ func TestAddUser(t *testing.T) {
 	})
 }
 
-//getUser API mock test
+//getUser API Unit-test
 func TestGetUsers(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -192,7 +192,7 @@ func TestGetUsers(t *testing.T) {
 	})
 }
 
-//getUserById API mock test
+//getUserById API Unit-test
 func TestGetUserById(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -254,7 +254,7 @@ func TestGetUserById(t *testing.T) {
 
 }
 
-//UpdateUser API mock test
+//UpdateUser API Unit-test
 func TestUpdateUser(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -361,7 +361,7 @@ func TestUpdateUser(t *testing.T) {
 	})
 }
 
-//DELETE User API mock test
+//DELETE User API Unit-test
 func TestDeleteUser(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {

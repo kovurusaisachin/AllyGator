@@ -24,7 +24,7 @@ var uniqueId = []byte(`{
 	"deptName": "Arts"
 	}`)
 
-//AddDepartment API mock test
+//AddDepartment API Unit-test
 func TestAddDepartment(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -109,7 +109,7 @@ func TestAddDepartment(t *testing.T) {
 	})
 }
 
-//getDepartment API mock test
+//getDepartment API Unit-test
 func TestGetDepartment(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -170,7 +170,7 @@ func TestGetDepartment(t *testing.T) {
 	})
 }
 
-//getDepartmentById API mock test
+//getDepartmentById API Unit-test
 func TestGetDepartmentById(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -232,7 +232,7 @@ func TestGetDepartmentById(t *testing.T) {
 
 }
 
-//UpdateDepartment API mock test
+//UpdateDepartment API Unit-test
 func TestUpdateDepartment(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -316,7 +316,7 @@ func TestUpdateDepartment(t *testing.T) {
 	})
 }
 
-//DELETE Department API mock test
+//DELETE Department API Unit-test
 func TestDeleteDepartment(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {

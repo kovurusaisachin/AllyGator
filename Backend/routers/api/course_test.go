@@ -28,9 +28,7 @@ var uniqueCourse = []byte(`{
 	"idFaculty": 20
 }`)
 
-var empData = []byte(``)
-
-//AddCourse API mock test
+//AddCourse API Unit-test
 func TestAddCourse(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -47,7 +45,7 @@ func TestAddCourse(t *testing.T) {
 
 	t.Run("Empty JSON Data", func(t *testing.T) {
 
-		req, err := http.NewRequest(http.MethodPost, "/api/v1/addCourse", bytes.NewBuffer(empData))
+		req, err := http.NewRequest(http.MethodPost, "/api/v1/addCourse", bytes.NewBuffer(emptyData))
 		if err != nil {
 			t.Fatalf("Couldn't create request: %v\n", err)
 		}
@@ -115,7 +113,7 @@ func TestAddCourse(t *testing.T) {
 	})
 }
 
-//getCourse API mock test
+//getCourse API Unit-test
 func TestGetCourses(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -176,7 +174,7 @@ func TestGetCourses(t *testing.T) {
 	})
 }
 
-//getCourseById API mock test
+//getCourseById API Unit-test
 func TestGetCourseById(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -238,7 +236,7 @@ func TestGetCourseById(t *testing.T) {
 
 }
 
-//UpdateCourse API mock test
+//UpdateCourse API Unit-test
 func TestUpdateCourse(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -255,7 +253,7 @@ func TestUpdateCourse(t *testing.T) {
 
 	t.Run("Sending Empty Data", func(t *testing.T) {
 
-		req, err := http.NewRequest(http.MethodPut, "/api/v1/course/1000", bytes.NewBuffer(empData))
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/course/1000", bytes.NewBuffer(emptyData))
 		if err != nil {
 			t.Fatalf("Couldn't create request: %v\n", err)
 		}

@@ -30,9 +30,7 @@ var uniqueFaculty = []byte(`{
     "deptName": "CSE"		
 }`)
 
-var empData1 = []byte(``) // Remove this string afer merging into main branch
-
-//AddFaculty API mock test
+//AddFaculty API Unit-test
 func TestAddFaculty(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -49,7 +47,7 @@ func TestAddFaculty(t *testing.T) {
 
 	t.Run("Empty JSON Data", func(t *testing.T) {
 
-		req, err := http.NewRequest(http.MethodPost, "/api/v1/addFaculty", bytes.NewBuffer(empData1))
+		req, err := http.NewRequest(http.MethodPost, "/api/v1/addFaculty", bytes.NewBuffer(emptyData))
 		if err != nil {
 			t.Fatalf("Couldn't create request: %v\n", err)
 		}
@@ -117,7 +115,7 @@ func TestAddFaculty(t *testing.T) {
 	})
 }
 
-//getFaculty API mock test
+//getFaculty API Unit-test
 func TestGetFaculty(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -178,7 +176,7 @@ func TestGetFaculty(t *testing.T) {
 	})
 }
 
-//getFacultyById API mock test
+//getFacultyById API Unit-test
 func TestGetFacultyById(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -240,7 +238,7 @@ func TestGetFacultyById(t *testing.T) {
 
 }
 
-//UpdateFaculty API mock test
+//UpdateFaculty API Unit-test
 func TestUpdateFaculty(t *testing.T) {
 	err := models.ConnectDatabase()
 	if err != nil {
@@ -257,7 +255,7 @@ func TestUpdateFaculty(t *testing.T) {
 
 	t.Run("Sending Empty Data", func(t *testing.T) {
 
-		req, err := http.NewRequest(http.MethodPut, "/api/v1/faculty/20", bytes.NewBuffer(empData1))
+		req, err := http.NewRequest(http.MethodPut, "/api/v1/faculty/20", bytes.NewBuffer(emptyData))
 		if err != nil {
 			t.Fatalf("Couldn't create request: %v\n", err)
 		}
