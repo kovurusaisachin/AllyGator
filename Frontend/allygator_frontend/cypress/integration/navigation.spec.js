@@ -1,8 +1,8 @@
-it('use requests to navigation bar links', () => {
+it('use requests to navigation sidebar links', () => {
 
     const pages = ['dashboard', 'forum', 'connection','chat','miscellaneous','profile']
   
-    cy.visit('/')
+    cy.visit('/dashboard')
   
     pages.forEach(page => {
   
