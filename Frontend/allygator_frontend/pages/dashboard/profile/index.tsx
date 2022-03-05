@@ -18,7 +18,7 @@ function Profile(){
       }, []);
     
       const fetchData = async () => {
-        await axios.get(`${API_URL}/user/1`,{headers})
+        await axios.get(`${API_URL}/user/4`,{headers})
           .then((response) => {
             setState({
               ...state,

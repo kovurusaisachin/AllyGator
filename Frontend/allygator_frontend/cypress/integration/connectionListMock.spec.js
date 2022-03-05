@@ -1,4 +1,6 @@
-describe("Accomplishment dashboard", () => {
+/// <reference types="cypress"/>
+
+describe("Connection dashboard", () => {
 
     beforeEach(() => {
         cy.visit("/dashboard")
@@ -20,7 +22,7 @@ describe("Accomplishment dashboard", () => {
     })
 
     it("should display a list of connections with mock", () => {
-        cy.request("GET", "http://localhost:8080/api/v1/user")
+        cy.intercept("GET", "http://localhost:8080/api/v1/user")
 
         cy.get("td")
           .should("contain", "Prashant Kapri")

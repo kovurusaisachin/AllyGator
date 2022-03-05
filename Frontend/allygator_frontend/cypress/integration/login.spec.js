@@ -1,3 +1,5 @@
+/// <reference types="cypress"/>
+
 describe('Login Tests', function () {
     it('Successfull login', function () {
         
