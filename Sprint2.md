@@ -31,7 +31,7 @@ Features added in Sprint2:<br />
 3.  Chat page was added. <br />
 4.  Profile page ui was updated <br />  
 
-Cypress Testing page was added: <br />
+Cypress Testing page was added: <br /> 
 1.  homepage testing <br />
 2.  Dashboard testing <br />
 3.  Connectionlist mock testing <br />
