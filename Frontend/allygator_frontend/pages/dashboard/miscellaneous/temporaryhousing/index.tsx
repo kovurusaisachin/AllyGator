@@ -45,32 +45,26 @@ export default function temporaryhousing() {
           <div className="flex flex-col space-y-12 divide-y divide-gray-200">
             <div className="mb-2 text-left md:text-justify">
               <p className="text-lg text-gray-500">
-                <strong>Extended .</strong>: Rent an extra room or even an
-                entire apartment or house for anywhere from a day to more than a
-                month. Airbnb offers reasonablerates and a wide variety of
-                filters to search its listings
+                <strong>Extended staying.</strong>: An economic, extended stay hotel with apartment-style amenities. Prices tend to be cheaper the longer your stay, and weekly rates are also available
               </p>
               <a
                 className="hover:font-bold hover:text-blue-900"
-                href="airbnb.com"
+                href="extendedstayamerica.com"
               >
-                Airbnb website click here
+                Extended stay website click here
               </a>
             </div>
             <div className="flex flex-col space-y-12 divide-y divide-gray-200">
               {/* <p className="pt-12 mb-3 text-sm font-normal text-gray-500">April 16, 2020</p> */}
               <div className="mb-2 text-left md:text-justify">
                 <p className="text-lg text-gray-500">
-                  <strong>Airbnb,Inc.</strong>: Rent an extra room or even an
-                  entire apartment or house for anywhere from a day to more than
-                  a month. Airbnb offers reasonablerates and a wide variety of
-                  filters to search its listings
+                  <strong>Southern Comfort Properties.</strong>: A local short-term rental company offering a variety of furnished housing options and rates
                 </p>
                 <a
                   className="hover:font-bold hover:text-blue-900"
-                  href="airbnb.com"
+                  href="socogainesvillerentals.com"
                 >
-                  Airbnb website click here
+                  Southern Comfort Properties website click here
                 </a>
               </div>
             </div>
@@ -80,16 +74,13 @@ export default function temporaryhousing() {
                 {/* <p className="pt-12 mb-3 text-sm font-normal text-gray-500">April 16, 2020</p> */}
                 <div className="mb-2 text-left md:text-justify">
                   <p className="text-lg text-gray-500">
-                    <strong>Airbnb,Inc.</strong>: Rent an extra room or even an
-                    entire apartment or house for anywhere from a day to more
-                    than a month. Airbnb offers reasonablerates and a wide
-                    variety of filters to search its listings
+                    <strong>UF Guest Housing.</strong>: UF has a limited number of fully furnished apartments available to UF affiliates, as well as summer international graduate student housing options. Please see site for more details.
                   </p>
                   <a
                     className="hover:font-bold hover:text-blue-900"
-                    href="airbnb.com"
+                    href="conferenceservices.housing.ufl.edu/guesthousing"
                   >
-                    Airbnb website click here
+                    UF Guest Housing website click here
                   </a>
                 </div>
               </div>
