@@ -118,6 +118,51 @@ export default function ufmobileoutreachclinic () {
     </p>
     </div> 
     </section>
+
+    <div>
+      {/* <p className="pt-12 mb-3 text-sm font-normal text-gray-500">April 16, 2020</p> */}
+      <h2 className="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl">
+        <a href="#" className="text-gray-900 hover:text-purple-700">Service include:</a>
+      </h2>
+      <p className="mb-4 text-base font-normal text-gray-600">
+        1. Routine physicals and health screenings.
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+        2. Check-ups for minor illnesses and ailments
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+        3. Check-ups for women's health
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+        4. Family planning
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+        5. Care for chronic illness including : Back pain, COPD (Chronic Obstructive Pulmonary Disease), Depression, Diabetes, Hypertension (high blood pressure)
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+       6. Administration of non-narcotic prescription and non-prescription medications
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+       7. Blood pressure and blood sugar monitoring.
+       </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+        8. Care coordination.
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+       9. Confidential STI and HIV counselling and testing.
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+      10. Nutritional advice.
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+      11. Social work and psychological consultation.
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+      12. Other resources and referrals.
+      </p>
+      {/* <a href="#" className="btn btn-light btn-sm">Continue Reading</a> */}
+    </div>
+
     </section>
     </div>
     )
