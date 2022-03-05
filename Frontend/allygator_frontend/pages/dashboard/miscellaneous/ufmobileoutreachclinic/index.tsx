@@ -163,6 +163,20 @@ export default function ufmobileoutreachclinic () {
       {/* <a href="#" className="btn btn-light btn-sm">Continue Reading</a> */}
     </div>
 
+    <div>
+      {/* <p className="pt-12 mb-3 text-sm font-normal text-gray-500">April 16, 2020</p> */}
+      <h2 className="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl">
+        <a href="#" className="text-gray-900 hover:text-purple-700">All services are provided free of cost</a>
+      </h2>
+      <p className="mb-4 text-base font-normal text-gray-600">
+       No one will be denied care because of inability to pay or because of their race, color, ethnicity, national origin, religion, gender, sexual orientation, or disability.
+      </p>
+      <p className="mb-4 text-base font-normal text-gray-600">
+        For more information about the Mobile Outreach Clinic or any of it's partner organizations, call 352-273-5329 or visit outreach.med.ufl.edu
+      </p>
+       {/* <a href="#" className="btn btn-light btn-sm">Continue Reading</a> */}
+    </div>
+
     </section>
     </div>
     )
