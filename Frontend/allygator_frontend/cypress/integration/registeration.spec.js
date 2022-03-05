@@ -69,7 +69,7 @@ describe('Registeration Tests', function () {
       cy.go("back");
 
       //miscellaneous page
-      cy.contains("Miscellaneous").click();
+      cy.contains("Information").click();
       cy.location("pathname").should("eq", "/dashboard/miscellaneous");
       cy.go("back");
 
