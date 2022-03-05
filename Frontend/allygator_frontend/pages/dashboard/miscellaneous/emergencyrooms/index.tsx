@@ -24,8 +24,9 @@ export default function emergencyrooms () {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-10 bg-blue-100"></div>
-      </div>
+      
+ 
+        </div>
       </div>
     )
 }
