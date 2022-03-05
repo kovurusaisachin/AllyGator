@@ -5,17 +5,23 @@ describe("Accomplishment dashboard", () => {
     })
 
     it("should display a list of connections", () => {
-        cy.get("ul")
-          .should("contain", "500 points for drinking 8 cups of water for 7 straight days")
-          .and("contain", "850 points for fasting for 5 days straight")
+        cy.get("td")
+          .should("contain", "Prashant Kapri")
+          .and("contain", "kapri.prashant@ufl.edu")
+        cy.get("td")
+          .should("contain", "Noopur Thanvi")
+          .and("contain", "thanvi.noopur@ufl.edu")
     })
 
-    it("should display a list of rewards with mock", () => {
+    it("should display a list of connections with mock", () => {
         cy.intercept("GET", "http://localhost:8080/api/v1/user", { fixture: "connectionList.json" })
 
-        cy.get("ul")
-        .should("contain", "500 points for drinking 8 cups of water for 7 straight days")
-        .and("contain", "850 points for fasting for 5 days straight")
+        cy.get("td")
+          .should("contain", "Prashant Kapri")
+          .and("contain", "kapri.prashant@ufl.edu")
+        cy.get("td")
+          .should("contain", "Noopur Thanvi")
+          .and("contain", "thanvi.noopur@ufl.edu")
     })
 
 })

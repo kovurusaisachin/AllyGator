@@ -1,16 +1,9 @@
 describe('Login Tests', function () {
     it('Successfull login', function () {
-        cy.request('DELETE', 'http://localhost:8080/api/v1/users', {
-        user: {
-            username: 'test',
-            email: 'test@test.com',
-            password: 'test'
-        }
-        })
+        
         cy.request('POST', 'http://localhost:8080/api/v1/users', {
         user: {
-            username: 'test',
-            email: 'test@test.com',
+            email: 'thanvi.noopur@ufl.edu',
             password: 'test'
         }
         })
@@ -37,14 +30,12 @@ describe('Login Tests', function () {
     it('Incorrect password', function () {
         cy.request('DELETE', 'http://localhost:8080/api/v1/users', {
         user: {
-            username: 'test',
             email: 'test@test.com',
             password: 'test'
         }
         })
         cy.request('POST', 'http://localhost:8080/api/v1/users', {
         user: {
-            username: 'test',
             email: 'test@test.com',
             password: 'test'
         }
@@ -66,14 +57,7 @@ describe('Login Tests', function () {
     })
 
     it('Not existing user', function () {
-        cy.request('DELETE', 'http://localhost:8080/api/v1/users', {
-        user: {
-            username: 'test',
-            email: 'test@test.com',
-            password: 'test'
-        }
-        })
-
+        
         cy.visit('http://localhost:3000/login')
 
         cy.get(':nth-child(1) > .form-control')
