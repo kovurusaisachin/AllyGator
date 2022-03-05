@@ -110,7 +110,7 @@ API- 18 --> PUT<br />
 UPDATE FACULTY: This API is used to Update Faculty's information into the database.<br />
 localhost:8080/api/v1/faculty/26<br />
 <br /><br />
-For better understanding of the API's, please refer the below link.
+For better understanding of the API's, please refer the below link.<br />
 Sprint 2 API's: https://documenter.getpostman.com/view/19334583/UVeGqkYL <br />
 
 GO-LANG UNIT-TEST CASES: <br />
@@ -118,6 +118,6 @@ Unit-test cases for the API's have been added along with coverage report and HTM
 https://github.com/kovurusaisachin/AllyGator/tree/main/Backend <br />
 https://drive.google.com/drive/u/1/folders/1NarjzdOcaf43jcIE_Z-lVBP0AkOUTaeT  <br />
 <br /><br />
-Video link:
+Video link: <br />
 Sprint 1 Video: https://drive.google.com/drive/u/1/folders/1TYdBOjd0T9YLY2Q4KmH3epmAuQ9s0ypi <br />
 Sprint 2 Video: https://drive.google.com/drive/u/1/folders/1IDLY8AcIK71pOHG7tH-Hi7PFp7IRF3rV <br />
