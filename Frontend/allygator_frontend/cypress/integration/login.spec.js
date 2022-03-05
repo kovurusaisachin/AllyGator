@@ -3,7 +3,7 @@
 describe('Login Tests', function () {
     it('Successfull login', function () {
         
-        cy.request('POST', 'http://localhost:8080/api/v1/users', {
+        cy.request('POST', 'http://localhost:8080/api/v1/login', {
         user: {
             email: 'thanvi.noopur@ufl.edu',
             password: 'test'
@@ -12,80 +12,59 @@ describe('Login Tests', function () {
 
         cy.visit('http://localhost:3000/login')
 
-        cy.get(':nth-child(1) > .form-control')
-        .type('test@test.com')
-        cy.get(':nth-child(2) > .form-control')
+        cy.get("[data-cy='login-email-input']")
+        .type('thanvi.noopur@ufl.edu')
+        cy.get("[data-cy='login-password-input']")
         .type('test')
-        cy.get('.btn')
+        cy.contains("Login")
         .click()
 
         cy.url()
-        .should('contain', 'http://localhost:3000/')
-        cy.get(':nth-child(4) > .nav-link')
-        .should('have.attr', 'href', '/@test')
-        cy.get(':nth-child(3) > .nav-link')
-        .should('have.attr', 'href', '/settings')
-        cy.get('.container > .nav > :nth-child(2) > .nav-link')
-        .should('have.attr', 'href', '/editor')
-    })
-
-    it('Incorrect password', function () {
-        cy.request('DELETE', 'http://localhost:8080/api/v1/users', {
-        user: {
-            email: 'test@test.com',
-            password: 'test'
-        }
-        })
-        cy.request('POST', 'http://localhost:8080/api/v1/users', {
-        user: {
-            email: 'test@test.com',
-            password: 'test'
-        }
-        })
-
-        cy.visit('http://localhost:3000/login')
-
-        cy.get(':nth-child(1) > .form-control')
-        .type('test@test.com')
-        cy.get(':nth-child(2) > .form-control')
-        .type('test-icorrect')
-        cy.get('.btn')
-        .click()
-
-        cy.url()
-        .should('contain', 'http://localhost:3000/login')
-        cy.get('.error-messages > li')
-        .should('have.text', 'Error Invalid email / password.')
-    })
-
-    it('Not existing user', function () {
+        .should('contain', 'http://localhost:3000/dashboard')
+        cy.get("button").contains("AllyGators");
+        cy.get("h1").contains("Dashboard");
         
-        cy.visit('http://localhost:3000/login')
+  
+      // forum page
+      cy.contains("Forum").click();
+      cy.location("pathname").should("eq", "/dashboard/forum");
+      cy.go("back");
 
-        cy.get(':nth-child(1) > .form-control')
-        .type('test@test.com')
-        cy.get(':nth-child(2) > .form-control')
-        .type('test-icorrect')
-        cy.get('.btn')
-        .click()
+      //connections page
+      cy.contains("Connections").click();
+      cy.location("pathname").should("eq", "/dashboard/connection");
+      cy.go("back");
+      
+      //chat page
+      cy.contains("Chat").click();
+      cy.location("pathname").should("eq", "/dashboard/chat");
+      cy.go("back");
 
-        cy.url()
-        .should('contain', 'http://localhost:3000/login')
-        cy.get('.error-messages > li')
-        .should('have.text', 'Error Invalid email / password.')
-    })
+      //miscellaneous page
+      cy.contains("Miscellaneous").click();
+      cy.location("pathname").should("eq", "/dashboard/miscellaneous");
+      cy.go("back");
+
+      //profile page
+      cy.contains("Profile").click();
+      cy.location("pathname").should("eq", "/dashboard/profile");
+      cy.go("back");
+
+    });
+
+    
+
+    
 
     it('Empty fields', function () {
         cy.visit('http://localhost:3000/login')
 
-        cy.get('.btn')
+        cy.contains('Login')
         .click()
 
         cy.url()
         .should('contain', 'http://localhost:3000/login')
-        cy.get('.error-messages > :nth-child(1)')
-        .should('have.text', '\'Email\' must not be empty.')
-        cy.get('.error-messages > :nth-child(2)')
-        .should('have.text', '\'Password\' must not be empty.')
+        cy.get('.error-messages')
+        .should('have.text', 'Please fill out the field')
     })
 })

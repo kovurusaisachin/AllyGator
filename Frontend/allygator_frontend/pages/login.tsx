@@ -39,6 +39,7 @@ export default function Login() {
                           required
                           placeholder="abc@ufl.edu"
                           type="email"
+                          data-cy="login-email-input"
                           className="text-md block px-3 py-2  rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-300 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
                         />
                       </div>
@@ -51,6 +52,7 @@ export default function Login() {
                             required
                             placeholder="*********"
                             type="password"
+                            data-cy="login-password-input"
                             className="text-md block px-3 py-2 rounded-lg w-full 
           bg-white border-2 border-gray-300 placeholder-gray-300 shadow-md
           focus:placeholder-gray-500
