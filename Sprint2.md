@@ -82,7 +82,7 @@ API- 10 --> DEL<br />
 DELETE DEPARTMENT: This API is used to delete Department's Information from the database.<br />
 localhost:8080/api/v1/department/117<br />
 <br /><br />
-COURSE API's<br /><br />
+COURSE API's<br /><br /> 
 API- 11 --> GET<br />
 GET COURSE LIST: This API fetches the list of all courses from the database<br />
 localhost:8080/api/v1/course<br />
