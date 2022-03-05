@@ -11,7 +11,7 @@ const tableHeader = [
 ]
 
 export default function Table(props) {
-  console.log(props)
+  // console.log(props)
   const Header = ({ array }) => {
     let counter = 0;
     return array?.map((x) => {
