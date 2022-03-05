@@ -1,0 +1,15 @@
+[{
+    "idStudent": 4,
+    "firstname": "Noopur",
+    "lastname": "Thanvi",
+    "department": 111,
+    "password": "",
+    "email": "thanvi.noopur@ufl.edu",
+    "gender": "female",
+    "course": "Database systems implementation",
+    "url": "https://www.linkedin.com/in/noopurthanvi0208/",
+    "nationality": "Indian",
+    "profile": "Cloud",
+    "specialization": "Backend",
+    "status": "active"
+  }]

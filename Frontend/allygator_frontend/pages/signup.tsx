@@ -30,6 +30,7 @@ export default function Signup() {
                     id="grid-first-name"
                     type="text"
                     placeholder="Jane"
+                    data-cy="reg-firstname-input"
                   />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
@@ -44,6 +45,8 @@ export default function Signup() {
                     id="grid-last-name"
                     type="text"
                     placeholder="Doe"
+                    data-cy="reg-lastname-input"
+
                   />
                 </div>
               </div>
@@ -59,6 +62,7 @@ export default function Signup() {
                     className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-email"
                     type="email"
+                    data-cy="reg-email-input"
                     placeholder="janedoe@ufl.edu"
                   />
                 </div>
@@ -73,6 +77,7 @@ export default function Signup() {
                     className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-password"
                     type="password"
+                    data-cy="reg-password-input"
                     placeholder="***********"
                   />
                 </div>
@@ -87,6 +92,7 @@ export default function Signup() {
                     className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-email"
                     type="text"
+                    data-cy="reg-major-input"
                     placeholder="Computer Science"
                   />
                 </div>
@@ -115,6 +121,7 @@ export default function Signup() {
                     id="grid-city"
                     type="text"
                     placeholder="Indian"
+                    data-cy="reg-nationality-input"
                   />
                 </div>
                 <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
@@ -128,6 +135,7 @@ export default function Signup() {
                     <select
                       className="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-state"
+                      data-cy="reg-gender-input"
                     >
                       <option>Male</option>
                       <option>Female</option>
@@ -153,6 +161,7 @@ export default function Signup() {
                   </label>
                   <input
                     required
+                    data-cy="reg-phoneno-input"
                     className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-zip"
                     type="number"
