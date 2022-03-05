@@ -15,11 +15,16 @@ Forum - localhost:3000/dashboard/forum <br />
 <br />
 
 Features added in Sprint2:<br />
-1. Forum page new desgin was added: <br />
+<b>Note:</b> We have added a submodule for cometchat, so before running frontend please make sure to run this two command along with npm install<br/>
+1. git submodule init <br />
+2. git submodule update <br />
+<br />
+
+4. Forum page new desgin was added: <br />
     1.  localhost:3000/forum <br />
     2.  localhost:3000/forum/[slug] <br />
     3.  localhost:3000/forum/addPost <br />
-2.  Information page was added: <br />
+5.  Information page was added: <br />
     1.  localhost:3000/miscellaneous <br />
     2.  localhost:3000/miscellaneous/cellphones <br />
     3.  localhost:3000/miscellaneous/electricity <br />
@@ -28,8 +33,8 @@ Features added in Sprint2:<br />
     6.  localhost:3000/miscellaneous/offcampussafety <br />
     7.  localhost:3000/miscellaneous/temporaryhousing <br />
     8.  localhost:3000/miscellaneous/ufmobileoutreachclinic <br />
-3.  Chat page was added. <br />
-4.  Profile page ui was updated <br />  
+6.  Chat page was added. <br />
+7.  Profile page ui was updated <br />  
 
 Cypress Testing page was added: <br /> 
 1.  homepage testing <br />
@@ -43,6 +48,11 @@ Cypress Testing page was added: <br />
 
 
 BACKEND DEVELOPMENT:<br /><br />
+<b>Note:</b> To run backend follow the below steps:<br/>
+1. change directory to backend <br />
+2. go build <br />
+3. ./gatorweb <br />
+<br />
 Features already achieved in Sprint1:<br /><br />
 Created the Database and have connected it using sqlite3 drivers.<br />
 For sprint 1, we have created 3 API's in the backend as listed below<br />
