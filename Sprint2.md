@@ -40,6 +40,8 @@ Cypress Testing page was added: <br />
 6.  Registeration page testing <br />
 <br/>
 <br />
+
+
 BACKEND DEVELOPMENT:<br /><br />
 Features already achieved in Sprint1:<br /><br />
 Created the Database and have connected it using sqlite3 drivers.<br />
