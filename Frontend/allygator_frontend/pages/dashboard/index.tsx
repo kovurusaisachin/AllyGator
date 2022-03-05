@@ -43,7 +43,11 @@ export default function dashboard() {
               ?.includes(state.query.searchText?.toLowerCase()) ||
             product?.specialization
               ?.toLowerCase()
-              ?.includes(state.query.searchText?.toLowerCase()) 
+              ?.includes(state.query.searchText?.toLowerCase()) ||
+            product?.course
+              ?.toLowerCase()
+              ?.includes(state.query.searchText?.toLowerCase())  
+
         )
         ?.filter(product => product?.status === state?.query?.status)
         ?.filter(product => product?.nationality === state?.query?.nationality);
