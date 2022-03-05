@@ -16,6 +16,9 @@ Forum - localhost:3000/dashboard/forum <br />
 
 Features added in Sprint2:<br />
 <b>Note:</b> We have added a submodule for cometchat, so before running frontend please make sure to run this two command along with npm install<br/>
+
+<b>Note:</b> We have added a submodule for cometchat, so before running frontend please make sure to change the import for cometchat<br/>
+import {CometChatUI} from "../../pages/Frontend/allygator_frontend/pages/cometchat-pro-react-ui-kit/CometChatWorkspace/src/index" import for chat <br />
 1. git submodule init <br />
 2. git submodule update <br />
 <br />
