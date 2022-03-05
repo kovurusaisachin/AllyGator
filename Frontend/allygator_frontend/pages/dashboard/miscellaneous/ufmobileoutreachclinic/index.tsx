@@ -105,6 +105,19 @@ export default function ufmobileoutreachclinic () {
     </div> 
     </section>
 
+    <section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
+    <div className="mb-12 text-left md:text-center">
+    <p className="text-lg text-gray-500">
+    The UF Mobile Outreach Clinic provides free health care for under-served communities in Alachua County.
+    </p>
+    <p className="text-lg text-gray-500">
+    The Mobile Outreach Clinic bus has two exam rooms, a laboratory, and a waiting room, and is staffed by a rotation of medical professionals, including specialists.
+    </p>
+    <p className="text-lg text-gray-500">
+    In addition to comprehensive primary care, including screenings and ase management, the Mobile Outreach Clinic also routinely offers health seminars on a variety of topics, such as domestic abuse, diabetes, and how to quit smoking.
+    </p>
+    </div> 
+    </section>
     </section>
     </div>
     )
