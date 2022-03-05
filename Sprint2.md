@@ -2,20 +2,44 @@ Description:<br />
 Allygator is a comprehensive yet useful idea of connecting the future gators with experienced gators hence the name "ALLY-GATOR". This application encompasses multi-functional features just to achieve the sole purpose of this idea i.e. "Get Help & Provide Help" for students.
 <br />
 <br />
-FRONTEND DEVELOPMENT:
-<br /><br />
+FRONTEND DEVELOPMENT<br />
 Features already achieved in Sprint1:<br />
+The following webpages were developed and integrated with the available API's:<br />
+Homepage - localhost:3000 <br />
+Login - localhost:3000/login <br />
+Signup - localhost:3000/signup <br />
+Dashboard - localhost:3000/dashboard <br />
+Profile - localhost:3000/dashboard/profile <br />
+Forum - localhost:3000/dashboard/forum <br />
 <br />
-The following webpages were developed and integrated with the available API's:
-Homepage - localhost:3000<br />
-Login - localhost:3000/login<br />
-Signup - localhost:3000/signup<br />
-Dashboard - localhost:3000/dashboard<br />
-Profile - localhost:3000/dashboard/profile<br />
-Forum - localhost:3000/dashboard/forum<br />
-<br /><br />
+<br />
+
 Features added in Sprint2:<br />
-<br /><br />
+1. Forum page new desgin was added: <br />
+    1.  localhost:3000/forum <br />
+    2.  localhost:3000/forum/[slug] <br />
+    3.  localhost:3000/forum/addPost <br />
+2.  Information page was added: <br />
+    1.  localhost:3000/miscellaneous <br />
+    2.  localhost:3000/miscellaneous/cellphones <br />
+    3.  localhost:3000/miscellaneous/electricity <br />
+    4.  localhost:3000/miscellaneous/emergencyrooms <br />
+    5.  localhost:3000/miscellaneous/ethnicfoodstores <br />
+    6.  localhost:3000/miscellaneous/offcampussafety <br />
+    7.  localhost:3000/miscellaneous/temporaryhousing <br />
+    8.  localhost:3000/miscellaneous/ufmobileoutreachclinic <br />
+3.  Chat page was added. <br />
+4.  Profile page ui was updated <br />  
+
+Cypress Testing page was added: <br />
+1.  homepage testing <br />
+2.  Dashboard testing <br />
+3.  Connectionlist mock testing <br />
+4.  Profile data mock testing <br />
+5.  login page testing <br />
+6.  Registeration page testing <br />
+<br/>
+<br />
 BACKEND DEVELOPMENT:<br /><br />
 Features already achieved in Sprint1:<br /><br />
 Created the Database and have connected it using sqlite3 drivers.<br />
