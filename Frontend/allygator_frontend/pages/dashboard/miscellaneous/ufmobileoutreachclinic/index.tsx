@@ -59,6 +59,52 @@ export default function ufmobileoutreachclinic () {
        10am - 4pm 
     </p>
     </div>  
+
+    <section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
+    <div className="mb-12 text-left md:text-center">
+    <h2 className="mb-2 text-3xl font-extrabold leading-tight text-gray-900">
+    Location, hours and available specialists may vary each month.
+    </h2>
+    <p className="text-lg text-gray-500">
+    Patients are seen on a first-come, first-serve basis, and spaces are limited. Please arrive at least one hour before the end of clinic hours to be seen.
+    </p>
+    </div> 
+    </section>
+
+<section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
+  <div className="mb-12 text-left md:text-center">
+    <h2 className="mb-2 text-3xl font-extrabold leading-tight text-gray-900">
+        Other health and medical services phone numbers
+    </h2>
+    <p className="text-lg text-gray-500">
+       All emergencies - 911
+    </p>
+    <p className="text-lg text-gray-500">
+    Crisis Center - 352-264-6789
+    </p>
+    <p className="text-lg text-gray-500">
+    Health Department - 352-334-7900
+    </p>
+    <p className="text-lg text-gray-500">
+   Poison Control - 800-222-1222
+    </p>
+    <p className="text-lg text-gray-500">
+   Poison Information - 904-244-4465
+    </p>
+    <p className="text-lg text-gray-500">
+   Victim services - 352-264-6760
+    </p>
+    </div>   
+    </section>
+
+    <section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
+    <div className="mb-12 text-left md:text-center">
+    <p className="text-lg text-gray-500">
+    For more information about the Mobile Outreach Clinic or any of its partner organizations, call 352-273-5329 or visit outreach.med.ufl.edu
+    </p>
+    </div> 
+    </section>
+
     </section>
     </div>
     )
