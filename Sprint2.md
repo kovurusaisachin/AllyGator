@@ -109,9 +109,12 @@ UPDATE FACULTY: This API is used to Update Faculty's information into the databa
 localhost:8080/api/v1/faculty/26<br />
 <br /><br />
 For better understanding of the API's, please refer the below link.
-<br /><br />
 Sprint 2 API's: https://documenter.getpostman.com/view/19334583/UVeGqkYL <br />
 
+GO-LANG UNIT-TEST CASES: <br />
+Unit-test cases for the API's have been added along with coverage report and HTML pages.
+https://github.com/kovurusaisachin/AllyGator/tree/main/Backend
+https://drive.google.com/drive/u/1/folders/1NarjzdOcaf43jcIE_Z-lVBP0AkOUTaeT
 <br /><br />
 Video link:
 Sprint 1 Video: https://drive.google.com/drive/u/1/folders/1TYdBOjd0T9YLY2Q4KmH3epmAuQ9s0ypi <br />
