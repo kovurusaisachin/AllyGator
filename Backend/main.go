@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 
+	"allygator.com/gatorweb/middlewares"
 	"allygator.com/gatorweb/models"
 	"allygator.com/gatorweb/routers/api"
 	"github.com/gin-gonic/gin"
@@ -14,39 +15,45 @@ func main() {
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 	// API v1
-	v1 := r.Group("/api/v1")
+	v1 := r.Group("/api")
 	{
-		//User APIs
-		v1.GET("user", api.GetUsers)
-		v1.GET("user/:id", api.GetUserById)
-		v1.POST("register", api.AddUser)
-		v1.PUT("user/:id", api.UpdateUser)
-		v1.DELETE("user/:id", api.DeleteUser)
+		//Public User APIs
+		v1.POST("/v1/register", api.AddUser)
+		v1.POST(("/v1/login"), api.Login)
 
-		//Department APIs
-		v1.GET("department", api.GetDepartments)
-		v1.GET("department/:id", api.GetDepartmentById)
-		v1.POST("addDept", api.AddDepartment)
-		v1.PUT("department/:id", api.UpdateDepartment)
-		v1.DELETE("department/:id", api.DeleteDepartment)
+		// Protected APIs
+		protected := v1.Group("/v1").Use(middlewares.Authz())
+		{
+			protected.GET("user", api.GetUsers)
+			protected.GET("user/:id", api.GetUserById)
+			protected.PUT("user/:id", api.UpdateUser)
+			protected.DELETE("user/:id", api.DeleteUser)
 
-		//chat api
-		v1.GET("chat", api.GetChat)
-		v1.GET("chat/:id", api.GetChatById)
-		v1.POST("addChat", api.AddChat)
-		// v1.PUT("chat/:id", api.UpdateChat)
+			//Department APIs
+			protected.GET("department", api.GetDepartments)
+			protected.GET("department/:id", api.GetDepartmentById)
+			protected.POST("addDept", api.AddDepartment)
+			protected.PUT("department/:id", api.UpdateDepartment)
+			protected.DELETE("department/:id", api.DeleteDepartment)
 
-		//faculty api
-		v1.GET("faculty", api.GetFaculty)
-		v1.GET("faculty/:id", api.GetFacultyById)
-		v1.POST("addFaculty", api.AddFaculty)
-		v1.PUT("faculty/:id", api.UpdateFaculty)
+			//chat api
+			protected.GET("chat", api.GetChat)
+			protected.GET("chat/:id", api.GetChatById)
+			protected.POST("addChat", api.AddChat)
+			// protected.PUT("chat/:id", api.UpdateChat)
 
-		//Course APIs
-		v1.GET("course", api.GetCourses)
-		v1.GET("course/:id", api.GetCourseById)
-		v1.POST("addCourse", api.AddCourse)
-		v1.PUT("course/:id", api.UpdateCourse)
+			//faculty api
+			protected.GET("faculty", api.GetFaculty)
+			protected.GET("faculty/:id", api.GetFacultyById)
+			protected.POST("addFaculty", api.AddFaculty)
+			protected.PUT("faculty/:id", api.UpdateFaculty)
+
+			//Course APIs
+			protected.GET("course", api.GetCourses)
+			protected.GET("course/:id", api.GetCourseById)
+			protected.POST("addCourse", api.AddCourse)
+			protected.PUT("course/:id", api.UpdateCourse)
+		}
 
 	}
 

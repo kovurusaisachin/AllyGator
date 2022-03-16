@@ -42,7 +42,7 @@ func Login(c *gin.Context) {
 	result.Scan(&mailDB)
 	if mailDB == "" {
 		c.JSON(401, gin.H{
-			"msg": "Invalid User credentials!! Please verify the entered Email",
+			"msg": "Invalid User credentials!! Please verify the entered Email/Password",
 		})
 		c.Abort()
 		return
@@ -59,7 +59,7 @@ func Login(c *gin.Context) {
 	if err != nil {
 		log.Println(err)
 		c.JSON(401, gin.H{
-			"msg": "Invalid User credentials!! Please verify the entered Password",
+			"msg": "Invalid User credentials!! Please verify the entered Email/Password",
 		})
 		c.Abort()
 		return
