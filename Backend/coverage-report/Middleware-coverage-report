@@ -1,0 +1,28 @@
+saisachinkovuru@Sais-MacBook-Pro middlewares % go test -v -cover
+=== RUN   TestAuthzNoHeader
+
+[GIN] 2022/03/17 - 16:12:21 | 403 |      49.375µs |                 | GET      /api/v1/users
+    authorize_test.go:33: 
+        Expected to get status 200 but instead got 403
+--- PASS: TestAuthzNoHeader (0.00s)
+=== RUN   TestAuthzInvalidTokenFormat
+
+[GIN] 2022/03/17 - 16:12:21 | 400 |      81.167µs |                 | GET      /api/v1/users
+    authorize_test.go:55: 
+        Expected to get status 200 but instead got 400
+--- PASS: TestAuthzInvalidTokenFormat (0.00s)
+=== RUN   TestAuthzInvalidToken
+
+[GIN] 2022/03/17 - 16:12:21 | 401 |     707.084µs |                 | GET      /api/v1/users
+    authorize_test.go:79: 
+        Expected to get status 200 but instead got 401
+--- PASS: TestAuthzInvalidToken (0.00s)
+=== RUN   TestValidToken
+
+    authorize_test.go:115: 
+        Expected to get status 200 is same ast 200
+[GIN] 2022/03/17 - 16:12:21 | 200 |    1.389625ms |                 | GET      /api/v1/users
+--- PASS: TestValidToken (0.00s)
+PASS
+coverage: 100.0% of statements
+ok      allygator.com/gatorweb/middlewares      0.545s
