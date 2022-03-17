@@ -1,7 +1,6 @@
 package middlewares
 
 import (
-	"fmt"
 	"strings"
 
 	"allygator.com/gatorweb/auth"
@@ -41,7 +40,6 @@ func Authz() gin.HandlerFunc {
 		}
 
 		c.Set("email", claims.Email)
-		fmt.Println("claimsemail", claims.Email)
 
 		c.Next()
 
