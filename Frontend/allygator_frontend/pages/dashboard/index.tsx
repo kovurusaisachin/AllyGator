@@ -19,7 +19,7 @@ export default function dashboard() {
   
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log('*********',state?.userData?.data)
@@ -72,26 +72,7 @@ export default function dashboard() {
     "Content-Type": "application/x-www-form-urlencoded",
   };
 
-
-  const fetchData = async () => {
-    await axios
-      .get(`${API_URL}/user`, { headers })
-      .then((response) => {
-        setState({
-          ...state,
-          userData: response?.data,
-        });
-      })
-      .catch((err) => {
-        if (err.request) {
-          console.log(err.request);
-        }
-        if (err.response) {
-          console.log(err.response);
-        }
-      });
-  };
-
+  
   const tableHeader = [
     { name: "Name", href: "#home" },
     { name: "Major", href: "#features" },

@@ -54,6 +54,7 @@ const Profile = (props) => {
                             type="text"
                             name="first-name"
                             id="first-name"
+                            value={props?.data?.data?.firstname ?? ""}
                             autoComplete="given-name"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md"
                           />
@@ -70,6 +71,7 @@ const Profile = (props) => {
                             type="text"
                             name="last-name"
                             id="last-name"
+                            value={props?.data?.data?.lastname ?? ""}
                             autoComplete="family-name"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -86,6 +88,8 @@ const Profile = (props) => {
                             type="text"
                             name="email-address"
                             id="email-address"
+                            data-cy='email-address'
+                            value={props?.data?.data?.email ?? ""}
                             autoComplete="email"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -98,18 +102,13 @@ const Profile = (props) => {
                           >
                             Country
                           </label>
-                          <select
+                          <input
                             id="country"
                             name="country"
                             autoComplete="country-name"
+                            value={props?.data?.data?.nationality ?? ""}
                             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          >
-                            <option>select a country</option>
-                            <option>United States</option>
-                            <option>India</option>
-                            <option>Canada</option>
-                            <option>Mexico</option>
-                          </select>
+                          />
                         </div>
 
                         <div className="col-span-6">
@@ -123,6 +122,7 @@ const Profile = (props) => {
                             type="text"
                             name="street-address"
                             id="street-address"
+                            value="abc street ab ne"
                             autoComplete="street-address"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -139,6 +139,7 @@ const Profile = (props) => {
                             type="text"
                             name="city"
                             id="city"
+                            value="gainesville"
                             autoComplete="address-level2"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -155,6 +156,7 @@ const Profile = (props) => {
                             type="text"
                             name="region"
                             id="region"
+                            value="FL"
                             autoComplete="address-level1"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -171,6 +173,7 @@ const Profile = (props) => {
                             type="text"
                             name="postal-code"
                             id="postal-code"
+                            value="32608"
                             autoComplete="postal-code"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
