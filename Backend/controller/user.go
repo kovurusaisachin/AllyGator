@@ -119,6 +119,28 @@ func GetUserById(idStudent string) (User, error) {
 	return user, nil
 }
 
+//This function is used to retrieve the student details by EmailID
+func GetUserById(idStudent string) (User, error) {
+
+	stmt, err := models.DB.Prepare("SELECT idStudent, firstname, lastname from users WHERE email = ?")
+
+	if err != nil {
+		return User{}, err
+	}
+
+	user := User{}
+
+	sqlErr := stmt.QueryRow(email).Scan(&user.StudentId, &user.FirstName, &user.LastName,)
+
+	if sqlErr != nil {
+		if sqlErr == sql.ErrNoRows {
+			return User{}, nil
+		}
+		return User{}, sqlErr
+	}
+	return user, nil
+}
+
 //This function is used to Update the student details by ID
 func UpdateUser(ourUser User, idStudent int) (bool, error) {
 

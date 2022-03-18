@@ -26,6 +26,7 @@ func main() {
 		{
 			protected.GET("user", api.GetUsers)
 			protected.GET("user/:id", api.GetUserById)
+			protected.GET("mail/:id", api.GetUserByEmail)
 			protected.PUT("user/:id", api.UpdateUser)
 			protected.DELETE("user/:id", api.DeleteUser)
 

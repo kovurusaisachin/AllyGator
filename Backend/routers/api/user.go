@@ -35,6 +35,20 @@ func GetUserById(c *gin.Context) {
 	}
 }
 
+func GetUserByEmail(c *gin.Context) {
+	email := c.Param("id")
+
+	person, err := controller.GetUserById(email)
+	checkErr(err)
+	// if the name is blank we can assume nothing is found
+	if person.FirstName == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this student Email ID in our records"})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": person})
+	}
+}
+
 func AddUser(c *gin.Context) {
 	var json controller.User
 
