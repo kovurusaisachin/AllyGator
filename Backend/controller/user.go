@@ -120,7 +120,7 @@ func GetUserById(idStudent string) (User, error) {
 }
 
 //This function is used to retrieve the student details by EmailID
-func GetUserById(idStudent string) (User, error) {
+func GetUserByEmail(email string) (User, error) {
 
 	stmt, err := models.DB.Prepare("SELECT idStudent, firstname, lastname from users WHERE email = ?")
 
@@ -130,7 +130,7 @@ func GetUserById(idStudent string) (User, error) {
 
 	user := User{}
 
-	sqlErr := stmt.QueryRow(email).Scan(&user.StudentId, &user.FirstName, &user.LastName,)
+	sqlErr := stmt.QueryRow(email).Scan(&user.StudentId, &user.FirstName, &user.LastName)
 
 	if sqlErr != nil {
 		if sqlErr == sql.ErrNoRows {
