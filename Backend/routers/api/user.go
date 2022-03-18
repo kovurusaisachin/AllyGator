@@ -38,7 +38,7 @@ func GetUserById(c *gin.Context) {
 func GetUserByEmail(c *gin.Context) {
 	email := c.Param("id")
 
-	person, err := controller.GetUserById(email)
+	person, err := controller.GetUserByEmail(email)
 	checkErr(err)
 	// if the name is blank we can assume nothing is found
 	if person.FirstName == "" {
