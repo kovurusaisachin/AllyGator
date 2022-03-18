@@ -1,21 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { API_URL } from "../components/constant";
 export default function Signup() {
+  const [state, setState] = useState({
+    registerData: {
+      firstname: "",
+      lastname: "",
+      department: 0,
+      password: "",
+      confPassword:"",
+      email: "",
+      gender: "",
+      course: "",
+      url: "",
+      nationality: "",
+      profile: "",
+      specialization: "",
+      status: "",
+    },
+  });
+  const router = useRouter();
+  const registerationAPI = axios.create({
+    baseURL: `${API_URL}`,
+    responseType: "json",
+  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    registerationAPI
+      .post("/register", state?.registerData)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          {
+            console.log("registered perfectly");
+            console.log(response);
+            router.push("/login");
+          }
+        }
+      })
+      .catch((err) => {
+        if (err.response) {
+          // client received an error response (5xx, 4xx)
+          console.log(err.respone);
+        } else if (err.request) {
+          // client never received a response, or request never left
+          console.log(err.request);
+        } else {
+          // anything else
+          console.log("something bad happened, retry again...", err);
+        }
+      });
+  };
   return (
     <>
-      <div className="flex p-1 py-10 bg-white place-content-center">
-        <div className="max-w-lg overflow-hidden border border-gray-100 rounded-lg">
-          <form className="w-full max-w-lg">
-          {/* <div className="mb-4">
-                    <img
-                      src="https://i.pinimg.com/originals/79/ae/30/79ae3050000579337f79c78e8ad2e6eb.jpg"
-                      className="scale-50 max-w-full h-auto rounded-full"
-                      alt=""
-                    />
-                  </div> */}
-                  <div className="text-3xl font-bold text-center py-10 ">
-                    Sign Up Gators!!
-                  </div>
+      <div className="flex p-1 py-4 bg-white place-content-center">
+        <div className="max-w-lg overflow-hidden border border-gray-300 shadow-lg rounded-lg">
+          <form
+            className="w-full bg-blue-100 px-3 py-2 max-w-lg"
+          >
+            <div className="text-3xl font-bold text-center py-10 ">
+              Sign Up Gators!!
+            </div>
             <div className="px-2 pb-1">
               <div className="flex flex-wrap mb-6 -mx-3">
                 <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0">
@@ -26,11 +73,26 @@ export default function Signup() {
                     First Name
                   </label>
                   <input
-                    className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
                     id="grid-first-name"
                     type="text"
                     placeholder="Jane"
                     data-cy="reg-firstname-input"
+                    value={state?.registerData?.firstname ?? ""}
+                    onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          firstname: e.target.value
+                        }
+                      });
+                    }}
                   />
                 </div>
                 <div className="w-full px-3 md:w-1/2">
@@ -41,12 +103,26 @@ export default function Signup() {
                     Last Name
                   </label>
                   <input
-                    className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
                     id="grid-last-name"
                     type="text"
                     placeholder="Doe"
                     data-cy="reg-lastname-input"
-
+                    value={state?.registerData?.lastname ?? ""}
+                    onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          lastname: e.target.value
+                        }
+                      });
+                    }}
                   />
                 </div>
               </div>
@@ -59,11 +135,26 @@ export default function Signup() {
                     UF Email
                   </label>
                   <input
-                    className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
                     id="grid-email"
                     type="email"
                     data-cy="reg-email-input"
                     placeholder="janedoe@ufl.edu"
+                    value={state?.registerData?.email ?? ""}
+                    onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          email: e.target.value
+                        }
+                      });
+                    }}
                   />
                 </div>
                 <div className="w-full px-3 mb-6">
@@ -74,11 +165,56 @@ export default function Signup() {
                     Password
                   </label>
                   <input
-                    className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
                     id="grid-password"
                     type="password"
                     data-cy="reg-password-input"
                     placeholder="***********"
+                    value={state?.registerData?.password ?? ""}
+                    onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          password: e.target.value
+                        }
+                      });
+                    }}
+                  />
+                </div>
+                <div className="w-full px-3 mb-6">
+                  <label
+                    className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                    htmlFor="grid-password"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
+                    id="grid-password"
+                    type="password"
+                    data-cy="reg-password-input"
+                    placeholder="***********"
+                    value={state?.registerData?.confPassword ?? ""}
+                    onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          confPassword: e.target.value
+                        }
+                      });
+                    }}
                   />
                 </div>
                 <div className="w-full px-3 mb-6">
@@ -86,28 +222,33 @@ export default function Signup() {
                     className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                     htmlFor="grid-number"
                   >
-                    Major
+                    Specialization
                   </label>
                   <input
-                    className="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-email"
+                    className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
+                    id="grid-specialization"
                     type="text"
                     data-cy="reg-major-input"
                     placeholder="Computer Science"
+                    value={state?.registerData?.specialization ?? ""}
+                    onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          specialization: e.target.value
+                        }
+                      });
+                    }}
                   />
                 </div>
               </div>
-              {/* <label>
-                <span className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase">
-                  Address
-                </span>
-                <textarea
-                  className="block w-full px-4 py-3 mt-1 mb-3 text-gray-700 bg-gray-200 border border-gray-200 rounded form-textarea focus:outline-none"
-                  rows={4}
-                  placeholder=" x sw, y street"
-                  defaultValue={""}
-                />
-              </label> */}
+
               <div className="flex flex-wrap m-6 mb-2 -mx-3">
                 <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                   <label
@@ -117,11 +258,26 @@ export default function Signup() {
                     Nationality
                   </label>
                   <input
-                    className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
                     id="grid-city"
                     type="text"
                     placeholder="Indian"
                     data-cy="reg-nationality-input"
+                    value={state?.registerData?.nationality ?? ""}
+                    onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          nationality: e.target.value
+                        }
+                      });
+                    }}
                   />
                 </div>
                 <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
@@ -133,13 +289,30 @@ export default function Signup() {
                   </label>
                   <div className="relative">
                     <select
-                      className="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                      required
+                      className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
                       id="grid-state"
                       data-cy="reg-gender-input"
+                      value={state?.registerData?.gender ?? ""}
+                      onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          gender: e.target.value
+                        }
+                        });
+                      }}
                     >
-                      <option>Male</option>
-                      <option>Female</option>
-                      <option>Other</option>
+                      <option value="">Select gender</option>
+                      <option value="M">Male</option>
+                      <option value="F">Female</option>
+                      <option value="Other">Other</option>
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
                       <svg
@@ -157,16 +330,35 @@ export default function Signup() {
                     className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                     htmlFor="grid-zip"
                   >
-                    Phone No.
+                    Status
                   </label>
-                  <input
+                  <select
                     required
                     data-cy="reg-phoneno-input"
-                    className="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                    className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
                     id="grid-zip"
-                    type="number"
                     placeholder={"123-444-2828"}
-                  />
+                    value={state?.registerData?.status ?? ""}
+                      onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          status: e.target.value
+                        }
+                        });
+                      }}
+                    >
+                      <option value="">Select status</option>
+                      <option value="alumni">Alumni</option>
+                      <option value="incoming">Incoming</option>
+                      <option value="active">Active</option>
+                    </select>
                 </div>
               </div>
             </div>
@@ -182,15 +374,13 @@ export default function Signup() {
                   Login Here
                 </a>
               </div>
-              <Link href="/login">
-              <button
-                type="button"
-                className="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
-              >
-                
-                Sign Up 
-              </button>
-              </Link>
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                >
+                  Sign Up
+                </button>
             </div>
           </form>
         </div>
