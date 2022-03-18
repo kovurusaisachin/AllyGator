@@ -270,7 +270,7 @@ func TestGetUserByEmail(t *testing.T) {
 	v1.GET("mail/:id", GetUserByEmail)
 
 	t.Run("Incorrect User EmailID", func(t *testing.T) {
-		req, err := http.NewRequest(http.MethodGet, "/api/v1/user/kovuru.sachin@ufl.edu", nil)
+		req, err := http.NewRequest(http.MethodGet, "/api/v1/mail/kovuru.sachin@ufl.edu", nil)
 		if err != nil {
 			t.Fatalf("Couldn't create request: %v\n", err)
 		}
@@ -292,7 +292,7 @@ func TestGetUserByEmail(t *testing.T) {
 		}
 	})
 	t.Run("Correct User EmailID", func(t *testing.T) {
-		req, err := http.NewRequest(http.MethodGet, "/api/v1/user/kovuru.saisachin@ufl.edu", nil)
+		req, err := http.NewRequest(http.MethodGet, "/api/v1/mail/kovuru.saisachin@ufl.edu", nil)
 		if err != nil {
 			t.Fatalf("Couldn't create request: %v\n", err)
 		}
