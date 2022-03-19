@@ -8,71 +8,134 @@ import { API_URL } from "../../components/constant";
 export default function dashboard() {
   const [state, setState] = useState({
     userData: [],
+    chatData: [],
     query: {
       searchText: "",
       status: "success",
       department: "All",
       nationality: "all",
     },
-    result:[]
+    result: [],
+    token: "",
   });
-  
-
-  useEffect(() => {
-    // fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  console.log('*********',state?.userData?.data)
-  useEffect(() => {
-      const newResults = state?.userData?.data?.filter(
-          product =>
-            product?.firstname
-              ?.toLowerCase()
-              ?.includes(state.query.searchText.toLowerCase()) ||
-            product?.lastname
-              ?.toLowerCase()
-              ?.includes(state.query.searchText?.toLowerCase()) ||
-            product?.nationality
-              ?.toLowerCase()
-              ?.includes(state.query.searchText?.toLowerCase()) ||
-            product?.specialization
-              ?.toLowerCase()
-              ?.includes(state.query.searchText?.toLowerCase()) ||
-            product?.email
-              ?.toLowerCase()
-              ?.includes(state.query.searchText?.toLowerCase()) ||
-            product?.specialization
-              ?.toLowerCase()
-              ?.includes(state.query.searchText?.toLowerCase()) ||
-            product?.course
-              ?.toLowerCase()
-              ?.includes(state.query.searchText?.toLowerCase())  
-
-        )
-        ?.filter(product => product?.status === state?.query?.status)
-        ?.filter(product => product?.nationality === state?.query?.nationality);
-        
-    console.log('ppp',newResults)
-      setState({
-        ...state,
-        result: newResults
-      });
-  }, [
-    state.query.searchText,
-    state?.query?.department,
-    state.query.nationality,
-    state.query.status,
-    state?.userData
-  ]);
-  
-  console.log('ppk',state?.result)
-  console.log('######',state?.userData?.data)
-
-  const headers = {
-    "Content-Type": "application/x-www-form-urlencoded",
+  const config = {
+    headers: {
+      Authorization: `Bearer ${state?.token}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
   };
 
-  
+  const parseJwt = (token) => {
+    if (!token) {
+      return;
+    }
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace("-", "+").replace("_", "/");
+    return JSON.parse(window.atob(base64));
+  };
+
+  const tokenData = parseJwt(state?.token);
+
+  useEffect(() => {
+    setState({
+      ...state,
+      token: window.sessionStorage.getItem("tk"),
+    });
+    fetchData();
+    fetchChatData();
+    window.sessionStorage.setItem("userId", state?.chatData?.data?.idStudent);
+    window.sessionStorage.setItem(
+      "username",
+      state?.chatData?.data?.firstname + " " + state?.chatData?.data?.lastname
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    state?.token,
+    state?.chatData?.data?.idStudent,
+    state?.userData?.data?.idStudent,
+  ]);
+  console.log("*********", state?.userData);
+  const fetchChatData = async () => {
+    await axios
+      .get(`${API_URL}/mail/${tokenData?.Email}`, config)
+      .then((response) => {
+        console.log(response, "oojojo");
+        setState({
+          ...state,
+          chatData: response?.data,
+        });
+      })
+      .catch((err) => {
+        if (err.request) {
+          console.log(err.request, "pp");
+        }
+        if (err.response) {
+          console.log(err.response, "ppp");
+        }
+      });
+  };
+
+  const fetchData = async () => {
+    await axios
+      .get(`${API_URL}/user`, config)
+      .then((response) => {
+        setState({
+          ...state,
+          userData: response?.data,
+        });
+      })
+      .catch((err) => {
+        if (err.request) {
+          console.log(err.request);
+        }
+        if (err.response) {
+          console.log(err.response);
+        }
+      });
+  };
+    // useEffect(() => {
+
+  //     const newResults = state?.userData?.data?.filter(
+  //         product =>
+  //           product?.firstname
+  //             ?.toLowerCase()
+  //             ?.includes(state.query.searchText.toLowerCase()) ||
+  //           product?.lastname
+  //             ?.toLowerCase()
+  //             ?.includes(state.query.searchText?.toLowerCase()) ||
+  //           product?.nationality
+  //             ?.toLowerCase()
+  //             ?.includes(state.query.searchText?.toLowerCase()) ||
+  //           product?.specialization
+  //             ?.toLowerCase()
+  //             ?.includes(state.query.searchText?.toLowerCase()) ||
+  //           product?.email
+  //             ?.toLowerCase()
+  //             ?.includes(state.query.searchText?.toLowerCase()) ||
+  //           product?.specialization
+  //             ?.toLowerCase()
+  //             ?.includes(state.query.searchText?.toLowerCase()) ||
+  //           product?.course
+  //             ?.toLowerCase()
+  //             ?.includes(state.query.searchText?.toLowerCase())
+
+  //       )
+  //       ?.filter(product => product?.status === state?.query?.status)
+  //       ?.filter(product => product?.nationality === state?.query?.nationality);
+
+  //   console.log('ppp',newResults)
+  //     setState({
+  //       ...state,
+  //       result: newResults
+  //     });
+  // }, [
+  //   state.query.searchText,
+  //   state?.query?.department,
+  //   state.query.nationality,
+  //   state.query.status,
+  //   state?.userData
+  // ]);
+
   const tableHeader = [
     { name: "Name", href: "#home" },
     { name: "Major", href: "#features" },
@@ -151,8 +214,8 @@ export default function dashboard() {
                           ...state,
                           query: {
                             ...state.query,
-                            searchText: e.target.value
-                          }
+                            searchText: e.target.value,
+                          },
                         });
                       }}
                     />
@@ -189,8 +252,8 @@ export default function dashboard() {
                           ...state,
                           query: {
                             ...state.query,
-                            department: e.target.value
-                          }
+                            department: e.target.value,
+                          },
                         });
                       }}
                     >
@@ -232,13 +295,12 @@ export default function dashboard() {
                           ...state,
                           query: {
                             ...state.query,
-                            nationality: e.target.value
-                          }
+                            nationality: e.target.value,
+                          },
                         });
                       }}
                     >
                       <option value="all">All</option>
-
                     </select>
                   </div>
                 </div>
@@ -248,41 +310,41 @@ export default function dashboard() {
                   Status
                 </label>
                 <div className="relative mt-1.5">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <svg
-                        className="h-5 w-5 text-gray-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5 13l4 4L19 7"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <select
-                      className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
-                      placeholder="Search Bookings status"
-                      value={state.query.status ?? ""}
-                      onChange={(e) => {
-                        setState({
-                          ...state,
-                          query: {
-                            ...state.query,
-                            status: e.target.value
-                          }
-                        });
-                      }}
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg
+                      className="h-5 w-5 text-gray-400"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
                     >
-                      <option value="all">All</option>
-                      <option value="incoming">Incoming</option>
-                      <option value="active">Active</option>
-                      <option value="alumni">Alumni</option>
-                    </select>
+                      <path
+                        fillRule="evenodd"
+                        d="M5 13l4 4L19 7"
+                        clipRule="evenodd"
+                      />
+                    </svg>
                   </div>
+                  <select
+                    className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
+                    placeholder="Search Bookings status"
+                    value={state.query.status ?? ""}
+                    onChange={(e) => {
+                      setState({
+                        ...state,
+                        query: {
+                          ...state.query,
+                          status: e.target.value,
+                        },
+                      });
+                    }}
+                  >
+                    <option value="all">All</option>
+                    <option value="incoming">Incoming</option>
+                    <option value="active">Active</option>
+                    <option value="alumni">Alumni</option>
+                  </select>
+                </div>
               </div>
             </div>
             <Table header={tableHeader} data={state?.userData} type="user" />
