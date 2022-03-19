@@ -27,7 +27,7 @@ export default function Login() {
           {
             console.log("loggeg in perfectly")
             console.log(response)
-            window.sessionStorage.setItem("tk",response?.data?.token)
+            window.sessionStorage.setItem("token",response?.data?.token)
             router.push("/dashboard");
           }
         }

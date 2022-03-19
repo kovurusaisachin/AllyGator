@@ -39,7 +39,7 @@ export default function dashboard() {
   useEffect(() => {
     setState({
       ...state,
-      token: window.sessionStorage.getItem("tk"),
+      token: window.sessionStorage.getItem("token"),
     });
     fetchData();
     fetchChatData();

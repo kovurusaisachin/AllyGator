@@ -8,9 +8,17 @@ import { API_URL } from "../../components/constant";
 export default function CometChatNoSSR() {
   const [state, setState] = useState({
     user: undefined,
-    friends:[]
+    friends:[],
+    token:"",
+    UID:""
   });
   useEffect(() => {
+    setState({
+      ...state,
+      token: window.sessionStorage.getItem("token"),
+      UID: window.sessionStorage.getItem("userId")
+    })
+
     profileFetch();
     friendFetch();
     let appSetting = new CometChat.AppSettingsBuilder()
@@ -20,11 +28,10 @@ export default function CometChatNoSSR() {
     CometChat.init(COMETCHAT_CONSTANTS.APP_ID, appSetting).then(
       () => {
         console.log("Initialization completed successfully")
-        const UID = "2";
+        // const UID = "2";
         const authKey = COMETCHAT_CONSTANTS.AUTH_KEY;
-        window.sessionStorage.setItem('userId',"2")
-        window.sessionStorage.setItem('username',"Prashant Kapri")
-        CometChat.login(UID, authKey).then(
+        window.sessionStorage.getItem('username')
+        CometChat.login(state?.UID, authKey).then(
           (user) => {
             setState({
               ...state,
@@ -57,13 +64,7 @@ export default function CometChatNoSSR() {
         // Check the reason for error and take appropriate action.
       }
     );
-    // let limit = 30;
-    // let usersRequest = new CometChat.UsersRequestBuilder()
-    //                 .setLimit(limit)
-    //                 .friendsOnly(true)
-    //                 .build();
-    // console.log("mpppm",usersRequest)
-  }, []);
+  }, [state?.token, state?.UID]);
   var friendsList = state?.friends?.length === 0 ? [] : state?.friends?.map(x => x?.idConnected) ?? []
   var fl = friendsList?.map(String)
   console.log(fl,'kp')
@@ -76,11 +77,14 @@ export default function CometChatNoSSR() {
   console.log(x,'ppp')
   const arr = Object.assign([],x)
   console.log(typeof(arr),arr)
-  const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
+  const config = {
+    headers: {
+      Authorization: `Bearer ${state?.token}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
   };
   const profileFetch = async () => {
-    await axios.get(`${API_URL}/chat/2`,{headers})
+    await axios.get(`${API_URL}/chat/${state?.UID}`,config)
     .then((response) => {
       setState({
         ...state,
@@ -93,7 +97,10 @@ export default function CometChatNoSSR() {
     });
   };
   const options = {
-    headers: { "apiKey":  COMETCHAT_CONSTANTS.REST_API_KEY, 'Content-Type': 'application/json', Accept: 'application/json' }  
+    headers: { 
+      "apiKey":  COMETCHAT_CONSTANTS.REST_API_KEY,
+      'Content-Type': 'application/json', 
+      'Accept': 'application/json' }  
   };
   const friendFetch = async () => {
     await axios.post(`https://${COMETCHAT_CONSTANTS.APP_ID}.api-${COMETCHAT_CONSTANTS.REGION}.cometchat.io/v3/users/2/friends`,JSON.stringify({accepted: arr}),options)
