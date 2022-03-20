@@ -37,7 +37,7 @@ export default function Table(props) {
                 </thead>
                 {props?.type === "user" ?
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {props?.data?.data?.map((person) => (
+                  {props?.data?.map((person) => (
                     <tr key={person.email}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
@@ -61,13 +61,13 @@ export default function Table(props) {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person?.nationality}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {person?.status === "alumni" ?
-                        <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-green-100 text-blue-600">
+                        <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-800">
                         Alumni
                       </span>: (person?.status === "incoming" ?
-                      <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-green-100 text-indigo-600">
+                      <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-red-100 text-red-800">
                       Incoming
                     </span>:
-                        <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-green-100 text-teal-600">
+                        <span className="px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-blue-100 text-blue-800">
                           Active
                         </span>)}
                       </td>
@@ -75,7 +75,7 @@ export default function Table(props) {
                         <Link href={person?.url ?? ""}>
                           <a target="_blank">
                             <svg
-                              className="w-6 h-6 text-blue-500 fill-current"
+                              className="w-6 h-6 text-blue-800 fill-current"
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 448 512">
                               <path

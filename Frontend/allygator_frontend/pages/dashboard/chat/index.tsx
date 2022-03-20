@@ -11,7 +11,9 @@ const CometChatNoSSR = dynamic(
 // import ResetPass from './ResetPassword'
 function Connection() {
     useEffect(() => {
-        window.CometChat = require('@cometchat-pro/chat').CometChat
+        if (typeof window !== 'undefined'){
+            window.CometChat = require('@cometchat-pro/chat').CometChat
+        }
     });
     return(
         <div className="flex flex-col-2">
