@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useMemo} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { API_URL } from "../components/constant";
+import Swal from "sweetalert2"
+import countryList from 'react-select-country-list'
+
 export default function Signup() {
   const [state, setState] = useState({
     registerData: {
@@ -26,6 +29,7 @@ export default function Signup() {
     baseURL: `${API_URL}`,
     responseType: "json",
   });
+  const nationality = useMemo(() => countryList().getData(), [])
   const handleSubmit = (e) => {
     e.preventDefault();
     registerationAPI
@@ -34,34 +38,59 @@ export default function Signup() {
         console.log(response);
         if (response.status === 200) {
           {
+            Swal.fire({
+              icon: 'success',
+              title: 'Registeration successfull',
+              // text: "Server busy please try again later",
+              // footer: '<a href="">Why do I have this issue?</a>'
+            })
             console.log("registered perfectly");
             console.log(response);
             router.push("/login");
           }
         }
       })
-      .catch((err) => {
+      .catch(err => {
         if (err.response) {
           // client received an error response (5xx, 4xx)
-          console.log(err.respone);
+          console.log(err.respone)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please check your password and email ...',
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
         } else if (err.request) {
           // client never received a response, or request never left
-          console.log(err.request);
+          console.log(err.request)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Server busy please try again later",
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
         } else {
           // anything else
-          console.log("something bad happened, retry again...", err);
+          console.log('something bad happened, retry again...', err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Something bad happened, retry again...",
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
         }
       });
   };
   return (
     <>
-      <div className="flex p-1 py-4 bg-white place-content-center">
-        <div className="max-w-lg overflow-hidden border border-gray-300 shadow-lg rounded-lg">
+      <div className="flex p-1 py-4 bg-gray-800 place-content-center">
+        <div className="max-w-lg overflow-hidden border border-gray-300 shadow-lg rounded-lg ">
           <form
-            className="w-full bg-blue-100 px-3 py-2 max-w-lg"
+            className="w-full bg-white px-3 py-2 max-w-lg opacity-100"
           >
+            
             <div className="text-3xl font-bold text-center py-10 ">
-              Sign Up Gators!!
+                Sign Up Gators!!
             </div>
             <div className="px-2 pb-1">
               <div className="flex flex-wrap mb-6 -mx-3">
@@ -257,7 +286,7 @@ export default function Signup() {
                   >
                     Nationality
                   </label>
-                  <input
+                  <select
                     className="text-md block px-3 py-2 
                      rounded-lg w-full bg-white border-2 border-gray-300
                       placeholder-gray-300 shadow-md 
@@ -265,7 +294,6 @@ export default function Signup() {
                       focus:bg-white 
                       focus:border-gray-600 focus:outline-none"
                     id="grid-city"
-                    type="text"
                     placeholder="Indian"
                     data-cy="reg-nationality-input"
                     value={state?.registerData?.nationality ?? ""}
@@ -278,7 +306,11 @@ export default function Signup() {
                         }
                       });
                     }}
-                  />
+                  >
+                    {nationality.map(x => (
+                      <option value={x.value}>{x.label}</option>
+                    ))}
+                  </select>  
                 </div>
                 <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                   <label
@@ -309,7 +341,7 @@ export default function Signup() {
                         });
                       }}
                     >
-                      <option value="">Select gender</option>
+                      <option value="">Select </option>
                       <option value="M">Male</option>
                       <option value="F">Female</option>
                       <option value="Other">Other</option>
