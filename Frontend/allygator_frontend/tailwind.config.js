@@ -15,6 +15,9 @@ module.exports = {
       ...defaultTheme.colors,
     },
     extend: {
+      backgroundImage: theme => ({
+        'gator-pattern': "url('https://i.pinimg.com/originals/79/ae/30/79ae3050000579337f79c78e8ad2e6eb.jpg')",
+       }),
       colors: {
         rose: colors.rose,
         cyan: colors.cyan,

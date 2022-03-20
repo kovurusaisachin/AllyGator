@@ -83,13 +83,14 @@ export default function Signup() {
   };
   return (
     <>
-      <div className="flex p-1 py-4 bg-white place-content-center">
-        <div className="max-w-lg overflow-hidden border border-gray-300 shadow-lg rounded-lg">
+      <div className="flex p-1 py-4 bg-gray-800 place-content-center">
+        <div className="max-w-lg overflow-hidden border border-gray-300 shadow-lg rounded-lg ">
           <form
-            className="w-full bg-blue-100 px-3 py-2 max-w-lg"
+            className="w-full bg-white px-3 py-2 max-w-lg opacity-100"
           >
+            
             <div className="text-3xl font-bold text-center py-10 ">
-              Sign Up Gators!!
+                Sign Up Gators!!
             </div>
             <div className="px-2 pb-1">
               <div className="flex flex-wrap mb-6 -mx-3">
