@@ -5,30 +5,17 @@ import { useRouter } from "next/router";
 import { API_URL } from "../components/constant";
 import axios from "axios";
 import { useState } from "react";
-import { CometChat } from "@cometchat-pro/chat";
-import { COMETCHAT_CONSTANTS } from "../components/constant/index";
+
+import Swal from "sweetalert2"
 
 export default function Login() {
-  // let appSetting = new CometChat.AppSettingsBuilder()
-  //   .subscribePresenceForAllUsers()
-  //   .setRegion(COMETCHAT_CONSTANTS.REGION)
-  //   .build();
-  // CometChat.init(COMETCHAT_CONSTANTS.APP_ID, appSetting).then(
-  //   () => {
-  //     console.log("Initialization completed successfully");
-  //     // You can now call login function.
-  //   },
-  //   (error) => {
-  //     console.log("Initialization failed with error:", error);
-  //     // Check the reason for error and take appropriate action.
-  //   }
-  // );
-  const [state, setState] = useState({
-    loginData: {
-      Email: "",
-      Password: "",
-    },
-  });
+  const [state,setState] = useState({
+      loginData:{
+        Email: "",
+        Password: "",
+      },
+  })
+  
   const router = useRouter();
   const loginApi = axios.create({
     baseURL: `${API_URL}`,
@@ -42,9 +29,13 @@ export default function Login() {
         console.log(response);
         if (response.status === 200) {
           {
-            console.log("loggeg in perfectly");
-            console.log(response);
-            window.sessionStorage.setItem("token", response?.data?.token);
+            Swal.fire({
+              icon: 'success',
+              title: 'Login successfull',
+              // text: "Server busy please try again later",
+              // footer: '<a href="">Why do I have this issue?</a>'
+            })
+            window.sessionStorage.setItem("token",response?.data?.token)
             router.push("/dashboard");
           }
         }
@@ -52,13 +43,31 @@ export default function Login() {
       .catch((err) => {
         if (err.response) {
           // client received an error response (5xx, 4xx)
-          console.log(err.respone);
+          console.log(err.respone)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please check your password and email ...',
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
         } else if (err.request) {
           // client never received a response, or request never left
-          console.log(err.request);
+          console.log(err.request)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Server busy please try again later",
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
         } else {
           // anything else
-          console.log("something bad happened, retry again...", err);
+          console.log('something bad happened, retry again...', err)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Something bad happened, retry again...",
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
         }
       });
   };
