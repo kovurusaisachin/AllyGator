@@ -11,6 +11,12 @@ export default function Sidebar() {
     e.preventDefault();
     router.push("/");
   };
+  const handleLogout = (e) => {
+    e.preventDefault();
+    window.sessionStorage.removeItem("token")
+    window.sessionStorage.clear()
+    router.push("/login");
+  };
   return (
     <>
       {/* sidebar */}
@@ -197,6 +203,20 @@ export default function Sidebar() {
                   <span className="mx-4 font-medium">Profile</span>
                 </a>
               </Link>
+              <button onClick={handleLogout} className="w-full">
+                <a
+                  className={
+                    router.pathname == "/login"
+                      ? "flex items-center px-4 py-2 mt-5 text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-200"
+                      : "flex items-center px-4 py-2 mt-5 text-gray-600 rounded-md dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700"
+                  }
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+</svg>
+                  <span className="mx-4 font-medium">Logout</span>
+                </a>
+              </button>
             </nav>
           </div>
         </div>
