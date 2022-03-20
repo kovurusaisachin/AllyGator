@@ -3,45 +3,62 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { API_URL } from "../components/constant";
-import axios from "axios"
+import axios from "axios";
 import { useState } from "react";
+import { CometChat } from "@cometchat-pro/chat";
+import { COMETCHAT_CONSTANTS } from "../components/constant/index";
 
 export default function Login() {
-  const [state,setState] = useState({
-      loginData:{
-        Email: "",
-        Password: "",
-      },
-  })
+  // let appSetting = new CometChat.AppSettingsBuilder()
+  //   .subscribePresenceForAllUsers()
+  //   .setRegion(COMETCHAT_CONSTANTS.REGION)
+  //   .build();
+  // CometChat.init(COMETCHAT_CONSTANTS.APP_ID, appSetting).then(
+  //   () => {
+  //     console.log("Initialization completed successfully");
+  //     // You can now call login function.
+  //   },
+  //   (error) => {
+  //     console.log("Initialization failed with error:", error);
+  //     // Check the reason for error and take appropriate action.
+  //   }
+  // );
+  const [state, setState] = useState({
+    loginData: {
+      Email: "",
+      Password: "",
+    },
+  });
   const router = useRouter();
   const loginApi = axios.create({
     baseURL: `${API_URL}`,
-    responseType: 'json',
-  })
+    responseType: "json",
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginApi.post('/login', state?.loginData)
-      .then(response => {
-        console.log(response)
+    loginApi
+      .post("/login", state?.loginData)
+      .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           {
-            console.log("loggeg in perfectly")
-            console.log(response)
-            window.sessionStorage.setItem("token",response?.data?.token)
+            console.log("loggeg in perfectly");
+            console.log(response);
+            window.sessionStorage.setItem("token", response?.data?.token);
             router.push("/dashboard");
           }
         }
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response) {
           // client received an error response (5xx, 4xx)
-          console.log(err.respone)
+          console.log(err.respone);
         } else if (err.request) {
           // client never received a response, or request never left
-          console.log(err.request)
+          console.log(err.request);
         } else {
           // anything else
-          console.log('something bad happened, retry again...', err)
+          console.log("something bad happened, retry again...", err);
         }
       });
   };
@@ -77,13 +94,13 @@ export default function Login() {
                           type="email"
                           data-cy="login-email-input"
                           value={state?.loginData?.Email ?? ""}
-                          onChange={e => {
+                          onChange={(e) => {
                             setState({
                               ...state,
                               loginData: {
                                 ...state.loginData,
-                                Email: e.target.value
-                              }
+                                Email: e.target.value,
+                              },
                             });
                           }}
                           className="text-md block px-3 py-2 
@@ -104,13 +121,13 @@ export default function Login() {
                             placeholder="*********"
                             type="password"
                             value={state?.loginData?.Password ?? ""}
-                            onChange={e => {
+                            onChange={(e) => {
                               setState({
                                 ...state,
                                 loginData: {
                                   ...state.loginData,
-                                  Password: e.target.value
-                                }
+                                  Password: e.target.value,
+                                },
                               });
                             }}
                             data-cy="login-password-input"
@@ -121,8 +138,7 @@ export default function Login() {
           focus:border-gray-600  
           focus:outline-none"
                           />
-                          <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-                          </div>
+                          <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"></div>
                         </div>
                       </div>
                       <div className="flex justify-between">
