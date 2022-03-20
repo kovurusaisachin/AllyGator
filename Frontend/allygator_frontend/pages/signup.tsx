@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useMemo} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { API_URL } from "../components/constant";
 import Swal from "sweetalert2"
+import countryList from 'react-select-country-list'
 
 export default function Signup() {
   const [state, setState] = useState({
@@ -28,6 +29,7 @@ export default function Signup() {
     baseURL: `${API_URL}`,
     responseType: "json",
   });
+  const nationality = useMemo(() => countryList().getData(), [])
   const handleSubmit = (e) => {
     e.preventDefault();
     registerationAPI
@@ -283,7 +285,7 @@ export default function Signup() {
                   >
                     Nationality
                   </label>
-                  <input
+                  <select
                     className="text-md block px-3 py-2 
                      rounded-lg w-full bg-white border-2 border-gray-300
                       placeholder-gray-300 shadow-md 
@@ -291,7 +293,6 @@ export default function Signup() {
                       focus:bg-white 
                       focus:border-gray-600 focus:outline-none"
                     id="grid-city"
-                    type="text"
                     placeholder="Indian"
                     data-cy="reg-nationality-input"
                     value={state?.registerData?.nationality ?? ""}
@@ -304,7 +305,11 @@ export default function Signup() {
                         }
                       });
                     }}
-                  />
+                  >
+                    {nationality.map(x => (
+                      <option value={x.value}>{x.label}</option>
+                    ))}
+                  </select>  
                 </div>
                 <div className="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                   <label
@@ -335,7 +340,7 @@ export default function Signup() {
                         });
                       }}
                     >
-                      <option value="">Select gender</option>
+                      <option value="">Select </option>
                       <option value="M">Male</option>
                       <option value="F">Female</option>
                       <option value="Other">Other</option>
