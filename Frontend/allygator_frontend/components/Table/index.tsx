@@ -1,15 +1,6 @@
 import React from "react"
 import Link from "next/link"
 
-const tableHeader = [
-  { name: "Name", href: "#home" },
-  { name: "Title", href: "#features" },
-  { name: "Status", href: "#register" },
-  { name: "Role", href: "#team" },
-  { name: "Edit", href: "#team" },
-
-]
-
 export default function Table(props) {
   // console.log(props)
   const Header = ({ array }) => {

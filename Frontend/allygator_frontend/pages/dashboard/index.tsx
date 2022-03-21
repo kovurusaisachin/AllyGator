@@ -4,6 +4,7 @@ import AnalyticCard from "../../components/analyticCard";
 import Table from "../../components/Table";
 import axios from "Axios";
 import { API_URL } from "../../components/constant";
+import CourseTable from "../../components/Table/courseTable";
 import { CometChat } from "@cometchat-pro/chat";
 import { COMETCHAT_CONSTANTS } from "../../components/constant/index";
 
@@ -20,7 +21,7 @@ export default function dashboard() {
   const [state, setState] = useState({
     userData: [],
     chatData: [],
-    courseData:[],
+    courseData: [],
     query: {
       searchText: "",
       status: "active",
@@ -47,15 +48,19 @@ export default function dashboard() {
   }, [token]);
 
   const getData = () => {
-    let endpoints = [`${API_URL}/user`, `${API_URL}/mail/${tokenData?.Email}`,`${API_URL}/course`];
+    let endpoints = [
+      `${API_URL}/user`,
+      `${API_URL}/mail/${tokenData?.Email}`,
+      `${API_URL}/course`,
+    ];
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
-      ([{ data: user }, { data: chat },{data: course}]) => {
+      ([{ data: user }, { data: chat }, { data: course }]) => {
         setState({
           ...state,
           userData: user?.data,
           result: user?.data,
           chatData: chat?.data,
-          courseData: course
+          courseData: course,
         });
       }
     );
@@ -85,13 +90,13 @@ export default function dashboard() {
         product?.course
           ?.toLowerCase()
           ?.includes(state.query.searchText?.toLowerCase())
-    )
+    );
     // ?.filter(product => product?.status === state?.query?.status)
 
     // ?.filter(product => product?.department === state?.query?.department)
     // ?.filter(product => product?.nationality === state?.query?.nationality);
 
-    console.log('ppp', newResults)
+    console.log("ppp", newResults);
 
     setState({
       ...state,
@@ -115,29 +120,20 @@ export default function dashboard() {
     { name: "Linkedin", href: "#team" },
   ];
   const courseHeader = [
-    { name: "Name", href: "#home" },
     { name: "Course", href: "#features" },
     { name: "Department", href: "#features" },
     { name: "Faculty", href: "#register" },
-    { name: "Likes", href: "#register" },
-    { name: "Dislike", href: "#register" },
   ];
   const courseData = [
     {
       name: "Database System Implementation",
-      major: "Computer Science & Information Engineering",
       department: "Computer Science",
       faculty: "Alin Dobra",
-      likes: 50,
-      dislike: 10,
     },
     {
       name: "Software Engineering",
-      major: "Computer Science & Information Engineering",
       department: "Computer Science",
       faculty: "Alin Dobra",
-      likes: 25,
-      dislike: 1,
     },
     // More people...
   ];
@@ -148,7 +144,7 @@ export default function dashboard() {
       state?.chatData?.firstname + " " + state?.chatData?.lastname
     );
   }
-  console.log(state?.courseData)
+  console.log(state?.courseData);
   return (
     <>
       {/* sidebar */}
@@ -236,7 +232,7 @@ export default function dashboard() {
                         });
                       }}
                     >
-                      {state?.result?.map(x => (
+                      {state?.result?.map((x) => (
                         <option value={x.department}>{x.department}</option>
                       ))}
                     </select>
@@ -278,9 +274,15 @@ export default function dashboard() {
                         });
                       }}
                     >
-                      {Array.from(new Set(state?.result?.map(x => (
-                        <option value={x.nationality}>{x.nationality}</option>
-                      ))))}
+                      {Array.from(
+                        new Set(
+                          state?.result?.map((x) => (
+                            <option value={x.nationality}>
+                              {x.nationality}
+                            </option>
+                          ))
+                        )
+                      )}
                     </select>
                   </div>
                 </div>
@@ -329,11 +331,19 @@ export default function dashboard() {
             </div>
             <Table header={tableHeader} data={state?.result} type="user" />
           </div>
-          <div className="mx-8  my-10">
+          <div className="mx-8 my-10 grid grid-cols-4 gap-3">
+            <div className="mr-2 col-span-2">
             <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              Top Course list
+              Course list
             </h3>
-            <Table header={courseHeader} data={courseData} type="course" />
+              <CourseTable header={courseHeader} data={courseData} />
+            </div>
+            <div className= "ml-2 mr-8 col-span-2">
+            <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
+              Faculty list
+            </h3>
+              <CourseTable header={courseHeader} data={courseData} />
+            </div>
           </div>
         </div>
       </div>
