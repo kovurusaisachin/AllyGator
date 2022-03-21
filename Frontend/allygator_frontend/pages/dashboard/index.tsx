@@ -326,14 +326,14 @@ export default function dashboard() {
             </div>
             <Table header={tableHeader} data={state?.result} type="user" />
           </div>
-          <div className="mx-8 my-10 grid grid-cols-4 gap-3">
+          <div className="mx-8 my-10 grid grid-cols-5 gap-3">
             <div className="mr-2 col-span-3">
             <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Course list
             </h3>
               <CourseTable header={courseHeader} data={state?.courseData} />
             </div>
-            <div className= "ml-2 mr-8 col-span-1">
+            <div className= "ml-2 mr-8 col-span-2">
             <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Faculty list
             </h3>
