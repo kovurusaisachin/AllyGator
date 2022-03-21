@@ -28,21 +28,17 @@ export default function Table(props) {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                 {props?.data?.data?.map((person) => (
-                  <tr key={person.coursename}>
+                  <tr key={person.facultyname}>
                     <td className="px-3 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{person?.coursename}</div>
-                          <div className="text-sm text-gray-500">{person.email}</div>
+                          <div className="text-sm font-medium text-gray-900">{person?.facultyname}</div>
+                          <div className="text-sm text-gray-500">{person.deptName}</div>
                         </div>
                       </div>
                     </td>
                     
-                    <td className="px-3 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{person?.deptName}</div>
-                      
-                    </td>
-                    <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">{person?.facultyname}</td>
+                    <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">{person?.info}</td>
                     
                   </tr>
                 ))}
