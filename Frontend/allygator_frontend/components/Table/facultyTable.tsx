@@ -27,7 +27,7 @@ export default function Table(props) {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                {props?.data?.data?.map((person) => (
+                {props?.data?.map((person) => (
                   <tr key={person.facultyname}>
                     <td className="px-3 py-4 whitespace-nowrap">
                       <div className="flex items-center">
