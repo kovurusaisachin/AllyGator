@@ -124,19 +124,7 @@ export default function dashboard() {
     { name: "Department", href: "#features" },
     { name: "Faculty", href: "#register" },
   ];
-  const courseData = [
-    {
-      name: "Database System Implementation",
-      department: "Computer Science",
-      faculty: "Alin Dobra",
-    },
-    {
-      name: "Software Engineering",
-      department: "Computer Science",
-      faculty: "Alin Dobra",
-    },
-    // More people...
-  ];
+  
   if (typeof window !== "undefined") {
     window.sessionStorage.setItem("userId", state?.chatData?.idStudent);
     window.sessionStorage.setItem(
@@ -332,17 +320,17 @@ export default function dashboard() {
             <Table header={tableHeader} data={state?.result} type="user" />
           </div>
           <div className="mx-8 my-10 grid grid-cols-4 gap-3">
-            <div className="mr-2 col-span-2">
+            <div className="mr-2 col-span-3">
             <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Course list
             </h3>
-              <CourseTable header={courseHeader} data={courseData} />
+              <CourseTable header={courseHeader} data={state?.courseData} />
             </div>
-            <div className= "ml-2 mr-8 col-span-2">
+            <div className= "ml-2 mr-8 col-span-1">
             <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Faculty list
             </h3>
-              <CourseTable header={courseHeader} data={courseData} />
+              <CourseTable header={courseHeader} data={state?.courseData} />
             </div>
           </div>
         </div>

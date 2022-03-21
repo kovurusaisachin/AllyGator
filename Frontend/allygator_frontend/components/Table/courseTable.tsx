@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 
 export default function Table(props) {
-  // console.log(props)
+  console.log(props,"pk")
   const Header = ({ array }) => {
     let counter = 0;
     return array?.map((x) => {
@@ -27,22 +27,22 @@ export default function Table(props) {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                {props?.data?.map((person) => (
-                  <tr key={person.name}>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                {props?.data?.data?.map((person) => (
+                  <tr key={person.coursename}>
+                    <td className="px-3 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{person?.name}</div>
+                          <div className="text-sm font-medium text-gray-900">{person?.coursename}</div>
                           <div className="text-sm text-gray-500">{person.email}</div>
                         </div>
                       </div>
                     </td>
                     
-                    <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{person?.department}</div>
+                    <td className="px-3 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{person?.deptName}</div>
                       
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person?.faculty}</td>
+                    <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">{person?.facultyname}</td>
                     
                   </tr>
                 ))}
