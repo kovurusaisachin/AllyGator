@@ -20,6 +20,7 @@ export default function dashboard() {
   const [state, setState] = useState({
     userData: [],
     chatData: [],
+    courseData:[],
     query: {
       searchText: "",
       status: "active",
@@ -46,14 +47,15 @@ export default function dashboard() {
   }, [token]);
 
   const getData = () => {
-    let endpoints = [`${API_URL}/user`, `${API_URL}/mail/${tokenData?.Email}`];
+    let endpoints = [`${API_URL}/user`, `${API_URL}/mail/${tokenData?.Email}`,`${API_URL}/course`];
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
-      ([{ data: user }, { data: chat }]) => {
+      ([{ data: user }, { data: chat },{data: course}]) => {
         setState({
           ...state,
           userData: user?.data,
           result: user?.data,
           chatData: chat?.data,
+          courseData: course
         });
       }
     );
@@ -89,8 +91,8 @@ export default function dashboard() {
     // ?.filter(product => product?.department === state?.query?.department)
     // ?.filter(product => product?.nationality === state?.query?.nationality);
 
-    console.log('ppp',newResults)
-    
+    console.log('ppp', newResults)
+
     setState({
       ...state,
       result: newResults,
@@ -146,6 +148,7 @@ export default function dashboard() {
       state?.chatData?.firstname + " " + state?.chatData?.lastname
     );
   }
+  console.log(state?.courseData)
   return (
     <>
       {/* sidebar */}
@@ -234,8 +237,8 @@ export default function dashboard() {
                       }}
                     >
                       {state?.result?.map(x => (
-                      <option value={x.department}>{x.department}</option>
-                    ))}
+                        <option value={x.department}>{x.department}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -276,8 +279,8 @@ export default function dashboard() {
                       }}
                     >
                       {Array.from(new Set(state?.result?.map(x => (
-                      <option value={x.nationality}>{x.nationality}</option>
-                    ))))}
+                        <option value={x.nationality}>{x.nationality}</option>
+                      ))))}
                     </select>
                   </div>
                 </div>
