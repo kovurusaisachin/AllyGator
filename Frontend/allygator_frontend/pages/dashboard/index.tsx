@@ -5,6 +5,7 @@ import Table from "../../components/Table";
 import axios from "Axios";
 import { API_URL } from "../../components/constant";
 import CourseTable from "../../components/Table/courseTable";
+import FacultyTable from "../../components/Table/facultyTable"
 import { CometChat } from "@cometchat-pro/chat";
 import { COMETCHAT_CONSTANTS } from "../../components/constant/index";
 
@@ -22,6 +23,7 @@ export default function dashboard() {
     userData: [],
     chatData: [],
     courseData: [],
+    facultyData:[],
     query: {
       searchText: "",
       status: "active",
@@ -52,15 +54,17 @@ export default function dashboard() {
       `${API_URL}/user`,
       `${API_URL}/mail/${tokenData?.Email}`,
       `${API_URL}/course`,
+      `${API_URL}/faculty`,
     ];
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
-      ([{ data: user }, { data: chat }, { data: course }]) => {
+      ([{ data: user }, { data: chat }, { data: course }, {data: faculty}]) => {
         setState({
           ...state,
           userData: user?.data,
           result: user?.data,
           chatData: chat?.data,
           courseData: course,
+          facultyData: faculty
         });
       }
     );
@@ -124,6 +128,10 @@ export default function dashboard() {
     { name: "Department", href: "#features" },
     { name: "Faculty", href: "#register" },
   ];
+  const facultyHeader = [
+    { name: "Faculty", href: "#features" },
+    { name: "RMP Link", href: "#features" },
+  ];
   
   if (typeof window !== "undefined") {
     window.sessionStorage.setItem("userId", state?.chatData?.idStudent);
@@ -132,7 +140,6 @@ export default function dashboard() {
       state?.chatData?.firstname + " " + state?.chatData?.lastname
     );
   }
-  console.log(state?.courseData);
   return (
     <>
       {/* sidebar */}
@@ -330,7 +337,7 @@ export default function dashboard() {
             <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Faculty list
             </h3>
-              <CourseTable header={courseHeader} data={state?.courseData} />
+              <FacultyTable header={facultyHeader} data={state?.facultyData} />
             </div>
           </div>
         </div>
