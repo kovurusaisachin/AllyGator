@@ -199,7 +199,7 @@ func TestGetCourseById(t *testing.T) {
 		w := httptest.NewRecorder()
 
 		// Performing the request
-		fmt.Print("\nMock API for getUserById - Sending the incorrect CourseID\n")
+		fmt.Print("\nMock API for getCourseById - Sending the incorrect CourseID\n")
 		r.ServeHTTP(w, req)
 		fmt.Print("\n\n")
 		fmt.Println(w.Body)
