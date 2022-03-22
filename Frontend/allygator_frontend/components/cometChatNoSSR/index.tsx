@@ -5,6 +5,7 @@ import { CometChat } from "@cometchat-pro/chat";
 import axios from "axios";
 import { API_URL } from "../../components/constant";
 
+// new RegExp('[a-z0-9]+@stackabuse.com');
 export default function CometChatNoSSR() {
   const [state, setState] = useState({
     user: undefined,
