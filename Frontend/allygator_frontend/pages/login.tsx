@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { API_URL } from "../components/constant";
-import axios from "axios"
+import axios from "axios";
 import { useState } from "react";
+
 import Swal from "sweetalert2"
 
 export default function Login() {
@@ -18,13 +19,14 @@ export default function Login() {
   const router = useRouter();
   const loginApi = axios.create({
     baseURL: `${API_URL}`,
-    responseType: 'json',
-  })
+    responseType: "json",
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginApi.post('/login', state?.loginData)
-      .then(response => {
-        console.log(response)
+    loginApi
+      .post("/login", state?.loginData)
+      .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           {
             Swal.fire({
@@ -33,12 +35,12 @@ export default function Login() {
               // text: "Server busy please try again later",
               // footer: '<a href="">Why do I have this issue?</a>'
             })
-            window.sessionStorage.setItem("tk",response?.data?.token)
+            window.sessionStorage.setItem("token",response?.data?.token)
             router.push("/dashboard");
           }
         }
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response) {
           // client received an error response (5xx, 4xx)
           console.log(err.respone)
@@ -101,13 +103,13 @@ export default function Login() {
                           type="email"
                           data-cy="login-email-input"
                           value={state?.loginData?.Email ?? ""}
-                          onChange={e => {
+                          onChange={(e) => {
                             setState({
                               ...state,
                               loginData: {
                                 ...state.loginData,
-                                Email: e.target.value
-                              }
+                                Email: e.target.value,
+                              },
                             });
                           }}
                           className="text-md block px-3 py-2 
@@ -128,13 +130,13 @@ export default function Login() {
                             placeholder="*********"
                             type="password"
                             value={state?.loginData?.Password ?? ""}
-                            onChange={e => {
+                            onChange={(e) => {
                               setState({
                                 ...state,
                                 loginData: {
                                   ...state.loginData,
-                                  Password: e.target.value
-                                }
+                                  Password: e.target.value,
+                                },
                               });
                             }}
                             data-cy="login-password-input"
@@ -145,8 +147,7 @@ export default function Login() {
           focus:border-gray-600  
           focus:outline-none"
                           />
-                          <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-                          </div>
+                          <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"></div>
                         </div>
                       </div>
                       <div className="flex justify-between">

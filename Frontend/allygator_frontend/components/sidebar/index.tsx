@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Swal from "sweetalert2"
 export default function Sidebar() {
   const router = useRouter();
   const handleLo = (e) => {
@@ -15,6 +16,10 @@ export default function Sidebar() {
     e.preventDefault();
     window.sessionStorage.removeItem("token")
     window.sessionStorage.clear()
+    Swal.fire({
+      icon:"success",
+      text:"Log out successfull."
+    })
     router.push("/login");
   };
   return (
