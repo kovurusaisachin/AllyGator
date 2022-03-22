@@ -1,29 +1,21 @@
 import React from "react";
 import Sidebar from "../../../components/sidebar";
-import Table from "../../../components/Table";
-// import ResetPass from './ResetPassword'
+import ConnectionTable from '../../../components/Table/connection'
 function Connection() {
   const headerData = [
     { name: "Name", href: "#home" },
-    { name: "Major", href: "#features" },
-    { name: "Department", href: "#features" },
-    { name: "Nationality", href: "#register" },
-    { name: "Status", href: "#team" },
-    { name: "Linkedin", href: "#team" },
+    { name: "Connect", href: "#features" }
   ];
   const connectionData = [
     {
       name: "Jane Cooper",
-      major: "Regional Paradigm Technician",
-      department: "Optimization",
-      nationality: "Indian",
       email: "jane.cooper@example.com",
       image:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
     },
   ];
   return (
-    <div className="flex flex-col-2">
+    <div className="flex flex-col-2 bg-gray-100">
       <Sidebar />
       <div className="flex flex-col w-full">
         <div className="bg-white shadow">
@@ -85,7 +77,7 @@ function Connection() {
           </div>
         </div>
 
-<div className="mx-8 border-b border-gray-200 dark:border-gray-200">
+<div className="mx-8 border-b bg-white rounded-lg border-gray-200 dark:border-gray-200">
   <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
     <li className="mr-2">
       <a href="#" className="inline-flex p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group">
@@ -117,15 +109,17 @@ function Connection() {
         <div className="mx-8 mt-8 grid grid-cols-10 gaps-4">
           <div className="col-span-7">
           <h3 className="text-2xl font-bold mb-4 leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              Connection list
+              People 
             </h3>
-            <Table
+            <ConnectionTable
               header={headerData}
               data={connectionData}
-              type="connection"
             />
           </div>
-          <div className="col-span-3 bg-blue-100 rounded-lg px-5 py-5">
+          <div className="col-span-3 bg-white rounded-lg px-5 py-5">
+          <h3 className="text-2xl font-bold mb-4 leading-7 text-gray-900 sm:leading-9 sm:truncate">
+              Filter's 
+            </h3>
             <div className="w-full">
               <label className="block text-base font-semibold text-gray-900">
                 Search
