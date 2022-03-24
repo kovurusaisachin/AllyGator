@@ -8,7 +8,7 @@ export default function Table(props) {
     return array?.map((x) => {
       ++counter;
       return (
-        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" key={counter}>
+        <th className="pl-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" key={counter}>
           {x.name}
         </th>
       );
@@ -20,7 +20,7 @@ export default function Table(props) {
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
+              <table className="table-auto min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
                     <Header array={props.header} />
@@ -37,7 +37,7 @@ export default function Table(props) {
                         </div>
                       </div>
                     </td>
-                    
+
                     <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                     <button className="flex items-center px-3 py-1 font-semi-bold tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                   <svg
@@ -57,7 +57,7 @@ export default function Table(props) {
                   <span className="mx-1">Connect</span>
                 </button>
                     </td>
-                    
+
                   </tr>
                 ))}
               </tbody>
@@ -67,5 +67,7 @@ export default function Table(props) {
         </div>
       </div>
     </>
-  )
+    
+
+  );
 }
