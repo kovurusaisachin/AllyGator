@@ -25,6 +25,7 @@ func main() {
 		protected := v1.Group("/v1").Use(middlewares.Authz())
 		{
 			protected.GET("user", api.GetUsers)
+			protected.GET("users", api.GetUserswithDepartment)
 			protected.GET("user/:id", api.GetUserById)
 			protected.GET("mail/:id", api.GetUserByEmail)
 			protected.PUT("user/:id", api.UpdateUser)

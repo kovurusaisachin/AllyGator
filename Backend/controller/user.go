@@ -23,6 +23,7 @@ type User struct {
 	Profile        string `json:"profile"`
 	Specialization string `json:"specialization"`
 	Status         string `json:"status"`
+	DepartmentName string `json:"deptName"`
 }
 
 //This function retrieves the list of all the students from the database
@@ -41,6 +42,37 @@ func GetUsers() ([]User, error) {
 	for rows.Next() {
 		singleUser := User{}
 		err = rows.Scan(&singleUser.StudentId, &singleUser.FirstName, &singleUser.LastName, &singleUser.Department, &singleUser.UFmail, &singleUser.Gender, &singleUser.Course, &singleUser.URL, &singleUser.Nationality, &singleUser.Profile, &singleUser.Specialization, &singleUser.Status)
+
+		if err != nil {
+			return nil, err
+		}
+		people = append(people, singleUser)
+	}
+
+	err = rows.Err()
+
+	if err != nil {
+		return nil, err
+	}
+
+	return people, err
+}
+
+//This function retrieves the list of all the students from the database along with the Department name
+func GetUserswithDepartment() ([]User, error) {
+
+	rows, err := models.DB.Query("SELECT u.idStudent, u.firstname, u.lastname, u.department , d.deptname, u.email, u.gender, u.course, u.url, u.nationality, u.profile, u.specialization, u.status from users u Join departments as d on d.idDepartment=u.Department")
+	if err != nil {
+		return nil, err
+	}
+	//Checking for an error on the query and defering the Close() method for the tuples to ensure it doesn’t stay open after we’re done.
+	defer rows.Close()
+
+	people := make([]User, 0)
+
+	for rows.Next() {
+		singleUser := User{}
+		err = rows.Scan(&singleUser.StudentId, &singleUser.FirstName, &singleUser.LastName, &singleUser.Department, &singleUser.DepartmentName, &singleUser.UFmail, &singleUser.Gender, &singleUser.Course, &singleUser.URL, &singleUser.Nationality, &singleUser.Profile, &singleUser.Specialization, &singleUser.Status)
 
 		if err != nil {
 			return nil, err

@@ -21,6 +21,18 @@ func GetUsers(c *gin.Context) {
 	}
 }
 
+func GetUserswithDepartment(c *gin.Context) {
+	persons, err := controller.GetUserswithDepartment()
+	checkErr(err)
+
+	if persons == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "No Records Found"})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": persons})
+	}
+}
+
 func GetUserById(c *gin.Context) {
 	id := c.Param("id")
 
