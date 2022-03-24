@@ -1,19 +1,55 @@
-import React from "react";
+import axios from "axios";
+import React,{useState,useEffect} from "react";
 import Sidebar from "../../../components/sidebar";
 import ConnectionTable from '../../../components/Table/connection'
+import { API_URL } from "../../../components/constant";
+
 function Connection() {
   const headerData = [
     { name: "Name", href: "#home" },
+    { name: "Specialization", href: "#nation"},
+    { name: "Linkedin", href: "#linkedin"},
     { name: "Connect", href: "#features" }
   ];
-  const connectionData = [
-    {
-      name: "Jane Cooper",
-      email: "jane.cooper@example.com",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60",
+  const [state, setState] = useState({
+    connectionData:[],
+    result:[]
+  })
+  if (typeof window !== "undefined") {
+    var token = window.sessionStorage.getItem("token");
+  }
+  useEffect(() => {
+    fetchConnections()
+  },[token])
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-  ];
+  };
+  const fetchConnections = () => {
+    axios.get(`${API_URL}/user`,config)
+    .then(response => {
+      if (response.status === 200) {
+        setState({
+          ...state,
+          connectionData: response?.data?.data
+        })
+      }
+    })
+    .catch(err => {
+      if (err.response) {
+        // client received an error response (5xx, 4xx)
+        console.log(err.respone)
+      } else if (err.request) {
+        // client never received a response, or request never left
+        console.log(err.request)
+      } else {
+        // anything else
+        console.log('something bad happened, retry again...', err)
+      }
+    });
+  }
   return (
     <div className="flex flex-col-2 bg-gray-100">
       <Sidebar />
@@ -103,14 +139,14 @@ function Connection() {
 </div>
 
 
-        <div className="mx-8 mt-8 grid grid-cols-10 gaps-4">
-          <div className="col-span-7">
-          <h3 className="text-2xl font-bold mb-4 leading-7 text-gray-900 sm:leading-9 sm:truncate">
+        <div className="mx-8 mt-4  grid grid-cols-10 gaps-4">
+          <div className="col-span-7 ">
+          <h3 className="text-2xl font-bold mb-1 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               People 
             </h3>
             <ConnectionTable
               header={headerData}
-              data={connectionData}
+              data={state?.connectionData}
             />
           </div>
           <div className="col-span-3 bg-white mb-8 rounded-lg px-5 py-5">
