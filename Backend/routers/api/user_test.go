@@ -205,7 +205,7 @@ func TestGetUserswithDept(t *testing.T) {
 	// registering the routes
 	r := gin.Default()
 	v1 := r.Group("/api/v1")
-	v1.GET("users", getUserswithDepartment)
+	v1.GET("users", GetUserswithDepartment)
 
 	t.Run("Wrong URL", func(t *testing.T) {
 		req, err := http.NewRequest(http.MethodGet, "/api/v1/userss", nil)
