@@ -3,7 +3,13 @@ import { PaperClipIcon } from "@heroicons/react/solid";
 
 const Profile = (props) => {
   console.log(props);
-  const data = props?.data?.data ?? "";
+  const data = props?.data ?? "";
+  const handleCancel = () => {
+    console.log('R')
+  }
+  const handleUpdate = () => {
+    console.log('R')
+  }
   return (
     <>
       <div className="flex flex-col bg-gray-100 w-full">
@@ -54,7 +60,7 @@ const Profile = (props) => {
                             type="text"
                             name="first-name"
                             id="first-name"
-                            value={props?.data?.data?.firstname ?? ""}
+                            value={props?.data?.firstname ?? ""}
                             autoComplete="given-name"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md"
                           />
@@ -71,7 +77,7 @@ const Profile = (props) => {
                             type="text"
                             name="last-name"
                             id="last-name"
-                            value={props?.data?.data?.lastname ?? ""}
+                            value={props?.data?.lastname ?? ""}
                             autoComplete="family-name"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -89,40 +95,101 @@ const Profile = (props) => {
                             name="email-address"
                             id="email-address"
                             data-cy='email-address'
-                            value={props?.data?.data?.email ?? ""}
+                            value={props?.data?.email ?? ""}
                             autoComplete="email"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
+                        <div className="col-span-6 sm:col-span-2">
+                          <label
+                            htmlFor="Department"
+                            className="block text-sm font-medium text-gray-700"
+                          >
+                            Department
+                          </label>
+                          <input
+                            type="text"
+                            name="last-name"
+                            id="last-name"
+                            value={props?.data?.deptName ?? ""}
+                            autoComplete="family-name"
+                            className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                          />
+                        </div>
 
-                        <div className="col-span-6 sm:col-span-3">
+                        <div className="col-span-6 sm:col-span-6">
                           <label
                             htmlFor="country"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Country
+                            Course
                           </label>
                           <input
                             id="country"
                             name="country"
                             autoComplete="country-name"
-                            value={props?.data?.data?.nationality ?? ""}
+                            value={props?.data?.course ?? ""}
+                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          />
+                        </div>
+                        <div className="col-span-6 sm:col-span-2">
+                          <label
+                            htmlFor="country"
+                            className="block text-sm font-medium text-gray-700"
+                          >
+                            Status
+                          </label>
+                          <input
+                            id="country"
+                            name="country"
+                            autoComplete="country-name"
+                            value={props?.data?.status ?? ""}
+                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          />
+                        </div>
+                        <div className="col-span-6 sm:col-span-2">
+                          <label
+                            htmlFor="country"
+                            className="block text-sm font-medium text-gray-700"
+                          >
+                            Profile
+                          </label>
+                          <input
+                            id="country"
+                            name="country"
+                            autoComplete="country-name"
+                            value={props?.data?.profile ?? ""}
+                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          />
+                        </div>
+                        <div className="col-span-6 sm:col-span-2">
+                          <label
+                            htmlFor="country"
+                            className="block text-sm font-medium text-gray-700"
+                          >
+                            Specialization
+                          </label>
+                          <input
+                            id="country"
+                            name="country"
+                            autoComplete="country-name"
+                            value={props?.data?.specialization ?? ""}
                             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                           />
                         </div>
 
-                        <div className="col-span-6">
+                        <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                           <label
                             htmlFor="street-address"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Street address
+                            Nationality
                           </label>
                           <input
                             type="text"
                             name="street-address"
                             id="street-address"
-                            value="abc street ab ne"
+                            value={props?.data?.nationality ?? ""}
                             autoComplete="street-address"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -133,48 +200,14 @@ const Profile = (props) => {
                             htmlFor="city"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            City
+                            Gender
                           </label>
                           <input
                             type="text"
                             name="city"
                             id="city"
-                            value="gainesville"
+                            value={props?.data?.gender ?? ""}
                             autoComplete="address-level2"
-                            className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                          />
-                        </div>
-
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <label
-                            htmlFor="region"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            State / Province
-                          </label>
-                          <input
-                            type="text"
-                            name="region"
-                            id="region"
-                            value="FL"
-                            autoComplete="address-level1"
-                            className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                          />
-                        </div>
-
-                        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <label
-                            htmlFor="postal-code"
-                            className="block text-sm font-medium text-gray-700"
-                          >
-                            ZIP / Postal code
-                          </label>
-                          <input
-                            type="text"
-                            name="postal-code"
-                            id="postal-code"
-                            value="32608"
-                            autoComplete="postal-code"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>
@@ -183,7 +216,15 @@ const Profile = (props) => {
                     <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                       <button
                         type="submit"
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        onClick={handleCancel}
+                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        onClick={handleUpdate}
+                        className="mx-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
                         Update
                       </button>
