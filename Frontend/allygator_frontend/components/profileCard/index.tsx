@@ -1,15 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { PaperClipIcon } from "@heroicons/react/solid";
 
 const Profile = (props) => {
   console.log(props);
+  const [counter, setCounter] = useState(0);
+  const [inputValues, setInputValues] = useState({});
+
   const data = props?.data ?? "";
   const handleCancel = () => {
-    console.log('R')
-  }
+    console.log("R");
+  };
   const handleUpdate = () => {
-    console.log('R')
-  }
+    console.log("R");
+  };
+  const handleClick = (e) => {
+    e.preventDefault();
+    setCounter(counter + 1);
+    console.log(counter);
+  };
+  const handleDClick = (e) => {
+    e.preventDefault();
+    counter > 0?
+    setCounter(counter - 1): setCounter(0)
+    console.log(counter);
+  };
+  const handleOnChange = (e) => {
+    const abc = {};
+    abc[e.target.className] = e.target.value;
+    setInputValues({ ...inputValues, ...abc });
+  };
   return (
     <>
       <div className="flex flex-col bg-gray-100 w-full">
@@ -94,7 +112,7 @@ const Profile = (props) => {
                             type="text"
                             name="email-address"
                             id="email-address"
-                            data-cy='email-address'
+                            data-cy="email-address"
                             value={props?.data?.email ?? ""}
                             autoComplete="email"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -117,20 +135,71 @@ const Profile = (props) => {
                           />
                         </div>
 
-                        <div className="col-span-6 sm:col-span-6">
+                        <div className="col-span-4 sm:col-span-4">
                           <label
                             htmlFor="country"
                             className="block text-sm font-medium text-gray-700"
                           >
                             Course
                           </label>
-                          <input
-                            id="country"
-                            name="country"
-                            autoComplete="country-name"
-                            value={props?.data?.course ?? ""}
-                            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          />
+                          {props?.data?.course?.split(",").map((x) => (
+                            <span className="mt-2 py-1 px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-600">
+                              {x}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="col-span-1 sm:col-span-1">
+                          {/* <label
+                            htmlFor="country"
+                            className="block text-sm font-medium text-gray-700"
+                          >
+                            Add 
+                          </label> */}
+                          <button
+                            onClick={handleClick}
+                            className="mt-1 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-800 "
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>  <span className="mx-1 ">Add</span>
+                          </button>
+                          </div>
+                          <div className="col-span-1 sm:col-span-1">
+                          
+                          <button
+                            onClick={handleDClick}
+                            className="mt-1 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-800 "
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>  <span className="mx-1 ">Del</span>
+
+                          </button>
+                          </div>
+                          <div className="col-span-6 sm:col-span-6">
+                        
+                          {Array.from(Array(counter)).map((c, index) => {
+                            return (
+                            <>
+                              <div className="col-span-4 sm:col-span-4">
+                            <label
+                              htmlFor="country"
+                              className="block text-sm font-medium text-gray-700"
+                            >
+                              Course 
+                            </label>
+                            <input
+                              type="text"
+                              name="last-name"
+                              id="last-name"
+                              onChange={handleOnChange}
+                              autoComplete="family-name"
+                              className="mt-2 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            />  
+                              </div>
+                            </>
+
+                            )})}
                         </div>
                         <div className="col-span-6 sm:col-span-2">
                           <label
@@ -217,14 +286,14 @@ const Profile = (props) => {
                       <button
                         type="submit"
                         onClick={handleCancel}
-                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-800 "
                       >
                         Cancel
                       </button>
                       <button
                         type="submit"
                         onClick={handleUpdate}
-                        className="mx-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="mx-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-800 "
                       >
                         Update
                       </button>
