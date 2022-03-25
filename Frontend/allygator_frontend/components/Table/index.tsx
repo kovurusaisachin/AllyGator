@@ -46,7 +46,12 @@ export default function Table(props) {
                         <div className="text-sm text-gray-500">{person?.profile}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{person?.course}</div>
+                      {person?.course?.split(",").map(a => 
+                            <span className="mx-1 px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-500">
+                              {a}
+                            </span>
+                      )}
+
                       </td>
 
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person?.nationality}</td>
