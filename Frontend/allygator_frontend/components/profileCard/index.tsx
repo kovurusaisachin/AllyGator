@@ -152,7 +152,7 @@ const Profile = (props) => {
                             htmlFor="country"
                             className="block text-sm font-medium text-gray-700"
                           >
-                            Profile
+                            Major
                           </label>
                           <input
                             id="country"
