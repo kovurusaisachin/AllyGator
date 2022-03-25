@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 
 export default function Table(props) {
-  // console.log(props)
+  console.log(props,'mmm')
   const Header = ({ array }) => {
     let counter = 0;
     return array?.map((x) => {
@@ -39,16 +39,16 @@ export default function Table(props) {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{person?.course}</div>
-                        <div className="text-sm text-gray-500">{person?.specialization}</div>
+                        {person?.deptName}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {person?.department === 111 ?
-                      <td className="text-sm text-gray-500">Computer Science</td> :
-                      <td className="text-sm text-gray-500">Arts & Science</td>
-
-                      }
+                        <div className="text-sm text-gray-900">{person?.specialization}</div>
+                        <div className="text-sm text-gray-500">{person?.profile}</div>
                       </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{person?.course}</div>
+                      </td>
+
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person?.nationality}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {person?.status === "alumni" ?

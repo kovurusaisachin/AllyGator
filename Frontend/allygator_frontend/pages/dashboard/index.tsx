@@ -55,7 +55,7 @@ export default function dashboard() {
 
   const getData = () => {
     let endpoints = [
-      `${API_URL}/user`,
+      `${API_URL}/users`,
       `${API_URL}/mail/${tokenData?.Email}`,
       `${API_URL}/course`,
       `${API_URL}/faculty`,
@@ -166,8 +166,9 @@ export default function dashboard() {
 
   const tableHeader = [
     { name: "Name", href: "#home" },
-    { name: "Major", href: "#features" },
     { name: "Department", href: "#features" },
+    { name: "Specialization", href: "#features" },
+    { name: "Courses", href: "#features" },
     { name: "Nationality", href: "#register" },
     { name: "Status", href: "#team" },
     { name: "Linkedin", href: "#team" },
