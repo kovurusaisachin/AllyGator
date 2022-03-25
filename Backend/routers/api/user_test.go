@@ -147,7 +147,7 @@ func TestGetUsers(t *testing.T) {
 	v1.GET("user", GetUsers)
 
 	t.Run("Wrong URL", func(t *testing.T) {
-		req, err := http.NewRequest(http.MethodGet, "/api/v1/users", nil)
+		req, err := http.NewRequest(http.MethodGet, "/api/v1/userss", nil)
 		if err != nil {
 			t.Fatalf("Couldn't create request: %v\n", err)
 		}
@@ -179,6 +179,67 @@ func TestGetUsers(t *testing.T) {
 
 		// Performing the request
 		fmt.Print("\nMock API for getUsers - Sending correct URL\n")
+		r.ServeHTTP(w, req)
+		fmt.Print("\n\n")
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Fatalf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+}
+
+//getUserswithDepartment API Unit-test
+func TestGetUserswithDept(t *testing.T) {
+	err := models.ConnectDatabase()
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Switching to test mode so we don't get such noisy output
+	gin.SetMode(gin.TestMode)
+
+	// Settingup the router, and
+	// registering the routes
+	r := gin.Default()
+	v1 := r.Group("/api/v1")
+	v1.GET("users", getUserswithDepartment)
+
+	t.Run("Wrong URL", func(t *testing.T) {
+		req, err := http.NewRequest(http.MethodGet, "/api/v1/userss", nil)
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for getUserswithDepartment - Sending wrong URL\n")
+		r.ServeHTTP(w, req)
+		fmt.Println(w.Body)
+		fmt.Print("\n\n")
+		// Checking if the response was what we expected
+		if w.Code == http.StatusOK {
+			t.Logf("Expected to get status %d is same ast %d\n", http.StatusOK, w.Code)
+		} else {
+			t.Logf("Expected to get status %d but instead got %d\n", http.StatusOK, w.Code)
+		}
+	})
+
+	t.Run("Valid URL", func(t *testing.T) {
+		req, err := http.NewRequest(http.MethodGet, "/api/v1/users", nil)
+		if err != nil {
+			t.Fatalf("Couldn't create request: %v\n", err)
+		}
+
+		// Creating a response recorder so that we can inspect the response
+		w := httptest.NewRecorder()
+
+		// Performing the request
+		fmt.Print("\nMock API for getUserswithDepartment - Sending correct URL\n")
 		r.ServeHTTP(w, req)
 		fmt.Print("\n\n")
 		fmt.Println(w.Body)
