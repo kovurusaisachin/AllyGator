@@ -17,11 +17,10 @@ const parseJwt = (token) => {
   const base64 = base64Url.replace("-", "+").replace("_", "/");
   return JSON.parse(window.atob(base64));
 };
-
 export default function dashboard() {
   const [state, setState] = useState({
     userData: [],
-    chatData: [],
+    chatData : [],
     courseData: [],
     courseResult:[],
     facultyData:[],
