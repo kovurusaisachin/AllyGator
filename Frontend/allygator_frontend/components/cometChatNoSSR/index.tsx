@@ -9,6 +9,7 @@ import { API_URL } from "../../components/constant";
 // new RegExp('[a-z0-9]+@stackabuse.com');
 export default function CometChatNoSSR() {
   const [state, setState] = useState({
+    user:undefined,
     friends: [],
     token: window.sessionStorage.getItem("token"),
     UID: window.sessionStorage.getItem("userId"),
