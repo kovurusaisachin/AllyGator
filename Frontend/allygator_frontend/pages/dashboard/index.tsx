@@ -201,7 +201,7 @@ export default function dashboard() {
             <h3 className="text-2xl my-2 font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Connection's list
             </h3>
-            <div className="grid grid-cols-6  space-x-2 mt-2 mb-4 max-w-screen-xl mx-auto w-full">
+            <div className="grid grid-cols-6  bg-blue-200 space-x-2 mt-2 mb-4 max-w-screen-xl mx-auto w-screen">
               <div className="col-span-2">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
