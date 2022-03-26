@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { API_URL } from "../components/constant";
 import axios from "axios";
 import { useState } from "react";
-
 import Swal from "sweetalert2"
 
 export default function Login() {
@@ -13,6 +12,7 @@ export default function Login() {
       loginData:{
         Email: "",
         Password: "",
+        emailIsValid:true
       },
   })
   
@@ -71,6 +71,24 @@ export default function Login() {
         }
       });
   };
+  const isValidEmailAddress = (address) => {
+    return !! address.match('[a-z0-9]+@ufl.edu');
+  }
+  if (state?.loginData?.emailIsValid === false) {
+    Swal.fire({
+      icon:'warning',
+      title:'UFL email id',
+      text:'You need to have a ufl email id to login ...'
+    })
+    setState({
+      ...state,
+      loginData:{
+        ...state?.loginData,
+        Email:"",
+        emailIsValid:true
+      }
+    })
+  }
   return (
     <>
       <div className="container max-w-full mx-auto py-2 px-6">
@@ -103,6 +121,13 @@ export default function Login() {
                           type="email"
                           data-cy="login-email-input"
                           value={state?.loginData?.Email ?? ""}
+                          onBlur={() => setState({
+                            ...state,
+                            loginData:{
+                              ...state?.loginData,
+                              emailIsValid: isValidEmailAddress(state.loginData?.Email)
+                            }
+                          })}
                           onChange={(e) => {
                             setState({
                               ...state,

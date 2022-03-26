@@ -22,6 +22,7 @@ export default function Signup() {
       profile: "",
       specialization: "",
       status: "",
+      emailIsValid:false
     },
   });
   const router = useRouter();
@@ -81,6 +82,24 @@ export default function Signup() {
         }
       });
   };
+  const isValidEmailAddress = (address) => {
+    return !! address.match('[a-z0-9]+@ufl.edu');
+  }
+  if (state?.registerData?.emailIsValid === false) {
+    Swal.fire({
+      icon:'warning',
+      title:'UFL email id',
+      text:'You need to have a ufl email id to login ...'
+    })
+    setState({
+      ...state,
+      registerData:{
+        ...state?.registerData,
+        email:"",
+        emailIsValid:true
+      }
+    })
+  }
   return (
     <>
       <div className="flex p-1 py-4 bg-gray-800 place-content-center">
@@ -175,6 +194,13 @@ export default function Signup() {
                     data-cy="reg-email-input"
                     placeholder="janedoe@ufl.edu"
                     value={state?.registerData?.email ?? ""}
+                    onBlur={() => setState({
+                      ...state,
+                      registerData:{
+                        ...state?.registerData,
+                        emailIsValid: isValidEmailAddress(state.registerData?.email)
+                      }
+                    })}
                     onChange={e => {
                       setState({
                         ...state,
