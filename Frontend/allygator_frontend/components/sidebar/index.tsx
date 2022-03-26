@@ -176,6 +176,9 @@ export default function Sidebar() {
                   <span className="mx-4 font-medium">Information</span>
                 </a>
               </Link>
+              {/* <div className="mt-4"> */}
+                <hr className="mt-4 bg-gray-800"/>
+              {/* </div> */}
               <Link href="/dashboard/profile">
                 <a
                   className={
