@@ -3,16 +3,77 @@ import ProfileCard from "../../../components/profileCard";
 import Sidebar from "../../../components/sidebar";
 import axios from "Axios";
 import { API_URL } from "../../../components/constant";
+import Router from "next/router";
+import Swal from "sweetalert2"
+
 function Profile() {
   const [counter, setCounter] = useState(0);
   const [inputValues, setInputValues] = useState({});
-
+  if (typeof window !== "undefined") {
+    var token = window.sessionStorage.getItem("token");
+    var userId = window.sessionStorage.getItem("userId");
+  }
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
   // const data = props?.data ?? "";
   const handleCancel = () => {
-    console.log("R");
+    Router.reload()
   };
-  const handleUpdate = () => {
-    console.log("R");
+  const profileApi = axios.create({
+    baseURL: `${API_URL}`,
+    responseType: "json",
+  });
+  const handleUpdate = (e) => {
+      e.preventDefault();
+      profileApi
+        .put(`/user/${userId}`, state?.profileData,config)
+        .then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            {
+              Swal.fire({
+                icon: 'success',
+                title: 'Profile Updated successfully',
+                // text: "Server busy please try again later",
+                // footer: '<a href="">Why do I have this issue?</a>'
+              })
+            }
+          }
+        })
+        .catch(err => {
+          if (err.response) {
+            // client received an error response (5xx, 4xx)
+            console.log(err.respone)
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Please check your password and email ...',
+              // footer: '<a href="">Why do I have this issue?</a>'
+            })
+          } else if (err.request) {
+            // client never received a response, or request never left
+            console.log(err.request)
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: "Server busy please try again later",
+              // footer: '<a href="">Why do I have this issue?</a>'
+            })
+          } else {
+            // anything else
+            console.log('something bad happened, retry again...', err)
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: "Something bad happened, retry again...",
+              // footer: '<a href="">Why do I have this issue?</a>'
+            })
+          }
+        });
   };
   const handleClick = (e) => {
     e.preventDefault();
@@ -24,25 +85,11 @@ function Profile() {
     counter > 0 ? setCounter(counter - 1) : setCounter(0);
     console.log(counter);
   };
-  const handleOnChange = (e) => {
-    const abc = {};
-    abc[e.target.className] = e.target.value;
-    setInputValues({ ...inputValues, ...abc });
-  };
+  
   const [state, setState] = useState({
     profileData: [],
   });
-  if (typeof window !== "undefined") {
-    var token = window.sessionStorage.getItem("token");
-    var userId = window.sessionStorage.getItem("userId");
-  }
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-  };
-
+  
   useEffect(() => {
     getProfileData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -127,6 +174,15 @@ function Profile() {
                             name="first-name"
                             id="first-name"
                             value={state?.profileData?.firstname ?? ""}
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  firstname: e.target.value
+                                }
+                              });
+                            }}
                             autoComplete="given-name"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md"
                           />
@@ -144,6 +200,15 @@ function Profile() {
                             name="last-name"
                             id="last-name"
                             value={state?.profileData?.lastname ?? ""}
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  lastname: e.target.value
+                                }
+                              });
+                            }}
                             autoComplete="family-name"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -162,6 +227,15 @@ function Profile() {
                             id="email-address"
                             data-cy="email-address"
                             value={state?.profileData?.email ?? ""}
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  email: e.target.value
+                                }
+                              });
+                            }}
                             autoComplete="email"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -178,6 +252,15 @@ function Profile() {
                             name="last-name"
                             id="last-name"
                             value={state?.profileData?.deptName ?? ""}
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  deptName: e.target.value
+                                }
+                              });
+                            }}
                             autoComplete="family-name"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
@@ -261,7 +344,15 @@ function Profile() {
                                     type="text"
                                     name="last-name"
                                     id="last-name"
-                                    onChange={handleOnChange}
+                                    onChange={e => {
+                                      setState({
+                                        ...state,
+                                        profileData: {
+                                          ...state.profileData,
+                                          course: state?.profileData?.course.concat(e.target.value)
+                                        }
+                                      });
+                                    }}
                                     autoComplete="family-name"
                                     className="mt-2 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                   />
@@ -282,6 +373,15 @@ function Profile() {
                             name="country"
                             autoComplete="country-name"
                             value={state?.profileData?.status ?? ""}
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  status: e.target.value
+                                }
+                              });
+                            }}
                             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                           />
                         </div>
@@ -297,6 +397,15 @@ function Profile() {
                             name="country"
                             autoComplete="country-name"
                             value={state?.profileData?.profile ?? ""}
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  cloud: e.target.value
+                                }
+                              });
+                            }}
                             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                           />
                         </div>
@@ -312,6 +421,15 @@ function Profile() {
                             name="country"
                             autoComplete="country-name"
                             value={state?.profileData?.specialization ?? ""}
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  specialization: e.target.value
+                                }
+                              });
+                            }}
                             className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                           />
                         </div>
@@ -327,6 +445,15 @@ function Profile() {
                             type="text"
                             name="street-address"
                             id="street-address"
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  nationality: e.target.value
+                                }
+                              });
+                            }}
                             value={state?.profileData?.nationality ?? ""}
                             autoComplete="street-address"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -345,6 +472,15 @@ function Profile() {
                             name="city"
                             id="city"
                             value={state?.profileData?.gender ?? ""}
+                            onChange={e => {
+                              setState({
+                                ...state,
+                                profileData: {
+                                  ...state.profileData,
+                                  gender: e.target.value
+                                }
+                              });
+                            }}
                             autoComplete="address-level2"
                             className="mt-1 py-2 px-3 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
