@@ -1,24 +1,50 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import axios from "axios";
+import { API_URL } from "../../components/constant";
 import Swal from 'sweetalert2'
 
 export default function Table(props) {
-  console.log(props, "pkkk");
+  console.log(props)
   const [state, setState] = useState({
     active: false,
     res: [],
+    // token: window.sessionStorage.getItem('token'),
+    // userId: window.sessionStorage.getItem('userId')
   });
-  const handleConnection = () => {
-    Swal.fire({
-      icon: 'success',
-      title: 'Connected successfully',
-      // text: "Server busy please try again later",
-      // footer: '<a href="">Why do I have this issue?</a>'
-    })
-    setState({
-      ...state,
-      active:true
-    })
+  if (typeof window !== "undefined") {
+    var token = window.sessionStorage.getItem("token");
+    var userId  = window.sessionStorage.getItem('userId')
+  }
+  const handleConnection = async (sid) => {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      };
+      const data = {
+        'idConnnected':sid,
+        'idUser':parseInt(userId)
+      }
+      await axios
+        .post(`${API_URL}/addChat`,data, config)
+        .then((response) => {
+          console.log(response, "prashant");
+          setState({
+            ...state,
+            res: response?.data?.data ?? "",
+          });
+        })
+        .catch((err) => {
+          if (err.request) {
+            console.log(err.request);
+          }
+          if (err.response) {
+            console.log(err.response);
+          }
+        });
+    
   }
   const handleConnected = () => {
     Swal.fire({
@@ -103,7 +129,7 @@ export default function Table(props) {
 
                       <td className="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
                         
-                          <button onClick={handleConnection} 
+                          <button onClick={() => handleConnection(person?.idStudent)} 
                             className={"flex items-center px-3 py-1 font-semi-bold tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"}>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
