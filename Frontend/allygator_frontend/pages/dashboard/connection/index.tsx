@@ -17,6 +17,7 @@ function Connection() {
   });
   if (typeof window !== "undefined") {
     var token = window.sessionStorage.getItem("token");
+    var userId = window.sessionStorage.getItem('userId');
   }
   useEffect(() => {
     fetchConnections();
@@ -51,6 +52,16 @@ function Connection() {
         }
       });
   };
+
+  useEffect(() => {
+    const newData = state?.connectionData?.filter(
+      x => x.idStudent !== parseInt(userId)
+    )
+    setState({
+      ...state,
+      result: newData
+    })
+  },[state?.connectionData])
   return (
     <div className="flex flex-col-2 bg-gray-100">
       <Sidebar />
@@ -198,7 +209,7 @@ function Connection() {
             <h3 className="text-2xl font-bold mb-1 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               People
             </h3>
-            <ConnectionTable header={headerData} data={state?.connectionData} />
+            <ConnectionTable header={headerData} data={state?.result} />
           </div>
           <div className="col-span-3 bg-white mb-8 rounded-lg px-5 py-5">
             <h3 className="text-2xl font-bold mb-4 leading-7 text-gray-900 sm:leading-9 sm:truncate">

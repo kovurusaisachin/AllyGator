@@ -8,9 +8,7 @@ export default function Table(props) {
   console.log(props)
   const [state, setState] = useState({
     active: false,
-    res: [],
-    // token: window.sessionStorage.getItem('token'),
-    // userId: window.sessionStorage.getItem('userId')
+    res: []
   });
   if (typeof window !== "undefined") {
     var token = window.sessionStorage.getItem("token");
@@ -35,6 +33,12 @@ export default function Table(props) {
             ...state,
             res: response?.data?.data ?? "",
           });
+          Swal.fire({
+            icon: 'success',
+            title: 'connection added successfully',
+            // text: "Server busy please try again later",
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
         })
         .catch((err) => {
           if (err.request) {

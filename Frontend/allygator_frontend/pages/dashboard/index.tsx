@@ -20,6 +20,7 @@ const parseJwt = (token) => {
 
 export default function dashboard() {
   const [state, setState] = useState({
+    userDataO:[],
     userData: [],
     chatData: [],
     courseData: [],
@@ -64,7 +65,7 @@ export default function dashboard() {
       ([{ data: user }, { data: chat }, { data: course }, {data: faculty}]) => {
         setState({
           ...state,
-          userData: user?.data,
+          userDataO: user?.data,
           result: user?.data,
           chatData: chat?.data,
           courseData: course?.data,
@@ -76,6 +77,15 @@ export default function dashboard() {
     );
   };
   // console.log(state?.userData,'noopur')
+  useEffect(() => {
+    const newData = state?.userDataO?.filter(
+      x => x.email !== tokenData?.Email
+    )
+    setState({
+      ...state,
+      userData: newData
+    })
+  },[state?.userDataO])
   useEffect(() => {
     const newResults = state?.userData?.filter(
       (product) =>
@@ -100,7 +110,7 @@ export default function dashboard() {
         product?.course
           ?.toLowerCase()
           ?.includes(state.query.searchText?.toLowerCase())
-    );
+    )
     // ?.filter(product => product?.status === state?.query?.status)
 
     // ?.filter(product => product?.department === state?.query?.department)
@@ -117,7 +127,7 @@ export default function dashboard() {
     state?.query?.department,
     state.query.nationality,
     state.query.status,
-    // state?.userData
+    state?.userData
   ]);
   useEffect(() => {
     const newResults = state?.courseData?.filter(
