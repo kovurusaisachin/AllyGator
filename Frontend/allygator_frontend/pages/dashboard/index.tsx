@@ -32,6 +32,7 @@ export default function dashboard() {
       status: "active",
       department: "",
       nationality: "",
+      course:""
     },
     result: [],
   });
@@ -116,6 +117,7 @@ export default function dashboard() {
     state?.query?.department,
     state.query.nationality,
     state.query.status,
+    state?.query?.course
     // state?.userData
   ]);
   useEffect(() => {
@@ -239,7 +241,34 @@ export default function dashboard() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1">
+                <div className="w-full">
+                  <label className="block text-base font-semibold text-gray-900">
+                    Courses
+                  </label>
+                  <div className="relative mt-1.5">
+                    <select
+                      className="block md:text-sm w-full pl-2 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
+                      // placeholder="Search D atus"
+                      value={state.query.course}
+                      onChange={(e) => {
+                        setState({
+                          ...state,
+                          query: {
+                            ...state.query,
+                            course: e.target.value,
+                          },
+                        });
+                      }}
+                    >
+                      {state?.result?.map((x) => (
+                        <option value={x.course}>{x.course}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-1">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
                     Department
@@ -276,7 +305,7 @@ export default function dashboard() {
                       }}
                     >
                       {state?.result?.map((x) => (
-                        <option value={x.department}>{x.department}</option>
+                        <option value={x.department}>{x.deptName}</option>
                       ))}
                     </select>
                   </div>
