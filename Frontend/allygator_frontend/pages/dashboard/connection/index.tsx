@@ -30,7 +30,7 @@ function Connection() {
   };
   const fetchConnections = () => {
     axios
-      .get(`${API_URL}/users`, config)
+      .get(`${API_URL}/user`, config)
       .then((response) => {
         if (response.status === 200) {
           setState({

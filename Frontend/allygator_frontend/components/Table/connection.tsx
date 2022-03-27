@@ -28,7 +28,6 @@ export default function Table(props) {
       await axios
         .post(`${API_URL}/addChat`,data, config)
         .then((response) => {
-          console.log(response, "prashant");
           setState({
             ...state,
             res: response?.data?.data ?? "",
