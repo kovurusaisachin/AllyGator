@@ -11,10 +11,10 @@ Features:<br />
 <li>Ask questions and add comments.</li>
 </ul>
 
-<br /><B>Team Member</B>:<br /> 
+<br /><B>Team Members</B>:<br /> 
 Sai Sachin Kovuru          - kovuru.saisachin@ufl.edu - Back-end <br/>
-Noopur Thanvi              - thanvi.noopur@ufl.edu - Front-end & Back-end <br/>
 Maitreyi Srinivasan        - maitreyi.srinivasan@ufl.edu - Back-end & Front-end <br/>
+Noopur Thanvi              - thanvi.noopur@ufl.edu - Front-end & Back-end <br/>
 Prashant Kapri             - kapri.prashant@ufl.edu - Front-end <br/>
 
 <br /><B>Technology Stack:</B><br />
