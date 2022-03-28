@@ -3,22 +3,32 @@
 describe('Login Tests', function () {
     it('Successfull login', function () {
         
-        cy.request('POST', 'http://localhost:8080/api/v1/login', {
-        user: {
-            email: 'thanvi.noopur@ufl.edu',
-            password: 'test'
-        }
-        })
+        
+        
 
         cy.visit('http://localhost:3000/login')
 
         cy.get("[data-cy='login-email-input']")
-        .type('thanvi.noopur@ufl.edu')
+        .type("thanvi.noopur@ufl.edu")
         cy.get("[data-cy='login-password-input']")
-        .type('test')
+        .type("noopur")
         cy.contains("Login")
         .click()
+        cy.contains("Login successfull")
+        .click
 
+        // cy.request({
+        //     method: 'POST',
+        //     url: 'http://localhost:8080/api/v1/login',
+        //     body: {
+              
+        //         Email: "thanvi.noopur@ufl.edu",
+        //         Password: "noopur",
+        //                   }
+        //   })
+        //   .then((resp) => {
+        //     window.sessionStorage.setItem('token', resp.data.token)
+        //   })
         cy.url()
         .should('contain', 'http://localhost:3000/dashboard')
         cy.get("button").contains("AllyGators");
@@ -56,15 +66,15 @@ describe('Login Tests', function () {
 
     
 
-    it('Empty fields', function () {
-        cy.visit('http://localhost:3000/login')
+    // it('Empty fields', function () {
+    //     cy.visit('http://localhost:3000/login')
 
-        cy.contains('Login')
-        .click()
+    //     cy.contains('Login')
+    //     .click()
 
-        cy.url()
-        .should('contain', 'http://localhost:3000/login')
-        cy.get('.error-messages')
-        .should('have.text', 'Please fill out the field')
-    })
+    //     cy.url()
+    //     .should('contain', 'http://localhost:3000/login')
+    //     cy.get('.error-messages')
+    //     .should('have.text', 'Please fill out the field')
+    // })
 })
