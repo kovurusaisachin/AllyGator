@@ -59,7 +59,7 @@ export default function dashboard() {
 
   const getData = () => {
     let endpoints = [
-      `${API_URL}/user`,
+      `${API_URL}/users`,
       `${API_URL}/mail/${tokenData?.Email}`,
       `${API_URL}/course`,
       `${API_URL}/faculty`,
