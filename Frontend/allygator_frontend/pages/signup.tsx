@@ -22,7 +22,7 @@ export default function Signup() {
       profile: "",
       specialization: "",
       status: "",
-      emailIsValid:false
+      emailIsValid:true
     },
   });
   const router = useRouter();
@@ -89,7 +89,7 @@ export default function Signup() {
     Swal.fire({
       icon:'warning',
       title:'UFL email id',
-      text:'You need to have a ufl email id to login ...'
+      text:'You need to have a ufl email id to signup ...'
     })
     setState({
       ...state,
@@ -194,13 +194,6 @@ export default function Signup() {
                     data-cy="reg-email-input"
                     placeholder="janedoe@ufl.edu"
                     value={state?.registerData?.email ?? ""}
-                    onBlur={() => setState({
-                      ...state,
-                      registerData:{
-                        ...state?.registerData,
-                        emailIsValid: isValidEmailAddress(state.registerData?.email)
-                      }
-                    })}
                     onChange={e => {
                       setState({
                         ...state,
@@ -210,9 +203,17 @@ export default function Signup() {
                         }
                       });
                     }}
+                    onBlur={() => setState({
+                      ...state,
+                      registerData:{
+                        ...state?.registerData,
+                        emailIsValid: isValidEmailAddress(state.registerData?.email)
+                      }
+                    })}
+                    
                   />
                 </div>
-                <div className="w-full px-3 mb-6">
+                <div className="w-1/2 px-3 mb-6">
                   <label
                     className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                     htmlFor="grid-password"
@@ -242,7 +243,7 @@ export default function Signup() {
                     }}
                   />
                 </div>
-                <div className="w-full px-3 mb-6">
+                <div className="w-1/2 px-3 mb-6">
                   <label
                     className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                     htmlFor="grid-password"
@@ -272,7 +273,7 @@ export default function Signup() {
                     }}
                   />
                 </div>
-                <div className="w-full px-3 mb-6">
+                <div className="w-1/2 px-3 mb-6">
                   <label
                     className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                     htmlFor="grid-number"
@@ -289,7 +290,7 @@ export default function Signup() {
                     id="grid-specialization"
                     type="text"
                     data-cy="reg-major-input"
-                    placeholder="Computer Science"
+                    placeholder="Full stack"
                     value={state?.registerData?.specialization ?? ""}
                     onChange={e => {
                       setState({
@@ -301,6 +302,42 @@ export default function Signup() {
                       });
                     }}
                   />
+                </div>
+                <div className="w-1/2 px-3 mb-6">
+                  <label
+                    className="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                    htmlFor="grid-number"
+                  >
+                    Department
+                  </label>
+                  <select
+                      required
+                      className="text-md block px-3 py-2 
+                     rounded-lg w-full bg-white border-2 border-gray-300
+                      placeholder-gray-300 shadow-md 
+                      focus:placeholder-gray-100 
+                      focus:bg-white 
+                      focus:border-gray-600 focus:outline-none"
+                      id="grid-state"
+                      data-cy="reg-gender-input"
+                      value={state?.registerData?.department ?? ""}
+                      onChange={e => {
+                      setState({
+                        ...state,
+                        registerData: {
+                          ...state.registerData,
+                          department: parseInt(e.target.value)
+                        }
+                        });
+                      }}
+                    >
+                      <option value={0}>Select</option>
+                      <option value={111}>CSE</option>
+                      <option value={112}>Industrial and Systems Engineering</option>
+                      <option value={113}>Electrical Engineering</option>
+                      <option value={114}>Info Systems and Operation Management</option>
+                      <option value={115}>Mechanical/Aerospace Engineering</option>
+                    </select>
                 </div>
               </div>
 
@@ -334,7 +371,7 @@ export default function Signup() {
                     }}
                   >
                     {nationality.map(x => (
-                      <option value={x.value}>{x.label}</option>
+                      <option value={x.label}>{x.label}</option>
                     ))}
                   </select>  
                 </div>

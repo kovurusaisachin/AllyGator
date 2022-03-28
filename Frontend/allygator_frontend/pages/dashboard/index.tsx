@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Sidebar from "../../components/sidebar";
 import AnalyticCard from "../../components/analyticCard";
 import Table from "../../components/Table";
@@ -8,6 +8,8 @@ import CourseTable from "../../components/Table/courseTable";
 import FacultyTable from "../../components/Table/facultyTable";
 import { CometChat } from "@cometchat-pro/chat";
 import { COMETCHAT_CONSTANTS } from "../../components/constant/index";
+import countryList from 'react-select-country-list'
+
 
 const parseJwt = (token) => {
   if (!token) {
@@ -17,6 +19,7 @@ const parseJwt = (token) => {
   const base64 = base64Url.replace("-", "+").replace("_", "/");
   return JSON.parse(window.atob(base64));
 };
+
 export default function dashboard() {
   const [state, setState] = useState({
     userData: [],
@@ -25,6 +28,7 @@ export default function dashboard() {
     courseResult: [],
     facultyData: [],
     facultyResult: [],
+    departmentResult:[],
     query: {
       searchText: "",
       searchTextF: "",
@@ -55,10 +59,12 @@ export default function dashboard() {
 
   const getData = () => {
     let endpoints = [
-      `${API_URL}/user`,
+      `${API_URL}/users`,
       `${API_URL}/mail/${tokenData?.Email}`,
       `${API_URL}/course`,
       `${API_URL}/faculty`,
+      `${API_URL}/department`,
+
     ];
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
       ([
@@ -66,6 +72,7 @@ export default function dashboard() {
         { data: chat },
         { data: course },
         { data: faculty },
+        { data: department },
       ]) => {
         setState({
           ...state,
@@ -76,6 +83,7 @@ export default function dashboard() {
           courseResult: course?.data,
           facultyData: faculty?.data,
           facultyResult: faculty?.data,
+          departmentResult: department?.data
         });
       }
     );
@@ -170,6 +178,7 @@ export default function dashboard() {
     // state?.userData
   ]);
 
+  const nationality = useMemo(() => countryList().getData(), [])
   const tableHeader = [
     { name: "Name", href: "#home" },
     { name: "Specialization", href: "#features" },
@@ -266,9 +275,9 @@ export default function dashboard() {
                         });
                       }}
                     >
-                      {state?.result?.map((x) => (
-                        <option value={x.course}>{x.course}</option>
-                      ))}
+                      {state?.courseResult?.map(
+                        (x) => <option value={x.idCourse}>{x.coursename}</option>
+                      )}
                     </select>
                   </div>
                 </div>
@@ -309,8 +318,8 @@ export default function dashboard() {
                         });
                       }}
                     >
-                      {state?.result?.map((x) => (
-                        <option value={x.department}>{x.deptName}</option>
+                      {state?.departmentResult?.map((x) => (
+                        <option value={x.idDepartment}>{x.deptName}</option>
                       ))}
                     </select>
                   </div>
@@ -351,15 +360,9 @@ export default function dashboard() {
                         });
                       }}
                     >
-                      {Array.from(
-                        new Set(
-                          state?.result?.map((x) => (
-                            <option value={x.nationality}>
-                              {x.nationality}
-                            </option>
-                          ))
-                        )
-                      )}
+                      {nationality.map(x => (
+                      <option value={x.label}>{x.label}</option>
+                    ))}
                     </select>
                   </div>
                 </div>
