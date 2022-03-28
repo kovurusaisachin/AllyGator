@@ -17,6 +17,10 @@ const parseJwt = (token) => {
   const base64 = base64Url.replace("-", "+").replace("_", "/");
   return JSON.parse(window.atob(base64));
 };
+
+const onlyUnique = (value, index, self) => {
+  return self.indexOf(value) === index;
+}
 export default function dashboard() {
   const [state, setState] = useState({
     userData: [],
@@ -266,9 +270,9 @@ export default function dashboard() {
                         });
                       }}
                     >
-                      {state?.result?.map((x) => (
-                        <option value={x.course}>{x.course}</option>
-                      ))}
+                      {state?.result?.map(
+                        (x) => <option value={x.course}>{x.course}</option>
+                      )}
                     </select>
                   </div>
                 </div>
