@@ -371,7 +371,7 @@ export default function Signup() {
                     }}
                   >
                     {nationality.map(x => (
-                      <option value={x.value}>{x.label}</option>
+                      <option value={x.label}>{x.label}</option>
                     ))}
                   </select>  
                 </div>
