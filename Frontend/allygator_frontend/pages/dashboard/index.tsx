@@ -55,7 +55,7 @@ export default function dashboard() {
 
   const getData = () => {
     let endpoints = [
-      `${API_URL}/users`,
+      `${API_URL}/user`,
       `${API_URL}/mail/${tokenData?.Email}`,
       `${API_URL}/course`,
       `${API_URL}/faculty`,
@@ -201,7 +201,7 @@ export default function dashboard() {
             <h3 className="text-2xl my-2 font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Connection's list
             </h3>
-            <div className="grid grid-cols-6 space-x-2 mt-2 mb-4 max-w-screen-xl mx-auto w-screen">
+            <div className="grid grid-cols-6 space-x-2 mt-2 mb-4 max-w-screen-xl mx-auto w-screen-xl">
               <div className="col-span-2">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
@@ -450,7 +450,7 @@ export default function dashboard() {
 
               <CourseTable header={courseHeader} data={state?.courseResult} />
             </div>
-            <div className= "ml-2 mr-8 col-span-2">
+            <div className= "ml-2  col-span-2">
             <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Faculty list
             </h3>
