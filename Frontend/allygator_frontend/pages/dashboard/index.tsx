@@ -5,7 +5,7 @@ import Table from "../../components/Table";
 import axios from "Axios";
 import { API_URL } from "../../components/constant";
 import CourseTable from "../../components/Table/courseTable";
-import FacultyTable from "../../components/Table/facultyTable"
+import FacultyTable from "../../components/Table/facultyTable";
 import { CometChat } from "@cometchat-pro/chat";
 import { COMETCHAT_CONSTANTS } from "../../components/constant/index";
 
@@ -20,11 +20,11 @@ const parseJwt = (token) => {
 export default function dashboard() {
   const [state, setState] = useState({
     userData: [],
-    chatData : [],
+    chatData: [],
     courseData: [],
-    courseResult:[],
-    facultyData:[],
-    facultyResult:[],
+    courseResult: [],
+    facultyData: [],
+    facultyResult: [],
     query: {
       searchText: "",
       searchTextF: "",
@@ -32,7 +32,7 @@ export default function dashboard() {
       status: "active",
       department: "",
       nationality: "",
-      course:""
+      course: "",
     },
     result: [],
   });
@@ -61,7 +61,12 @@ export default function dashboard() {
       `${API_URL}/faculty`,
     ];
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
-      ([{ data: user }, { data: chat }, { data: course }, {data: faculty}]) => {
+      ([
+        { data: user },
+        { data: chat },
+        { data: course },
+        { data: faculty },
+      ]) => {
         setState({
           ...state,
           userData: user?.data,
@@ -70,7 +75,7 @@ export default function dashboard() {
           courseData: course?.data,
           courseResult: course?.data,
           facultyData: faculty?.data,
-          facultyResult: faculty?.data
+          facultyResult: faculty?.data,
         });
       }
     );
@@ -117,7 +122,7 @@ export default function dashboard() {
     state?.query?.department,
     state.query.nationality,
     state.query.status,
-    state?.query?.course
+    state?.query?.course,
     // state?.userData
   ]);
   useEffect(() => {
@@ -131,7 +136,7 @@ export default function dashboard() {
           ?.includes(state.query.searchTextC?.toLowerCase()) ||
         product?.deptName
           ?.toLowerCase()
-          ?.includes(state.query.searchTextC?.toLowerCase()) 
+          ?.includes(state.query.searchTextC?.toLowerCase())
     );
 
     setState({
@@ -139,7 +144,7 @@ export default function dashboard() {
       courseResult: newResults,
     });
   }, [
-    state.query.searchTextC
+    state.query.searchTextC,
     // state?.userData
   ]);
   useEffect(() => {
@@ -153,7 +158,7 @@ export default function dashboard() {
           ?.includes(state.query.searchTextF?.toLowerCase()) ||
         product?.deptName
           ?.toLowerCase()
-          ?.includes(state.query.searchTextF?.toLowerCase()) 
+          ?.includes(state.query.searchTextF?.toLowerCase())
     );
 
     setState({
@@ -161,7 +166,7 @@ export default function dashboard() {
       facultyResult: newResults,
     });
   }, [
-    state.query.searchTextF
+    state.query.searchTextF,
     // state?.userData
   ]);
 
@@ -175,14 +180,14 @@ export default function dashboard() {
   ];
   const courseHeader = [
     { name: "Course", href: "#features" },
-    { name: "Department", href: "#features" },
+    // { name: "Department", href: "#features" },
     { name: "Faculty", href: "#register" },
   ];
   const facultyHeader = [
     { name: "Faculty", href: "#features" },
     { name: "RMP Link", href: "#features" },
   ];
-  
+
   if (typeof window !== "undefined") {
     window.sessionStorage.setItem("userId", state?.chatData?.idStudent);
     window.sessionStorage.setItem(
@@ -405,10 +410,10 @@ export default function dashboard() {
           </div>
           <div className="mx-8 my-10 grid grid-cols-5 gap-3">
             <div className="mr-2 col-span-3">
-            <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              Course list
-            </h3>
-            <div className="col-span-1">
+              <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                Course list
+              </h3>
+              <div className="col-span-1">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
                     Search
@@ -450,11 +455,11 @@ export default function dashboard() {
 
               <CourseTable header={courseHeader} data={state?.courseResult} />
             </div>
-            <div className= "ml-2  col-span-2">
-            <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              Faculty list
-            </h3>
-            <div className="col-span-1">
+            <div className="ml-2  col-span-2">
+              <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                Faculty list
+              </h3>
+              <div className="col-span-1">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
                     Search
@@ -493,7 +498,10 @@ export default function dashboard() {
                   </div>
                 </div>
               </div>
-              <FacultyTable header={facultyHeader} data={state?.facultyResult} />
+              <FacultyTable
+                header={facultyHeader}
+                data={state?.facultyResult}
+              />
             </div>
           </div>
         </div>
