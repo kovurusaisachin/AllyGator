@@ -5,7 +5,7 @@ import Table from "../../components/Table";
 import axios from "Axios";
 import { API_URL } from "../../components/constant";
 import CourseTable from "../../components/Table/courseTable";
-import FacultyTable from "../../components/Table/facultyTable"
+import FacultyTable from "../../components/Table/facultyTable";
 import { CometChat } from "@cometchat-pro/chat";
 import { COMETCHAT_CONSTANTS } from "../../components/constant/index";
 
@@ -17,15 +17,14 @@ const parseJwt = (token) => {
   const base64 = base64Url.replace("-", "+").replace("_", "/");
   return JSON.parse(window.atob(base64));
 };
-
 export default function dashboard() {
   const [state, setState] = useState({
     userData: [],
     chatData: [],
     courseData: [],
-    courseResult:[],
-    facultyData:[],
-    facultyResult:[],
+    courseResult: [],
+    facultyData: [],
+    facultyResult: [],
     query: {
       searchText: "",
       searchTextF: "",
@@ -33,6 +32,7 @@ export default function dashboard() {
       status: "active",
       department: "",
       nationality: "",
+      course: "",
     },
     result: [],
   });
@@ -61,7 +61,12 @@ export default function dashboard() {
       `${API_URL}/faculty`,
     ];
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
-      ([{ data: user }, { data: chat }, { data: course }, {data: faculty}]) => {
+      ([
+        { data: user },
+        { data: chat },
+        { data: course },
+        { data: faculty },
+      ]) => {
         setState({
           ...state,
           userData: user?.data,
@@ -70,7 +75,7 @@ export default function dashboard() {
           courseData: course?.data,
           courseResult: course?.data,
           facultyData: faculty?.data,
-          facultyResult: faculty?.data
+          facultyResult: faculty?.data,
         });
       }
     );
@@ -117,6 +122,7 @@ export default function dashboard() {
     state?.query?.department,
     state.query.nationality,
     state.query.status,
+    state?.query?.course,
     // state?.userData
   ]);
   useEffect(() => {
@@ -130,7 +136,7 @@ export default function dashboard() {
           ?.includes(state.query.searchTextC?.toLowerCase()) ||
         product?.deptName
           ?.toLowerCase()
-          ?.includes(state.query.searchTextC?.toLowerCase()) 
+          ?.includes(state.query.searchTextC?.toLowerCase())
     );
 
     setState({
@@ -138,7 +144,7 @@ export default function dashboard() {
       courseResult: newResults,
     });
   }, [
-    state.query.searchTextC
+    state.query.searchTextC,
     // state?.userData
   ]);
   useEffect(() => {
@@ -152,7 +158,7 @@ export default function dashboard() {
           ?.includes(state.query.searchTextF?.toLowerCase()) ||
         product?.deptName
           ?.toLowerCase()
-          ?.includes(state.query.searchTextF?.toLowerCase()) 
+          ?.includes(state.query.searchTextF?.toLowerCase())
     );
 
     setState({
@@ -160,28 +166,28 @@ export default function dashboard() {
       facultyResult: newResults,
     });
   }, [
-    state.query.searchTextF
+    state.query.searchTextF,
     // state?.userData
   ]);
 
   const tableHeader = [
     { name: "Name", href: "#home" },
-    { name: "Major", href: "#features" },
-    { name: "Department", href: "#features" },
+    { name: "Specialization", href: "#features" },
+    { name: "Courses", href: "#features" },
     { name: "Nationality", href: "#register" },
     { name: "Status", href: "#team" },
     { name: "Linkedin", href: "#team" },
   ];
   const courseHeader = [
     { name: "Course", href: "#features" },
-    { name: "Department", href: "#features" },
+    // { name: "Department", href: "#features" },
     { name: "Faculty", href: "#register" },
   ];
   const facultyHeader = [
     { name: "Faculty", href: "#features" },
     { name: "RMP Link", href: "#features" },
   ];
-  
+
   if (typeof window !== "undefined") {
     window.sessionStorage.setItem("userId", state?.chatData?.idStudent);
     window.sessionStorage.setItem(
@@ -200,7 +206,7 @@ export default function dashboard() {
             <h3 className="text-2xl my-2 font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
               Connection's list
             </h3>
-            <div className="grid grid-cols-6  space-x-2 mt-2 mb-4 max-w-screen-xl mx-auto w-full">
+            <div className="grid grid-cols-6 space-x-2 mt-2 mb-4 max-w-screen-xl mx-auto w-screen-xl">
               <div className="col-span-2">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
@@ -240,7 +246,34 @@ export default function dashboard() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="col-span-1">
+                <div className="w-full">
+                  <label className="block text-base font-semibold text-gray-900">
+                    Courses
+                  </label>
+                  <div className="relative mt-1.5">
+                    <select
+                      className="block md:text-sm w-full pl-2 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
+                      // placeholder="Search D atus"
+                      value={state.query.course}
+                      onChange={(e) => {
+                        setState({
+                          ...state,
+                          query: {
+                            ...state.query,
+                            course: e.target.value,
+                          },
+                        });
+                      }}
+                    >
+                      {state?.result?.map((x) => (
+                        <option value={x.course}>{x.course}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-1">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
                     Department
@@ -277,7 +310,7 @@ export default function dashboard() {
                       }}
                     >
                       {state?.result?.map((x) => (
-                        <option value={x.department}>{x.department}</option>
+                        <option value={x.department}>{x.deptName}</option>
                       ))}
                     </select>
                   </div>
@@ -377,10 +410,10 @@ export default function dashboard() {
           </div>
           <div className="mx-8 my-10 grid grid-cols-5 gap-3">
             <div className="mr-2 col-span-3">
-            <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              Course list
-            </h3>
-            <div className="col-span-1">
+              <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                Course list
+              </h3>
+              <div className="col-span-1">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
                     Search
@@ -422,11 +455,11 @@ export default function dashboard() {
 
               <CourseTable header={courseHeader} data={state?.courseResult} />
             </div>
-            <div className= "ml-2 mr-8 col-span-2">
-            <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              Faculty list
-            </h3>
-            <div className="col-span-1">
+            <div className="ml-2  col-span-2">
+              <h3 className="text-2xl font-bold my-2 leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                Faculty list
+              </h3>
+              <div className="col-span-1">
                 <div className="w-full">
                   <label className="block text-base font-semibold text-gray-900">
                     Search
@@ -465,7 +498,10 @@ export default function dashboard() {
                   </div>
                 </div>
               </div>
-              <FacultyTable header={facultyHeader} data={state?.facultyResult} />
+              <FacultyTable
+                header={facultyHeader}
+                data={state?.facultyResult}
+              />
             </div>
           </div>
         </div>

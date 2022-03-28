@@ -2,13 +2,13 @@ import React from "react"
 import Link from "next/link"
 
 export default function Table(props) {
-  // console.log(props)
+  console.log(props,'mmm')
   const Header = ({ array }) => {
     let counter = 0;
     return array?.map((x) => {
       ++counter;
       return (
-        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" key={counter}>
+        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:w-2.5" key={counter}>
           {x.name}
         </th>
       );
@@ -16,21 +16,21 @@ export default function Table(props) {
   };
   return (
     <>
-      <div className="flex flex-col">
+          <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table className="min-w-full divide-y divide-gray-200">
+              <table className="table-fixed min-w-full divide-y divide-gray-200 ">
                 <thead className="bg-gray-50">
                   <tr>
                     <Header array={props.header} />
                   </tr>
                 </thead>
                 {props?.type === "user" ?
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-200 overflow-y-scroll w-full h-64">
                   {props?.data?.map((person) => (
                     <tr key={person.email}>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900">{person?.firstname} {person?.lastname}</div>
@@ -38,17 +38,25 @@ export default function Table(props) {
                           </div>
                         </div>
                       </td>
+                      {/* <td className="px-6 py-4 whitespace-nowrap">
+                        {person?.deptName}
+                      </td> */}
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{person?.course}</div>
-                        <div className="text-sm text-gray-500">{person?.specialization}</div>
+                        <div className="text-sm text-gray-900">{person?.specialization}</div>
+                        <div className="text-sm text-gray-500">{person?.profile}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {person?.department === 111 ?
-                      <td className="text-sm text-gray-500">Computer Science</td> :
-                      <td className="text-sm text-gray-500">Arts & Science</td>
+                        <div className="text-sm text-gray-500">{person?.course?.split(",").map(a => 
+                            <span className="mx-1 px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-500">
+                              {a}
+                            </span>
+                      )}</div>
+                        <div className="text-sm text-gray-500">{person?.deptName}</div>
+                        
+                      
 
-                      }
                       </td>
+
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person?.nationality}</td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {person?.status === "alumni" ?
