@@ -21,6 +21,31 @@ describe('Login Tests', function () {
 
     }) 
 
+    it('Testing Directory information',function(){
+        cy.visit('http://localhost:3000/dashboard/miscellaneous/cellphones')
+        cy.contains("Directory of cell phone providers.");
+    }) 
+
+    it('Testing AT&T information',function(){
+        cy.visit('http://localhost:3000/dashboard/miscellaneous/cellphones')
+        cy.contains("AT&T");
+    }) 
+
+    it('Testing BoostMobile information',function(){
+        cy.visit('http://localhost:3000/dashboard/miscellaneous/cellphones')
+        cy.contains("Boost Mobile");
+    })
+
+    it('Testing SprintMobile information',function(){
+        cy.visit('http://localhost:3000/dashboard/miscellaneous/cellphones')
+        cy.contains("Sprint");
+    }) 
+
+    it('Testing T-Mobile information',function(){
+        cy.visit('http://localhost:3000/dashboard/miscellaneous/cellphones')
+        cy.contains("T-Mobile");
+    }) 
+    
     it('Successful logout', function () {
         cy.contains("Logout").click()
     })
