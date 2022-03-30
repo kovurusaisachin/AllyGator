@@ -1,5 +1,16 @@
 /// <reference types="cypress"/>
-
+describe('Login Tests', function () {
+    
+  it('Successful login', function () {
+      cy.visit('http://localhost:3000/login')
+      cy.get("[data-cy='login-email-input']")
+      .type("kovuru.saisachin@ufl.edu")
+      cy.get("[data-cy='login-password-input']")
+      .type("sachin")
+      cy.contains("Login").click()
+      cy.contains("Login successfull").click()
+  })
+})
 context("Dashboard Page", () => {
     beforeEach(() => {
       cy.visit("http://localhost:3000/dashboard");
@@ -34,28 +45,12 @@ context("Dashboard Page", () => {
       cy.location("pathname").should("eq", "/dashboard/profile");
       cy.go("back");
     });
-  
-    it("Check if every component of analytics card is working or not",() => {
-        //Check if header is present
-        cy.get("h1").contains("Dashboard");
-        cy.contains("Connections");
-        cy.contains("Posts");
-        cy.contains("Activities");
-        cy.contains("Pending connections");
-
-    });
-
-    it("Check if table on dashboard is loaded or not",() => {
-        //check connection table
-        cy.contains("Connection's list");
-        cy.get("thead").should("contain","Name").and("contain","Major").and("contain","Department").and("contain","Nationality").and("contain","Status");
-
-        //check course list table
-        cy.contains("Top Course list");
-        cy.get("thead").should("contain","Name").and("contain","Course").and("contain","Department").and("contain","Faculty").and("contain","Likes");
-
-    });
-  
-    
+ 
   });
+  describe('Logout Tests', function () {
+    it('Successful logout', function () {
+        cy.contains("Logout").click()
+    })
+})
+
   
