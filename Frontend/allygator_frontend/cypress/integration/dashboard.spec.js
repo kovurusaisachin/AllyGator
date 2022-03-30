@@ -1,6 +1,5 @@
 /// <reference types="cypress"/>
 describe('Login Tests', function () {
-    
   it('Successful login', function () {
       cy.visit('http://localhost:3000/login')
       cy.get("[data-cy='login-email-input']")
@@ -45,7 +44,29 @@ context("Dashboard Page", () => {
       cy.location("pathname").should("eq", "/dashboard/profile");
       cy.go("back");
     });
- 
+  
+    it("Check if every component of analytics card is working or not",() => {
+        //Check if header is present
+        cy.get("h1").contains("Dashboard");
+        cy.contains("Connections");
+        cy.contains("Posts");
+        cy.contains("Activities");
+        cy.contains("Course list");
+    });
+
+    it("Check if table on dashboard is loaded or not",() => {
+      //check connection table
+       cy.contains("Connection's list");
+       cy.get("thead").should("contain","Name").and("contain","Specialization").and("contain","Courses").and("contain","Nationality").and("contain","Status").and("contain","Linkedin");
+
+      //check course list table
+       cy.contains("Course list");
+       cy.get("thead").should("contain","Course").and("contain","Faculty");
+        
+      //check Faculty list
+       cy.contains("Faculty list");
+       cy.get("thead").should("contain","Faculty").and("contain","RMP Link");       
+    });  
   });
   describe('Logout Tests', function () {
     it('Successful logout', function () {
