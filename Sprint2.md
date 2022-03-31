@@ -68,8 +68,8 @@ localhost:8080/api/v1/user/?id=1<br />
 API-3 --> POST<br />
 REGISTER (ADD USERS) : This API is used to insert student's information into the database after registration(sign-up) using the front-end page.<br />
 localhost:8080/api/v1/register/<br />
-
-Features added in Sprint2:<br /><br />
+</br>
+Features added in Sprint2:<br />
 API- 4 --> PUT
 UPDATE USER : This API is used to update student's information into the database.<br />
 localhost:8080/api/v1/user/?id=1<br />
