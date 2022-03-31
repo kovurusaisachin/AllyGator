@@ -7,8 +7,8 @@ import Router from "next/router";
 import Swal from "sweetalert2"
 
 function Profile() {
-  const [counter, setCounter] = useState(0);
   const [state, setState] = useState({
+    counter:0,
     profileData: {
       firstname: "",
       lastname: "",
@@ -102,13 +102,24 @@ function Profile() {
   };
   const handleClick = (e) => {
     e.preventDefault();
-    setCounter(counter + 1);
-    console.log(counter);
+    state?.counter == 1 ? 
+      setState({
+        ...state,
+        counter:0,
+        profileData:{
+          ...state?.profileData,
+          newCourse:""
+    }}):setState({
+      ...state,
+      counter:state?.counter+1
+    });
   };
   const handleDClick = (e) => {
     e.preventDefault();
-    counter > 0 ? setCounter(counter - 1) : setCounter(0);
-    console.log(counter);
+    state?.counter > 0 ? setState({
+      ...state,
+      counter: state?.counter - 1}) : setState({...state,
+        counter:0});
   };
   
  
@@ -353,7 +364,7 @@ function Profile() {
                           </button>
                         </div>
                         <div className="col-span-6 sm:col-span-6">
-                          {Array.from(Array(counter)).map((c, index) => {
+                          {Array.from(Array(state?.counter)).map((c, index) => {
                             return (
                               <>
                                 <div className="col-span-4 sm:col-span-4">
