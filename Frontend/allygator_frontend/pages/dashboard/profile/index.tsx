@@ -8,7 +8,24 @@ import Swal from "sweetalert2"
 
 function Profile() {
   const [counter, setCounter] = useState(0);
-  const [inputValues, setInputValues] = useState({});
+  const [state, setState] = useState({
+    profileData: {
+      firstname: "",
+      lastname: "",
+      department: 0,
+      deptName:"",
+      email: "",
+      gender: "",
+      course: "",
+      newCourse:"",
+      url: "",
+      nationality: "",
+      profile: "",
+      specialization: "",
+      status: ""
+    },
+
+  });
   if (typeof window !== "undefined") {
     var token = window.sessionStorage.getItem("token");
     var userId = window.sessionStorage.getItem("userId");
@@ -27,8 +44,16 @@ function Profile() {
     baseURL: `${API_URL}`,
     responseType: "json",
   });
+  console.log(state,'prashant')
   const handleUpdate = (e) => {
       e.preventDefault();
+      setState({
+        ...state,
+        profileData:{
+          ...state?.profileData,
+          course: state?.profileData?.course+","+state?.profileData?.newCourse
+        }
+      })
       profileApi
         .put(`/user/${userId}`, state?.profileData,config)
         .then((response) => {
@@ -86,9 +111,7 @@ function Profile() {
     console.log(counter);
   };
   
-  const [state, setState] = useState({
-    profileData: [],
-  });
+ 
   
   useEffect(() => {
     getProfileData();
@@ -349,7 +372,7 @@ function Profile() {
                                         ...state,
                                         profileData: {
                                           ...state.profileData,
-                                          course: state?.profileData?.course.concat(e.target.value)
+                                          newCourse: (e.target.value)
                                         }
                                       });
                                     }}
@@ -402,7 +425,7 @@ function Profile() {
                                 ...state,
                                 profileData: {
                                   ...state.profileData,
-                                  cloud: e.target.value
+                                  profile: e.target.value
                                 }
                               });
                             }}
