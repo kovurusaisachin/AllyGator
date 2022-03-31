@@ -53,18 +53,6 @@ it('Testing Other health and medical services phone numbers Information',functio
     cy.visit('http://localhost:3000/dashboard/miscellaneous/ufmobileoutreachclinic')
     cy.contains("Other health and medical services phone numbers");
 }) 
-it('Testing Other health and outreach clinic Information',function(){
-    cy.visit('http://localhost:3000/dashboard/miscellaneous/ufmobileoutreachclinic')
-    cy.contains("For more information about the Mobile Outreach Clinic or any of its partner organizations, call 352-273-5329 or visit outreach.med.ufl.edu");
-}) 
-it('Testing Services Information',function(){
-    cy.visit('http://localhost:3000/dashboard/miscellaneous/ufmobileoutreachclinic')
-    cy.contains("Service include");
-}) 
-it('Testing Service Cost Information',function(){
-    cy.visit('http://localhost:3000/dashboard/miscellaneous/ufmobileoutreachclinic')
-    cy.contains("All services are provided free of cost");
-}) 
 
 it('Successful logout', function () {
     
