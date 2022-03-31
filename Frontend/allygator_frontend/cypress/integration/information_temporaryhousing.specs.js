@@ -32,7 +32,14 @@ it('Testing Extended Staying Information',function(){
     cy.visit('http://localhost:3000/dashboard/miscellaneous/temporaryhousing')
     cy.contains("Extended stay website click here");
 }) 
-
+it('Testing Southern Comfort Properties Information',function(){
+    cy.visit('http://localhost:3000/dashboard/miscellaneous/temporaryhousing')
+    cy.contains("Southern Comfort Properties website click here");
+})
+it('Testing UF Guest Housing Information',function(){
+    cy.visit('http://localhost:3000/dashboard/miscellaneous/temporaryhousing')
+    cy.contains("UF Guest Housing website click here");
+}) 
 it('Successful logout', function () {
     
     cy.contains("Logout").click()
