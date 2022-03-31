@@ -24,6 +24,14 @@ it('Testing Temporary Housing Information',function(){
     cy.visit('http://localhost:3000/dashboard/miscellaneous/temporaryhousing')
     cy.contains("Temporary Housing");
 }) 
+it('Testing AirBnb Information',function(){
+    cy.visit('http://localhost:3000/dashboard/miscellaneous/temporaryhousing')
+    cy.contains("Airbnb website click here");
+}) 
+it('Testing Extended Staying Information',function(){
+    cy.visit('http://localhost:3000/dashboard/miscellaneous/temporaryhousing')
+    cy.contains("Extended stay website click here");
+}) 
 
 it('Successful logout', function () {
     
