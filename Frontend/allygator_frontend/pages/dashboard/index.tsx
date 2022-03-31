@@ -6,8 +6,6 @@ import axios from "Axios";
 import { API_URL } from "../../components/constant";
 import CourseTable from "../../components/Table/courseTable";
 import FacultyTable from "../../components/Table/facultyTable";
-import { CometChat } from "@cometchat-pro/chat";
-import { COMETCHAT_CONSTANTS } from "../../components/constant/index";
 import countryList from 'react-select-country-list'
 
 
@@ -22,6 +20,7 @@ const parseJwt = (token) => {
 
 export default function dashboard() {
   const [state, setState] = useState({
+    userDataO:[],
     userData: [],
     chatData: [],
     courseData: [],
@@ -76,7 +75,7 @@ export default function dashboard() {
       ]) => {
         setState({
           ...state,
-          userData: user?.data,
+          userDataO: user?.data,
           result: user?.data,
           chatData: chat?.data,
           courseData: course?.data,
@@ -89,6 +88,15 @@ export default function dashboard() {
     );
   };
   // console.log(state?.userData,'noopur')
+  useEffect(() => {
+    const newData = state?.userDataO?.filter(
+      x => x.email !== tokenData?.Email
+    )
+    setState({
+      ...state,
+      userData: newData
+    })
+  },[state?.userDataO])
   useEffect(() => {
     const newResults = state?.userData?.filter(
       (product) =>
@@ -113,7 +121,7 @@ export default function dashboard() {
         product?.course
           ?.toLowerCase()
           ?.includes(state.query.searchText?.toLowerCase())
-    );
+    )
     // ?.filter(product => product?.status === state?.query?.status)
 
     // ?.filter(product => product?.department === state?.query?.department)
