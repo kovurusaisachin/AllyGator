@@ -122,25 +122,55 @@ export default function dashboard() {
           ?.toLowerCase()
           ?.includes(state.query.searchText?.toLowerCase())
     )
-    // ?.filter(product => product?.status === state?.query?.status)
-
-    // ?.filter(product => product?.department === state?.query?.department)
-    // ?.filter(product => product?.nationality === state?.query?.nationality);
-
-    console.log("ppp", newResults);
-
     setState({
       ...state,
       result: newResults,
     });
   }, [
-    state.query.searchText,
-    state?.query?.department,
-    state.query.nationality,
-    state.query.status,
-    state?.query?.course,
+    state.query.searchText
     // state?.userData
   ]);
+  useEffect(() => {
+    const newResults = state?.userData?.filter(
+      (user) =>
+        user?.course?.toLowerCase()?.includes(state?.query?.course?.toLowerCase())
+    )
+    setState({
+      ...state,
+      result: newResults,
+    });
+  }, [
+    state.query.course
+    // state?.userData
+  ]);
+  useEffect(() => {
+    const newResults = state?.userData?.filter(
+      (user) =>
+        user?.deptName?.toLowerCase()?.includes(state?.query?.department?.toLowerCase())
+    )
+    setState({
+      ...state,
+      result: newResults,
+    });
+  }, [
+    state.query.department
+    // state?.userData
+  ]);
+ 
+  useEffect(() => {
+    const newResults = state?.userData?.filter(
+      (user) =>
+        user?.nationality?.toLowerCase()?.includes(state?.query?.nationality?.toLowerCase())
+    )
+    setState({
+      ...state,
+      result: newResults,
+    });
+  }, [
+    state.query.nationality
+    // state?.userData
+  ]);
+
   useEffect(() => {
     const newResults = state?.courseData?.filter(
       (product) =>
@@ -284,7 +314,7 @@ export default function dashboard() {
                       }}
                     >
                       {state?.courseResult?.map(
-                        (x) => <option value={x.idCourse}>{x.coursename}</option>
+                        (x) => <option value={x.coursename}>{x.coursename}</option>
                       )}
                     </select>
                   </div>
@@ -327,7 +357,7 @@ export default function dashboard() {
                       }}
                     >
                       {state?.departmentResult?.map((x) => (
-                        <option value={x.idDepartment}>{x.deptName}</option>
+                        <option value={x.deptName}>{x.deptName}</option>
                       ))}
                     </select>
                   </div>
@@ -409,7 +439,7 @@ export default function dashboard() {
                       });
                     }}
                   >
-                    <option value="all">All</option>
+                    {/* <option value="all">All</option> */}
                     <option value="incoming">Incoming</option>
                     <option value="active">Active</option>
                     <option value="alumni">Alumni</option>
