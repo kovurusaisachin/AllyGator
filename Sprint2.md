@@ -128,7 +128,7 @@ Sprint 2 API's: https://documenter.getpostman.com/view/19334583/UVeGqkYL <br />
 
 GO-LANG UNIT-TEST CASES: <br />
 Unit-test cases for the API's have been added along with coverage report and HTML pages.
-https://github.com/kovurusaisachin/AllyGator/tree/main/Backend <br />
+https://github.com/kovurusaisachin/AllyGator/tree/main/Backend/coverage-report <br />
 https://drive.google.com/drive/u/1/folders/1NarjzdOcaf43jcIE_Z-lVBP0AkOUTaeT  <br />
 <br /><br />
 Video link: <br />
