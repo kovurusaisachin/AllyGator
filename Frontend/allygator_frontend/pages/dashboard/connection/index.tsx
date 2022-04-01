@@ -1,10 +1,13 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useMemo } from "react";
 import Sidebar from "../../../components/sidebar";
 import ConnectionTable from "../../../components/Table/connection";
 import { API_URL } from "../../../components/constant";
+import countryList from 'react-select-country-list'
+
 
 function Connection() {
+  const nationality = useMemo(() => countryList().getData(), [])
   const headerData = [
     { name: "Name", href: "#home" },
     { name: "Specialization", href: "#nation" },
@@ -14,6 +17,14 @@ function Connection() {
   const [state, setState] = useState({
     connectionData: [],
     result: [],
+    finalResult:[],
+    departmentResult:[],
+    query:{
+      searchText: "",
+      searchNationality:"",
+      searchDomain:"",
+      searchDepartment:""
+    }
   });
   if (typeof window !== "undefined") {
     var token = window.sessionStorage.getItem("token");
@@ -29,29 +40,25 @@ function Connection() {
     },
   };
   const fetchConnections = () => {
-    axios
-      .get(`${API_URL}/user`, config)
-      .then((response) => {
-        if (response.status === 200) {
-          setState({
-            ...state,
-            connectionData: response?.data?.data,
-          });
-        }
-      })
-      .catch((err) => {
-        if (err.response) {
-          // client received an error response (5xx, 4xx)
-          console.log(err.respone);
-        } else if (err.request) {
-          // client never received a response, or request never left
-          console.log(err.request);
-        } else {
-          // anything else
-          console.log("something bad happened, retry again...", err);
-        }
-      });
+    let endpoints = [
+      `${API_URL}/users`,
+      `${API_URL}/department`,
+
+    ];
+    Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
+      ([
+        { data: connection },
+        { data: department },
+      ]) => {
+        setState({
+          ...state,
+          connectionData: connection?.data,
+          departmentResult: department?.data
+        });
+      }
+    );
   };
+
 
   useEffect(() => {
     const newData = state?.connectionData?.filter(
@@ -59,9 +66,82 @@ function Connection() {
     )
     setState({
       ...state,
-      result: newData
+      result: newData,
+      finalResult: newData
     })
   },[state?.connectionData])
+
+  useEffect(() => {
+    const newResults = state?.result?.filter(
+      (user) =>
+        user?.firstname
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        user?.lastname
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        user?.email
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        user?.specialization
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        user?.profile
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+          user?.deptName
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) 
+        // user?.deptName?.toLowerCase()?.includes(state?.query?.searchDepartment?.toLowerCase())
+    )
+
+    setState({
+      ...state,
+      finalResult: newResults,
+    });
+  }, [
+    state.query.searchText
+    // state?.userData
+  ]);
+  useEffect(() => {
+    const newResults = state?.result?.filter(
+      (user) =>
+        user?.deptName?.toLowerCase()?.includes(state?.query?.searchDepartment?.toLowerCase())
+    )
+    setState({
+      ...state,
+      finalResult: newResults,
+    });
+  }, [
+    state.query.searchDepartment
+    // state?.userData
+  ]);
+  useEffect(() => {
+    const newResults = state?.result?.filter(
+      (user) =>
+        user?.profile?.toLowerCase()?.includes(state?.query?.searchDomain?.toLowerCase())
+    )
+    setState({
+      ...state,
+      finalResult: newResults,
+    });
+  }, [
+    state.query.searchDomain
+    // state?.userData
+  ]);
+  useEffect(() => {
+    const newResults = state?.result?.filter(
+      (user) =>
+        user?.nationality?.toLowerCase()?.includes(state?.query?.searchNationality?.toLowerCase())
+    )
+    setState({
+      ...state,
+      finalResult: newResults,
+    });
+  }, [
+    state.query.searchDomain
+    // state?.userData
+  ]);
   return (
     <div className="flex flex-col-2 bg-gray-100">
       <Sidebar />
@@ -87,7 +167,7 @@ function Connection() {
             </div>
           </div>
         </div>
-        <div className="mx-8 mt-8 w-auto">
+        <div className="mx-8 mt-2  w-auto">
           <label className="block text-base font-semibold text-gray-900">
             Search
           </label>
@@ -109,18 +189,18 @@ function Connection() {
             </div>
             <input
               className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
-              placeholder="Search by Course, Department or Faculty"
+              placeholder="Search by name, email or specialization"
               type="text"
-              //   value={state.query.searchTextC}
-              //   onChange={(e) => {
-              //     setState({
-              //       ...state,
-              //       query: {
-              //         ...state.query,
-              //         searchTextC: e.target.value,
-              //       },
-              //     });
-              //   }}
+                value={state.query.searchText}
+                onChange={(e) => {
+                  setState({
+                    ...state,
+                    query: {
+                      ...state.query,
+                      searchText: e.target.value,
+                    },
+                  });
+                }}
             />
           </div>
         </div>
@@ -209,7 +289,7 @@ function Connection() {
             <h3 className="text-2xl font-bold mb-1 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               People
             </h3>
-            <ConnectionTable header={headerData} data={state?.result} />
+            <ConnectionTable header={headerData} data={state?.finalResult} />
           </div>
           <div className="col-span-3 bg-white mb-8 rounded-lg px-5 py-5">
             <h3 className="text-2xl font-bold mb-4 leading-7 text-gray-900 sm:leading-9 sm:truncate">
@@ -235,21 +315,24 @@ function Connection() {
                     />
                   </svg>
                 </div>
-                <input
-                  className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
-                  placeholder="Search by Course, Department or Faculty"
-                  type="text"
-                  //   value={state.query.searchTextC}
-                  //   onChange={(e) => {
-                  //     setState({
-                  //       ...state,
-                  //       query: {
-                  //         ...state.query,
-                  //         searchTextC: e.target.value,
-                  //       },
-                  //     });
-                  //   }}
-                />
+                <select
+                      className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
+                      placeholder="Search Bookings status"
+                      value={state.query.searchNationality ?? ""}
+                      onChange={(e) => {
+                        setState({
+                          ...state,
+                          query: {
+                            ...state.query,
+                            searchNationality: e.target.value,
+                          },
+                        });
+                      }}
+                    >
+                      {nationality.map(x => (
+                      <option value={x.label}>{x.label}</option>
+                    ))}
+                    </select>
               </div>
             </div>
             <hr />
@@ -273,21 +356,24 @@ function Connection() {
                     />
                   </svg>
                 </div>
-                <input
-                  className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
-                  placeholder="Search by Course, Department or Faculty"
-                  type="text"
-                  //   value={state.query.searchTextC}
-                  //   onChange={(e) => {
-                  //     setState({
-                  //       ...state,
-                  //       query: {
-                  //         ...state.query,
-                  //         searchTextC: e.target.value,
-                  //       },
-                  //     });
-                  //   }}
-                />
+                                    <select
+                      className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
+                      // placeholder="Search D atus"
+                      value={state.query.searchDepartment}
+                      onChange={(e) => {
+                        setState({
+                          ...state,
+                          query: {
+                            ...state.query,
+                            searchDepartment: e.target.value,
+                          },
+                        });
+                      }}
+                    >
+                      {state?.departmentResult?.map((x) => (
+                        <option value={x.deptName}>{x.deptName}</option>
+                      ))}
+                    </select>
               </div>
             </div>
             <hr />
@@ -311,21 +397,39 @@ function Connection() {
                     />
                   </svg>
                 </div>
-                <input
+                {/* <input
                   className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
                   placeholder="Search by Course, Department or Faculty"
                   type="text"
-                  //   value={state.query.searchTextC}
-                  //   onChange={(e) => {
-                  //     setState({
-                  //       ...state,
-                  //       query: {
-                  //         ...state.query,
-                  //         searchTextC: e.target.value,
-                  //       },
-                  //     });
-                  //   }}
-                />
+                    value={state.query.searchDomain}
+                    onChange={(e) => {
+                      setState({
+                        ...state,
+                        query: {
+                          ...state.query,
+                          searchDomain: e.target.value,
+                        },
+                      });
+                    }}
+                /> */}
+                                <select
+                      className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
+                      // placeholder="Search D atus"
+                      value={state.query.searchDomain}
+                      onChange={(e) => {
+                        setState({
+                          ...state,
+                          query: {
+                            ...state.query,
+                            searchDomain: e.target.value,
+                          },
+                        });
+                      }}
+                    >
+                      {state?.result?.map((x) => (
+                        <option value={x.profile}>{x.profile}</option>
+                      ))}
+                    </select>
               </div>
             </div>
             <hr />
