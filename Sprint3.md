@@ -11,6 +11,7 @@ Allygator is a comprehensive yet useful idea of connecting the future gators wit
 4. run npm chat
 ```
 <br />
+
 <b>Note:</b> To run frontend follow the below steps:<br/>
 ```
 1. change directory to frontend
@@ -48,36 +49,39 @@ Forum - localhost:3000/dashboard/forum
 3. Chat page was added. <br />
 4. Profile page ui was updated <br />  
 
-### Cypress Testing was added for the following page: <br /> 
-1. homepage testing <br />
-2. Dashboard testing <br />
-3. Connectionlist mock testing <br />
-4. login page testing <br />
-<br/>
+### Cypress Testing was added for the following page: </br> 
+1. homepage testing </br>
+2. Dashboard testing </br>
+3. Connectionlist mock testing <br>
+4. login page testing </br>
+</br>
 
-<br />
-### Features acheieved in Sprint 3 : </br>
-1. Added authentication feature everywhere by integrating JWT system. </br>
-2. Added validation to login and registration page and integrated them with the jwt functionality: http://localhost:3000/signup & http://localhost:3000/login</br>
-3. Added two more table's (course list and faculty list) to the dashboard page:http://localhost:3000/dashboard </br>
-4. Added filters such as search box, select from drop down on dashboard in all the tables i.e connection list, course and faculty: http://localhost:3000/dashboard </br>
-5. Created component for connection page ui and added filters and almost all the functionality to the connection page: http://localhost:3000/connection </br>
-6. Updated ui and integrated update and add functionality to the profile page: http://localhost:3000/profile</br>
-7. Solved the bug problem related to chat page: http://localhost:3000/chat</br>
+</br>
+</br>
+
+### Features acheieved in Sprint 3</br>
+1. Added authentication feature everywhere by integrating JWT system. 
+2. Added validation to login and registration page and integrated them with the jwt functionality: http://localhost:3000/signup & http://localhost:3000/login
+3. Added two more table's (course list and faculty list) to the dashboard page:http://localhost:3000/dashboard 
+4. Added filters such as search box, select from drop down on dashboard in all the tables i.e connection list, course and faculty: http://localhost:3000/dashboard
+5. Created component for connection page ui and added filters and almost all the functionality to the connection page: http://localhost:3000/connection 
+6. Updated ui and integrated update and add functionality to the profile page: http://localhost:3000/profile
+7. Solved the bug problem related to chat page: http://localhost:3000/chat
 8. Added the logout functionality to the system.
 
+</br >
+</br >
 
-<br />
-<br />
-### Cypress Testing was added for the following page: <br /> 
-1. registration testing <br />
-2. Connectionlist mock testing <br />
-3. Information page / offcampus safety <br />
-4. Information page / cellphones <br />
-5. Information page / electricity <br />
-6. Information page / temporary housing <br />
-7. Information page /ufmobileoutreach <br />
-<br/>
+### Cypress Testing was added for the following page</br> 
+- Connectionlist mock testing
+- Registration testing.
+- Information page / offcampus safety 
+- Information page / cellphones 
+- Information page / electricity 
+- Information page / temporary housing 
+- Information page /ufmobileoutreach 
+</br>
+</br>
 
 
 ### Backend Development <br />
