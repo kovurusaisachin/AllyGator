@@ -6,8 +6,6 @@ import axios from "Axios";
 import { API_URL } from "../../components/constant";
 import CourseTable from "../../components/Table/courseTable";
 import FacultyTable from "../../components/Table/facultyTable";
-import { CometChat } from "@cometchat-pro/chat";
-import { COMETCHAT_CONSTANTS } from "../../components/constant/index";
 import countryList from 'react-select-country-list'
 
 
@@ -22,6 +20,7 @@ const parseJwt = (token) => {
 
 export default function dashboard() {
   const [state, setState] = useState({
+    userDataO:[],
     userData: [],
     chatData: [],
     courseData: [],
@@ -76,7 +75,7 @@ export default function dashboard() {
       ]) => {
         setState({
           ...state,
-          userData: user?.data,
+          userDataO: user?.data,
           result: user?.data,
           chatData: chat?.data,
           courseData: course?.data,
@@ -89,6 +88,15 @@ export default function dashboard() {
     );
   };
   // console.log(state?.userData,'noopur')
+  useEffect(() => {
+    const newData = state?.userDataO?.filter(
+      x => x.email !== tokenData?.Email
+    )
+    setState({
+      ...state,
+      userData: newData
+    })
+  },[state?.userDataO])
   useEffect(() => {
     const newResults = state?.userData?.filter(
       (product) =>
@@ -113,26 +121,29 @@ export default function dashboard() {
         product?.course
           ?.toLowerCase()
           ?.includes(state.query.searchText?.toLowerCase())
-    );
-    // ?.filter(product => product?.status === state?.query?.status)
-
-    // ?.filter(product => product?.department === state?.query?.department)
-    // ?.filter(product => product?.nationality === state?.query?.nationality);
-
-    console.log("ppp", newResults);
-
+    )
     setState({
       ...state,
       result: newResults,
     });
   }, [
-    state.query.searchText,
-    state?.query?.department,
-    state.query.nationality,
-    state.query.status,
-    state?.query?.course,
+    state.query.searchText
     // state?.userData
   ]);
+  useEffect(() => {
+    const newResults = state?.userData?.filter(
+      (user) =>
+        user?.course?.toLowerCase()?.includes(state?.query?.course?.toLowerCase())
+    )
+    setState({
+      ...state,
+      result: newResults,
+    });
+  }, [
+    state.query.course
+    // state?.userData
+  ]);
+
   useEffect(() => {
     const newResults = state?.courseData?.filter(
       (product) =>
@@ -276,7 +287,7 @@ export default function dashboard() {
                       }}
                     >
                       {state?.courseResult?.map(
-                        (x) => <option value={x.idCourse}>{x.coursename}</option>
+                        (x) => <option value={x.coursename}>{x.coursename}</option>
                       )}
                     </select>
                   </div>
@@ -319,7 +330,7 @@ export default function dashboard() {
                       }}
                     >
                       {state?.departmentResult?.map((x) => (
-                        <option value={x.idDepartment}>{x.deptName}</option>
+                        <option value={x.deptName}>{x.deptName}</option>
                       ))}
                     </select>
                   </div>
@@ -401,7 +412,7 @@ export default function dashboard() {
                       });
                     }}
                   >
-                    <option value="all">All</option>
+                    {/* <option value="all">All</option> */}
                     <option value="incoming">Incoming</option>
                     <option value="active">Active</option>
                     <option value="alumni">Alumni</option>
