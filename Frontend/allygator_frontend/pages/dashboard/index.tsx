@@ -157,6 +157,19 @@ export default function dashboard() {
     // state?.userData
   ]);
  
+  useEffect(() => {
+    const newResults = state?.userData?.filter(
+      (user) =>
+        user?.nationality?.toLowerCase()?.includes(state?.query?.nationality?.toLowerCase())
+    )
+    setState({
+      ...state,
+      result: newResults,
+    });
+  }, [
+    state.query.nationality
+    // state?.userData
+  ]);
 
   useEffect(() => {
     const newResults = state?.courseData?.filter(
