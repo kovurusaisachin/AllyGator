@@ -474,7 +474,7 @@ export default function Signup() {
                   onClick={handleSubmit}
                   className="inline-flex items-center px-6 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                 >
-                  Sign Up
+                  Sign-Up
                 </button>
             </div>
           </form>
