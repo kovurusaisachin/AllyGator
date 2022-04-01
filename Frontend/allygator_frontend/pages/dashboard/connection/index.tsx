@@ -14,6 +14,10 @@ function Connection() {
   const [state, setState] = useState({
     connectionData: [],
     result: [],
+    finalResult:[],
+    query:{
+      searchText: ""
+    }
   });
   if (typeof window !== "undefined") {
     var token = window.sessionStorage.getItem("token");
@@ -59,9 +63,39 @@ function Connection() {
     )
     setState({
       ...state,
-      result: newData
+      result: newData,
+      finalResult: newData
     })
   },[state?.connectionData])
+
+  useEffect(() => {
+    const newResults = state?.result?.filter(
+      (user) =>
+        user?.firstname
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        user?.lastname
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        user?.email
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        user?.specialization
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        user?.profile
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase())
+    );
+
+    setState({
+      ...state,
+      finalResult: newResults,
+    });
+  }, [
+    state.query.searchText,
+    // state?.userData
+  ]);
   return (
     <div className="flex flex-col-2 bg-gray-100">
       <Sidebar />
@@ -109,18 +143,18 @@ function Connection() {
             </div>
             <input
               className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
-              placeholder="Search by Course, Department or Faculty"
+              placeholder="Search by name, email or specialization"
               type="text"
-              //   value={state.query.searchTextC}
-              //   onChange={(e) => {
-              //     setState({
-              //       ...state,
-              //       query: {
-              //         ...state.query,
-              //         searchTextC: e.target.value,
-              //       },
-              //     });
-              //   }}
+                value={state.query.searchText}
+                onChange={(e) => {
+                  setState({
+                    ...state,
+                    query: {
+                      ...state.query,
+                      searchText: e.target.value,
+                    },
+                  });
+                }}
             />
           </div>
         </div>
@@ -209,7 +243,7 @@ function Connection() {
             <h3 className="text-2xl font-bold mb-1 leading-7 text-gray-900 sm:leading-9 sm:truncate">
               People
             </h3>
-            <ConnectionTable header={headerData} data={state?.result} />
+            <ConnectionTable header={headerData} data={state?.finalResult} />
           </div>
           <div className="col-span-3 bg-white mb-8 rounded-lg px-5 py-5">
             <h3 className="text-2xl font-bold mb-4 leading-7 text-gray-900 sm:leading-9 sm:truncate">
