@@ -20,46 +20,7 @@ Allygator is a comprehensive yet useful idea of connecting the future gators wit
 ```
 <br />
 
-### Features already achieved in Sprint 1 </br>
-Features already achieved in Sprint1:
-The following webpages were developed and integrated with the available API's:
-Homepage - localhost:3000
-Login - localhost:3000/login
-Signup - localhost:3000/signup
-Dashboard - localhost:3000/dashboard
-Profile - localhost:3000/dashboard/profile
-Forum - localhost:3000/dashboard/forum
-
-
-
-### Features added in Sprint 2: </br>
-1. Forum page new desgin was added: <br />
-    1. localhost:3000/forum <br />
-    2. localhost:3000/forum/[slug] <br />
-    3. localhost:3000/forum/addPost <br />
-2. Information page was added: <br />
-    1. localhost:3000/miscellaneous <br />
-    2. localhost:3000/miscellaneous/cellphones <br />
-    3. localhost:3000/miscellaneous/electricity <br />
-    4. localhost:3000/miscellaneous/emergencyrooms <br />
-    5. localhost:3000/miscellaneous/ethnicfoodstores <br />
-    6. localhost:3000/miscellaneous/offcampussafety <br />
-    7. localhost:3000/miscellaneous/temporaryhousing <br />
-    8. localhost:3000/miscellaneous/ufmobileoutreachclinic <br />
-3. Chat page was added. <br />
-4. Profile page ui was updated <br />  
-
-### Cypress Testing was added for the following page: </br> 
-1. homepage testing </br>
-2. Dashboard testing </br>
-3. Connectionlist mock testing <br>
-4. login page testing </br>
-</br>
-
-</br>
-</br>
-
-### Features acheieved in Sprint 3</br>
+### Features achieved in Sprint 3</br>
 1. Added authentication feature everywhere by integrating JWT system. 
 2. Added validation to login and registration page and integrated them with the jwt functionality: http://localhost:3000/signup & http://localhost:3000/login
 3. Added two more table's (course list and faculty list) to the dashboard page:http://localhost:3000/dashboard 
@@ -69,7 +30,6 @@ Forum - localhost:3000/dashboard/forum
 7. Solved the bug problem related to chat page: http://localhost:3000/chat
 8. Added the logout functionality to the system.
 
-</br >
 </br >
 
 ### Cypress Testing was added for the following page</br> 
@@ -82,7 +42,6 @@ Forum - localhost:3000/dashboard/forum
 - Information page /ufmobileoutreach 
 </br>
 </br>
-
 
 ### Backend Development <br />
 <b>Note:</b> To run backend follow the below steps:<br/>
