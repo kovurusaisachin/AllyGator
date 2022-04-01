@@ -1,5 +1,15 @@
 /// <reference types="cypress"/>
-
+describe('Login Tests', function () {
+  it('Successful login', function () {
+      cy.visit('http://localhost:3000/login')
+      cy.get("[data-cy='login-email-input']")
+      .type("kovuru.saisachin@ufl.edu")
+      cy.get("[data-cy='login-password-input']")
+      .type("sachin")
+      cy.contains("Login").click()
+      cy.contains("Login successfull").click()
+  })
+})
 context("Dashboard Page", () => {
     beforeEach(() => {
       cy.visit("http://localhost:3000/dashboard");
@@ -41,21 +51,27 @@ context("Dashboard Page", () => {
         cy.contains("Connections");
         cy.contains("Posts");
         cy.contains("Activities");
-        cy.contains("Pending connections");
-
+        cy.contains("Course list");
     });
 
     it("Check if table on dashboard is loaded or not",() => {
-        //check connection table
-        cy.contains("Connection's list");
-        cy.get("thead").should("contain","Name").and("contain","Major").and("contain","Department").and("contain","Nationality").and("contain","Status");
+      //check connection table
+       cy.contains("Connection's list");
+       cy.get("thead").should("contain","Name").and("contain","Specialization").and("contain","Courses").and("contain","Nationality").and("contain","Status").and("contain","Linkedin");
 
-        //check course list table
-        cy.contains("Top Course list");
-        cy.get("thead").should("contain","Name").and("contain","Course").and("contain","Department").and("contain","Faculty").and("contain","Likes");
-
-    });
-  
-    
+      //check course list table
+       cy.contains("Course list");
+       cy.get("thead").should("contain","Course").and("contain","Faculty");
+        
+      //check Faculty list
+       cy.contains("Faculty list");
+       cy.get("thead").should("contain","Faculty").and("contain","RMP Link");       
+    });  
   });
+  describe('Logout Tests', function () {
+    it('Successful logout', function () {
+        cy.contains("Logout").click()
+    })
+})
+
   
