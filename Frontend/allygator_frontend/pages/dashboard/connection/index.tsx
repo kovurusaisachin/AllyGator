@@ -16,7 +16,9 @@ function Connection() {
     result: [],
     finalResult:[],
     query:{
-      searchText: ""
+      searchText: "",
+      searchNationality:"",
+      searchDepartment:""
     }
   });
   if (typeof window !== "undefined") {
@@ -34,7 +36,7 @@ function Connection() {
   };
   const fetchConnections = () => {
     axios
-      .get(`${API_URL}/user`, config)
+      .get(`${API_URL}/users`, config)
       .then((response) => {
         if (response.status === 200) {
           setState({
@@ -85,15 +87,32 @@ function Connection() {
           ?.includes(state.query.searchText?.toLowerCase()) ||
         user?.profile
           ?.toLowerCase()
-          ?.includes(state.query.searchText?.toLowerCase())
-    );
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+          user?.deptName
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) 
+        // user?.deptName?.toLowerCase()?.includes(state?.query?.searchDepartment?.toLowerCase())
+    )
 
     setState({
       ...state,
       finalResult: newResults,
     });
   }, [
-    state.query.searchText,
+    state.query.searchText
+    // state?.userData
+  ]);
+  useEffect(() => {
+    const newResults = state?.result?.filter(
+      (user) =>
+        user?.deptName?.toLowerCase()?.includes(state?.query?.searchDepartment?.toLowerCase())
+    )
+    setState({
+      ...state,
+      finalResult: newResults,
+    });
+  }, [
+    state.query.searchDepartment
     // state?.userData
   ]);
   return (
@@ -121,7 +140,7 @@ function Connection() {
             </div>
           </div>
         </div>
-        <div className="mx-8 mt-8 w-auto">
+        <div className="mx-8 mt-2  w-auto">
           <label className="block text-base font-semibold text-gray-900">
             Search
           </label>
@@ -311,16 +330,16 @@ function Connection() {
                   className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
                   placeholder="Search by Course, Department or Faculty"
                   type="text"
-                  //   value={state.query.searchTextC}
-                  //   onChange={(e) => {
-                  //     setState({
-                  //       ...state,
-                  //       query: {
-                  //         ...state.query,
-                  //         searchTextC: e.target.value,
-                  //       },
-                  //     });
-                  //   }}
+                    value={state.query.searchDepartment}
+                    onChange={(e) => {
+                      setState({
+                        ...state,
+                        query: {
+                          ...state.query,
+                          searchDepartment: e.target.value,
+                        },
+                      });
+                    }}
                 />
               </div>
             </div>
