@@ -143,6 +143,20 @@ export default function dashboard() {
     state.query.course
     // state?.userData
   ]);
+  useEffect(() => {
+    const newResults = state?.userData?.filter(
+      (user) =>
+        user?.deptName?.toLowerCase()?.includes(state?.query?.department?.toLowerCase())
+    )
+    setState({
+      ...state,
+      result: newResults,
+    });
+  }, [
+    state.query.department
+    // state?.userData
+  ]);
+ 
 
   useEffect(() => {
     const newResults = state?.courseData?.filter(

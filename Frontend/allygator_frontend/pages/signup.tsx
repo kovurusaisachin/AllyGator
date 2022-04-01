@@ -259,7 +259,7 @@ export default function Signup() {
                       focus:border-gray-600 focus:outline-none"
                     id="grid-password"
                     type="password"
-                    data-cy="reg-password-input"
+                    data-cy="reg-cnfpassword-input"
                     placeholder="***********"
                     value={state?.registerData?.confPassword ?? ""}
                     onChange={e => {
@@ -319,7 +319,7 @@ export default function Signup() {
                       focus:bg-white 
                       focus:border-gray-600 focus:outline-none"
                       id="grid-state"
-                      data-cy="reg-gender-input"
+                      data-cy="reg-department-input"
                       value={state?.registerData?.department ?? ""}
                       onChange={e => {
                       setState({
@@ -429,7 +429,7 @@ export default function Signup() {
                   </label>
                   <select
                     required
-                    data-cy="reg-phoneno-input"
+                    data-cy="reg-status-input"
                     className="text-md block px-3 py-2 
                      rounded-lg w-full bg-white border-2 border-gray-300
                       placeholder-gray-300 shadow-md 
