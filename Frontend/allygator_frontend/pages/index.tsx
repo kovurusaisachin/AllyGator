@@ -1,8 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
-import Link from "next/Link";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
@@ -15,18 +13,6 @@ const navigation = [
 ];
 
 export default function Home() {
-  //   const { data: session } = useSession()
-  //   if(session) {
-  //     return <>
-  //       Signed in as {session.user.email} <br/>
-  //       <button onClick={() => signOut()}>Sign out</button>
-  //     </>
-  //   }
-  //   return <>
-  //     Not signed in <br/>
-  //     <button onClick={() => signIn()}>Sign in</button>
-  //   </>
-  // }
   return (
     <>
       <div className="text-lg font-bold ">

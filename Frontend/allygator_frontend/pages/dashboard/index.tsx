@@ -94,7 +94,8 @@ export default function dashboard() {
     )
     setState({
       ...state,
-      userData: newData
+      userData: newData,
+      result:newData
     })
   },[state?.userDataO])
   useEffect(() => {
