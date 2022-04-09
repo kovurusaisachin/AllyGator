@@ -108,6 +108,9 @@ export default function Table(props) {
           <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
             
             <a
+            onClick={() => {
+              paginateBack();
+            }}
               href="#"
               className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
             >
@@ -135,6 +138,9 @@ export default function Table(props) {
           </li>
           </ul>
             <a
+            onClick={() => {
+              paginateFront();
+            }}
               href="#"
               className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
             >
