@@ -46,7 +46,7 @@ export default function Table(props) {
                 </thead>
                 {props?.type === "user" ?
                 <tbody className="bg-white divide-y divide-gray-200 overflow-y-scroll w-full h-64">
-                  {props?.data?.map((person) => (
+                  {currentPosts?.map((person) => (
                     <tr key={person.email}>
                       <td className="py-4 whitespace-nowrap">
                         <div className="flex items-center">
@@ -167,6 +167,9 @@ export default function Table(props) {
           <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
             
             <a
+            onClick={() => {
+              paginateBack();
+            }}
               href="#"
               className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
             >
@@ -184,9 +187,9 @@ export default function Table(props) {
                 href='#'
                 className={
                   currentPage === number
-                    ? "bg-blue border-red-300 text-red-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-                    : "bg-white border-gray-300 text-gray-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-                }
+                  ? "bg-blue border-red-300 text-red-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                  : "bg-white border-gray-300 text-gray-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+              }
               >
                 {number}
               </a>
@@ -194,6 +197,9 @@ export default function Table(props) {
           </li>
           </ul>
             <a
+            onClick={() => {
+              paginateFront();
+            }}
               href="#"
               className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
             >
