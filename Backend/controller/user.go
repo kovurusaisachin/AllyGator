@@ -30,7 +30,7 @@ type User struct {
 func GetUsers() ([]User, error) {
 
 	rows, err := models.DB.Query("SELECT idStudent, firstname, lastname, department, email, gender, course, url, nationality, profile, specialization, status from users")
-	// Select * from user TABLE
+
 	if err != nil {
 		return nil, err
 	}

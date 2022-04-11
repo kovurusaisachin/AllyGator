@@ -55,6 +55,9 @@ func main() {
 			protected.GET("course/:id", api.GetCourseById)
 			protected.POST("addCourse", api.AddCourse)
 			protected.PUT("course/:id", api.UpdateCourse)
+
+			//Post APIs
+			protected.POST("addPost", api.AddPosts)
 		}
 
 	}
