@@ -71,3 +71,32 @@ func GetPosts() ([]Post, error) {
 
 	return post, err
 }
+
+//This function retrieves the list of all the posts by UserID from the database
+func GetPostsByUserId(idUser string) ([]Post, error) {
+
+	rows, err := models.DB.Query("SELECT idPost, idUser, description, title, category from posts WHERE idUser =" + idUser)
+	if err != nil {
+		return []Post{}, err
+	}
+
+	post := make([]Post, 0)
+
+	for rows.Next() {
+		singlePost := Post{}
+		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Title, &singlePost.Description, &singlePost.Category)
+
+		if err != nil {
+			return nil, err
+		}
+		post = append(post, singlePost)
+	}
+
+	err = rows.Err()
+
+	if err != nil {
+		return nil, err
+	}
+
+	return post, err
+}

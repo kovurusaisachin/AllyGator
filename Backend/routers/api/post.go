@@ -35,3 +35,16 @@ func GetPosts(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"data": posts})
 	}
 }
+
+func GetPostsByUserId(c *gin.Context) {
+	id := c.Param("id")
+	posts, err := controller.GetPostsByUserId(id)
+	checkErr(err)
+
+	if posts == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Department ID in our records"})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": posts})
+	}
+}

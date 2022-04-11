@@ -58,6 +58,7 @@ func main() {
 
 			//Post APIs
 			protected.GET("post", api.GetPosts)
+			protected.GET("post/:id", api.GetPostsByUserId)
 			protected.POST("addPost", api.AddPosts)
 		}
 
