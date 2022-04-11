@@ -23,3 +23,15 @@ func AddPosts(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
 }
+
+func GetPosts(c *gin.Context) {
+	posts, err := controller.GetPosts()
+	checkErr(err)
+
+	if posts == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "No Records Found"})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": posts})
+	}
+}
