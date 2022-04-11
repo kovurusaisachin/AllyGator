@@ -1,0 +1,7 @@
+saisachinkovuru@Sais-MacBook-Pro models % go test -v -cover
+=== RUN   TestConnectDatabase
+--- PASS: TestConnectDatabase (0.00s)
+PASS
+coverage: 80.0% of statements
+ok      allygator.com/gatorweb/models   0.419s
+ 

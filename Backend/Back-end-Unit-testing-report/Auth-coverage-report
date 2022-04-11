@@ -1,0 +1,8 @@
+saisachinkovuru@Sais-MacBook-Pro auth % go test -v -cover
+=== RUN   TestGenerateToken
+--- PASS: TestGenerateToken (0.00s)
+=== RUN   TestValidateToken
+--- PASS: TestValidateToken (0.00s)
+PASS
+coverage: 66.7% of statements
+ok      allygator.com/gatorweb/auth     0.194s
