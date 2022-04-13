@@ -47,7 +47,7 @@ export default function Table(props) {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-500">{person?.course?.split(",").map(a => 
-                            <span className="mx-1 px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-500">
+                            <span key={a} className="mx-1 px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-500">
                               {a}
                             </span>
                       )}</div>

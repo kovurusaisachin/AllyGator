@@ -143,7 +143,7 @@ const Profile = (props) => {
                             Course
                           </label>
                           {props?.data?.course?.split(",").map((x) => (
-                            <span className="mt-2 py-1 px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-600">
+                            <span key={x} className="mt-2 py-1 px-2 inline-flex text-xs leading-5 font-bold rounded-full bg-gray-100 text-gray-600">
                               {x}
                             </span>
                           ))}

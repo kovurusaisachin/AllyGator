@@ -18,11 +18,15 @@ const parseJwt = (token) => {
   return JSON.parse(window.atob(base64));
 };
 
-export default function dashboard() {
+export default function Dashboard() {
   const [state, setState] = useState({
     userDataO:[],
     userData: [],
-    chatData: [],
+    chatData: {
+      idStudent:"",
+      firstname:"",
+      lastname:"",
+    },
     courseData: [],
     courseResult: [],
     facultyData: [],
@@ -252,7 +256,7 @@ export default function dashboard() {
           <AnalyticCard />
           <div className="mx-8">
             <h3 className="text-2xl my-2 font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              Connection's list
+              Connections list
             </h3>
             <div className="grid grid-cols-6 space-x-2 mt-2 mb-4 max-w-screen-xl mx-auto w-screen-xl">
               <div className="col-span-2">
@@ -315,7 +319,7 @@ export default function dashboard() {
                       }}
                     >
                       {state?.courseResult?.map(
-                        (x) => <option value={x.coursename}>{x.coursename}</option>
+                        (x) => <option key={x.courseId} value={x.coursename}>{x.coursename}</option>
                       )}
                     </select>
                   </div>
@@ -334,11 +338,11 @@ export default function dashboard() {
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        stroke-width="2"
+                        strokeWidth="2"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
                         />
                       </svg>
@@ -358,7 +362,7 @@ export default function dashboard() {
                       }}
                     >
                       {state?.departmentResult?.map((x) => (
-                        <option value={x.deptName}>{x.deptName}</option>
+                        <option key={x.deptName} value={x.deptName}>{x.deptName}</option>
                       ))}
                     </select>
                   </div>
@@ -400,7 +404,7 @@ export default function dashboard() {
                       }}
                     >
                       {nationality.map(x => (
-                      <option value={x.label}>{x.label}</option>
+                      <option key={x.value} value={x.label}>{x.label}</option>
                     ))}
                     </select>
                   </div>

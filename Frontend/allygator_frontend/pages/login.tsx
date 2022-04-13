@@ -211,10 +211,10 @@ export default function Login() {
               OR
             </div>
             <div className="text-sm text-gray-300 flex items-center justify-center">
-              Don't have an account?{" "}
-              <a href="/signup" className="text-blue-300 px-1">
+              Dont have an account?{" "}
+              <Link href="/signup">
                 Sign up here
-              </a>
+              </Link>
             </div>
           </div>
         </div>

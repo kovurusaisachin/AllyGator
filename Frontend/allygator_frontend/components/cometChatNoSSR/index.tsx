@@ -1,8 +1,7 @@
 
 import { Component, useEffect, useState } from "react";
 import { COMETCHAT_CONSTANTS } from "../constant/index";
-import {CometChatUI} from "../../pages/Frontend/allygator_frontend/pages/cometchat-pro-react-ui-kit/CometChatWorkspace/src/components/CometChatUI/index.js"
-// import { CometChatUI } from "../../pages/Frontend/allygator_frontend/pages/cometchat-pro-react-ui-kit/CometChatWorkspace/src/index";
+import { CometChatUI } from "../../pages/Frontend/allygator_frontend/pages/cometchat-pro-react-ui-kit/CometChatWorkspace/src/index";
 import { CometChat } from "@cometchat-pro/chat";
 import axios from "axios";
 import { API_URL } from "../../components/constant";

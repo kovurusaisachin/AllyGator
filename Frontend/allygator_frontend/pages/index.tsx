@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
@@ -115,12 +116,11 @@ export default function Home() {
                             </a>
                           ))}
                         </div>
-                        <a
-                          href="/login"
-                          className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
+                        <Link href="/login"
+                          // className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
                         >
                           Log in
-                        </a>
+                        </Link>
                       </div>
                     </Popover.Panel>
                   </Transition>
@@ -141,20 +141,20 @@ export default function Home() {
                     </p>
                     <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                       <div className="rounded-md shadow">
-                        <a
+                        <Link
                           href="/signup"
-                          className="w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                          // className="w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                         >
                           Sign Up
-                        </a>
+                        </Link>
                       </div>
                       <div className="mt-3 sm:mt-0 sm:ml-3">
-                        <a
+                        <Link
                           href="/login"
-                          className="w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+                          // className="w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
                         >
                           Log In
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -258,7 +258,7 @@ export default function Home() {
                 </h1>
                 <p className="text-gray-500 ">
                   Ask questions in the forum, add comments and know more about
-                  professor's teaching style, course specializations and more.
+                  professors teaching style, course specializations and more.
                 </p>
                 {/* <a href="#" className="flex items-center -mx-1 text-sm text-indigo-600 capitalize transition-colors duration-200 transform dark:text-indigo-400 hover: hover:text-indigo-600 dark:hover:text-indigo-600">
           <span className="mx-1">read more</span>

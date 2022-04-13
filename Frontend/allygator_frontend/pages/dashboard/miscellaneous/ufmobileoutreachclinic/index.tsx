@@ -131,7 +131,7 @@ export default function ufmobileoutreachclinic () {
         2. Check-ups for minor illnesses and ailments
       </p>
       <p className="mb-4 text-base font-normal text-gray-600">
-        3. Check-ups for women's health
+        3. Check-ups for womens health
       </p>
       <p className="mb-4 text-base font-normal text-gray-600">
         4. Family planning
@@ -172,7 +172,7 @@ export default function ufmobileoutreachclinic () {
        No one will be denied care because of inability to pay or because of their race, color, ethnicity, national origin, religion, gender, sexual orientation, or disability.
       </p>
       <p className="mb-4 text-base font-normal text-gray-600">
-        For more information about the Mobile Outreach Clinic or any of it's partner organizations, call 352-273-5329 or visit outreach.med.ufl.edu
+        For more information about the Mobile Outreach Clinic or any of its partner organizations, call 352-273-5329 or visit outreach.med.ufl.edu
       </p>
        {/* <a href="#" className="btn btn-light btn-sm">Continue Reading</a> */}
     </div>

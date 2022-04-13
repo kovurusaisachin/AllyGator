@@ -1,6 +1,6 @@
 import Sidebar from "../../../../components/sidebar"
 import { useRouter } from "next/router";
-export default function forumPage () {
+export default function ForumPage () {
     const router = useRouter();
     const slug = router.query.id ?? "";
     return (

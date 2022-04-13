@@ -371,7 +371,7 @@ export default function Signup() {
                     }}
                   >
                     {nationality.map(x => (
-                      <option value={x.label}>{x.label}</option>
+                      <option key={x.value} value={x.label}>{x.label}</option>
                     ))}
                   </select>  
                 </div>
@@ -462,12 +462,12 @@ export default function Signup() {
                 <span className="mr-1 text-gray-500">
                   Already have an account?
                 </span>
-                <a
+                <Link
                   href="/login"
-                  className="inline font-medium text-blue-300 underline"
+                  // className="inline font-medium text-blue-300 underline"
                 >
                   Login Here
-                </a>
+                </Link>
               </div>
                 <button
                   type="button"

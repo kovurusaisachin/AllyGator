@@ -293,7 +293,7 @@ function Connection() {
           </div>
           <div className="col-span-3 bg-white mb-8 rounded-lg px-5 py-5">
             <h3 className="text-2xl font-bold mb-4 leading-7 text-gray-900 sm:leading-9 sm:truncate">
-              Filter's
+              Filters
             </h3>
             <div className="w-full">
               <label className="block text-base font-semibold text-gray-900">
@@ -330,7 +330,7 @@ function Connection() {
                       }}
                     >
                       {nationality.map(x => (
-                      <option value={x.label}>{x.label}</option>
+                      <option key={x.value} value={x.label}>{x.label}</option>
                     ))}
                     </select>
               </div>
@@ -371,7 +371,7 @@ function Connection() {
                       }}
                     >
                       {state?.departmentResult?.map((x) => (
-                        <option value={x.deptName}>{x.deptName}</option>
+                        <option key={x.value} value={x.deptName}>{x.deptName}</option>
                       ))}
                     </select>
               </div>
@@ -427,7 +427,7 @@ function Connection() {
                       }}
                     >
                       {state?.result?.map((x) => (
-                        <option value={x.profile}>{x.profile}</option>
+                        <option key={x.profile} value={x.profile}>{x.profile}</option>
                       ))}
                     </select>
               </div>

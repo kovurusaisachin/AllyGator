@@ -25,7 +25,7 @@ export default function offcampussafety () {
         2. Get to know your neighbors
       </p>
       <p className="mb-4 text-base font-normal text-gray-600">
-        3. Don't advertise your class or work schedule
+        3. Dont advertise your class or work schedule
       </p>
       <p className="mb-4 text-base font-normal text-gray-600">
         4. Close shades or drapes after dark
@@ -57,7 +57,7 @@ export default function offcampussafety () {
         <a href="#" className="text-gray-900 hover:text-purple-700">Protecting your property</a>
       </h2>
       <p className="mb-4 text-base font-normal text-gray-600">
-        1. Buy renter's insurance
+        1. Buy renters insurance
       </p>
       <p className="mb-4 text-base font-normal text-gray-600">
         2. Keep your outside doors locked even when you are home.
