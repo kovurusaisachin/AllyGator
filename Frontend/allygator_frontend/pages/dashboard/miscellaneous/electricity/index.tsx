@@ -28,13 +28,13 @@ export default function electricity() {
             {/* <p className="pt-12 mb-3 text-sm font-normal text-gray-500">April 16, 2020</p> */}
             <h2 className="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl">
               <a href="#" className="text-gray-900 hover:text-purple-700">
-                To Start Services:
+                To Start Services&quot;
               </a>
             </h2>
             <p className="mb-4 text-base font-normal text-gray-600">
               Call 352-334-3434 or visit gru.com
               <br />
-              ("For My Home" "Your Service" "Start your Service")
+              (&ldquo;For My Home&rdquo; &ldquo;Your Service&rdquo; &ldquo;Start your Service&rdquo;)
               <br />
               When you contact GRU, make sure you have:
               <br />
@@ -46,7 +46,7 @@ export default function electricity() {
               <br />
               4. Bank Account Number
               <br />
-              5. Driver's License
+              5. Driver&apos;s License
               <br />
               <br />
               *If you do not have a SSN or Tax Identification Number, then you
@@ -56,7 +56,7 @@ export default function electricity() {
               When you go to set up your account in person, make sure you also
               bring:
               <br />
-              1. Photo ID(eg. Gator1 card, driver's license, passport etc.)
+              1. Photo ID(eg. Gator1 card, driver&apos;s license, passport etc.)
               <br />
               2. Money for deposit
               <br />
