@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import Sidebar from "../../../components/sidebar";
 import ForumCard from "../../../components/forumCard";
 import Link from "next/link"
+import axios from "Axios";
+import { API_URL } from "../../../components/constant";
 // import ResetPass from './ResetPassword'
 const data = [
   {
@@ -23,7 +25,41 @@ const data = [
     tags: ["University", "HCI", "SE"],
   },
 ];
-function Forum() {
+const Forum = () => {
+  const [state, setState] = useState({
+    forumData:[]
+  })
+  if (typeof window !== "undefined") {
+    var token = window.sessionStorage.getItem("token");
+  }
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
+
+  const getData = () => {
+    let endpoints = [
+      `${API_URL}/post`
+
+    ];
+    Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
+      ([
+        { data: forum },
+      ]) => {
+        setState({
+          ...state,
+          forumData:forum
+        });
+      }
+    );
+  };
+  console.log(state)
   return (
     <div className="flex flex-col-2">
       <Sidebar />

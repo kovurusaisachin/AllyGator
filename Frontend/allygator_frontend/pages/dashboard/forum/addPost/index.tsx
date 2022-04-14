@@ -1,6 +1,8 @@
 import React from "react";
 import Sidebar from "../../../../components/sidebar";
 import { useRouter } from 'next/router'
+import axios from "Axios";
+import { API_URL } from "../../../../components/constant";
 export default function addPost() {
   const router = useRouter()
   const handleCancel = () => {
