@@ -9,7 +9,8 @@ export default function temporaryhousing() {
               Temporary Housing
             </h2>
           
-          <div className="mb-10 text-left md:text-justify">
+          
+          <div className="mb-20 text-left md:text-justify">
           <img alt="blog photo" src="https://a0.muscache.com/im/pictures/23b047cd-19c9-42c0-a83b-2f4f6f25717b.jpg?im_w=2560"/>
             <a
             className="hover:font-bold hover:text-blue-900"
@@ -23,8 +24,9 @@ export default function temporaryhousing() {
             search its listings
             </p>
           </div>
+          
          
-          <div className="mb-10 text-left md:text-justify"> 
+          <div className="mb-20 text-left md:text-justify"> 
           <img alt="blog photo" src="https://www.extendedstayamerica.com/dA/f1e0c139-f134-4427-9017-183e2b926a17/80q/hotel_381_381_exterior1_3000x2000_AF16.jpg"/>
             <a
             className="hover:font-bold hover:text-blue-900"
@@ -37,7 +39,7 @@ export default function temporaryhousing() {
             </p>
           </div>
              
-          <div className="mb-10 text-left md:text-justify">
+          <div className="mb-20 text-left md:text-justify">
           <img alt="blog photo" src="https://secureservercdn.net/198.71.233.213/b74.f35.myftpupload.com/wp-content/uploads/2021/09/stadium1.png"/>
              <a
               className="hover:font-bold hover:text-blue-900"
@@ -50,7 +52,7 @@ export default function temporaryhousing() {
              </p>
           </div>
        
-          <div className="mb-10 text-left md:text-justify">
+          <div className="mb-20 text-left md:text-justify">
           <img alt="blog photo" src="https://conferenceservices.housing.ufl.edu/wp-content/uploads/sites/3/2017/08/UFHousing_CS_Int_Corry_GuestApartment_001.jpg"/>
             <a
             className="hover:font-bold hover:text-blue-900"
