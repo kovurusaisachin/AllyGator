@@ -10,6 +10,9 @@ type Post struct {
 	Description string `json:"description"`
 	Title       string `json:"title"`
 	Category    string `json:"category"`
+	Timestamp   string `json:"timestamp"`
+	UserFname   string `json:"firstname"`
+	UserLname   string `json:"lastname"`
 }
 
 //This function is used to add the Posts by the students in the FORUM page
@@ -43,7 +46,7 @@ func AddPosts(newPost Post) (bool, error) {
 //This function retrieves the list of all the posts from the database
 func GetPosts() ([]Post, error) {
 
-	rows, err := models.DB.Query("SELECT idPost, idUser, description, title, category from posts")
+	rows, err := models.DB.Query("SELECT p.idPost, p.idUser, p.description, p.title, p.category, p.timestamp, u.firstname, u.lastname from posts as p Join users as u on p.idUser = u.idStudent")
 
 	if err != nil {
 		return nil, err
@@ -55,7 +58,7 @@ func GetPosts() ([]Post, error) {
 
 	for rows.Next() {
 		singlePost := Post{}
-		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Description, &singlePost.Title, &singlePost.Category)
+		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Title, &singlePost.Description, &singlePost.Category, &singlePost.Timestamp, &singlePost.UserFname, &singlePost.UserLname)
 
 		if err != nil {
 			return nil, err
@@ -75,7 +78,7 @@ func GetPosts() ([]Post, error) {
 //This function retrieves the list of all the posts by UserID from the database
 func GetPostsByUserId(idUser string) ([]Post, error) {
 
-	rows, err := models.DB.Query("SELECT idPost, idUser, description, title, category from posts WHERE idUser =" + idUser)
+	rows, err := models.DB.Query("SELECT p.idPost, p.idUser, p.description, p.title, p.category, p.timestamp, u.firstname, u.lastname from posts as p Join users as u on p.idUser = u.idStudent where p.idUser = " + idUser)
 	if err != nil {
 		return []Post{}, err
 	}
@@ -84,7 +87,7 @@ func GetPostsByUserId(idUser string) ([]Post, error) {
 
 	for rows.Next() {
 		singlePost := Post{}
-		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Title, &singlePost.Description, &singlePost.Category)
+		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Title, &singlePost.Description, &singlePost.Category, &singlePost.Timestamp, &singlePost.UserFname, &singlePost.UserLname)
 
 		if err != nil {
 			return nil, err
