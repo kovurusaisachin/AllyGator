@@ -11,6 +11,8 @@ type Post struct {
 	Title       string `json:"title"`
 	Category    string `json:"category"`
 	Timestamp   string `json:"timestamp"`
+	UserFname   string `json:"firstname"`
+	UserLname   string `json:"lastname"`
 }
 
 //This function is used to add the Posts by the students in the FORUM page
@@ -56,7 +58,7 @@ func GetPosts() ([]Post, error) {
 
 	for rows.Next() {
 		singlePost := Post{}
-		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Description, &singlePost.Title, &singlePost.Category)
+		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Title, &singlePost.Description, &singlePost.Category, &singlePost.Timestamp, &singlePost.UserFname, &singlePost.UserLname)
 
 		if err != nil {
 			return nil, err
@@ -85,7 +87,7 @@ func GetPostsByUserId(idUser string) ([]Post, error) {
 
 	for rows.Next() {
 		singlePost := Post{}
-		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Title, &singlePost.Description, &singlePost.Category)
+		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Title, &singlePost.Description, &singlePost.Category, &singlePost.Timestamp, &singlePost.UserFname, &singlePost.UserLname)
 
 		if err != nil {
 			return nil, err
