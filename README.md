@@ -47,7 +47,7 @@ This project is a comprehensive implementation of a simple yet useful idea of co
 
 |Name| Email | Tech|
 |--|--|--|
-|Prashant Kapri|kapri.prashant@ufl.edu|Frontend|
+|Prashant Dashrath Kapri    |kapri.prashant@ufl.edu|   Frontend.    |
 |Noopur Thanvi|thanvi.noopur@ufl.edu|Frontend - Backend|
   
 </td></tr>
