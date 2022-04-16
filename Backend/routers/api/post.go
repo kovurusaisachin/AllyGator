@@ -42,10 +42,22 @@ func GetPostsByUserId(c *gin.Context) {
 	checkErr(err)
 
 	if posts == nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Department ID in our records"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this user ID in our records"})
 		return
 	} else {
 		c.JSON(http.StatusOK, gin.H{"data": posts})
 	}
 }
 
+func GetPostsByPostId(c *gin.Context) {
+	id := c.Param("id")
+	posts, err := controller.GetPostsByPostId(id)
+	checkErr(err)
+
+	if posts == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this post ID in our records"})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"data": posts})
+	}
+}
