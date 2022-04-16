@@ -4,31 +4,14 @@ import ForumCard from "../../../components/forumCard";
 import Link from "next/link"
 import axios from "Axios";
 import { API_URL } from "../../../components/constant";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 // import ResetPass from './ResetPassword'
-const data = [
-  {
-    id:"1",
-    name: "Noopur Thanvi",
-    time: "Feb 24, 2022",
-    title: "UF ranks 5th in public university list",
-    content:
-      "Tamquam ita veritas res equidem. Ea in ad expertus paulatim poterunt. Imo volo aspi novi tur. Ferre hic neque vulgo hae athei spero. Tantumdem naturales excaecant notaverim etc cau perfacile occurrere. Loco visa to du huic at in dixi aër.",
-    tags: ["University", "HCI", "SE"],
-  },
-  {
-    id:"2",
-    name: "Prashant KApri",
-    time: "Feb 27, 2022",
-    title: "UF ranks 5th in public university list",
-    content:
-      "Tamquam ita veritas res equidem. Ea in ad expertus paulatim poterunt. Imo volo aspi novi tur. Ferre hic neque vulgo hae athei spero. Tantumdem naturales excaecant notaverim etc cau perfacile occurrere. Loco visa to du huic at in dixi aër.",
-    tags: ["University", "HCI", "SE"],
-  },
-];
+
 const Forum = () => {
   const [state, setState] = useState({
     forumData:[]
   })
+  
   if (typeof window !== "undefined") {
     var token = window.sessionStorage.getItem("token");
   }
@@ -59,6 +42,23 @@ const Forum = () => {
       }
     );
   };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+  //pagination
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = state?.forumData?.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Change page
+  const paginateFront = () => setCurrentPage(currentPage + 1);
+  const paginateBack = () => setCurrentPage(currentPage - 1);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const totalPosts = state?.forumData?.length;
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
   console.log(state)
   return (
     <div className="flex flex-col-2">
@@ -211,12 +211,100 @@ const Forum = () => {
               </div>
             </section>
             <section>
-              {state?.forumData?.map((x) => {
-                {
-                  console.log(x, "pppp");
-                }
+              {currentPosts?.map((x) => {
                 return <ForumCard key={x?.timestamp} data={x} />;
               })}
+              <div className="px-6 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                <div className="flex-1 flex justify-between sm:hidden">
+                  <a
+                    onClick={() => {
+                      paginateBack();
+                    }}
+                    href="#"
+                    className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                  >
+                    Previous
+                  </a>
+                  <a
+                    onClick={() => {
+                      paginateFront();
+                    }}
+                    href="#"
+                    className="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+                  >
+                    Next
+                  </a>
+                </div>
+                <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-sm text-gray-700">
+                      Showing{" "}
+                      <span className="font-medium">
+                        {currentPage * postsPerPage - 4}
+                      </span>{" "}
+                      to{" "}
+                      <span className="font-medium">
+                        {currentPage * postsPerPage}
+                      </span>{" "}
+                      of <span className="font-medium">{totalPosts}</span>{" "}
+                      results
+                    </p>
+                  </div>
+                  <div>
+                    <nav
+                      className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                      aria-label="Pagination"
+                    >
+                      <a
+                        onClick={() => {
+                          paginateBack();
+                        }}
+                        href="#"
+                        className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                      >
+                        <span className="sr-only">Previous</span>
+                        <ChevronLeftIcon
+                          className="h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      </a>
+                      {/* Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" */}
+                      <ul className="flex pl-0 rounded list-none flex-wrap">
+                        <li>
+                          {pageNumbers.map((number) => (
+                            <a
+                              onClick={() => {
+                                paginate(number);
+                              }}
+                              href="#"
+                              className={
+                                currentPage === number
+                                  ? "bg-blue border-red-300 text-red-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                                  : "bg-white border-gray-300 text-gray-500 hover:bg-blue-200 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+                              }
+                            >
+                              {number}
+                            </a>
+                          ))}
+                        </li>
+                      </ul>
+                      <a
+                        onClick={() => {
+                          paginateFront();
+                        }}
+                        href="#"
+                        className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                      >
+                        <span className="sr-only">Next</span>
+                        <ChevronRightIcon
+                          className="h-5 w-5"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    </nav>
+                  </div>
+                </div>
+                </div>
             </section>
           </div>
           <div className="col-span-3">

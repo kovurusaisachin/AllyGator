@@ -15,13 +15,6 @@ export default function ForumCard(props) {
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm dark:text-coolGray-400">{new Date(props?.data?.timestamp?.split("T")[0]).toDateString()}</span>
-            {/* <a
-              rel="noopener noreferrer"
-              href="#"
-              className="px-2 py-1 font-bold rounded dark:bg-violet-400 dark:text-coolGray-900"
-            >
-              Javascript
-            </a> */}
           </div>
           <div className="mt-3">
             <Link href={`/dashboard/forum/${props?.data?.id}`}
