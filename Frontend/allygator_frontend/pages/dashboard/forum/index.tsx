@@ -9,7 +9,11 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 
 const Forum = () => {
   const [state, setState] = useState({
-    forumData:[]
+    forumDataO:[],
+    forumData:[],
+    query:{
+      searchText:""
+    }
   })
   
   if (typeof window !== "undefined") {
@@ -37,11 +41,43 @@ const Forum = () => {
       ]) => {
         setState({
           ...state,
+          forumDataO:forum?.data,
           forumData:forum?.data
+
         });
       }
     );
   };
+  useEffect(() => {
+    const newResults = state?.forumDataO?.filter(
+      (product) =>
+        product?.description
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        product?.firstname
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        product?.lastname
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        product?.category
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) ||
+        product?.title
+          ?.toLowerCase()
+          ?.includes(state.query.searchText?.toLowerCase()) 
+        
+        
+    );
+
+    setState({
+      ...state,
+      forumData: newResults,
+    });
+  }, [
+    state.query.searchText,
+    // state?.userData
+  ]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
   //pagination
@@ -59,7 +95,6 @@ const Forum = () => {
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
-  console.log(state)
   return (
     <div className="flex flex-col-2">
       <Sidebar />
@@ -195,16 +230,16 @@ const Forum = () => {
                       className="block md:text-sm w-full pl-10 pr-3 py-2 border-2 border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-lg"
                       placeholder="Search"
                       type="text"
-                      // value={state.query.searchText}
-                      // onChange={e => {
-                      //   setState({
-                      //     ...state,
-                      //     query: {
-                      //       ...state.query,
-                      //       searchText: e.target.value
-                      //     }
-                      //   });
-                      // }}
+                      value={state.query.searchText}
+                      onChange={e => {
+                        setState({
+                          ...state,
+                          query: {
+                            ...state.query,
+                            searchText: e.target.value
+                          }
+                        });
+                      }}
                     />
                   </div>
                 </div>
