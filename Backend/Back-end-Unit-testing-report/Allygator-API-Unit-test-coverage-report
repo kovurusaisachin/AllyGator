@@ -1,9 +1,157 @@
-saisachinkovuru@Sais-MacBook-Pro api % go test -v -cover 
+saisachinkovuru@Sais-MacBook-Pro api % go test -v -cover -coverprofile=Allygator-API.out
+=== RUN   TestAddChat
+=== RUN   TestAddChat/Empty_JSON_Data
+
+Mock API for Add Chat - Sending Empty Data
+[GIN] 2022/04/15 - 22:39:21 | 400 |      38.625µs |                 | POST     /api/v1/addChat
+
+
+
+    chat_test.go:57: Expected to get status 200 but instead got 400
+=== RUN   TestAddChat/Chat
+
+Mock API for Add Chat - Adding the connections
+[GIN] 2022/04/15 - 22:39:21 | 200 |    3.166209ms |                 | POST     /api/v1/addChat
+{
+    "Message": "Data added successfully"
+}
+
+
+    chat_test.go:78: Expected to get status 200 is same ast 200
+--- PASS: TestAddChat (0.01s)
+    --- PASS: TestAddChat/Empty_JSON_Data (0.00s)
+    --- PASS: TestAddChat/Chat (0.00s)
+=== RUN   TestGetChat
+=== RUN   TestGetChat/Wrong_URL
+
+Mock API for getChats - Sending wrong URL
+[GIN] 2022/04/15 - 22:39:21 | 404 |         250ns |                 | GET      /api/v1/chats
+404 page not found
+
+
+    chat_test.go:118: Expected to get status 200 but instead got 404
+=== RUN   TestGetChat/Valid_URL
+
+Mock API for getChats - Sending correct URL
+[GIN] 2022/04/15 - 22:39:21 | 200 |     570.083µs |                 | GET      /api/v1/chat
+
+
+{
+    "data": [
+        {
+            "idConnected": 2,
+            "idUser": 1,
+            "firstname": "Prashant",
+            "lastname": "Kapri"
+        },
+        {
+            "idConnected": 3,
+            "idUser": 1,
+            "firstname": "Maitreyi",
+            "lastname": "Srinivasan"
+        },
+        {
+            "idConnected": 4,
+            "idUser": 1,
+            "firstname": "Noopur",
+            "lastname": "Thanvi"
+        },
+        {
+            "idConnected": 5,
+            "idUser": 1,
+            "firstname": "Anirudh",
+            "lastname": "Srinivasan"
+        },
+        {
+            "idConnected": 6,
+            "idUser": 1,
+            "firstname": "Dhrupad",
+            "lastname": "Thanvi"
+        },
+        {
+            "idConnected": 2,
+            "idUser": 1,
+            "firstname": "Prashant",
+            "lastname": "Kapri"
+        }
+    ]
+}
+
+
+    chat_test.go:139: Expected to get status 200 is same ast 200
+--- PASS: TestGetChat (0.00s)
+    --- PASS: TestGetChat/Wrong_URL (0.00s)
+    --- PASS: TestGetChat/Valid_URL (0.00s)
+=== RUN   TestGetChatById
+=== RUN   TestGetChatById/Incorrect_UserID
+
+Mock API for getChatById - Sending the incorrect UserID
+[GIN] 2022/04/15 - 22:39:21 | 200 |     532.042µs |                 | GET      /api/v1/chat/111
+
+
+{
+    "data": []
+}
+
+
+    chat_test.go:178: Expected to get status 200 is same ast 200
+=== RUN   TestGetChatById/Correct_ChatID
+
+Mock API for getChatById - Sending correct UserID
+[GIN] 2022/04/15 - 22:39:21 | 200 |     284.542µs |                 | GET      /api/v1/chat/1
+
+
+{
+    "data": [
+        {
+            "idConnected": 2,
+            "idUser": 1,
+            "firstname": "Prashant",
+            "lastname": "Kapri"
+        },
+        {
+            "idConnected": 3,
+            "idUser": 1,
+            "firstname": "Maitreyi",
+            "lastname": "Srinivasan"
+        },
+        {
+            "idConnected": 4,
+            "idUser": 1,
+            "firstname": "Noopur",
+            "lastname": "Thanvi"
+        },
+        {
+            "idConnected": 5,
+            "idUser": 1,
+            "firstname": "Anirudh",
+            "lastname": "Srinivasan"
+        },
+        {
+            "idConnected": 6,
+            "idUser": 1,
+            "firstname": "Dhrupad",
+            "lastname": "Thanvi"
+        },
+        {
+            "idConnected": 2,
+            "idUser": 1,
+            "firstname": "Prashant",
+            "lastname": "Kapri"
+        }
+    ]
+}
+
+
+    chat_test.go:200: Expected to get status 200 is same ast 200
+--- PASS: TestGetChatById (0.00s)
+    --- PASS: TestGetChatById/Incorrect_UserID (0.00s)
+    --- PASS: TestGetChatById/Correct_ChatID (0.00s)
 === RUN   TestAddCourse
 === RUN   TestAddCourse/Empty_JSON_Data
 
 Mock API for Add Course - Sending Empty Data
-[GIN] 2022/04/01 - 02:30:43 | 400 |     407.125µs |                 | POST     /api/v1/addCourse
+[GIN] 2022/04/15 - 22:39:21 | 400 |      33.958µs |                 | POST     /api/v1/addCourse
 {"error":"EOF"}
 
 
@@ -11,7 +159,7 @@ Mock API for Add Course - Sending Empty Data
 === RUN   TestAddCourse/Course_ID_Already_exists
 
 Mock API for Add Course - Sending the existing CourseID
-[GIN] 2022/04/01 - 02:30:43 | 400 |    2.445333ms |                 | POST     /api/v1/addCourse
+[GIN] 2022/04/15 - 22:39:21 | 400 |     711.625µs |                 | POST     /api/v1/addCourse
 {"error":"Course already exists with the same course ID"}
 
 
@@ -19,12 +167,12 @@ Mock API for Add Course - Sending the existing CourseID
 === RUN   TestAddCourse/Unique_Course_ID
 
 Mock API for Add Course - Sending the unique CourseID
-[GIN] 2022/04/01 - 02:30:43 | 200 |    1.445625ms |                 | POST     /api/v1/addCourse
+[GIN] 2022/04/15 - 22:39:21 | 200 |    1.072334ms |                 | POST     /api/v1/addCourse
 {"message":"Success"}
 
 
     course_test.go:109: Expected to get status 200 is same ast 200
---- PASS: TestAddCourse (0.01s)
+--- PASS: TestAddCourse (0.00s)
     --- PASS: TestAddCourse/Empty_JSON_Data (0.00s)
     --- PASS: TestAddCourse/Course_ID_Already_exists (0.00s)
     --- PASS: TestAddCourse/Unique_Course_ID (0.00s)
@@ -32,7 +180,7 @@ Mock API for Add Course - Sending the unique CourseID
 === RUN   TestGetCourses/Wrong_URL
 
 Mock API for getCourses - Sending wrong URL
-[GIN] 2022/04/01 - 02:30:43 | 404 |         167ns |                 | GET      /api/v1/courses
+[GIN] 2022/04/15 - 22:39:21 | 404 |         167ns |                 | GET      /api/v1/courses
 404 page not found
 
 
@@ -40,7 +188,7 @@ Mock API for getCourses - Sending wrong URL
 === RUN   TestGetCourses/Valid_URL
 
 Mock API for getCourses - Sending correct URL
-[GIN] 2022/04/01 - 02:30:43 | 200 |     545.459µs |                 | GET      /api/v1/course
+[GIN] 2022/04/15 - 22:39:21 | 200 |     419.375µs |                 | GET      /api/v1/course
 
 
 {"data":[{"idCourse":1000,"coursename":"SE","idDepartment":111,"idFaculty":20,"facultyname":"Alin Dobra","deptName":"CSE"},{"idCourse":1001,"coursename":"HCI Research","idDepartment":111,"idFaculty":21,"facultyname":"Sharon Chu","deptName":"CSE"},{"idCourse":1002,"coursename":"DBSI","idDepartment":111,"idFaculty":20,"facultyname":"Alin Dobra","deptName":"CSE"},{"idCourse":1003,"coursename":"HCI Practical","idDepartment":111,"idFaculty":22,"facultyname":"Pedro Guillermo Feijóo-García","deptName":"CSE"},{"idCourse":1004,"coursename":"Occupational Safety Engineering","idDepartment":112,"idFaculty":23,"facultyname":"Boyi Hu","deptName":"Industrial and Systems Engineering"},{"idCourse":1005,"coursename":"Fundamental of Machine-Learning","idDepartment":113,"idFaculty":24,"facultyname":"Catia Silva","deptName":"Electrical Engineering"},{"idCourse":1006,"coursename":"Introduction to Python","idDepartment":114,"idFaculty":25,"facultyname":"Kutsal Dogan","deptName":"Info Systems and Operation Management"},{"idCourse":1007,"coursename":"Data Measurement and Analysis","idDepartment":115,"idFaculty":26,"facultyname":"Mark Shaplak","deptName":"Mechanical/Aerospace Engineering"},{"idCourse":1008,"coursename":"Operating Systems","idDepartment":111,"idFaculty":20,"facultyname":"Alin Dobra","deptName":"CSE"}]}
@@ -54,7 +202,7 @@ Mock API for getCourses - Sending correct URL
 === RUN   TestGetCourseById/Incorrect_CourseID
 
 Mock API for getCourseById - Sending the incorrect CourseID
-[GIN] 2022/04/01 - 02:30:43 | 400 |     358.542µs |                 | GET      /api/v1/course/111
+[GIN] 2022/04/15 - 22:39:21 | 400 |     307.875µs |                 | GET      /api/v1/course/111
 
 
 {"error":"Could not find this Course ID in our records"}
@@ -64,7 +212,7 @@ Mock API for getCourseById - Sending the incorrect CourseID
 === RUN   TestGetCourseById/Correct_UserID
 
 Mock API for getCourseById - Sending correct CourseID
-[GIN] 2022/04/01 - 02:30:43 | 200 |     190.416µs |                 | GET      /api/v1/course/1000
+[GIN] 2022/04/15 - 22:39:21 | 200 |     195.125µs |                 | GET      /api/v1/course/1000
 
 
 {"data":{"idCourse":1000,"coursename":"SE","idDepartment":111,"idFaculty":20,"facultyname":"Alin Dobra","deptName":"CSE"}}
@@ -78,7 +226,7 @@ Mock API for getCourseById - Sending correct CourseID
 === RUN   TestUpdateCourse/Sending_Empty_Data
 
 Mock API for Update Course - Sending Empty Data
-[GIN] 2022/04/01 - 02:30:43 | 400 |     307.917µs |                 | PUT      /api/v1/course/1000
+[GIN] 2022/04/15 - 22:39:21 | 400 |     293.667µs |                 | PUT      /api/v1/course/1000
 {"error":"EOF"}
 
 
@@ -86,7 +234,7 @@ Mock API for Update Course - Sending Empty Data
 === RUN   TestUpdateCourse/Existing_Course_ID
 
 Mock API for Update Course - Sending the existing Course ID
-[GIN] 2022/04/01 - 02:30:43 | 200 |     154.458µs |                 | PUT      /api/v1/course/1000
+[GIN] 2022/04/15 - 22:39:21 | 200 |     115.666µs |                 | PUT      /api/v1/course/1000
 {"message":"Success"}
 
 
@@ -94,7 +242,7 @@ Mock API for Update Course - Sending the existing Course ID
 === RUN   TestUpdateCourse/Incorrect_Course_ID
 
 Mock API for Update Course - Sending incorrect CourseID
-[GIN] 2022/04/01 - 02:30:43 | 400 |       36.25µs |                 | PUT      /api/v1/course/77
+[GIN] 2022/04/15 - 22:39:21 | 400 |      34.875µs |                 | PUT      /api/v1/course/77
 {"error":"Could not find this Course ID in our records to Update"}
 
 
@@ -107,7 +255,7 @@ Mock API for Update Course - Sending incorrect CourseID
 === RUN   TestAddDepartment/Sending_Empty_Data
 
 Mock API for Add Department -  Sending Empty Data
-[GIN] 2022/04/01 - 02:30:43 | 400 |        6.75µs |                 | POST     /api/v1/addDept
+[GIN] 2022/04/15 - 22:39:21 | 400 |         5.5µs |                 | POST     /api/v1/addDept
 {"error":"EOF"}
 
 
@@ -115,7 +263,7 @@ Mock API for Add Department -  Sending Empty Data
 === RUN   TestAddDepartment/Department_ID_Already_exists
 
 Mock API for Add Department - Sending the existing DepartmentID
-[GIN] 2022/04/01 - 02:30:43 | 400 |     549.375µs |                 | POST     /api/v1/addDept
+[GIN] 2022/04/15 - 22:39:21 | 400 |     510.292µs |                 | POST     /api/v1/addDept
 {"error":"Department already exists with the same department ID"}
 
 
@@ -123,7 +271,7 @@ Mock API for Add Department - Sending the existing DepartmentID
 === RUN   TestAddDepartment/Unique_Department_ID
 
 Mock API for Add Department - Sending the unique DepartmentID
-[GIN] 2022/04/01 - 02:30:43 | 200 |     597.042µs |                 | POST     /api/v1/addDept
+[GIN] 2022/04/15 - 22:39:21 | 200 |         516µs |                 | POST     /api/v1/addDept
 {"message":"Success"}
 
 
@@ -136,7 +284,7 @@ Mock API for Add Department - Sending the unique DepartmentID
 === RUN   TestGetDepartment/Wrong_URL
 
 Mock API for getDepartments - Sending wrong URL
-[GIN] 2022/04/01 - 02:30:43 | 404 |         208ns |                 | GET      /api/v1/departments
+[GIN] 2022/04/15 - 22:39:21 | 404 |         125ns |                 | GET      /api/v1/departments
 404 page not found
 
 
@@ -144,7 +292,7 @@ Mock API for getDepartments - Sending wrong URL
 === RUN   TestGetDepartment/Valid_URL
 
 Mock API for getDepartments - Sending correct URL
-[GIN] 2022/04/01 - 02:30:43 | 200 |     373.708µs |                 | GET      /api/v1/department
+[GIN] 2022/04/15 - 22:39:21 | 200 |     307.708µs |                 | GET      /api/v1/department
 
 
 {"data":[{"idDepartment":111,"deptName":"CSE"},{"idDepartment":112,"deptName":"Industrial and Systems Engineering"},{"idDepartment":113,"deptName":"Electrical Engineering"},{"idDepartment":114,"deptName":"Info Systems and Operation Management"},{"idDepartment":115,"deptName":"Mechanical/Aerospace Engineering"},{"idDepartment":117,"deptName":"Arts"}]}
@@ -158,7 +306,7 @@ Mock API for getDepartments - Sending correct URL
 === RUN   TestGetDepartmentById/Incorrect_DepartmentID
 
 Mock API for getDepartmentById - Sending the incorrect Department ID
-[GIN] 2022/04/01 - 02:30:43 | 400 |     283.917µs |                 | GET      /api/v1/department/1111
+[GIN] 2022/04/15 - 22:39:21 | 400 |     261.417µs |                 | GET      /api/v1/department/1111
 
 
 {"error":"Could not find this Department ID in our records"}
@@ -168,7 +316,7 @@ Mock API for getDepartmentById - Sending the incorrect Department ID
 === RUN   TestGetDepartmentById/Correct_DepartmentID
 
 Mock API for getDepartmentById - Sending correct departmentID
-[GIN] 2022/04/01 - 02:30:43 | 200 |       28.25µs |                 | GET      /api/v1/department/111
+[GIN] 2022/04/15 - 22:39:21 | 200 |      41.583µs |                 | GET      /api/v1/department/111
 
 
 {"data":{"idDepartment":111,"deptName":"CSE"}}
@@ -182,7 +330,7 @@ Mock API for getDepartmentById - Sending correct departmentID
 === RUN   TestUpdateDepartment/Sending_Empty_Data
 
 Mock API for Update Department - Sending Empty Data
-[GIN] 2022/04/01 - 02:30:43 | 400 |     282.333µs |                 | PUT      /api/v1/department/111
+[GIN] 2022/04/15 - 22:39:21 | 400 |     268.917µs |                 | PUT      /api/v1/department/111
 {"error":"EOF"}
 
 
@@ -190,7 +338,7 @@ Mock API for Update Department - Sending Empty Data
 === RUN   TestUpdateDepartment/Existing_Department_ID
 
 Mock API for Update Department - Sending the existing Department ID
-[GIN] 2022/04/01 - 02:30:43 | 200 |     242.708µs |                 | PUT      /api/v1/department/111
+[GIN] 2022/04/15 - 22:39:21 | 200 |      223.25µs |                 | PUT      /api/v1/department/111
 {"message":"Success"}
 
 
@@ -198,7 +346,7 @@ Mock API for Update Department - Sending the existing Department ID
 === RUN   TestUpdateDepartment/Incorrect_Department_ID
 
 Mock API for Update Department - Sending incorrect DepartmentID
-[GIN] 2022/04/01 - 02:30:43 | 400 |      26.417µs |                 | PUT      /api/v1/department/77
+[GIN] 2022/04/15 - 22:39:21 | 400 |      23.375µs |                 | PUT      /api/v1/department/77
 {"error":"Could not find this Department ID in our records to Update"}
 
 
@@ -211,7 +359,7 @@ Mock API for Update Department - Sending incorrect DepartmentID
 === RUN   TestDeleteDepartment/Department_ID_does_not_exist
 
 Mock API for Deleting the Department - Sending the wrong DepartmentID
-[GIN] 2022/04/01 - 02:30:43 | 400 |     269.375µs |                 | DELETE   /api/v1/department/77
+[GIN] 2022/04/15 - 22:39:21 | 400 |     245.084µs |                 | DELETE   /api/v1/department/77
 
 
 {"error":"Could not find this Department ID in our records to Delete"}
@@ -221,7 +369,7 @@ Mock API for Deleting the Department - Sending the wrong DepartmentID
 === RUN   TestDeleteDepartment/Department_ID_exists
 
 Mock API for Deleting the User - Sending the valid DepartmentID
-[GIN] 2022/04/01 - 02:30:43 | 200 |     988.458µs |                 | DELETE   /api/v1/department/117
+[GIN] 2022/04/15 - 22:39:21 | 200 |     960.541µs |                 | DELETE   /api/v1/department/117
 
 
 {"message":"Success"}
@@ -235,7 +383,7 @@ Mock API for Deleting the User - Sending the valid DepartmentID
 === RUN   TestAddFaculty/Empty_JSON_Data
 
 Mock API for Add Faculty- Sending Empty Data
-[GIN] 2022/04/01 - 02:30:43 | 400 |        5.25µs |                 | POST     /api/v1/addFaculty
+[GIN] 2022/04/15 - 22:39:21 | 400 |        4.75µs |                 | POST     /api/v1/addFaculty
 {"error":"EOF"}
 
 
@@ -243,7 +391,7 @@ Mock API for Add Faculty- Sending Empty Data
 === RUN   TestAddFaculty/Faculty_ID_Already_exists
 
 Mock API for Add Faculty - Sending the existing FacultyID
-[GIN] 2022/04/01 - 02:30:43 | 400 |     577.084µs |                 | POST     /api/v1/addFaculty
+[GIN] 2022/04/15 - 22:39:21 | 400 |     654.208µs |                 | POST     /api/v1/addFaculty
 {"error":"faculty already exists with the same faculty ID"}
 
 
@@ -251,7 +399,7 @@ Mock API for Add Faculty - Sending the existing FacultyID
 === RUN   TestAddFaculty/Unique_Faculty_ID
 
 Mock API for Add Faculty - Sending the unique FacultyID
-[GIN] 2022/04/01 - 02:30:43 | 400 |     229.125µs |                 | POST     /api/v1/addFaculty
+[GIN] 2022/04/15 - 22:39:21 | 400 |     313.625µs |                 | POST     /api/v1/addFaculty
 {"error":"faculty already exists with the same faculty ID"}
 
 
@@ -264,7 +412,7 @@ Mock API for Add Faculty - Sending the unique FacultyID
 === RUN   TestGetFaculty/Wrong_URL
 
 Mock API for getFaculty - Sending wrong URL
-[GIN] 2022/04/01 - 02:30:43 | 404 |         250ns |                 | GET      /api/v1/facultys
+[GIN] 2022/04/15 - 22:39:21 | 404 |         208ns |                 | GET      /api/v1/facultys
 404 page not found
 
 
@@ -272,7 +420,7 @@ Mock API for getFaculty - Sending wrong URL
 === RUN   TestGetFaculty/Valid_URL
 
 Mock API for getFaculty - Sending correct URL
-[GIN] 2022/04/01 - 02:30:43 | 200 |     345.709µs |                 | GET      /api/v1/faculty
+[GIN] 2022/04/15 - 22:39:21 | 200 |     353.208µs |                 | GET      /api/v1/faculty
 
 
 {"data":[{"idFaculty":20,"facultyname":"Alin Dobra","idDepartment":111,"info":"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=535689","deptName":"CSE"},{"idFaculty":21,"facultyname":"Sharon Chu","idDepartment":111,"info":"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2522904","deptName":"CSE"},{"idFaculty":22,"facultyname":"Pedro Guillermo Feijóo-García","idDepartment":111,"info":"https://www.pfeijoo.com/","deptName":"CSE"},{"idFaculty":23,"facultyname":"Boyi Hu","idDepartment":112,"info":"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2481816","deptName":"Industrial and Systems Engineering"},{"idFaculty":24,"facultyname":"Catia Silva","idDepartment":113,"info":"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2565118","deptName":"Electrical Engineering"},{"idFaculty":25,"facultyname":"Kutsal Dogan","idDepartment":114,"info":"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2704225","deptName":"Info Systems and Operation Management"},{"idFaculty":26,"facultyname":"Mark Shaplak","idDepartment":115,"info":"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=352844","deptName":"Mechanical/Aerospace Engineering"}]}
@@ -286,7 +434,7 @@ Mock API for getFaculty - Sending correct URL
 === RUN   TestGetFacultyById/Incorrect_FacultyID
 
 Mock API for getFacultyById - Sending the incorrect FacultyID
-[GIN] 2022/04/01 - 02:30:43 | 400 |     511.458µs |                 | GET      /api/v1/faculty/111
+[GIN] 2022/04/15 - 22:39:21 | 400 |     576.667µs |                 | GET      /api/v1/faculty/111
 
 
 {"error":"Could not find this Faculty ID in our records"}
@@ -296,7 +444,7 @@ Mock API for getFacultyById - Sending the incorrect FacultyID
 === RUN   TestGetFacultyById/Correct_FacultyID
 
 Mock API for getFacultyById - Sending correct FacultyID
-[GIN] 2022/04/01 - 02:30:43 | 200 |      69.791µs |                 | GET      /api/v1/faculty/20
+[GIN] 2022/04/15 - 22:39:21 | 200 |      53.375µs |                 | GET      /api/v1/faculty/20
 
 
 {"data":{"idFaculty":20,"facultyname":"Alin Dobra","idDepartment":111,"info":"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=535689","deptName":"CSE"}}
@@ -310,7 +458,7 @@ Mock API for getFacultyById - Sending correct FacultyID
 === RUN   TestUpdateFaculty/Sending_Empty_Data
 
 Mock API for Update Faculty - Sending Empty Data
-[GIN] 2022/04/01 - 02:30:43 | 400 |     301.542µs |                 | PUT      /api/v1/faculty/20
+[GIN] 2022/04/15 - 22:39:21 | 400 |     300.167µs |                 | PUT      /api/v1/faculty/20
 {"error":"EOF"}
 
 
@@ -318,7 +466,7 @@ Mock API for Update Faculty - Sending Empty Data
 === RUN   TestUpdateFaculty/Existing_Faculty_ID
 
 Mock API for Update Faculty  - Sending the existing Faculty ID
-[GIN] 2022/04/01 - 02:30:43 | 200 |     564.875µs |                 | PUT      /api/v1/faculty/20
+[GIN] 2022/04/15 - 22:39:21 | 200 |     567.875µs |                 | PUT      /api/v1/faculty/20
 {"message":"Success"}
 
 
@@ -326,7 +474,7 @@ Mock API for Update Faculty  - Sending the existing Faculty ID
 === RUN   TestUpdateFaculty/Incorrect_Faculty_ID
 
 Mock API for Update Faculty - Sending incorrect FacultyID
-[GIN] 2022/04/01 - 02:30:43 | 400 |     104.667µs |                 | PUT      /api/v1/faculty/77
+[GIN] 2022/04/15 - 22:39:21 | 400 |      90.083µs |                 | PUT      /api/v1/faculty/77
 {"error":"Could not find this faculty ID in our records to Update"}
 
 
@@ -340,7 +488,7 @@ Mock API for Update Faculty - Sending incorrect FacultyID
 
 Mock API for User Login - Sending the InvalidJson
 
-[GIN] 2022/04/01 - 02:30:43 | 400 |     224.291µs |                 | POST     /api/v1/login
+[GIN] 2022/04/15 - 22:39:21 | 400 |     279.125µs |                 | POST     /api/v1/login
 {"msg":"invalid json"}
 
 
@@ -349,7 +497,7 @@ Mock API for User Login - Sending the InvalidJson
 
 Mock API for User Login - Sending the Invalid EmailID
 
-[GIN] 2022/04/01 - 02:30:43 | 401 |       1.009ms |                 | POST     /api/v1/login
+[GIN] 2022/04/15 - 22:39:21 | 401 |    1.055875ms |                 | POST     /api/v1/login
 {"msg":"Invalid User credentials!! Please verify the entered Email/Password"}
 
 
@@ -359,7 +507,7 @@ Mock API for User Login - Sending the Invalid EmailID
 Mock API for User Login - Sending the Invalid Password
 
 crypto/bcrypt: hashedPassword is not the hash of the given password
-[GIN] 2022/04/01 - 02:30:44 | 401 |   77.139125ms |                 | POST     /api/v1/login
+[GIN] 2022/04/15 - 22:39:21 | 401 |    76.73125ms |                 | POST     /api/v1/login
 {"msg":"Invalid User credentials!! Please verify the entered Email/Password"}
 
 
@@ -369,7 +517,7 @@ crypto/bcrypt: hashedPassword is not the hash of the given password
 Mock API for User Login - Sending the Valid Credentials
 
 crypto/bcrypt: hashedPassword is not the hash of the given password
-[GIN] 2022/04/01 - 02:30:44 | 401 |   75.656125ms |                 | POST     /api/v1/login
+[GIN] 2022/04/15 - 22:39:21 | 401 |     75.5655ms |                 | POST     /api/v1/login
 {"msg":"Invalid User credentials!! Please verify the entered Email/Password"}
 
 
@@ -383,7 +531,7 @@ crypto/bcrypt: hashedPassword is not the hash of the given password
 === RUN   TestAddUser/Empty_JSON_Data
 
 Mock API for Add User - Sending Empty Data
-[GIN] 2022/04/01 - 02:30:44 | 400 |     222.459µs |                 | POST     /api/v1/register
+[GIN] 2022/04/15 - 22:39:21 | 400 |      15.792µs |                 | POST     /api/v1/register
 {"error":"EOF"}
 
 
@@ -391,7 +539,7 @@ Mock API for Add User - Sending Empty Data
 === RUN   TestAddUser/Email_ID_Already_exists
 
 Mock API for Add User - Sending the existing EmailID
-[GIN] 2022/04/01 - 02:30:44 | 400 |     879.334µs |                 | POST     /api/v1/register
+[GIN] 2022/04/15 - 22:39:21 | 400 |     885.042µs |                 | POST     /api/v1/register
 {"error":"Student already exists with the same email"}
 
 
@@ -399,7 +547,7 @@ Mock API for Add User - Sending the existing EmailID
 === RUN   TestAddUser/Unique_Email_ID
 
 Mock API for Add User - Sending the unique EmailID
-[GIN] 2022/04/01 - 02:30:44 | 200 |   78.145834ms |                 | POST     /api/v1/register
+[GIN] 2022/04/15 - 22:39:21 | 200 |      77.043ms |                 | POST     /api/v1/register
 {"message":"Success"}
 
 
@@ -412,7 +560,7 @@ Mock API for Add User - Sending the unique EmailID
 === RUN   TestGetUsers/Wrong_URL
 
 Mock API for getUsers - Sending wrong URL
-[GIN] 2022/04/01 - 02:30:44 | 404 |         250ns |                 | GET      /api/v1/userss
+[GIN] 2022/04/15 - 22:39:21 | 404 |         416ns |                 | GET      /api/v1/userss
 404 page not found
 
 
@@ -420,10 +568,10 @@ Mock API for getUsers - Sending wrong URL
 === RUN   TestGetUsers/Valid_URL
 
 Mock API for getUsers - Sending correct URL
-[GIN] 2022/04/01 - 02:30:44 | 200 |         486µs |                 | GET      /api/v1/user
+[GIN] 2022/04/15 - 22:39:21 | 200 |     511.792µs |                 | GET      /api/v1/user
 
 
-{"data":[{"idStudent":1,"firstname":"SaiSachin","lastname":"Kovuru","department":111,"password":"","email":"kovuru.saisachin@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":""},{"idStudent":2,"firstname":"Prashant","lastname":"Kapri","department":111,"password":"","email":"kapri.prashant@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/prashant-kapri-2b8047122/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":""},{"idStudent":3,"firstname":"Maitreyi","lastname":"Srinivasan","department":111,"password":"","email":"maitreyi.srinivas@ufl.edu","gender":"female","course":"Research methods in HCI","url":"https://www.linkedin.com/ms100","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":""},{"idStudent":4,"firstname":"Noopur","lastname":"Thanvi","department":111,"password":"","email":"thanvi.noopur@ufl.edu","gender":"female","course":"Database systems implementation","url":"https://www.linkedin.com/in/noopurthanvi0208/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":""},{"idStudent":5,"firstname":"Anirudh","lastname":"Srinivasan","department":112,"password":"","email":"anirudh.srinivas@ufl.edu","gender":"male","course":"Occupational Safety Engineering","url":"https://www.linkedin.com/in/anirudh-srinivasan-46149119a/","nationality":"Indian","profile":"Safety Engineer","specialization":"Info and Operations Management","status":"incoming","deptName":""},{"idStudent":6,"firstname":"Dhrupad","lastname":"Thanvi","department":113,"password":"","email":"thanvi.dhrupad@ufl.edu","gender":"male","course":"Fundamental of Machine-Learning","url":"https://www.linkedin.com/in/noopurthanvi0208/","nationality":"Indian","profile":"Interested in Electrical Domain","specialization":"Electrical Engineering","status":"incoming","deptName":""},{"idStudent":7,"firstname":"SaiSachin","lastname":"Kovuru","department":111,"password":"","email":"unique@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":""}]}
+{"data":[{"idStudent":1,"firstname":"Sai Sachin","lastname":"Kovuru","department":111,"password":"","email":"kovuru.saisachin@ufl.edu","gender":"male","course":"SE, DBSI, HCI Practical","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"India","profile":"Cloud","specialization":"Backend","status":"active","deptName":""},{"idStudent":2,"firstname":"Prashant","lastname":"Kapri","department":111,"password":"","email":"kapri.prashant@ufl.edu","gender":"male","course":"SE, DBSI, HCI Practical","url":"https://www.linkedin.com/in/prashant-kapri-2b8047122/","nationality":"India","profile":"Cloud","specialization":"Backend","status":"active","deptName":""},{"idStudent":3,"firstname":"Maitreyi","lastname":"Srinivasan","department":111,"password":"","email":"maitreyi.srinivas@ufl.edu","gender":"female","course":"SE, HCI Research","url":"https://www.linkedin.com/in/ms100/","nationality":"India","profile":"UX-Designer","specialization":"UX_Designing","status":"active","deptName":""},{"idStudent":4,"firstname":"Noopur","lastname":"Thanvi","department":111,"password":"","email":"thanvi.noopur@ufl.edu","gender":"female","course":"SE, HCI Practical","url":"https://www.linkedin.com/in/noopurthanvi0208/","nationality":"India","profile":"Frontend","specialization":"Frontend","status":"active","deptName":""},{"idStudent":5,"firstname":"Anirudh","lastname":"Srinivasan","department":113,"password":"","email":"anirudh.srinivas@ufl.edu","gender":"male","course":"Fundamental of Machine-Learning","url":"https://www.linkedin.com/in/anirudh-srinivasan-46149119a/","nationality":"India","profile":"Machine Learning Engineer","specialization":"ML domain","status":"incoming","deptName":""},{"idStudent":6,"firstname":"Dhrupad","lastname":"Thanvi","department":112,"password":"","email":"thanvi.dhrupad@ufl.edu","gender":"male","course":"Occupational Safety Engineering","url":"https://www.linkedin.com/in/noopurthanvi0208/","nationality":"India","profile":"Safety Engineering","specialization":"Safety Engineer","status":"incoming","deptName":""},{"idStudent":7,"firstname":"SaiSachin","lastname":"Kovuru","department":111,"password":"","email":"unique@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":""}]}
 
 
     user_test.go:188: Expected to get status 200 is same ast 200
@@ -434,7 +582,7 @@ Mock API for getUsers - Sending correct URL
 === RUN   TestGetUserswithDept/Wrong_URL
 
 Mock API for getUserswithDepartment - Sending wrong URL
-[GIN] 2022/04/01 - 02:30:44 | 404 |         209ns |                 | GET      /api/v1/userss
+[GIN] 2022/04/15 - 22:39:21 | 404 |         375ns |                 | GET      /api/v1/userss
 404 page not found
 
 
@@ -442,10 +590,10 @@ Mock API for getUserswithDepartment - Sending wrong URL
 === RUN   TestGetUserswithDept/Valid_URL
 
 Mock API for getUserswithDepartment - Sending correct URL
-[GIN] 2022/04/01 - 02:30:44 | 200 |     502.709µs |                 | GET      /api/v1/users
+[GIN] 2022/04/15 - 22:39:21 | 200 |     543.334µs |                 | GET      /api/v1/users
 
 
-{"data":[{"idStudent":1,"firstname":"SaiSachin","lastname":"Kovuru","department":111,"password":"","email":"kovuru.saisachin@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":"CSE"},{"idStudent":2,"firstname":"Prashant","lastname":"Kapri","department":111,"password":"","email":"kapri.prashant@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/prashant-kapri-2b8047122/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":"CSE"},{"idStudent":3,"firstname":"Maitreyi","lastname":"Srinivasan","department":111,"password":"","email":"maitreyi.srinivas@ufl.edu","gender":"female","course":"Research methods in HCI","url":"https://www.linkedin.com/ms100","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":"CSE"},{"idStudent":4,"firstname":"Noopur","lastname":"Thanvi","department":111,"password":"","email":"thanvi.noopur@ufl.edu","gender":"female","course":"Database systems implementation","url":"https://www.linkedin.com/in/noopurthanvi0208/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":"CSE"},{"idStudent":5,"firstname":"Anirudh","lastname":"Srinivasan","department":112,"password":"","email":"anirudh.srinivas@ufl.edu","gender":"male","course":"Occupational Safety Engineering","url":"https://www.linkedin.com/in/anirudh-srinivasan-46149119a/","nationality":"Indian","profile":"Safety Engineer","specialization":"Info and Operations Management","status":"incoming","deptName":"Industrial and Systems Engineering"},{"idStudent":6,"firstname":"Dhrupad","lastname":"Thanvi","department":113,"password":"","email":"thanvi.dhrupad@ufl.edu","gender":"male","course":"Fundamental of Machine-Learning","url":"https://www.linkedin.com/in/noopurthanvi0208/","nationality":"Indian","profile":"Interested in Electrical Domain","specialization":"Electrical Engineering","status":"incoming","deptName":"Electrical Engineering"},{"idStudent":7,"firstname":"SaiSachin","lastname":"Kovuru","department":111,"password":"","email":"unique@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":"CSE"}]}
+{"data":[{"idStudent":1,"firstname":"Sai Sachin","lastname":"Kovuru","department":111,"password":"","email":"kovuru.saisachin@ufl.edu","gender":"male","course":"SE, DBSI, HCI Practical","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"India","profile":"Cloud","specialization":"Backend","status":"active","deptName":"CSE"},{"idStudent":2,"firstname":"Prashant","lastname":"Kapri","department":111,"password":"","email":"kapri.prashant@ufl.edu","gender":"male","course":"SE, DBSI, HCI Practical","url":"https://www.linkedin.com/in/prashant-kapri-2b8047122/","nationality":"India","profile":"Cloud","specialization":"Backend","status":"active","deptName":"CSE"},{"idStudent":3,"firstname":"Maitreyi","lastname":"Srinivasan","department":111,"password":"","email":"maitreyi.srinivas@ufl.edu","gender":"female","course":"SE, HCI Research","url":"https://www.linkedin.com/in/ms100/","nationality":"India","profile":"UX-Designer","specialization":"UX_Designing","status":"active","deptName":"CSE"},{"idStudent":4,"firstname":"Noopur","lastname":"Thanvi","department":111,"password":"","email":"thanvi.noopur@ufl.edu","gender":"female","course":"SE, HCI Practical","url":"https://www.linkedin.com/in/noopurthanvi0208/","nationality":"India","profile":"Frontend","specialization":"Frontend","status":"active","deptName":"CSE"},{"idStudent":5,"firstname":"Anirudh","lastname":"Srinivasan","department":113,"password":"","email":"anirudh.srinivas@ufl.edu","gender":"male","course":"Fundamental of Machine-Learning","url":"https://www.linkedin.com/in/anirudh-srinivasan-46149119a/","nationality":"India","profile":"Machine Learning Engineer","specialization":"ML domain","status":"incoming","deptName":"Electrical Engineering"},{"idStudent":6,"firstname":"Dhrupad","lastname":"Thanvi","department":112,"password":"","email":"thanvi.dhrupad@ufl.edu","gender":"male","course":"Occupational Safety Engineering","url":"https://www.linkedin.com/in/noopurthanvi0208/","nationality":"India","profile":"Safety Engineering","specialization":"Safety Engineer","status":"incoming","deptName":"Industrial and Systems Engineering"},{"idStudent":7,"firstname":"SaiSachin","lastname":"Kovuru","department":111,"password":"","email":"unique@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":"CSE"}]}
 
 
     user_test.go:249: Expected to get status 200 is same ast 200
@@ -456,7 +604,7 @@ Mock API for getUserswithDepartment - Sending correct URL
 === RUN   TestGetUserById/Incorrect_UserID
 
 Mock API for getUserById - Sending the incorrect UserID
-[GIN] 2022/04/01 - 02:30:44 | 400 |     486.334µs |                 | GET      /api/v1/user/111
+[GIN] 2022/04/15 - 22:39:21 | 400 |     311.375µs |                 | GET      /api/v1/user/111
 
 
 {"error":"Could not find this student ID in our records"}
@@ -466,10 +614,10 @@ Mock API for getUserById - Sending the incorrect UserID
 === RUN   TestGetUserById/Correct_UserID
 
 Mock API for getUserById - Sending correct userID
-[GIN] 2022/04/01 - 02:30:44 | 200 |     107.959µs |                 | GET      /api/v1/user/1
+[GIN] 2022/04/15 - 22:39:21 | 200 |      93.917µs |                 | GET      /api/v1/user/1
 
 
-{"data":{"idStudent":1,"firstname":"SaiSachin","lastname":"Kovuru","department":111,"password":"$2a$10$sTns3LM.xfAEzlsF0fUPDOabxvuL.lFPuhVIuRqSfmCAZrzZlWmvO","email":"kovuru.saisachin@ufl.edu","gender":"male","course":"Software engineering","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"Indian","profile":"Cloud","specialization":"Backend","status":"active","deptName":""}}
+{"data":{"idStudent":1,"firstname":"Sai Sachin","lastname":"Kovuru","department":111,"password":"$2a$10$7aaYBWMQzf2JAonUVnHQdeLZXDRYmOleuTst/dtmNJHO2oyon8Qr2","email":"kovuru.saisachin@ufl.edu","gender":"male","course":"SE, DBSI, HCI Practical","url":"https://www.linkedin.com/in/saisachinkovuru/","nationality":"India","profile":"Cloud","specialization":"Backend","status":"active","deptName":""}}
 
 
     user_test.go:310: Expected to get status 200 is same ast 200
@@ -480,7 +628,7 @@ Mock API for getUserById - Sending correct userID
 === RUN   TestGetUserByEmail/Incorrect_User_EmailID
 
 Mock API for getUserByEmail - Sending the incorrect User Email ID
-[GIN] 2022/04/01 - 02:30:44 | 400 |         297µs |                 | GET      /api/v1/mail/kovuru.sachin@ufl.edu
+[GIN] 2022/04/15 - 22:39:21 | 400 |     284.459µs |                 | GET      /api/v1/mail/kovuru.sachin@ufl.edu
 
 
 {"error":"Could not find this student Email ID in our records"}
@@ -490,10 +638,10 @@ Mock API for getUserByEmail - Sending the incorrect User Email ID
 === RUN   TestGetUserByEmail/Correct_User_EmailID
 
 Mock API for getUserByEMail - Sending correct user Email-ID
-[GIN] 2022/04/01 - 02:30:44 | 200 |     114.833µs |                 | GET      /api/v1/mail/kovuru.saisachin@ufl.edu
+[GIN] 2022/04/15 - 22:39:21 | 200 |      85.083µs |                 | GET      /api/v1/mail/kovuru.saisachin@ufl.edu
 
 
-{"data":{"idStudent":1,"firstname":"SaiSachin","lastname":"Kovuru","department":0,"password":"","email":"","gender":"","course":"","url":"","nationality":"","profile":"","specialization":"","status":"","deptName":""}}
+{"data":{"idStudent":1,"firstname":"Sai Sachin","lastname":"Kovuru","department":0,"password":"","email":"","gender":"","course":"","url":"","nationality":"","profile":"","specialization":"","status":"","deptName":""}}
 
 
     user_test.go:372: Expected to get status 200 is same ast 200
@@ -504,7 +652,7 @@ Mock API for getUserByEMail - Sending correct user Email-ID
 === RUN   TestUpdateUser/Sending_Empty_Data
 
 Mock API for Update User - Sending Empty Data
-[GIN] 2022/04/01 - 02:30:44 | 400 |     277.125µs |                 | PUT      /api/v1/user/1
+[GIN] 2022/04/15 - 22:39:21 | 400 |     300.708µs |                 | PUT      /api/v1/user/1
 {"error":"EOF"}
 
 
@@ -512,7 +660,7 @@ Mock API for Update User - Sending Empty Data
 === RUN   TestUpdateUser/Email_ID_Already_exists
 
 Mock API for Update User - Sending the existing EmailID
-[GIN] 2022/04/01 - 02:30:44 | 400 |     407.458µs |                 | PUT      /api/v1/user/6
+[GIN] 2022/04/15 - 22:39:21 | 400 |     396.375µs |                 | PUT      /api/v1/user/6
 {"error":"Email can not be Updated since student with another ID has the same mail ID"}
 
 
@@ -520,7 +668,7 @@ Mock API for Update User - Sending the existing EmailID
 === RUN   TestUpdateUser/Unique_Email_ID
 
 Mock API for Update User - Sending the unique EmailID
-[GIN] 2022/04/01 - 02:30:44 | 200 |   77.568125ms |                 | PUT      /api/v1/user/1
+[GIN] 2022/04/15 - 22:39:21 | 200 |   77.593209ms |                 | PUT      /api/v1/user/1
 {"message":"Success"}
 
 
@@ -528,7 +676,7 @@ Mock API for Update User - Sending the unique EmailID
 === RUN   TestUpdateUser/Incorrect_Student_ID
 
 Mock API for Update User - Sending incorrect StudentID
-[GIN] 2022/04/01 - 02:30:44 | 400 |     119.583µs |                 | PUT      /api/v1/user/77
+[GIN] 2022/04/15 - 22:39:21 | 400 |     106.333µs |                 | PUT      /api/v1/user/77
 {"error":"Could not find this student ID in our records to Update"}
 
 
@@ -542,7 +690,7 @@ Mock API for Update User - Sending incorrect StudentID
 === RUN   TestDeleteUser/Student_ID_does_not_exist
 
 Mock API for Deleting the User - Sending the wrong StudentID
-[GIN] 2022/04/01 - 02:30:44 | 400 |     338.084µs |                 | DELETE   /api/v1/user/77
+[GIN] 2022/04/15 - 22:39:21 | 400 |     342.667µs |                 | DELETE   /api/v1/user/77
 
 
 {"error":"Could not find this student ID in our records to Delete"}
@@ -552,7 +700,7 @@ Mock API for Deleting the User - Sending the wrong StudentID
 === RUN   TestDeleteUser/Student_ID_exists
 
 Mock API for Deleting the User - Sending the valid StudentID
-[GIN] 2022/04/01 - 02:30:44 | 200 |     758.417µs |                 | DELETE   /api/v1/user/7
+[GIN] 2022/04/15 - 22:39:21 | 200 |     633.875µs |                 | DELETE   /api/v1/user/7
 
 
 {"message":"Success"}
@@ -563,6 +711,5 @@ Mock API for Deleting the User - Sending the valid StudentID
     --- PASS: TestDeleteUser/Student_ID_does_not_exist (0.00s)
     --- PASS: TestDeleteUser/Student_ID_exists (0.00s)
 PASS
-coverage: 78.8% of statements
-ok      allygator.com/gatorweb/routers/api      0.920s
-saisachinkovuru@Sais-MacBook-Pro api % 
+coverage: 77.5% of statements
+ok      allygator.com/gatorweb/routers/api      1.029s

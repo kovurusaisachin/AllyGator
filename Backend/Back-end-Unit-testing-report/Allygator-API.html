@@ -55,7 +55,7 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">allygator.com/gatorweb/routers/api/chat.go (0.0%)</option>
+				<option value="file0">allygator.com/gatorweb/routers/api/chat.go (81.2%)</option>
 				
 				<option value="file1">allygator.com/gatorweb/routers/api/course.go (89.5%)</option>
 				
@@ -65,7 +65,9 @@
 				
 				<option value="file4">allygator.com/gatorweb/routers/api/login.go (67.4%)</option>
 				
-				<option value="file5">allygator.com/gatorweb/routers/api/user.go (87.9%)</option>
+				<option value="file5">allygator.com/gatorweb/routers/api/post.go (0.0%)</option>
+				
+				<option value="file6">allygator.com/gatorweb/routers/api/user.go (87.9%)</option>
 				
 				</select>
 			</div>
@@ -88,30 +90,30 @@ import (
         "github.com/gin-gonic/gin"
 )
 
-func GetChat(c *gin.Context) <span class="cov0" title="0">{
+func GetChat(c *gin.Context) <span class="cov8" title="1">{
         chat, err := controller.GetChat()
         if err != nil </span><span class="cov0" title="0">{
                 c.IndentedJSON(http.StatusBadRequest, gin.H{"error": "No data found"})
         }</span>
-        <span class="cov0" title="0">c.IndentedJSON(http.StatusOK, gin.H{"data": chat})</span>
+        <span class="cov8" title="1">c.IndentedJSON(http.StatusOK, gin.H{"data": chat})</span>
 }
 
-func GetChatById(c *gin.Context) <span class="cov0" title="0">{
+func GetChatById(c *gin.Context) <span class="cov8" title="1">{
         id := c.Param("id")
         chat, err := controller.GetChatById(id)
         if err != nil </span><span class="cov0" title="0">{
                 c.IndentedJSON(http.StatusBadRequest, gin.H{"error": "No data found"})
         }</span>
-        <span class="cov0" title="0">c.IndentedJSON(http.StatusOK, gin.H{"data": chat})</span>
+        <span class="cov8" title="1">c.IndentedJSON(http.StatusOK, gin.H{"data": chat})</span>
 }
 
-func AddChat(c *gin.Context) <span class="cov0" title="0">{
+func AddChat(c *gin.Context) <span class="cov8" title="1">{
         var newChat controller.Chat
-        if err := c.BindJSON(&amp;newChat); err != nil </span><span class="cov0" title="0">{
+        if err := c.BindJSON(&amp;newChat); err != nil </span><span class="cov8" title="1">{
                 return
         }</span>
-        <span class="cov0" title="0">success, err := controller.AddChat(newChat)
-        if success </span><span class="cov0" title="0">{
+        <span class="cov8" title="1">success, err := controller.AddChat(newChat)
+        if success </span><span class="cov8" title="1">{
                 c.IndentedJSON(http.StatusOK, gin.H{"Message": "Data added successfully"})
         }</span> else<span class="cov0" title="0"> {
                 c.IndentedJSON(http.StatusBadRequest, gin.H{"data": err.Error()})
@@ -518,6 +520,58 @@ func GetUserDetails(email string) (string, error) <span class="cov8" title="1">{
 </pre>
 		
 		<pre class="file" id="file5" style="display: none">package api
+
+import (
+        "net/http"
+
+        "allygator.com/gatorweb/controller"
+        "github.com/gin-gonic/gin"
+)
+
+func AddPosts(c *gin.Context) <span class="cov0" title="0">{
+        var json controller.Post
+
+        if err := c.ShouldBindJSON(&amp;json); err != nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+                return
+        }</span>
+
+        <span class="cov0" title="0">success, err := controller.AddPosts(json)
+
+        if success </span><span class="cov0" title="0">{
+                c.JSON(http.StatusOK, gin.H{"message": "Success"})
+        }</span> else<span class="cov0" title="0"> {
+                c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        }</span>
+}
+
+func GetPosts(c *gin.Context) <span class="cov0" title="0">{
+        posts, err := controller.GetPosts()
+        checkErr(err)
+
+        if posts == nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, gin.H{"error": "No Records Found"})
+                return
+        }</span> else<span class="cov0" title="0"> {
+                c.JSON(http.StatusOK, gin.H{"data": posts})
+        }</span>
+}
+
+func GetPostsByUserId(c *gin.Context) <span class="cov0" title="0">{
+        id := c.Param("id")
+        posts, err := controller.GetPostsByUserId(id)
+        checkErr(err)
+
+        if posts == nil </span><span class="cov0" title="0">{
+                c.JSON(http.StatusBadRequest, gin.H{"error": "Could not find this Department ID in our records"})
+                return
+        }</span> else<span class="cov0" title="0"> {
+                c.JSON(http.StatusOK, gin.H{"data": posts})
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package api
 
 import (
         "log"
