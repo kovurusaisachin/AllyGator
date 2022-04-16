@@ -24,6 +24,7 @@ This project is a comprehensive implementation of a simple yet useful idea of co
 :memo: Here's the link to our [project board](https://github.com/kovurusaisachin/AllyGator/projects/1)</br>
 
 ## Backend API documentation </br>
+[Click here](https://github.com/kovurusaisachin/AllyGator/wiki/API-documentation) to view our backend API documentation :notebook:
 
 ## Team Members </br>
 - Sai Sachin Kovuru   (kovuru.saisachin@ufl.edu)  - Backend
