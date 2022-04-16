@@ -27,10 +27,31 @@ This project is a comprehensive implementation of a simple yet useful idea of co
 [Click here](https://github.com/kovurusaisachin/AllyGator/wiki/API-documentation) to view our backend API documentation :notebook:
 
 ## Team Members </br>
-- Sai Sachin Kovuru   (kovuru.saisachin@ufl.edu)  - Backend
-- Maitreyi Srinivasan (maitreyisrinivas@ufl.edu)  - Backend and Frontend
-- Noopur Thanvi       (thanvi.noopur@ufl.edu)     - Frontend and Backend
-- Prashant Kapri      (kapri.prashant@ufl.edu).   - Frontend
+
+<table>
+<tr><th>Backend </th></tr>
+<tr><td>
+
+|Name| Email | Tech|
+|--|--|--|
+|Sai Sachin Kovuru|kovuru.saisachin@ufl.edu|Backend|
+|Maitreyi Srinivasan|maitreyisrinivas@ufl.edu|Backend - Frontend|
+  
+</td></tr>
+</table>
+
+
+<table>
+<tr><th>Frontend </th></tr>
+<tr><td>
+
+|Name| Email | Tech|
+|--|--|--|
+|Prashant Kapri|kapri.prashant@ufl.edu|Frontend|
+|Noopur Thanvi|thanvi.noopur@ufl.edu|Frontend - Backend|
+  
+</td></tr>
+</table>
 
 
 
