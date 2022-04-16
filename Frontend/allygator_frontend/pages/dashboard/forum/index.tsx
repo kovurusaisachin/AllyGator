@@ -54,7 +54,7 @@ const Forum = () => {
       ]) => {
         setState({
           ...state,
-          forumData:forum
+          forumData:forum?.data
         });
       }
     );
@@ -211,11 +211,11 @@ const Forum = () => {
               </div>
             </section>
             <section>
-              {data?.map((x) => {
+              {state?.forumData?.map((x) => {
                 {
                   console.log(x, "pppp");
                 }
-                return <ForumCard key={x?.time} data={x} />;
+                return <ForumCard key={x?.timestamp} data={x} />;
               })}
             </section>
           </div>
