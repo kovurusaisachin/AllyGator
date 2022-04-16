@@ -103,3 +103,32 @@ func GetPostsByUserId(idUser string) ([]Post, error) {
 
 	return post, err
 }
+
+//This function retrieves the list of all the posts by Post Id from the database
+func GetPostsByPostId(idPost string) ([]Post, error) {
+
+	rows, err := models.DB.Query("SELECT p.idPost, p.idUser, p.description, p.title, p.category, p.timestamp, u.firstname, u.lastname from posts as p Join users as u on p.idUser = u.idStudent where p.idPost = " + idPost)
+	if err != nil {
+		return []Post{}, err
+	}
+
+	post := make([]Post, 0)
+
+	for rows.Next() {
+		singlePost := Post{}
+		err = rows.Scan(&singlePost.PostId, &singlePost.StudentId, &singlePost.Title, &singlePost.Description, &singlePost.Category, &singlePost.Timestamp, &singlePost.UserFname, &singlePost.UserLname)
+
+		if err != nil {
+			return nil, err
+		}
+		post = append(post, singlePost)
+	}
+
+	err = rows.Err()
+
+	if err != nil {
+		return nil, err
+	}
+
+	return post, err
+}
