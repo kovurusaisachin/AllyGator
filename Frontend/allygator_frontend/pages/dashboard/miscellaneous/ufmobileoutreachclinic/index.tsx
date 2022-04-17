@@ -132,17 +132,19 @@ export default function ufmobileoutreachclinic () {
         </tbody>
     </table>
 </div>
+</div>
+</section>
 
-
-    <section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
+    <section className="w-full px-4 py-24 mx-auto max-w-7xl">
     <div className="mb-12 text-left md:text-center">
+    <img alt="blog photo" src="https://outreach.med.ufl.edu/wordpress/files/2021/08/MOCBus-1493x1120.jpg"/>
     <p className="text-lg text-gray-500">
     For more information about the Mobile Outreach Clinic or any of its partner organizations, call 352-273-5329 or visit outreach.med.ufl.edu
     </p>
     </div> 
     </section>
 
-    <section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
+    <section className="w-full px-4 py-24 mx-auto max-w-7xl">
     <div className="mb-12 text-left md:text-center">
     <p className="text-lg text-gray-500">
     The UF Mobile Outreach Clinic provides free health care for under-served communities in Alachua County.
