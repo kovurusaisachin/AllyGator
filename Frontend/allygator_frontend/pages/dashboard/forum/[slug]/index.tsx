@@ -6,10 +6,11 @@ import { API_URL } from "../../../../components/constant";
 import React, { useState, useEffect } from "react"
 export default function forumPage() {
   const router = useRouter();
-  const slug = router.query.slug ?? "";
-  console.log(slug, 'mm')
+  // const slug = router.query.slug ?? "";
+  // console.log(slug, 'mm')
   const [state, setState] = useState({
     counter:0,
+    slug: router?.query?.slug,
     answer:"",
     forumDataO: [],
     forumData: {
@@ -38,7 +39,7 @@ export default function forumPage() {
 
   const getData = () => {
     let endpoints = [
-      `${API_URL}/post/${slug}`
+      `${API_URL}/post/post/${state?.slug}`
 
     ];
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
@@ -96,31 +97,31 @@ export default function forumPage() {
             <div>
               <a rel="noopener noreferrer" href="#" className="flex items-center">
                 <span className="font-semibold hover:underline dark:text-coolGray-400">
-                  {state?.forumData?.firstname + " " + state?.forumData?.lastname ?? ""}
+                  {state?.forumData?.[0]?.firstname + " " + state?.forumData?.[0]?.lastname ?? ""}
                 </span>
               </a>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm dark:text-coolGray-400">{new Date(state?.forumData?.timestamp?.split("T")[0]).toDateString()}</span>
+              <span className="text-sm dark:text-coolGray-400">{new Date(state?.forumData?.[0]?.timestamp?.split("T")[0]).toDateString()}</span>
             </div>
             <div className="mt-3">
 
               <a className="font-bold hover:text-blue-900 hover:underline cursor-pointer">
-                {state?.forumData?.title ?? ""}
+                {state?.forumData?.[0]?.title ?? ""}
               </a>
               <p className="mt-2">
-                {state?.forumData?.description ?? ""}
+                {state?.forumData?.[0]?.description ?? ""}
               </p>
             </div>
             <div className="flex flex-col-2">
 
               <div className="flex items-center gap-4 justify-start mt-4">
                 {
-                  state?.forumData?.category?.split(",")?.map((x) => {
+                  state?.forumData?.[0]?.category?.split(",")?.map((x) => {
                     { console.log(x) }
                     <div className="flex items-end gap-4 justify-end mt-4">
                       <button className="flex items-center px-3 py-1 font-small tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-400 rounded-full hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                        <span className="mx-1">{state?.forumData?.category}</span>
+                        <span className="mx-1">{state?.forumData?.[0]?.category}</span>
                       </button>
                     </div>
                   })
@@ -128,7 +129,7 @@ export default function forumPage() {
               </div>
               <div className="flex items-end gap-4 justify-end mt-4">
                 <button className="flex items-center px-3 py-1 font-small tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-400 rounded-full hover:bg-gray-700 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-                  <span className="mx-1">{state?.forumData?.category}</span>
+                  <span className="mx-1">{state?.forumData?.[0]?.category}</span>
                 </button>
               </div>
             </div>

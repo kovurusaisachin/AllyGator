@@ -19,7 +19,7 @@ export default function ForumCard(props) {
           <div className="mt-3">
             <Link href={`/dashboard/forum/${props?.data?.idPost}`}
             >
-              <a className="font-bold hover:text-blue-900 hover:underline cursor-pointer">
+              <a className="font-bold text-blue-600 hover:underline cursor-pointer">
                 {props?.data?.title ?? ""}
               </a>
             </Link>
