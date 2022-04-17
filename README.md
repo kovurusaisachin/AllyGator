@@ -16,12 +16,33 @@ This project is a comprehensive implementation of a simple yet useful idea of co
 - [Cypress](https://go.cypress.io/get-started?utm_adgroup=132501525000&utm_keyword=cypress&utm_source=google&utm_medium=cpc&utm_campaign=15312994475&utm_term=cypress&hsa_acc=8898574980&hsa_cam=15312994475&hsa_grp=132501525000&hsa_ad=562694869893&hsa_src=g&hsa_tgt=kwd-40454352&hsa_kw=cypress&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gclid=Cj0KCQjwr-SSBhC9ARIsANhzu154_iLpxg-WCWfsiJrgZ8kcFSm7w15DNezMTSXs1pCMlei4zkWQFlYaArZ6EALw_wcB) </br>
 
 ## How to install and run </br>
-- To install frontend dependencies`npm install` </br>
-- To install chat `npm run chat` </br>
-- To run frontend `npm run dev` </br>
-- Go to the directory for backend `Allygator/Backend` </br>
-- To build backend `go build` </br>
-- To run backend `./gatorweb` </br>
+### Frontend Development <br />
+
+<b>Note:</b> To install frontend follow the below steps (only first time):<br/> 
+```
+1. change directory to frontend
+2. change directory to allygator_frontend
+3. run npm install
+4. run npm chat
+```
+<br />
+
+<b>Note:</b> To run frontend follow the below steps:<br/>
+```
+1. change directory to frontend
+2. change directory to allygator_frontend
+3. run npm next dev
+```
+<br />
+
+### Backend Development <br />
+<b>Note:</b> To run backend follow the below steps:<br/>
+```
+1. change directory to backend 
+2. go build 
+3. ./gatorweb 
+```
+<br />
 
 ## Project Board </br>
 :memo: Here's the link to our [project board](https://github.com/kovurusaisachin/AllyGator/projects/1)</br>
