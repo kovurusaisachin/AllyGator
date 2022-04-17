@@ -12,90 +12,127 @@ export default function ufmobileoutreachclinic () {
     The UF mobile outreach clinic is available at different locations throughout the week.
     </p>
     </div>    
+   
+   
+   
+   
     <div>
-    <h2 className="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl">
-          <a href="#" className="text-gray-900 hover:text-purple-700">TUESDAY: Library Partnership</a>
+    <h2 className="mb-1 text-xl font-bold leading-snug tracking-tight text-gray-300 ">
+          <a href="#" className="text-gray-900 hover:text-purple-300">Tuesday: Library Partnership</a>
     </h2>
-    <p className="mb-4 text-base font-normal text-gray-600">
-       912 NE 16th Ave.
-       Gainesville FL 32601
-       352-344-0165
-       10am - 4pm
+    <p className="mb-1 text-base font-normal text-gray-600"> 
+       912 NE 16th Ave. 
+       Gainesville FL 32601 </p>
+       <p className="mb-1 text-base font-normal text-gray-600">
+       352-344-0165 | 10am - 4pm
+    </p>
+    </div>
+    <div>
+    <h2 className="mb-1 text-xl font-bold leading-snug tracking-tight text-gray-300 ">
+          <a href="#" className="text-gray-900 hover:text-purple-300">Wednesday: Headquarters Library</a>
+    </h2>
+    <p className="mb-1 text-base font-normal text-gray-600"> 
+    5453 401 E University Ave.
+       Gainesville FL 32601 </p>
+       <p className="mb-1 text-base font-normal text-gray-600">
+       352-334-3900 | 10am - 4pm
+    </p>
+    </div>
+    <div>
+    <h2 className="mb-1 text-xl font-bold leading-snug tracking-tight text-gray-300 ">
+          <a href="#" className="text-gray-900 hover:text-purple-300">Thursday: T.B. McPherson Center</a>
+    </h2>
+    <p className="mb-1 text-base font-normal text-gray-600"> 
+    1717 SE 15th St.
+       Gainesville FL 32641 </p>
+       <p className="mb-1 text-base font-normal text-gray-600">
+       352-334-2188 | 10am - 4pm
+    </p>
+    </div>
+    <div>
+    <h2 className="mb-1 text-xl font-bold leading-snug tracking-tight text-gray-300 ">
+          <a href="#" className="text-gray-900 hover:text-purple-300">Friday: Grace Marketplace</a>
+    </h2>
+    <p className="mb-1 text-base font-normal text-gray-600"> 
+    3055 NE 28th Ave.
+       Gainesville FL 32509 </p>
+       <p className="mb-1 text-base font-normal text-gray-600">
+       352-792-0800 | 10am - 4pm
     </p>
     </div>
 
-    <div>
-    <h2 className="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl">
-        <a href="#" className="text-gray-900 hover:text-purple-700">WEDNESDAY: Headquarters Library</a>
-    </h2>
-    <p className="mb-4 text-base font-normal text-gray-600">
-       5453 401 E University Ave.
-       Gainesville FL 32601
-       352-334-3900
-       10am - 4pm
-    </p>
-    </div>
+ 
 
-    <div>
-    <h2 className="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl">
-        <a href="#" className="text-gray-900 hover:text-purple-700">THURSDAY: T.B. McPherson Center</a>
-    </h2>
-    <p className="mb-4 text-base font-normal text-gray-600">
-       1717 SE 15th St.
-       Gainesville FL 32641
-       352-334-2188
-       10am - 4pm 
-    </p>
-    </div>
-     
-    <div>
-     <h2 className="mb-2 text-xl font-extrabold leading-snug tracking-tight text-gray-800 md:text-3xl">
-         <a href="#" className="text-gray-900 hover:text-purple-700">FRIDAY: GRACE Marketplace</a>
-     </h2>
-     <p className="mb-4 text-base font-normal text-gray-600">
-       3055 NE 28th Ave.
-       Gainesville FL 32509
-       352-792-0800
-       10am - 4pm 
-    </p>
-    </div>  
 
-    <section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
-    <div className="mb-12 text-left md:text-center">
-    <h2 className="mb-2 text-3xl font-extrabold leading-tight text-gray-900">
-    Location, hours and available specialists may vary each month.
-    </h2>
-    <p className="text-lg text-gray-500">
-    Patients are seen on a first-come, first-serve basis, and spaces are limited. Please arrive at least one hour before the end of clinic hours to be seen.
+    <section className="w-full px-34 py-24 mx-auto max-w-7xl">
+    <div className="mb-12 text-center ">
+    <p className="text-lg font-italics text-gray-500">
+    Location, hours and available specialists may vary each month. Patients are seen on a first-come, first-serve basis, and spaces are limited. Please arrive at least one hour before the end of clinic hours to be seen.
     </p>
     </div> 
     </section>
 
-<section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
-  <div className="mb-12 text-left md:text-center">
-    <h2 className="mb-2 text-3xl font-extrabold leading-tight text-gray-900">
+<section className="w-full px-4 py-24 mx-auto max-w-7xl">
+  <div className="mb-12 text-left md:text-left">
+    <h2 className="mb-2 text-3xl font-medium leading-tight text-gray-900">
         Other health and medical services phone numbers
     </h2>
-    <p className="text-lg text-gray-500">
-       All emergencies - 911
-    </p>
-    <p className="text-lg text-gray-500">
-    Crisis Center - 352-264-6789
-    </p>
-    <p className="text-lg text-gray-500">
-    Health Department - 352-334-7900
-    </p>
-    <p className="text-lg text-gray-500">
-   Poison Control - 800-222-1222
-    </p>
-    <p className="text-lg text-gray-500">
-   Poison Information - 904-244-4465
-    </p>
-    <p className="text-lg text-gray-500">
-   Victim services - 352-264-6760
-    </p>
-    </div>   
-    </section>
+
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <tbody>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                    All emergencies
+                </th>
+                <td className="px-6 py-4">
+                   911
+                </td>
+            </tr>
+            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                    Crisis center
+                </th>
+                <td className="px-6 py-4">
+                352-264-6789
+                </td>
+            </tr>
+            <tr className="bg-white dark:bg-gray-800">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                Health Department
+                </th>
+                <td className="px-6 py-4">
+                352-334-7900
+                </td>
+            </tr>
+            <tr className="bg-white dark:bg-gray-800">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                Poison Control
+                </th>
+                <td className="px-6 py-4">
+                800-222-1222
+                </td>
+            </tr>
+            <tr className="bg-white dark:bg-gray-800">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                Poison Information
+                </th>
+                <td className="px-6 py-4">
+                904-244-4465
+                </td>
+            </tr>
+            <tr className="bg-white dark:bg-gray-800">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                Victim Services
+                </th>
+                <td className="px-6 py-4">
+                352-264-6760
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
     <section className="w-full px-4 py-24 mx-auto max-w-7xl md:w-3/4 lg:w-2/4">
     <div className="mb-12 text-left md:text-center">
