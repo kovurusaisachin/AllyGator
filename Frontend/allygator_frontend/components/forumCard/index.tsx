@@ -17,7 +17,7 @@ export default function ForumCard(props) {
             <span className="text-sm dark:text-coolGray-400">{new Date(props?.data?.timestamp?.split("T")[0]).toDateString()}</span>
           </div>
           <div className="mt-3">
-            <Link href={`/dashboard/forum/${props?.data?.idPost}`}
+            <Link href={`/dashboard/forum/${props?.data?.idPost}` }
             >
               <a className="font-bold text-blue-600 hover:underline cursor-pointer">
                 {props?.data?.title ?? ""}

@@ -210,14 +210,14 @@ export default function addPost() {
                   <button
                     type="submit"
                     onClick={handleCancel}
-                    className="my-4 mx-2 flex right-0 p-3 text-sm font-bold tracking-wide uppercase rounded bg-gray-500 hover:bg-gray-400"
+                    className="my-4 mx-2 flex right-0 p-3 text-white text-sm font-bold tracking-wide uppercase rounded bg-gray-500 hover:bg-gray-400"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     onClick={handleSubmit}
-                    className="my-4 ml-2 flex right-0  p-3 text-sm font-bold tracking-wide uppercase rounded bg-gray-500 hover:bg-gray-400"
+                    className="my-4 ml-2 flex right-0 text-white p-3 text-sm font-bold tracking-wide uppercase rounded bg-gray-500 hover:bg-gray-400"
                   >
                     Add Post
                   </button>
