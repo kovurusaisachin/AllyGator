@@ -46,7 +46,7 @@ export default function AnalyticCard() {
                           Connections
                         </p>
                         <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                          63
+                          08
                         </p>
                       </div>
                     </div>
@@ -71,7 +71,7 @@ export default function AnalyticCard() {
                           Posts
                         </p>
                         <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                          20
+                          03
                         </p>
                       </div>
                     </div>
@@ -88,7 +88,7 @@ export default function AnalyticCard() {
                           Activities
                         </p>
                         <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                          376
+                          11
                         </p>
                       </div>
                     </div>
@@ -105,7 +105,7 @@ export default function AnalyticCard() {
                           Course list
                         </p>
                         <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                          35
+                          08
                         </p>
                       </div>
                     </div>
