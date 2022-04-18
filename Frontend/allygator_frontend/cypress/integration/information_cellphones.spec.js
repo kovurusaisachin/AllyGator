@@ -43,7 +43,7 @@ describe('Login Tests', function () {
 
     it('Testing T-Mobile information',function(){
         cy.visit('http://localhost:3000/dashboard/miscellaneous/cellphones')
-        cy.contains("T-Mobile");
+        cy.contains("T-mobile");
     }) 
     
     it('Successful logout', function () {
