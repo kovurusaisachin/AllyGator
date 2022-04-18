@@ -97,7 +97,7 @@ https://user-images.githubusercontent.com/33193435/163887358-922aada3-a04f-4162-
 
 |Name| Email | Tech|
 |--|--|--|
-|Prashant Dashrath Kapri|kapri.prashant@ufl.edu|   Frontend.    |
+|Prashant Dashrath Kapri|kapri.prashant@ufl.edu|   Frontend    |
 |Noopur Thanvi|thanvi.noopur@ufl.edu|Frontend - Backend|
   
 </td></tr>
