@@ -34,6 +34,11 @@ This project is a comprehensive implementation of a simple yet useful idea of co
 3. run npm next dev
 ```
 <br />
+Check out this video for installation </br>
+
+
+https://user-images.githubusercontent.com/33193435/163863553-bc67e5cd-448f-4408-9b03-95dabec9031a.mp4
+
 
 ### Backend Development <br />
 <b>Note:</b> To run backend follow the below steps:<br/>
@@ -49,10 +54,19 @@ This project is a comprehensive implementation of a simple yet useful idea of co
 
 ## Frontend Documentation </br>
 [Click here](https://github.com/kovurusaisachin/AllyGator/wiki/Frontend-documentation) to view the frontend documentaion </br>
+Check out the video below for Cypress testing </br>
+
+
+https://user-images.githubusercontent.com/33193435/163863412-a255e4d9-a4c7-47cd-8d60-f2939e14f216.mp4
+
+
 
 ## Backend API documentation </br>
-[Click here](https://github.com/kovurusaisachin/AllyGator/wiki/API-documentation) to view our backend API documentation 📓 </br>
-[Click here](https://github.com/kovurusaisachin/AllyGator/wiki/Code-coverage) to view our coverage report 📓
+[Click here](https://github.com/kovurusaisachin/AllyGator/wiki/API-documentation) to view our backend API documentation on GitHub-Wiki📓 </br>
+[Click here](https://documenter.getpostman.com/view/19334583/UVeGqkYL) to view API documentation on POSTMAN 📓 </br>
+[Click here](https://github.com/kovurusaisachin/AllyGator/wiki/Code-coverage) to view our coverage report 📓 </br>
+Check out the video below for Backend unit testing </br>
+
 
 ## Team Members </br>
 
