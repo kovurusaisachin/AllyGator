@@ -30,24 +30,26 @@ function miscellaneous() {
           </div>
         </div>
         <div className="mx-8 mt-5 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          <div className="max-w-xs my-2 mx-2 overflow-hidden bg-white rounded-lg shadow-lg ">
-            <img
-              className="px-2 py-2 rounded-md object-cover w-full h-56"
-              src="https://www.flashmobcomputing.org/media/2019/08/largest-cell-phone-carriers-in-the-United-States.jpg"
-              alt="avatar"
-            />
-            <div className="py-5 text-center">
-              <Link href="miscellaneous/cellphones">
-                <a className="block text-2xl font-bold  text-gray-900">
+          <Link href="miscellaneous/cellphones">
+            <a className="block text-2xl font-bold  text-gray-900">
+              <div className="max-w-xs my-2 mx-2 overflow-hidden bg-white rounded-lg shadow-lg ">
+                <img
+                  className="px-2 py-2 rounded-md object-cover w-full h-56"
+                  src="https://www.flashmobcomputing.org/media/2019/08/largest-cell-phone-carriers-in-the-United-States.jpg"
+                  alt="avatar"
+                />
+                <div className="py-3 text-center">
                   Cell Phones
-                </a>
-              </Link>
-
-              <span className="text-sm text-gray-700 dark:text-gray-500">
-                Network Service Provider
-              </span>
-            </div>
-          </div>
+                  <br />
+                  <span className="text-sm text-gray-700 dark:text-gray-500">
+                    Network Service Provider
+                  </span>
+                </div>
+              </div>
+            </a>
+          </Link>
+          <Link href="miscellaneous/electricity">
+                <a className="block text-2xl font-bold  text-gray-900">
           <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg ">
             <img
               className="px-2 py-2 rounded-md object-cover w-full h-56"
@@ -55,17 +57,20 @@ function miscellaneous() {
               alt="avatar"
             />
 
-            <div className="py-5 text-center">
-              <Link href="miscellaneous/electricity">
-                <a className="block text-2xl font-bold  text-gray-900">
+            <div className="py-3 text-center">
+
                   Electricity
-                </a>
-              </Link>
+                <br />
               <span className="text-sm text-gray-700 dark:text-gray-500">
                 GRU Details
               </span>
             </div>
           </div>
+          </a>
+              </Link>
+
+              <Link href="miscellaneous/emergencyrooms">
+                <a className="block text-2xl font-bold  text-gray-900">
           <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg ">
             <img
               className="px-2 py-2 rounded-md object-cover w-full h-56"
@@ -73,17 +78,20 @@ function miscellaneous() {
               alt="avatar"
             />
 
-            <div className="py-5 text-center">
-              <Link href="miscellaneous/emergencyrooms">
-                <a className="block text-2xl font-bold  text-gray-900">
+            <div className="py-3 text-center">
                   Emergency Rooms
-                </a>
-              </Link>
+                  <br />
+               
               <span className="text-sm text-gray-700 dark:text-gray-500">
                 Emergency Contact Details
               </span>
             </div>
           </div>
+          </a>
+              </Link>
+
+              <Link href="miscellaneous/ethnicfoodstores">
+                <a className="block text-2xl font-bold  text-gray-900">
           <div className="max-w-xs my-2 mx-2 overflow-hidden bg-white rounded-lg shadow-lg ">
             <img
               className="px-2 py-2 rounded-md object-cover w-full h-56"
@@ -91,17 +99,19 @@ function miscellaneous() {
               alt="avatar"
             />
 
-            <div className="py-5 text-center">
-              <Link href="miscellaneous/ethnicfoodstores">
-                <a className="block text-2xl font-bold  text-gray-900">
+            <div className="py-3 text-center">
                   Ethnic Food Stores
-                </a>
-              </Link>
+                  <br />
+                
               <span className="text-sm text-gray-700 dark:text-gray-500">
                 Local Food Service Provider
               </span>
             </div>
           </div>
+          </a>
+              </Link>
+              <Link href="miscellaneous/offcampussafety">
+                <a className="block text-2xl font-bold  text-gray-900">
           <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg ">
             <img
               className="px-2 py-2 rounded-md object-cover w-full h-56"
@@ -109,17 +119,20 @@ function miscellaneous() {
               alt="avatar"
             />
 
-            <div className="py-5 text-center">
-              <Link href="miscellaneous/offcampussafety">
-                <a className="block text-2xl font-bold  text-gray-900">
+            <div className="py-3 text-center">
+
                   Off-Campus Safety
-                </a>
-              </Link>
+                  <br />
+                
               <span className="text-sm text-gray-700 dark:text-gray-500">
                 Safety and Property Insurance
               </span>
             </div>
           </div>
+          </a>
+              </Link>
+              <Link href="miscellaneous/temporaryhousing">
+                <a className="block text-2xl font-bold  text-gray-900">
           <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg ">
             <img
               className="px-2 py-2 rounded-md object-cover w-full h-56"
@@ -127,17 +140,20 @@ function miscellaneous() {
               alt="avatar"
             />
 
-            <div className="py-5 text-center">
-              <Link href="miscellaneous/temporaryhousing">
-                <a className="block text-2xl font-bold  text-gray-900">
+            <div className="py-3 text-center">
+
                   Temporary Housing
-                </a>
-              </Link>
+                  <br />
+                
               <span className="text-sm text-gray-700 dark:text-gray-500">
                 Housing Options in Gainesville
               </span>
             </div>
           </div>
+          </a>
+              </Link>
+              <Link href="miscellaneous/ufmobileoutreachclinic">
+                <a className="block text-2xl font-bold  text-gray-900">
           <div className="max-w-xs mx-2 my-2 overflow-hidden bg-white rounded-lg shadow-lg ">
             <img
               className="px-2 py-2 rounded-md object-cover w-full h-56"
@@ -145,17 +161,17 @@ function miscellaneous() {
               alt="avatar"
             />
 
-            <div className="py-5 text-center">
-              <Link href="miscellaneous/ufmobileoutreachclinic">
-                <a className="block text-2xl font-bold  text-gray-900">
+            <div className="py-3 text-center">
+              
                   UF Mobile Outreach Clinic
-                </a>
-              </Link>
+                <br />
               <span className="text-sm text-gray-700 dark:text-gray-500">
                 Libraries,Marketplace and more
               </span>
             </div>
           </div>
+          </a>
+              </Link>
         </div>
       </div>
     </div>
