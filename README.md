@@ -73,6 +73,8 @@ https://user-images.githubusercontent.com/33193435/163886204-d6cecf21-67d4-40bb-
 
 https://user-images.githubusercontent.com/33193435/163887358-922aada3-a04f-4162-918a-65218260c7a8.mp4
 
+## Sprint 4 deliverables </br>
+[Click here](https://github.com/kovurusaisachin/AllyGator/blob/main/Sprint4.md) </br>
 
 ## Team Members </br>
 
