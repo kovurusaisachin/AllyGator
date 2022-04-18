@@ -34,11 +34,13 @@ This project is a comprehensive implementation of a simple yet useful idea of co
 3. run npm next dev
 ```
 <br />
-Check out this video for installation </br>
-
+<b>Check out this video for installation</b> </br>
+</br>
 
 https://user-images.githubusercontent.com/33193435/163863553-bc67e5cd-448f-4408-9b03-95dabec9031a.mp4
 
+
+</br>
 
 ### Backend Development <br />
 <b>Note:</b> To run backend follow the below steps:<br/>
@@ -51,21 +53,25 @@ https://user-images.githubusercontent.com/33193435/163863553-bc67e5cd-448f-4408-
 
 ## Project Board </br>
 :memo: Here's the link to our [project board](https://github.com/kovurusaisachin/AllyGator/projects/1)</br>
-
+</br>
 ## Frontend Documentation </br>
 [Click here](https://github.com/kovurusaisachin/AllyGator/wiki/Frontend-documentation) to view the frontend documentaion </br>
-Check out the video below for Cypress testing </br>
-
-
-https://user-images.githubusercontent.com/33193435/163863412-a255e4d9-a4c7-47cd-8d60-f2939e14f216.mp4
-
-
-
+</br>
 ## Backend API documentation </br>
 [Click here](https://github.com/kovurusaisachin/AllyGator/wiki/API-documentation) to view our backend API documentation on GitHub-Wiki📓 </br>
 [Click here](https://documenter.getpostman.com/view/19334583/UVeGqkYL) to view API documentation on POSTMAN 📓 </br>
 [Click here](https://github.com/kovurusaisachin/AllyGator/wiki/Code-coverage) to view our coverage report 📓 </br>
-Check out the video below for Backend unit testing </br>
+</br>
+## Unit-Testing </br>
+### Front-end Cypress testing </br>
+
+https://user-images.githubusercontent.com/33193435/163886204-d6cecf21-67d4-40bb-b96d-46edc7307d65.mp4  
+
+
+### Back-end GO Unit-testing </br>
+
+
+https://user-images.githubusercontent.com/33193435/163887358-922aada3-a04f-4162-918a-65218260c7a8.mp4
 
 
 ## Team Members </br>
