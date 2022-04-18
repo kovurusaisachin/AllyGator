@@ -47,7 +47,7 @@ This project is a comprehensive implementation of a simple yet useful idea of co
 ## Project Board </br>
 :memo: Here's the link to our [project board](https://github.com/kovurusaisachin/AllyGator/projects/1)</br>
 
-##Frontend Documentation </br>
+## Frontend Documentation </br>
 [Click here](https://github.com/kovurusaisachin/AllyGator/wiki/Frontend-documentation) to view the frontend documentaion </br>
 
 ## Backend API documentation </br>
