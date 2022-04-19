@@ -146,7 +146,7 @@ export default function CometChatNoSSR() {
   if (state?.UID) {
     return (
       <div className=" w-11/12 h-full ">
-        <CometChatUI />
+        <CometChatUI friendsOnly={true}/>
       </div>
     );
   } else {
