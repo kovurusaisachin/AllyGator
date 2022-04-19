@@ -48,6 +48,12 @@ const Forum = () => {
       }
     );
   };
+  // useEffect(() => {
+  //   const newRes = state?.forumData?.sort((a,b)=>{
+  //     return parseInt(b.idPost)  - parseInt(a.idPost);
+  //  })
+  // },[])
+
   useEffect(() => {
     const newResults = state?.forumDataO?.filter(
       (product) =>
@@ -83,7 +89,10 @@ const Forum = () => {
   //pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = state?.forumData?.slice(indexOfFirstPost, indexOfLastPost);
+  const newRes = state?.forumData?.sort((a,b)=>{
+    return parseInt(b.idPost)  - parseInt(a.idPost);
+ })
+  const currentPosts = newRes?.slice(indexOfFirstPost, indexOfLastPost);
 
   // Change page
   const paginateFront = () => setCurrentPage(currentPage + 1);
