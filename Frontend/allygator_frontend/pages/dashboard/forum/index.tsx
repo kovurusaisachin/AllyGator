@@ -353,9 +353,9 @@ const Forum = () => {
           </div>
           <div className="col-span-3">
             <div className="mt-20 mb-5 rounded-lg mr-10 bg-white dark:bg-coolGray-800 dark:text-coolGray-50">
-              <h2 className="px-4 py-3 text-2xl font-semibold">Must reads</h2>
+              <h2 className="px-4 py-3 text-blue-800 text-xl font-semibold">MUST READS:</h2>
               <div className="flex flex-col px-4 col-span-12 divide-y  divide-coolGray-700">
-              {currentPosts?.slice(0, 2).map(x => {return<>
+              {currentPosts.slice(0, 2).map(x => {return<>
                 <div className="pt-2 pb-1 space-y-2">
                   <h3 className="text-lg font-bold">{x.title?.slice(0,40) + "...."}</h3>
                   <p>
