@@ -355,7 +355,35 @@ const Forum = () => {
             <div className="mt-20 mb-5 rounded-lg mr-10 bg-white dark:bg-coolGray-800 dark:text-coolGray-50">
               <h2 className="px-4 py-3 text-2xl font-semibold">Must reads</h2>
               <div className="flex flex-col px-4 col-span-12 divide-y  divide-coolGray-700">
+              {currentPosts?.slice(0, 2).map(x => {return<>
                 <div className="pt-2 pb-1 space-y-2">
+                  <h3 className="text-lg font-bold">{x.title?.slice(0,40) + "...."}</h3>
+                  <p>
+                    {x.description}
+                  </p>
+                  <a
+                    rel="noopener noreferrer"
+                    href="#"
+                    className="inline-flex items-center py-2 space-x-2 text-sm dark:text-violet-400"
+                  >
+                    <span>Read more</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h31.586l-2.293-2.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                </div>
+                </>
+              })}
+                {/* <div className="pt-2 pb-1 space-y-2">
                   <h3 className="text-lg font-bold">Lorem ipsum dolor sit.</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -406,7 +434,7 @@ const Forum = () => {
                       ></path>
                     </svg>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
