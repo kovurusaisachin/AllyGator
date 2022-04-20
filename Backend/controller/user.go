@@ -151,6 +151,35 @@ func GetUserById(idStudent string) (User, error) {
 	return user, nil
 }
 
+func GetUsersForConnectionTable(idUser string) ([]User, error) {
+
+	stmt, err := models.DB.Prepare("SELECT u.idStudent, u.firstname, u.lastname, u.department, u.password, u.email, u.gender, u.course, u.url, u.nationality, u.profile, u.specialization, u.status from chats as c join users as u on u.idStudent == c.idConnected where c.idUser = ?")
+
+	if err != nil {
+		return nil, err
+	}
+	defer stmt.Close()
+	rows, err := stmt.Query(idUser)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	user := make([]User, 0)
+	for rows.Next() {
+		i := User{}
+		err := rows.Scan(&i.StudentId, &i.FirstName, &i.LastName, &i.Department, &i.Password, &i.UFmail, &i.Gender, &i.Course, &i.URL, &i.Nationality, &i.Profile, &i.Specialization, &i.Status)
+		if err != nil {
+			return nil, err
+		}
+		user = append(user, i)
+
+	}
+	if err = rows.Err(); err != nil {
+		return nil, err
+	}
+	return user, nil
+}
+
 //This function is used to retrieve the student details by EmailID
 func GetUserByEmail(email string) (User, error) {
 
