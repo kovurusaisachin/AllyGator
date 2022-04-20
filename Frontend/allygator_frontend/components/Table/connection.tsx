@@ -41,21 +41,18 @@ export default function Table(props) {
         },
       };
       const data = {
-        'idConnnected':sid,
+        'idConnected':parseInt(sid),
         'idUser':parseInt(userId)
       }
       await axios
         .post(`${API_URL}/addChat`,data, config)
         .then((response) => {
-          setState({
-            ...state,
-            res: response?.data?.data ?? "",
-          });
+          console.log('prashant',response,data)
           Swal.fire({
             icon: 'success',
             title: 'connection added successfully',
-            // text: "Server busy please try again later",
-            // footer: '<a href="">Why do I have this issue?</a>'
+          }).then(function(){
+            location.reload();
           })
         })
         .catch((err) => {

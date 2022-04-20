@@ -16,8 +16,10 @@ function Connection() {
   ];
   const [state, setState] = useState({
     connectionData: [],
+    userData:[],
     result: [],
     finalResult:[],
+    newConnectionData: [],
     departmentResult:[],
     query:{
       searchText: "",
@@ -41,27 +43,44 @@ function Connection() {
   };
   const fetchConnections = () => {
     let endpoints = [
-      `${API_URL}/users`,
+      `${API_URL}/userconnection/${parseInt(userId)}`,
       `${API_URL}/department`,
-
+      `${API_URL}/users`,
     ];
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint, config))).then(
       ([
         { data: connection },
         { data: department },
+        { data: users },
+
       ]) => {
         setState({
           ...state,
           connectionData: connection?.data,
-          departmentResult: department?.data
+          departmentResult: department?.data,
+          userData: users?.data
         });
       }
     );
   };
-
-
+  
   useEffect(() => {
-    const newData = state?.connectionData?.filter(
+    function getDifference(array1, array2) {
+      return array1.filter(object1 => {
+        return !array2.some(object2 => {
+          return object1.email === object2.email;
+        });
+      });
+    }
+    console.log(getDifference(state?.userData, state?.connectionData))
+    setState({
+      ...state,
+      newConnectionData: getDifference(state?.userData, state?.connectionData)
+    })
+  },[state?.connectionData])
+  console.log(state,'noopur')
+  useEffect(() => {
+    const newData = state?.newConnectionData?.filter(
       x => x.idStudent !== parseInt(userId)
     )
     setState({
@@ -69,7 +88,7 @@ function Connection() {
       result: newData,
       finalResult: newData
     })
-  },[state?.connectionData])
+  },[state?.newConnectionData])
 
   useEffect(() => {
     const newResults = state?.result?.filter(
