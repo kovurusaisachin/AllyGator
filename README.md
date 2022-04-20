@@ -4,6 +4,9 @@
 This project is a comprehensive implementation of a simple yet useful idea of connecting the future gators with experienced gators. Hence the name _AllyGators_. This application encompasses multi-functional features just to achieve the sole purpose of this idea _Help and Get help_. </br>
 
 ## Demo: </br>
+https://user-images.githubusercontent.com/44776908/164147361-83547ecd-36e2-42c8-85d7-450999a13564.mp4
+
+
 
 ## Functionalities: </br>
 - Connect and network with fellow students.</br>
