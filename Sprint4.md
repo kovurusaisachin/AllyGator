@@ -20,6 +20,15 @@ Allygator is a comprehensive yet useful idea of connecting the future gators wit
 ```
 <br />
 
+### Features achieved in Sprint 3</br>
+1. Updated connection page to make it fully functional with new api in the backend: http://localhost:3000/connection. 
+2. Updated the forum page, add question page and single question. Later integrated it with the backend api to make it functional and useful: http://localhost:3000/forum, http://localhost:3000/forum/addPost, http://localhost:3000/forum/slug
+3. Added pagination feature to all the table to make it fast and ui- consistent everywhere:http://localhost:3000/dashboard, http://localhost:3000/connection
+4. updated filters such as search box and select from drop down on dashboard in all the tables i.e connection list, course and faculty: http://localhost:3000/dashboard
+5. Uodated few of the sub module information page for asthetic ui and good UX: http://localhost:3000/information/slug 
+7. Solved the bug problem related to chat page: http://localhost:3000/chat
+
+</br >
 ### Front-end features achieved in Sprint 4</br>
 
 
