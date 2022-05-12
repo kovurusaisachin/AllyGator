@@ -1,4 +1,4 @@
-# AllyGator :crocodile: https://sites.google.com/view/allygator/home
+# [AllyGator](https://sites.google.com/view/allygator/home) :crocodile: 
 ## Description:</br>
 #### _Network.Connect.Discuss_ </br>
 This project is a comprehensive implementation of a simple yet useful idea of connecting the future gators with experienced gators. Hence the name _AllyGators_. This application encompasses multi-functional features just to achieve the sole purpose of this idea _Help and Get help_. </br>
