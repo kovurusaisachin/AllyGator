@@ -89,7 +89,7 @@ https://user-images.githubusercontent.com/33193435/163887358-922aada3-a04f-4162-
 
 |Name| Email | Tech|
 |--|--|--|
-|Sai Sachin Kovuru|kovuru.saisachin@ufl.edu|Backend|
+|Sai Sachin Kovuru|kovuru.saisachin@ufl.edu|Backend - Frontend|
 |Maitreyi Srinivasan|maitreyisrinivas@ufl.edu|Backend - Frontend|
   
 </td></tr>
@@ -102,7 +102,7 @@ https://user-images.githubusercontent.com/33193435/163887358-922aada3-a04f-4162-
 
 |Name| Email | Tech|
 |--|--|--|
-|Prashant Dashrath Kapri|kapri.prashant@ufl.edu|   Frontend    |
+|Prashant Dashrath Kapri|kapri.prashant@ufl.edu|   Frontend - Backend   |
 |Noopur Thanvi|thanvi.noopur@ufl.edu|Frontend - Backend|
   
 </td></tr>
